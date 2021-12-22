@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python course2021</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html"><span>뒤로가기</span></a>
+    </header>
+    <div id="course4">
+      <h2>2020 Bonus Class</h2>
+      <div id="course4-0" class="idv_class">
+        <h3>4-0. Welcome to 2020 update</h3>
+        <ul>
+          <li>
+            <b>Flask</b>: micro-framework that allows to make a website with
+            Python.<br />It doesn't have many things to configure, features,
+            etc. Only basic stuffs.
+          </li>
+        </ul>
+      </div>
+      <div id="course4-1" class="idv_class">
+        <h3>4-1. Introduction to Flask</h3>
+        <ul>
+          <li>import Flask: <b>from flask import Flask</b></li>
+          <li>
+            to make an applicaiton(app): <b>app = Flask("SuperScraper")</b>
+          </li>
+          <li>
+            when we're in Replit environment, <b>app.run(host="0.0.0.0")</b> ->
+            Replit shows a window on right side. Replit에서 공개하는 웹사이트가
+            만들어지는 것.
+          </li>
+          <li>
+            when somebody goes to
+            root(https://SuperScrapper.boyoonchoi.repl.co/), we execute a python
+            function
+            <ul>
+              <li>@app.route("/")</li>
+              <li>def home():</li>
+              <ul>
+                <li>return "Hello!"</li>
+              </ul>
+            </ul>
+          </li>
+          <li>
+            when somebody goes to
+            https://SuperScrapper.boyoonchoi.repl.co/contact, we execute a
+            following function
+            <ul>
+              <li>@app.route("/contact")</li>
+              <li>def contact():</li>
+              <ul>
+                <li>return "Contact me!"</li>
+              </ul>
+            </ul>
+          </li>
+          <li><b>@</b>: decorator. looks for a <u>function</u> under it.</li>
+        </ul>
+      </div>
+      <div id="course4-2" class="idv_class">
+        <h3>4-2. Dynamic URLs and templates</h3>
+        <ul>
+          <li>
+            <b><></b>: placeholder.
+            <ul>
+              <li>@app.route("/&lt;username&gt;")</li>
+              <li>
+                def potato(username):
+                <ul>
+                  <li>return f"Hello {username}"</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><b>dynamic URL</b>: / 다음에 오는 값을 db에서 찾음</li>
+          <li>
+            how to send HTML to user
+            <ul>
+              <li>from flask import <b>render_template</b></li>
+              <li>@app.route("/")</li>
+              <li>
+                def home():
+                <ul>
+                  <li>return render_template("home.html")</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course4-3" class="idv_class">
+        <h3>4-3. Forms and query arguments</h3>
+        <ul>
+          <li>
+            <b>&lt;form action="/report" method="get"&gt;</b>
+            <ul>
+              <li>
+                웹에서 데이터를 보내는 방식 the way that we send data from one
+                form to the other
+              </li>
+              <li>
+                submit하면 <b>/report?word=react</b>로 이동. <br /><b>? 이후</b
+                >부터는 URL이 아님. <b>query argument임</b><br />cf. input tag안
+                name="word", 입력받은 값은 react
+              </li>
+            </ul>
+          </li>
+          <li>
+            사용자로부터 받은 입력값을 처리하고 싶어! <b>request</b>: 데이터를
+            웹사이트로 보내는 것
+            <ul>
+              <li>from flask <b>import request</b></li>
+              <li>@app.route("/report")</li>
+              <li>
+                def report():
+                <ul>
+                  <li>print(<b>request.args.get('word')</b>)</li>
+                  <li>
+                    #-> print(request.args)로 쓰면 전부 가져옴(dictionary).
+                    화면에 출력되진x
+                  </li>
+                  <li>
+                    #출력하려면 word=request.args.get('word') -> return word
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            How do we send info to a template?
+            <ul>
+              <li>@app.route("/report")</li>
+              <li>
+                def report():
+                <ul>
+                  <li>word = request.args.get('word')</li>
+                  <li>
+                    return <b>render_template</b>("report.html",
+                    <b>searchingBy=word</b>)
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            -> report.html 내부 word가 들어갈 자리에는 <b>{{searchingBy}}</b>
+          </li>
+        </ul>
+      </div>
+      <div id="course4-4" class="idv_class">
+        <h3>4-4. Scrapper integration</h3>
+        <ul>
+          <li>문자열 소문자로 변환하기: word = word.lower()</li>
+          <li>
+            user가 아무것도 입력하지 않으면 word become "None" <br />-> (처리)
+            if word: word = word.lower()
+          </li>
+          <li>
+            Redirect시키기
+            <ul>
+              <li>from flask import <b>redirect</b></li>
+              <li>
+                if word:
+                <ul>
+                  <li>word = word.lower()</li>
+                </ul>
+              </li>
+
+              <li>
+                else:
+                <ul>
+                  <li>return <b>redirect("/")</b> #go home</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            cf. anchor 안에 있는 title="..." attribute 선택하기 :
+            <b>.find("a")["title"]</b>
+          </li>
+        </ul>
+      </div>
+      <div id="course4-5" class="idv_class">
+        <h3>4-5. Faster scrapper</h3>
+        <ul>
+          <li>
+            let's implement fake db -> should be outside of route. if somebody
+            checks the same keyword, we don't have to hit scrapper every time.
+            <ul>
+              <li><b>db[word]=jobs</b></li>
+            </ul>
+          </li>
+          <li>
+            code:
+            <ul>
+              <li>db={}</li>
+              <li>@app.route("/report")</li>
+              <li>
+                def report():
+                <ul>
+                  <li>word=request.args.get("word")</li>
+                  <li>
+                    if word:
+                    <ul>
+                      <li>word=word.lower()</li>
+                      <li>fromDb=db.get(word)</li>
+                      <li>
+                        if fromDb:
+                        <ul>
+                          <li>jobs = fromDb</li>
+                        </ul>
+                      </li>
+                      <li>
+                        else:
+                        <ul>
+                          <li>jobs = get_so_jobs(word)</li>
+                          <li>db[word] = jobs</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    else:
+                    <ul>
+                      <li>return redirect("/")</li>
+                    </ul>
+                  </li>
+                  <li>
+                    return render_template("report.html", searchingBy=word,
+                    resultsNumber=len(jobs))
+                  </li>
+                </ul>
+              </li>
+              <li>
+                cf. jobs는 dictionary들의 array-> len()을 쓰면 element 수를 구할
+                수 있음.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course4-6" class="idv_class">
+        <h3>4-6. Rendering jobs</h3>
+        <ul>
+          <li>let's make a simple table</li>
+          <li>
+            cf. to learn more about grid(<b
+              >display:grid; grid-template-columns:repeat(4,1fr)</b
+            >), take CSS masterclass
+          </li>
+          <li>
+            Flask understands <b>Python code in HTML</b>. {% 여기에 넣어줘야 함
+            %}
+            <ul>
+              <li>cf. <b>{{}}</b> : for variables</li>
+              <li><b>{% %}</b> : to execute Python code</li>
+              <li>
+                code in CSS:
+                <ul>
+                  <li>
+                    section {
+                    <ul>
+                      <li>display: grid;</li>
+                      <li>grid-template-columns: repeat(4, 1fr);</li>
+                    </ul>
+                  </li>
+                  <li>}</li>
+                </ul>
+              </li>
+              <li>
+                code in HTML:
+                <ul>
+                  <li>&lt;h4&gt;Title&lt;/h4&gt;</li>
+                  <li>&lt;h4&gt;Company&lt;/h4&gt;</li>
+                  <li>&lt;h4&gt;Location&lt;/h4&gt;</li>
+                  <li>&lt;h4&gt;Link&lt;/h4&gt;</li>
+                  <li>
+                    {% for job in jobs %}
+                    <ul>
+                      <li>&lt;span&gt;{{job.title}}&lt;/span&gt;</li>
+                      <li>&lt;span&gt;{{job.company}}&lt;/span&gt;</li>
+                      <li>&lt;span&gt;{{job.location}}&lt;/span&gt;</li>
+                      <li>
+                        &lt;a href="{{job.link}}"
+                        target="_blank"&gt;Apply&lt;/a&gt;
+                      </li>
+                    </ul>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course4-7" class="idv_class">
+        <h3>4-7. Export route</h3>
+        <ul>
+          <li>
+            try-except example:
+            <ul>
+              <li>
+                try:
+                <ul>
+                  <li>word = request.args.get('word')</li>
+                  <li>
+                    if not word:
+                    <ul>
+                      <li>raise Exception() #go to except block</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                except:
+                <ul>
+                  <li>return redirect("/")</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            let's export db to csv file.
+            <ul>
+              <li>
+                report.html에 anchor "Export to CSV" 누르면 save_to_file(jobs)
+                동작
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course4-8" class="idv_class">
+        <h3>4-8. File download</h3>
+        <ul>
+          <li>from flask import <b>send_file</b></li>
+          <li>def export(): 안에 <b>return send_file("jobs.csv")</b></li>
+        </ul>
+      </div>
+      <div id="course4-10" class="idv_class">
+        <h3>4-10. Conclusions</h3>
+        <ul>
+          <li>
+            Nico쌤은 Flask를 좋아하심.
+            <ul>
+              <li>minimalistic</li>
+              <li>send_file, redirect같은 다양한 함수 지원</li>
+            </ul>
+          </li>
+          <li>But when you have to build real DB, use <b>Django</b>!</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

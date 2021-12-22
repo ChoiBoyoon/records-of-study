@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="kokoa_style.css" />
+    <link rel="shortcut icon" href="tab_icon.png" />
+    <title>Kakao-clone Boyoon CHOI</title>
+    <meta name="description" content="this is my website :)" />
+    <meta charset="utf-8" />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html"><span>뒤로 가기</span></a>
+    </header>
+    <h1>Hello! Welcome to kakao-clone</h1>
+    <!-- course2: Learn HTML -->
+    <div id="course2">
+      <h2>Learning HTML</h2>
+      <div id="course2.2">
+        <h3>2-2. Our first HTML Tag</h3>
+        <ul>
+          <li>
+            what are tag and its syntax? -> content is surrended by opening and
+            closing tags.
+          </li>
+          <li>h1 means "header number one"</li>
+          <li>
+            you don't have to memorize all the tags. Just understand how it
+            works.
+          </li>
+          <li>if you don't close h1 tag, eveything becomes titles!</li>
+        </ul>
+      </div>
+      <div id="course2.3">
+        <h3>2-3. More tags and prettier</h3>
+        <ul>
+          <li>
+            May websites use list. <b>"ul"</b>(unordered list) &
+            <b>"ol"</b>(ordered list)
+          </li>
+          <li><b>"li"</b> menas list item</li>
+          <li>
+            In ol(ordered list), you don't have to assign numbers manually.
+          </li>
+          <li>
+            <b>prettier</b>: an extension. Automatically corrects errors in
+            code.
+          </li>
+          <li>
+            when you want to change variables at the same time -> <b>Ctrl+D</b>
+          </li>
+        </ul>
+      </div>
+      <div id="course2.4">
+        <h3>2-4. Tag Attributes</h3>
+        <ul>
+          <li>
+            <a href="https://github.com/ChoiBoyoon" target="_blank"
+              >This is an <b>anchor</b> and it goes to my GitHub page</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/in/boyoon-choi-769897152/"
+              target="_blank"
+              >and this one goes to my Linkedin page.</a
+            >
+          </li>
+
+          <li><b>Attribute</b> is something inside an opening tag.</li>
+          <li><b>href</b> means hyperlink reference.</li>
+          <li>
+            if we add <b>target="_blank"</b> inside an anchor tag, the webpage
+            is opened on different tab. (default: target="_self")
+          </li>
+          <li>
+            <b>image</b> is a self-closing tag. Because src is the content of
+            the image.
+          </li>
+          <li>
+            <img
+              src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/autumn-in-the-white-mountains-of-new-hampshire-royalty-free-image-841380450-1531931081.jpg?crop=1.00xw:0.755xh;0,0.202xh&resize=1200:*"
+            />
+          </li>
+          <li>
+            This image src is local. (same directory as home.html)
+            <img src="photo_boyoon.png" />
+          </li>
+        </ul>
+      </div>
+      <div id="course2.5">
+        <h3>2-5. Its all about the head</h3>
+        <ul>
+          <li>
+            <b>meta</b> tag: the description that appears on google search. it's
+            located inside the head tag. self-closing tag. In head, there can be
+            a lot of meta tags.
+          </li>
+          <li><b>meta</b> means "extra data"</li>
+          <li>
+            <b>meta attributes</b>: content & name (<-these are important)
+          </li>
+          <li>
+            <b>meta charset="utf-8"</b>: tells browser how to render the text.
+            Always include this on your head!
+          </li>
+          <li>
+            <b>lang</b> attribute: inside html tag. it tells the browser what's
+            the main language of the page.
+          </li>
+          <li>
+            <b>link</b> tag inside head tag: changes small icon on the left size
+            of tab. it has attributes rel="shortcut icon", sizes="16x16 32x32
+            64x64", href="image source"
+          </li>
+          <li>
+            <b>meta property="og:image" content="..."</b>: 카카오톡에 해당
+            페이지 링크 공유했을 때 뜨는 이미지.
+          </li>
+        </ul>
+      </div>
+      <div id="course2.6">
+        <h3>2-6. More tags</h3>
+        <ul>
+          <li>
+            when googling html, css, javascript, put "<b>mdn</b>" at the end. it
+            will take you to <b>Mozilla Developer Network.</b> They are very
+            good at showing you the commentation about the web. (문서화가 잘
+            돼있음)
+          </li>
+          <li>Never use W3Schools :)</li>
+          <li>
+            <b>pre tag</b>: similar to p tag, but this looks like typewriter.
+          </li>
+          <li>
+            And this is <abbr title="abbrebiation">"abbr"</abbr>. when you
+            locate your cursor on this word and wait, it'll show you the
+            "title." 이것도 언젠가는 쓸모가 있을지도...ㅎ
+          </li>
+          <li><b>cite tag</b>: <cite>looks like italic</cite></li>
+          <li><b>code tag</b>: <code>looks like code..</code></li>
+          <li>
+            <b>mark tag</b>: <mark>highlighted in yellow background.</mark>
+          </li>
+          <li>
+            <b>dfn tag</b>:
+            <dfn>definition. well this one looks same as cite tag...</dfn>
+          </li>
+          <li>
+            <strong>strong tag</strong>: shows that its content have strong
+            importance. it looks sam sas b tag...
+          </li>
+          <li>
+            <b>sub, sup tags</b>: useful when we use mathematical notations.
+            2<sup>5</sup>, log<sub>2</sub>5, etc.
+          </li>
+          <li>
+            <b>audio tag</b>: attributes: src="..." controls="enabled" +now we
+            can't use autoplay on Chrome anymore.. but on Safari it works!<audio
+              controls
+              src="City Of Star (도시의 별)_아날로그태그(Analog TAG)_192k.mp3"
+            ></audio>
+          </li>
+        </ul>
+      </div>
+      <div id="course2.7">
+        <h3>2-7. Form tags</h3>
+        <ul>
+          <li>
+            inside <b>form</b> tag, put <b>input</b> tag(this is self-closing
+            tag), then we'll have input area.
+          </li>
+          <li>
+            <b>input tag</b>: create interactive controls for web-based forms in
+            order to accept data from the user.
+          </li>
+          <li><b>type="color"</b>(input attribute): user can choose color.</li>
+          <li><b>type="password"</b>(input attribute): value is obscured.</li>
+          <li>default type is text.</li>
+          <li>attribute "disabled", "required", "minlength" can be useful</li>
+          <li>
+            <code>type="file"</code> -> user can input file too.
+            <code>accept="image/*, .pdf"</code>: 표준 이미지 형식 & PDF 파일도
+            받을 수 있음.
+          </li>
+          <li>
+            You don't have to memorize all, you only need to know how to search.
+          </li>
+          <form>
+            <input type="file" accept="image/*, .pdf" />
+            <input placeholder="you can choose color" type="color" />
+            <input required placeholder="Name" type="text" />
+            <input required placeholder="Last Name" type="text" />
+            <input required placeholder="Username" type="text" />
+            <input
+              required
+              minlength="10"
+              placeholder="Password"
+              type="password"
+            />
+            <input type="submit" disabled value="Crate Account" />
+          </form>
+        </ul>
+      </div>
+
+      <div id="course2.8">
+        <h3>2-8. More tags and IDs</h3>
+        <ul>
+          <li>Let's make form better.</li>
+          <li>
+            <b>label tag</b>: works together with input. it has attribute
+            "profile" which corresponds to input id.
+          </li>
+          <li>
+            <b>id</b>: unique identifier(고유 식별자). attribute you can add to
+            anything inside body. one id per element. <br />규칙을 어기면 작동이
+            안 됨. many elements can't have same id.<br />
+            Every tag can have ID.
+            <b>ID must be unique in the whole document.</b>
+          </li>
+          <form>
+            <div>
+              <label for="profile"><br />Profile Photo</label>
+              <input id="profile" type="file" accept=".png, .pdf" />
+            </div>
+            <div>
+              <label for="e-mail">Enter Email</label>
+              <input id="e-mail" required placeholder="email" type="email" />
+            </div>
+            <div>
+              <label for="date">Enter the date</label>
+              <input id="date" required placeholder="date" type="date" />
+            </div>
+            <div>
+              <input type="submit" disabled value="submit" />
+            </div>
+          </form>
+        </ul>
+      </div>
+      <div id="course2.10">
+        <h3>2-10. Semantic HTML</h3>
+        <ul>
+          <li>
+            Philosophy behind making HTML. We have to describe our document as
+            well as possible.
+          </li>
+          <il
+            ><b>div tag</b>: division. we can think of it as a box. generic
+            container</il
+          >
+          <li>
+            <b>semantic</b>: meaning that we can extract just by looking at out
+            document. 문서를 보기만 해도 의미를 짐작할 수 있는 것. It means
+            something for a programmer.
+          </li>
+          <li>
+            ex. <b>header</b>: it's inside body tag. it's not head! it's just a
+            box too, like div. 옛날에는 div id="header"로 많이 썼음. it's for
+            programmers.
+          </li>
+          <li>
+            ex. <b>main</b>: under header. works same way as div. semantic as
+            well.
+          </li>
+          <li>
+            ex. <b>footer</b>: under main. works same way as div. semantic as
+            well.
+          </li>
+          <li>
+            ex. <b>span</b>: for short text. <b>p</b>: for paragraph.
+            <b>address tag</b>: for addresses. all just for programmers.
+          </li>
+          <li>In HTML, <b>ALWAYS USE DOUBLE QUOTE</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- course3: Learn CSS -->
+    <div id="course3">
+      <h2>Learning CSS</h2>
+      <div id="course3.0">
+        <h3>3-0. How to add CSS to HTML</h3>
+        <ol>
+          <li>
+            to locate HTML and CSS <b>in the same file</b> (We'll do this using
+            <b>style tag inside head tag</b>, "inline CSS")
+          </li>
+          <li>
+            separate them in 2 files (using <b>link tag inside the head tag</b>,
+            recommended, "external CSS")<br />(link href="styles.css"
+            rel="stylesheet")
+          </li>
+        </ol>
+      </div>
+      <div id="course3.1">
+        <h3>3-1. Writing our first CSS lines</h3>
+        <ul>
+          <li><b>Selector</b> points to HTML tag.</li>
+          <li>Inside curly brackets, <b>properties</b> are located.</li>
+        </ul>
+      </div>
+      <div id="course3.2">
+        <h3>3-2. What does cascading mean</h3>
+        <ul>
+          <li>
+            <b>cascading</b>: one after the other. they are read
+            <b>from top to bottom.</b>
+          </li>
+          <li>What's on the bottom is what you'll see.</li>
+        </ul>
+      </div>
+      <div id="course3.3">
+        <h3>3-3. Blocks and inlines</h3>
+        <ul>
+          <li>
+            On webpage, everything is organized in boxes. (in HTML, div is a
+            boxes)
+          </li>
+          <li>
+            <b>block</b>: 옆에 다른 element가 못 옴. ex.
+            <b>div, address</b>
+          </li>
+          <li>
+            <b>inline</b>: 옆에 다른 element가 올 수 있음. ex.
+            <b>span, img, a, code</b>
+          </li>
+          <li>
+            most of boxes are blocks. it's easier to remember what are not
+            blocks.
+          </li>
+        </ul>
+      </div>
+      <div id="course3.4">
+        <h3>3-4. Margin Part one</h3>
+        <ul>
+          <li>only blocks have (and inline doesn't):</li>
+          <li>
+            block and inline is interechangeable?->yes.<br />
+            <code>display:block;</code> OR <code>display:inline;</code>
+          </li>
+          <li>
+            inlines don't have height & width. <br /><code
+              >display:inline;</code
+            >
+            한 다음에 property로 지정하면 안됨.
+          </li>
+          <li>
+            amazing features of box: <b>margin</b>, <b>padding</b>,
+            <b>border</b>
+          </li>
+          <ul>
+            <li>
+              <b>margin</b>: box의 border(경계) 바깥에 있는 공간.
+              default=8px.<br />
+              margin: 10px -> 모든 방향에 적용<br />
+              margin: 20px 15px -> 첫번째는 vertically적용, 두 번째는
+              horizontally적용.<br />
+              margin: 1px 2px 3px 4px -> top, right, bottom, left. 시계방향
+            </li>
+            <li>
+              <b>Collapsing margins</b>: In CSS, the adjoining margins of two or
+              more boxes can combine to form a single margin. (and behave like
+              they are a single margin...->we use padding to solve this issue.)
+              Horizontal margins never collapse.
+            </li>
+          </ul>
+        </ul>
+      </div>
+      <div id="course3.6">
+        <h3>3.6 (Paddings and IDs)</h3>
+        <ul>
+          <li>
+            <b>padding</b>: space from border(뭐가 됐든 그냥 바깥쪽에 있는 것)
+            of the box to the inside.
+          </li>
+          <li>collapsing margins때문에 문제가 있으면 padding으로 해결?</li>
+          <li id="test1">
+            we can target id in CSS using hashtag(#)
+            <code>#id_name { properties }</code>
+          </li>
+          <li id="test2">this is second test.</li>
+        </ul>
+      </div>
+      <div id="course3-7">
+        <h3>3-7. Border</h3>
+        <ul>
+          <li>
+            <b>border</b>: simple. border of box. it has many properties, but
+            you're gonna use only one kind of border(solid).. other borders are
+            really ugly.
+          </li>
+          <li><b>border: 2px solid black</b> -> width, style, color</li>
+          <li><b>* { ... }</b> -> apply style properties to EVERYTHING</li>
+          <li>
+            <b>border-style</b> : set width, style, color at the same time.
+          </li>
+        </ul>
+      </div>
+      <div id="course3-8">
+        <h3>3-8. Classes</h3>
+        <ul>
+          <li>
+            <b>inline</b>: do not have height or width. -> don't have margin on
+            top and bottom. (only have left and right)<br />inline is different,
+            special.
+          </li>
+          <li>
+            <b>class</b>: when we want to apply style to some elements. we can't
+            do this with id -> they should be all different, unique.<br />*how
+            to point class : <code>.tomato { ... }</code><br />*one element can
+            have many classes ex.<code>p class="name1 name2 name3"</code>
+          </li>
+          <li>
+            we can group selectors ex.
+            <code>#tomato1, #tomato2, tomato3 { ... }</code>
+          </li>
+          <li>(css) border_radius:10px; -> 가장자리가 둥글어짐.</li>
+        </ul>
+      </div>
+      <div id="course3-9">
+        <h3>3-9. Inline block</h3>
+        <div class="test3">1</div>
+        <div class="test3" id="second">2</div>
+        <div class="test3">3</div>
+        <ul>
+          <li>
+            <b>display: inline-block;</b> sucks. it's old, it has problems.
+            there's space between each other. it was invented when there was no
+            smartphone.
+          </li>
+        </ul>
+      </div>
+      <div id="course3-10">
+        <h3>3-10. Flexbox part one</h3>
+        <ul>
+          <li><b>flex</b>: display: flex; (->but this on parent tag)</li>
+          <li>
+            <b>justify-content: center;</b>: default is flex-start;. applied on
+            main axis(default: horizontal)
+          </li>
+          <li>
+            <b>align-items: center;</b>: works on cross axis(default: vertical)
+          </li>
+
+          <li>
+            <b>flexbox rules</b>
+            <ol>
+              <li>
+                You don't talk to children,
+                <b>you only talk to parent.</b> <br />ex.when I want to change
+                div tag, I make body tag a flex container.
+              </li>
+              <li>
+                <b>main axis</b>: (by default)가로 horizontal.<br /><b
+                  >justify-content</b
+                >: works on main axis. (cf. main axis can be changed.)
+              </li>
+              <li>
+                <b>cross axis</b>: (by default)세로 vertical<br /><b
+                  >align-items</b
+                >: works on cross axis.
+              </li>
+            </ol>
+          </li>
+          <li>
+            <mark><b>vh</b>: viewport height.</mark> You can think of viewport
+            as a screen. 100vh means 100% of screen. works differently depending
+            on devices.
+          </li>
+        </ul>
+      </div>
+      <div id="course3-11">
+        <h3>3-11. Flexbox part two</h3>
+        <ul>
+          <li>
+            <b>flex-direction: column;</b> -> change main axis to be vertical.
+          </li>
+          <li>
+            div안에 string이 있는 경우 div가 부모, string이 자식. div에 display:
+            flex;를 써서 string의 스타일을 조정 가능.
+          </li>
+          <li>flex 부모의 자식이 또 다른 요소의 flex부모가 될 수도 있음.</li>
+        </ul>
+      </div>
+      <div id="course3-12">
+        <h3>3-12. Fixed</h3>
+        <ul>
+          <li><b>position: fixed;</b> -> 스크롤을 내려도 그 자리에 그대로</li>
+          <li>
+            warning: 다른 element 영역을 침범할 수 있음 if we change one of top,
+            left, right, bottom properties.. it's on top of everything. (now
+            it's on different layer)
+          </li>
+          <li>ex: Netflix menu</li>
+        </ul>
+      </div>
+      <div id="course3-13">
+        <h3>3-13. Relative Absolute</h3>
+        <ul>
+          <li><b>position: relative;</b> -> 처음 위치를 기준으로 이동.</li>
+          <ul>
+            <li>top, left -10px씩 조정</li>
+            <div id="ex1">
+              <div id="ex2"></div>
+            </div>
+          </ul>
+          <li><b>position: absolute;</b></li>
+          <ul>
+            <li>
+              <b>right: 0;</b> -> (in this case) body의 맨 오른쪽으로 가서 붙음.
+              부모 기준이 아니라, 가장 가까운 relative로 가서 붙음.
+            </li>
+            <li>
+              parent의 absolute 위치로 가길 원한다면, 부모를 relative로 만들면
+              됨.
+            </li>
+            <div id="ex3"></div>
+          </ul>
+          <li>position의 default value는 <b>static</b></li>
+        </ul>
+      </div>
+      <div id="course3-14">
+        <h3>3-14. Pseudo selector part one</h3>
+        <ul>
+          <li>ways of pointing elements (so far)</li>
+          <ul>
+            <li>write a name of a tag</li>
+            <li>use class (.)</li>
+            <li>use id (#)</li>
+          </ul>
+          <li>
+            <b>pseudo selector</b> is more complex way of pointing at elements.
+            (ex. span 바로 옆 class, 맨 마지막 class 등)
+          </li>
+          <li>
+            <b>div:last-child:</b> -> 여러 개의 div 중에서 맨 마지막 div만 선택.
+          </li>
+          <li>
+            <b>div:first-child:</b> -> 여러 개의 div 중에서 첫 번째 div만 선택.
+          </li>
+          <span class="ex4">hello</span
+          ><span class="ex4">hello</span
+          ><span class="ex4">hello</span
+          ><span class="ex4">hello</span
+          ><span class="ex4">hello</span>
+          <li><b>span:nth-child(2);</b> -> 두 번째 span을 선택</li>
+          <li>
+            <b>span:nth-child(even);</b> -> 짝수 번째 span을 선택, 2n으로 써도
+            됨
+          </li>
+          <li>
+            <b>span:nth-child(odd);</b> -> 홀수 번째 span을 선택, 2n+1로 써도
+            됨.
+          </li>
+          <li><b>span:nth-child(3n+1);</b> -> 3개마다 하나씩 선택.</li>
+          <span class="ex5">hello</span
+          ><span class="ex5">hello</span
+          ><span class="ex5">hello</span
+          ><span class="ex5">hello</span
+          ><span class="ex5">hello</span>
+        </ul>
+      </div>
+      <div id="course3-15">
+        <h3>3-15. Combinators</h3>
+        <ul>
+          <li><b>p span {...}</b> : change span inside p</li>
+          <ul>
+            <li>
+              <p>this is an <span>example</span>.</p>
+            </li>
+            <li>
+              <b><p>div p span {...}</p></b> : find span that is <u>inside</u> p
+              inside div.
+            </li>
+          </ul>
+          <li>
+            <b>div > span {...}</b> : points to span which is
+            <u>direct children</u> of div
+          </li>
+          <ul>
+            <div>
+              <span>hello</span>
+              <p>this is an <span>example.</span></p>
+            </div>
+          </ul>
+          <li><b>p + span {...}</b> : span <u>right next to</u> div</li>
+          <ul>
+            <p>here is p</p>
+            <span>and here is span</span>
+          </ul>
+        </ul>
+      </div>
+      <div id="course3-16">
+        <h3>3-16. Pseudo selectors part two</h3>
+        <ul>
+          <li>
+            <b>p ~ span {...}</b> : brothers. they don't have to be direct.
+          </li>
+          <li>
+            <b>input:required {...}</b> : change only "required" input. (cf.
+            default is optional)
+          </li>
+          <form>
+            <input type="text" placeholder="username" />
+            <input type="password" required placeholder="password" />
+          </form>
+          <li>
+            <b>attribute selector</b> : mathces elements based on the presence
+            or value of a given attribute. with []
+          </li>
+          <ul>
+            <li>ex. input[type="password"] {...}</li>
+            <li>ex. input[placeholder="username"] {...}</li>
+            <li>
+              ex. input[placeholder~="name" {...} : placeholder에 "name"이
+              포함된 input
+            </li>
+          </ul>
+        </ul>
+      </div>
+      <div id="course3-17">
+        <h3>3-17. Sates</h3>
+        <ul>
+          <li>
+            <b>states</b> : active, hover, focus, visited, focus within...
+          </li>
+          <li><b>active</b> : when you're pressing on it.</li>
+          <ul>
+            <li>button:active {background-color:tomato;}</li>
+            <li>
+              <button id="btn_ex1">button</button>
+            </li>
+          </ul>
+          <li><b>hover</b>: when the cursor is on top</li>
+          <ul>
+            <li>button:hover { background-color:tomato;</li>
+            <li><button id="btn_ex2">button</button></li>
+          </ul>
+          <li><b>focus</b>: when it's focused</li>
+          <input type="text" class="fc_ex1" placeholder="hello" />
+          <input type="text" class="fc_ex1" placeholder="world" />
+          <li>
+            <b>visited</b>: the anchor you already clicked on. browser knows
+            you've visited there.
+          </li>
+          <a class="vs_ex1" href="https://github.com/ChoiBoyoon"
+            >here's my github</a
+          >
+          <a class="vs_ex1" href="https://www.apple.com">and it's apple</a>
+          <li>
+            <b>focus within</b>: works from parent. for an element that has a
+            children that's focused. When child is focused, status of parent
+            changes.
+          </li>
+          <form id="fw_ex1">
+            <input type="text" name="" id="" />
+            <input type="text" name="" id="" />
+            <input type="text" name="" id="" />
+          </form>
+          <li>
+            we can mix. ex:
+            <b>form:hover input {background-color: tomato;}</b> : when we hover
+            over form, background color of input changes.
+          </li>
+          <form id="fw_ex2">
+            <input type="text" name="" id="" />
+            <input type="text" name="" id="" />
+          </form>
+        </ul>
+      </div>
+      <div id="course3-18">
+        <h3>3-18. Recap</h3>
+        <ul>
+          <li>
+            <b>::placeholder</b>: <b>CSS pseudo element</b> represents the
+            placeholder text inside an element.
+          </li>
+          <ul>
+            <li>
+              <b>input::placeholder {color:tomato;}</b>: change color of a
+              placeholder.
+            </li>
+            <input id="pseudo_ex1" type="text" placeholder="placeholder" />
+          </ul>
+          <li><b>selection</b></li>
+          <ul>
+            <li>
+              <b>p::selection { background-color: teal; }</b> : when we "select"
+              text, background color changes.
+            </li>
+            <li><p id="pseudo_ex2">This is the text inside p element.</p></li>
+          </ul>
+          <li><b>::first-letter</b>: apply style only to the first letter.</li>
+          <li><b>::first-line</b>: apply style only to the first line.</li>
+          <ul>
+            <li><p id="pseudo_ex3">And here comes an example.</p></li>
+            <li>
+              <p id="pseudo_ex4">
+                And here is another example, <br />and this one has multiple
+                lines.
+              </p>
+            </li>
+          </ul>
+        </ul>
+      </div>
+      <div id="course3-19">
+        <h3>3-19. Colors and variables</h3>
+        <ul>
+          <li>something that makes CSS look like a programming language.</li>
+          <li>color system on CSS</li>
+          <ol>
+            <li>
+              <b>heximal</b>: #FCCE00 <span class="cv_ex1">(this one)</span>(cf.
+              we can pick one using ColorZilla)
+            </li>
+            <li>
+              <b>rgb</b>: rgb(252, 206, 0)<span class="cv_ex1"
+                >(same color)</span
+              >
+            </li>
+            <li>
+              <b>rgba</b>: we can add transparency <br />ex.rgba(252, 206, 0,
+              0.5):<span class="cv-ex2"> ...</span>
+            </li>
+          </ol>
+          <li>
+            <b>CSS custom properties(variables)</b>: Sometimes you want to save
+            a color and use it everywhere. And it's convenient when we have to
+            change theme color.
+          </li>
+          <ul>
+            <li>
+              <b>:root { --main-color: #fcce00; }</b> (root is basically root of
+              document)
+            </li>
+            <li>
+              <b>:root {--default-border: 1px solid var(--main-color); }</b>
+            </li>
+            <li>
+              a { color: var(--main-color); border: var(--default-border); }
+            </li>
+            <a id="cv_ex3" href="#">anchor</a>
+          </ul>
+        </ul>
+      </div>
+    </div>
+
+    <!-- course4: Advanced CSS -->
+    <div id="course4">
+      <h2>4. Advanced CSS</h2>
+      <div id="4-0">
+        <h3>4-0. Transitions</h3>
+        <ul>
+          <li>
+            <b>transition</b>: the way that we can animate change from one state
+            to the other.
+          </li>
+          <li>cf. underline없애기: <b>text-decoration: none;</b></li>
+          <li>
+            <b>transition</b>: you have to add it to an element without a state.
+            <br />(ex. a위에 마우스를 올렸을 때 변화하게 만들고 싶음. a{...}랑
+            a:hover{...} 중, a{...}안에 transition을 넣어야 함.)
+            <ul>
+              <li>
+                먼저 "어떤 것"을 변하게 하고 싶은지 써야 함. <br />ex.
+                transition: <u>background-color</u> 10s ease-in-out; => text랑
+                background-color가 둘 다 변하는 경우, text는 동시에 변하고
+                background-color는 10초 동안 천천히 변할거임.
+              </li>
+              <li>
+                동시에 여러 개 쓰기 가능. <br />ex. transition:
+                <u>background-color</u> 10s ease-in-out, <u>color</u> 5s
+                ease-in-out; <br />ex. transition: <u>all</u>
+                5s ease-in-out;
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="4-1" class="idv_course">
+        <h3>4-1. Transitions part two</h3>
+        <ul>
+          <li>
+            ease-in function: tells our browser how to animate a change.
+            <br />ex. ease-in-out, linear <br />
+            or matthewlein.com/tools/ceaser에서 cubic-bezier(...) 복붙해도 됨.
+          </li>
+          <li>
+            the most common way is to say <b>transision: <u>all</u></b>
+          </li>
+        </ul>
+      </div>
+      <div id="4-2" class="idv_course">
+        <h3>4-2. Transformations</h3>
+        <ul>
+          <li>
+            <b>transformations</b>: litterally transforms an element. suepr
+            cool. you can do 3D stuff with CSS. 다른 sibling의 영역을 침범할 수
+            있음. (doesn't affect box of siblings)<br />all the animations on
+            CSS are powered by GPU.
+          </li>
+          <li>
+            ex. <b>transform: rotateY(33deg);</b> -> 세로축으로 33도 회전.
+            (우리가 스크린으로 봤을때 이미지가 얆아짐)
+          </li>
+          <li>
+            ex. <b>transform: rotateZ(33deg);</b> -> 화면에 딱 붙어서 시계
+            방향으로 회전함.
+          </li>
+          <li>
+            ex. <b>transform: scaleY(12);</b> -> 세로축으로 이미지가 12배
+            늘어남.
+          </li>
+          <li>
+            ex. <b>transform: scale(2, 2);</b> -> X축, Y축으로 길이가 2배씩 증가
+          </li>
+          <li>
+            ex. <b>transform: translateX(10px);</b> -> X축으로 10px만큼 이동.
+          </li>
+          <li>
+            ex. 이미지에 마우스 올리면 시계방향으로 90° 돌아가게 만들기
+            <ul>
+              <li>img { transition: transform 5s ease-in-out; }</li>
+              <li>img:hover { transform: rotateZ(90deg); }</li>
+              <li>
+                cf. transition을 img:hover안에 넣으면 마우스를 이미지 위에서
+                치우는 순간 transition중단됨.
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            ex. <b>transform: rorateX(360deg) scale(0.5)</b>: 회전하면서 1/2배로
+            작아짐.
+          </li>
+        </ul>
+      </div>
+      <div id="4-3" class="idv_course">
+        <h3>4-3. Animations part one</h3>
+        <ul>
+          <li>what if I want to make an animation that runs all the time?</li>
+          <li>
+            <b
+              >@keyframes superCoinFlip {
+              <ul>
+                <li>
+                  from {
+                  <ul>
+                    <li>transform: rorateX(0);</li>
+                  </ul>
+                </li>
+
+                <li>}</li>
+                <li>
+                  to {
+                  <ul>
+                    <li>transform: rotateX(360deg);</li>
+                  </ul>
+                </li>
+                <li>}</li>
+              </ul>
+              <li>}</li>
+              <li>
+                img { animation: superCoinFlip 5s ease-in-out infinite; }
+              </li></b
+            >
+
+            //infinite: 계속 반복
+          </li>
+        </ul>
+      </div>
+      <div id="4-4" class="idv_course">
+        <h3>4-4. Animations part two</h3>
+        <ul>
+          <li>
+            from-to로 하면 원상태로 돌아갈 때 애니메이션 적용 x <br />-> step을
+            추가 (0%-50%-100%). <br />step은 원하는만큼 추가할 수 있음.
+            ex.(0%-25%-50%-75%-100%)
+          </li>
+          <li>
+            ex.
+            <ul>
+              <li>
+                @keyframes superCoinFlip {
+                <ul>
+                  <li>
+                    0% {
+                    <ul>
+                      <li>transform: rotateY(0);</li>
+                    </ul>
+                  </li>
+                  <li>}</li>
+                  <li>50% {</li>
+                  <ul>
+                    <li>
+                      transform: rotateY(180deg) translateY(100px); //회전하면서
+                      위로 올라감
+                    </li>
+                  </ul>
+                  <li>}</li>
+                  <li>
+                    100% {
+                    <ul>
+                      <li>transform: rotateY(0);</li>
+                    </ul>
+                  </li>
+                  <li>}</li>
+                </ul>
+              </li>
+              <li>}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- course5: Git and GIthub -->
+    <div id="course5">
+      <h2>5. Git and GitHub</h2>
+      <div id="course5-0">
+        <h3>5-0. What is Git</h3>
+        <ul>
+          <li>Git keeps track of files.</li>
+          <li>
+            Git system looks at the files in binary foramt. Git can detect
+            change in any file.
+          </li>
+          <li>
+            <b>git</b>: version control system that keeps track of our files. We
+            can think of it as a default for version control.
+          </li>
+          <li><b>GitHub</b>: where we upload those changes/files.</li>
+        </ul>
+      </div>
+      <div id="course5-1">
+        <h3>5-1. What is GitHub</h3>
+        <ul>
+          <li>
+            <b>repository</b>: where your code lives, including histories.
+          </li>
+          <li>
+            commit: pointing time when you say "hey I want to save this version
+            of file."
+          </li>
+        </ul>
+      </div>
+      <div id="course5-2">
+        <h3>5-2. Creating a Github repository</h3>
+        <ul>
+          <li>
+            repository name should be lowercase without any spaces
+            ex.kokoa-clone-2021
+          </li>
+        </ul>
+      </div>
+      <div id="course5-3">
+        <h3>5-3. Making our first commits</h3>
+        <ul>
+          <li>
+            <b>README.md</b>: markdown file. markdown is a way of writing and
+            formatting a document.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- course6: Cloning time! -->
+    <div id="course6">
+      <h2>6. Cloning Time</h2>
+      <div id="course6-1">
+        <h3>6-1. Sign up screen part one</h3>
+        <ul>
+          <li>
+            by default, most of web servers are configured to look for
+            <b>index.html</b> first.
+          </li>
+          <li>
+            (keyboard shortcut)<mark><b>"! + Enter"</b></mark> -> html
+            document가 자동 생성됨.
+          </li>
+        </ul>
+      </div>
+      <div id="course6-2">
+        <h3>6-2. BEM</h3>
+        <ul>
+          <li><b>BEM</b>: Block, Elements and Modifiers</li>
+          <ul>
+            <li><b>.btn {}</b>: Block component</li>
+            <li><b>.btn__price {}</b>: Element that depends upon the block</li>
+            <li>
+              <b>.btn--orange{}</b>: Modifier that changes the style of the
+              block
+            </li>
+            <li>Recommended by Nico</li>
+          </ul>
+          <li>
+            Programmers have decided to
+            <b>write everything in classes.</b> (sometimes it's hard to remember
+            whether it's class or id)
+          </li>
+        </ul>
+      </div>
+      <div id="course6-3">
+        <h3>6-3. Font Awesome</h3>
+        <ul>
+          <li>
+            <b>svg</b> : image file format. math, not pixels. you can stretch it
+            as much as you want.
+          </li>
+          <li>2 ways of using icons</li>
+          <ul>
+            <li>
+              <mark><b>heroicons</b></mark> - free!
+            </li>
+            <li>
+              <mark><b>font awesome</b></mark> - most popular
+            </li>
+            <ul>
+              <li>
+                body 맨 아래(foot밑?)에 script넣고. 그 다음부터는 i(icon)
+                element 복붙해서 사용
+              </li>
+              <i class="fas fa-cat"></i
+              ><i class="fas fa-cat fa-lg"></i
+              ><i class="fas fa-cat"></i
+              ><i class="fas fa-cat fa-lg"></i>
+            </ul>
+          </ul>
+          <li>script should always go last.</li>
+        </ul>
+      </div>
+      <div id="course6-5">
+        <h3>6-5. Status bar CSS</h3>
+        <ul>
+          <li>
+            <mark
+              ><b>CSS link 추가 shortcut</b> : link:css까지 입력 후 엔터</mark
+            >
+            -> 자동 완성
+          </li>
+          <li>font : "-apple-system" 추천. 예뻐요</li>
+          <li>fonts.google.com에서 더 많은 폰트를 찾아볼 수 있음.</li>
+          <li>We'll use "Open Sans" in this course.</li>
+          <li>
+            Be careful not to use too many fonts, it can make your website
+            heavy.
+          </li>
+          <li>
+            18:43을 정확히 가운데에 두고 싶다면, CSS 핵을 이용. (이상하지만 잘
+            동작하고, 그래서 개발자들끼리 공유되는 것) 지금은 왼쪽 No service가
+            배터리보다 길어서 오른쪽으로 치우쳐짐.
+            <ol>
+              <li>상위 박스(.status-bar): justify-content: center;</li>
+              <li>내부 박스 범위(.status-bar__column): width:33%;</li>
+              <li>
+                중앙에 위치할 박스(.status-bar__column:nth-child(2)): display:
+                flex; justify-content: center;
+              </li>
+              <li>
+                오른쪽에 정렬할 박스(.status-bar__column:last-child):
+                display:flex; justify-content:flex-end; align-itmes:center;
+              </li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+      <div id="course6-6">
+        <h3>6-6. Sign up screen part three</h3>
+        <ul>
+          <li>
+            <b>reset css</b>: set margin:0, padding:0, border:0 on most of tags.
+            (we don't want the browser's default margin, padding, border)
+          </li>
+          <li>브라우저 설정을 지우고 우리가 직접 디자인 하는게 더 좋음.</li>
+          <li>copy reset css, and let's save it in reset.css file.</li>
+          <li>
+            so much better to import using CSS because you don't want to add too
+            many links on HTML.
+          </li>
+        </ul>
+      </div>
+      <div id="course6-7">
+        <h3>6-7. Log in form part one</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course6-8">
+        <h3>6-8. Log in form part two</h3>
+        <li><b>css :not()</b></li>
+        <li>
+          <b
+            >login-form input:not([type="submit"]) { border_buttom: 1px solid
+            rbga(0, 0, 0, 0.2); transition: border-color 0.3s ease-in-out; }</b
+          >: when input is not submit type, there's no border buttom color
+        </li>
+        <li>
+          <b>#login-form input[type="submit"]{ cursor: pointer;}</b> : 버튼 위에
+          커서 올리면 손가락 모양을 바뀜.
+        </li>
+        <li>
+          <b
+            >#login-form a { text-align: center; text-decoration: none;
+            color:inherit; }</b
+          >
+          : anchor를 화면 중앙으로, 밑줄 제거, 텍스트 컬러 검은색으로. (색상을
+          상속받아옴. default color는 블랙)
+        </li>
+        <li><b>border-radius: 5px;</b> -> 가장자리를 약간 둥굴게</li>
+      </div>
+      <div id="course6-9">
+        <h3>6-9. Recap and forms</h3>
+        <ul>
+          <li>CSS에서 주석: /* */</li>
+          <li>2 important <b>form attributes</b>:</li>
+          <ol>
+            <li><b>action</b>: to which page are you going to send data?</li>
+            <li>
+              <b>method</b>:
+              <ol>
+                <li>
+                  <b>post</b>: send the info <u>to server on backend</u
+                  ><br />github pages에서 post는 작동하지 않음!
+                </li>
+                <li>
+                  <b>get</b>: not secure! send info that will be seen in URL<br />ex.
+                  friends.html?username=123&password=123
+                </li>
+              </ol>
+            </li>
+          </ol>
+        </ul>
+      </div>
+      <div id="course6-10">
+        <h3>6-10. Navigating bar part one</h3>
+        <ul>
+          <li>
+            VSC shortcut: <mark><b>nav>ul>li*4>a + Enter</b></mark>
+          </li>
+          <li>그리고 다음 입력 항목으로 이동할 때마다 tab 클릭하면 됨. 어썸</li>
+          <li>
+            font awesome의 icon을 크게 만들기 -> class 안에 <b>fa-lg</b> 추가.
+            (font awesome large)
+          </li>
+          <i class="fas fa-user"></i>
+          ->
+          <i class="fas fa-user fa-lg"></i>
+          <li>
+            같은 변수들 동시에 선택:
+            <mark>단어 선택 -> <b>Ctrl + Shit + L</b></mark>
+          </li>
+        </ul>
+      </div>
+      <div id="course6-11">
+        <h3>6-11. Navigation bar part two</h3>
+        <ul>
+          <li>
+            cf. icons from font awesome sizes: fa-xs, fa-sm, fa-lg, fa-2x,
+            fa-3x, fa-5x, ...
+          </li>
+        </ul>
+      </div>
+      <div id="course6-12">
+        <h3>6-12. Border Box</h3>
+        <ul>
+          <li>
+            <b>box-sizing: border-box;</b> -> even if padding is added, box size
+            remains same. (normally CSS tries to keep the size of box, so if we
+            add padding-left of 50px, box size increases 50px on the right..)
+          </li>
+        </ul>
+      </div>
+      <div id="course6-13">
+        <h3>6-13. Navigation bar part three</h3>
+        <ul>
+          <li>
+            <b>how to make a circle</b> out of squre-> <b>border-radius</b>를
+            square width의 절반으로! <br /><tab
+              >or <mark><b>border-radius: 50%;</b></mark></tab
+            >
+          </li>
+          <li>
+            글자 뚱뚱하게 만들기: <mark><b>font-weight:600;</b></mark>
+          </li>
+          <li>
+            <b>position: absolute;</b> -> 다른 box를 무시?. 이거 쓰려면
+            container에 <b>position: relative;</b> 써야함.
+          </li>
+        </ul>
+      </div>
+      <div id="course6-14">
+        <h3>6-14. Screen Header</h3>
+        <ul>
+          <li>.</li>
+        </ul>
+      </div>
+      <div id="course6-15">
+        <h3>6-15. Friends screen part one</h3>
+        <ul>
+          <li>
+            <b>shortcut : <mark>.user-component__column*2 + Enter</mark></b> ->
+            class가 user-component__column인 div 2개 생성
+          </li>
+          <li>
+            <b>display:flex;</b> -> 사진이랑 텍스트가 위아래가 아니라 옆으로
+            배열됨.
+          </li>
+          <li>
+            <b>align-itmes: center;</b> -> (vertically)위에 딱 붙어있던 텍스트가
+            가운데로 옴.
+          </li>
+          <li>
+            사진 사이즈 변경 - <u>가로 세로 비율 유지</u>하고 싶으면 (css파일
+            안) <mark><b>object-fit: cover;</b></mark> 추가
+          </li>
+        </ul>
+      </div>
+      <div id="course6-17">
+        <h3>6-17. User component part two</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+      <div id="couse6-21">
+        <h3>6-21. Find screen part one</h3>
+        <ul>
+          <li>
+            icon size를 조절하는 다른 방법 -> font-size 조정 <br /><tab
+              >ex. .find-icons__icon i { font-size: 30px; }</tab
+            >
+          </li>
+        </ul>
+      </div>
+      <div id="course6-23">
+        <h3>6-23. Find screen part three</h3>
+        <ul>
+          <li>
+            (inside CSS)lowercase -> uppercase :
+            <b>text-transform: uppercase;</b>
+          </li>
+          <li>이미지 둥글게 만들기: <b>border-radius: 50%;</b></li>
+          <li>
+            <b>.open-post__members .divier {...}</b>: divider inside
+            open-post__members
+          </li>
+          <li>
+            <b>divider(|)</b> 만들기:
+            <b>width: 2px; height: 10px; background-color: margin: 0 5px;</b>
+          </li>
+        </ul>
+      </div>
+      <div id="course6-24">
+        <h3>6-24. Find screen part four</h3>
+        <ul>
+          <li>
+            position: absolute;를 쓰려면 반드시 바로 위 부모에 position:
+            relative; 적용하기!
+          </li>
+        </ul>
+      </div>
+      <div id="course6-27">
+        <h3>6-27. Settings screen part one</h3>
+        <ul>
+          <li>
+            shortcut:
+            <b>header.alt-header>div.alt-header__col*3 + Enter</b> ->class
+            이름이 alt-header인 헤더 생성, 그 안에 class 이름이 alt-header인 div
+            3개
+          </li>
+        </ul>
+      </div>
+      <div id="course6-29">
+        <h3>6-29. Chat screen part two</h3>
+        <ul>
+          <li>
+            position: fixed; width: 100%; 했을 때 일부 컴포넌트가 화면 밖으로
+            밀려난다면, <b>box-sizing: border box;</b> 적용.
+          </li>
+          <li>
+            꿀팁: position:fixed; 와 <b>position:sticky;</b>의 차이 -> fix
+            position will not occupy any space in the body, so the next element
+            will be behind the flexed element. sticky position occupies the
+            space, so the next element will not be hidden behind it.
+          </li>
+          <li>
+            <b>z-index 속성</b>: layer의 순서를 나타냄. like 포토샵. z-index:0를
+            주면 다른 요소들 뒤로 숨어버림. 숫자가 높을수록 바깥쪽 layer.
+          </li>
+        </ul>
+      </div>
+      <div id="course6-30">
+        <h3>6-31. Chat screen part four</h3>
+        <ul>
+          <li>
+            span에 margin-bottom을 적용하고 싶으면 display:block을 해야함. ex.
+            .message-author { margin-bottom: 5px; display: block; }
+          </li>
+          <li>
+            border-top-left-radius: 0; -> 각각의 모서리에 속성 주기.
+            ex.border-bottom-right, ...
+          </li>
+        </ul>
+      </div>
+      <div id="course6-31">
+        <h3>6-31. Chat screen part five</h3>
+        <ul>
+          <li>
+            flex children들의 순서 바꾸기.
+            <ol>
+              <li>
+                <b>order: n;</b> <br />ex. .message-row--own .message__bubble {
+                order: 1; } <br />.message-row--own .message__time { order: 0; }
+              </li>
+              <li>
+                <b>flex-direction: row-reverse;</b> (위와 같게 동작)
+                .message-row--own .message__info { flex-direction: row; }
+              </li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+      <div id="course6-33">
+        <h3>6-33. Write message input</h3>
+        <ul>
+          <li>
+            (shortcut) <b>.form__column + Enter</b> -> class가 form__column인
+            div가 생성됨!
+          </li>
+        </ul>
+      </div>
+      <div id="course6-34">
+        <h3>6-34. Splash screen part one</h3>
+        <ul>
+          <li><b>100vh</b> : 100% of the screen's height</li>
+          <li><b>100vw</b> : 100% of the screen's width</li>
+          <li><b>100%</b> : 100% of the parent</li>
+        </ul>
+      </div>
+      <div id="course6-35">
+        <h3>6-35. Splash screen part two</h3>
+        <ul>
+          <li>애니메이션이 끝나면 element들은 이전의 상태로 돌아감.</li>
+          <li>
+            animation: 에 <b>forwards</b> 추가 -> the finaly property value is
+            maintained after the animation completes. 마지막 keyframe을 기억
+          </li>
+          <li>animation: 에<b>infinite</b> 추가 -> 애니메이션 영원히 반복</li>
+          <li>
+            opacity:0이 되고 난 후에 화면을 클릭할 수 없다면
+            <b>visibility: hidden;</b> -> 마우스에 걸리지 않음 ;)
+          </li>
+          <li>html을 정말로 없애고 싶으면 JavaScript를 배워야 함</li>
+          <li><b>animation-delay:2s;</b> -> 2초 후에 애니메이션이 시작됨</li>
+        </ul>
+      </div>
+      <div id="course6-37">
+        <h3>6-37. More animations</h3>
+        <ul>
+          <li>
+            <b>will-change</b> : provides a rendering hint to the user agent,
+            stating what kinds of changes the author expects to perform on the
+            element. -> browsers animate that element better. <br />accelerate
+            animation using graphic card <br />
+            ex. will-change: transform;
+          </li>
+        </ul>
+      </div>
+      <div id="course6-40">
+        <h3>6-40. No mobile media query</h3>
+        <ul>
+          <li>
+            <b
+              >@media screen and (max-width:645px) {#no-mobile {display:
+              none;}}</b
+            >
+            : screen의 width가 645px 이하면 no-mobile의 display는 none (안보임)
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- course7: Publishing our website -->
+    <div id="course7">
+      <h2>7. Publishing our website</h2>
+      <div id="course7-0">
+        <h3>7-0. Branches on git</h3>
+        <ul>
+          <li>branch in Git is like parallel universe of code.</li>
+          <li>most people have stable code on master branch.</li>
+          <li>
+            when they want to do an experiment, or create a new feature, they
+            open another branch.
+          </li>
+          <li>you can also merge a branch.</li>
+          <li>
+            commit 후 branch를 바꾸고 브라우저 새로고침하면 서로 다른 결과가
+            보임! oh la la
+          </li>
+        </ul>
+      </div>
+      <div id="course7-1">
+        <h3>7-1. Publishing on Github Pages</h3>
+        <ul>
+          <li>
+            On GitHub, if you have a special branch with a special name, GitHub
+            will give you static hosting for free.
+          </li>
+          <li>
+            static hosting : you can upload your static website for free, and
+            GitHub will give you a url for free.
+          </li>
+          <li>
+            static website : a website only with HTML, CSS and JavaScript (only
+            frontend)
+          </li>
+
+          <li><b>Rules</b></li>
+          <ol>
+            <li>
+              You need to create a branch named
+              <mark><b>gh-pages</b></mark>
+            </li>
+            <li>Your repository has to be public.</li>
+            <li>click <b>publish branch</b> button.</li>
+            <li>check https://choiboyoon.github.io/(레퍼지토리 이름)</li>
+          </ol>
+        </ul>
+      </div>
+      <div id="course7-2">
+        <h3>7-2. Updating GitHub Pages</h3>
+        <ul>
+          <li>how to update github pages...</li>
+          <ol>
+            <li>move to master branch.</li>
+            <li>
+              make changes and commit, push origin (<mark>on master branch</mark
+              >)
+            </li>
+            <li>move to gh-pages</li>
+            <li>click <b>Branch</b>, and click <b>Update from master</b></li>
+            <li>click <b>Push origin</b></li>
+          </ol>
+          <li>emoji 단축키: <mark>control + command + 스페이스바</mark></li>
+          <li>대문자가 포함된 파일이나 폴더가 없어야 함!</li>
+        </ul>
+      </div>
+    </div>
+    <footer>
+      <address>52 avenue Laplce, 94110 sLapalce</address>
+      &copy; 2020 N.C
+    </footer>
+
+    <!-- font awesome script-->
+    <script
+      src="https://kit.fontawesome.com/6478f529f2.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

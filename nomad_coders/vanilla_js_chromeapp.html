@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="vanilla_chrome_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>바닐라 JS로 크롬앱 만들기</title>
+  </head>
+  <body>
+    <a href="course_list.html"><span>뒤로가기</span></a>
+    <div id="course1">
+      <h2>Introduction</h2>
+      <div id="course1-0">
+        <ul>
+          <li>
+            (궁금해서 구글링해봄) "Vanilla JS" means using plain JavaScript
+            without any additional libraries like jQuery.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="course2">
+      <div class="intro">
+        <img
+          class="intro__bg"
+          src="http://image.yes24.com/images/00_event/2020/0625Developer/mobile/authImg.jpg"
+        />
+        <h2>Welcome to Javascript</h2>
+      </div>
+      <div id="2-0" class="idv_course">
+        <h3>2-0. Your first JS project</h3>
+        <ul>
+          <li>console is very useful to interact with JS</li>
+          <li>
+            but in order to write more than one line of code, let's make .js
+            file.
+          </li>
+          <li>
+            browser opens HTML, and that HTML brings css and js file. -> HTML is
+            glue. (you cannot open .js file directly on browser)
+          </li>
+          <li>we usually bring .js <u>at the end of body</u></li>
+          <li>
+            type <mark><b>script src="app.js"</b></mark>
+          </li>
+          <li>
+            js파일에 에러가 있을때, inspect->console에 가보면 에러 메시지 있음
+          </li>
+          <li>
+            js파일 내에 alert("hi"); -> 새로고침 할때마다 "이 페이지 내용: hi"
+            뜸
+          </li>
+        </ul>
+      </div>
+      <div id="2-1" class="idv_course">
+        <h3>2-1. Basic data types</h3>
+        <ul>
+          <li>js has types and it understands it automatically</li>
+          <li>string: " " or ' ' 사이에 둘러싸여 있어야 함. +연산 가능.</li>
+        </ul>
+      </div>
+      <div id="2-2" class="idv_course">
+        <h3>2-2. Variables</h3>
+        <ul>
+          <li>
+            <b>console.log()</b> : send messages to the console. ->
+            console열어보면 해당 값이 출력돼있음.
+          </li>
+          <li>const -> constant. non-changeable.</li>
+          <li>ex. const a = 5;</li>
+          <li>
+            그냥 a = 5; 로 써도 동작은 함. 하지만 JS 에서는 변수명 앞에 뭔가를
+            섞어야 함.
+          </li>
+          <li>
+            variable name, 스페이스가 필요하면 단어의 첫 character를 대문자로
+            씀. (cf. 파이썬 convention은 소문자들을 _로 연결)
+          </li>
+        </ul>
+      </div>
+      <div id="2-3" class="idv_course">
+        <h3>2-3. Const and let</h3>
+        <ul>
+          <li>변수를 만드는 두 가지 방법</li>
+          <ol>
+            <li><b>const</b> : constant(상수). we'll treat it as default.</li>
+            <li><b>let</b> : 변경(update) 가능.</li>
+            <li>
+              const랑 let이 존재하기 전에는 <b>var</b>만 썼음. var는 어디서든
+              변경 가능.. ex.var a=5;
+            </li>
+          </ol>
+          <li>always use const, sometimes use let, but never use var</li>
+        </ul>
+      </div>
+      <div id="2-4" class="idv_course">
+        <h3>2-4. Booleans</h3>
+        <ul>
+          <li><b>true, false</b></li>
+          <li>
+            <b>null</b>: there's nothing here. literally "nothing"<br />cf. in
+            Python, None instead of null
+          </li>
+          <li><b>undefined</b>:</li>
+          <ul>
+            <li>
+              ex. let a; console.log(a);-> console에 undefined라고 출력됨.
+            </li>
+          </ul>
+        </ul>
+      </div>
+      <div id="2-5" class="idv_course">
+        <h3>2-5. Arrays</h3>
+        <ul>
+          <li>
+            VS code -> 다중 커서:
+            <mark>alt를 누른 상태에서 클릭!</mark> 한꺼번에 여러가지 입력/수정
+            가능
+          </li>
+          <li>ex. const daysOfWeek=["mon, "tue", "wed"];</li>
+          <li>한 array안에 여러 데이터 타입이 들어갈 수 있음.</li>
+          <ul>
+            <li>ex. const a=[1, 3, "hello", false, null, undefined];</li>
+          </ul>
+          <li>js에서 첨자는 0부터 시작 -> 3번째 요소: a[2];</li>
+          <li>js에서 주석(comment): <b>//</b></li>
+          <li>array에 element 추가하기: <b>.push()</b></li>
+          <ul>
+            <li>ex. a.push("hey");</li>
+          </ul>
+          <li>cf. a[300]; (배열 range 초과) -> console에 undefined라고 나옴</li>
+        </ul>
+      </div>
+      <div id="2-6" class="idv_course">
+        <h3>2-6. Objects</h3>
+        <ul>
+          <li>
+            ex. const player = { name: "boyoon", age: 28, healthy: true };
+          </li>
+          <ul>
+            <li>now <b>console.log(player.name);</b> 처럼 접근할 수 있음.</li>
+            <li>console.log(player["name"]); -> 윗줄과 같은 코드</li>
+          </ul>
+          <li>object는 const여도, 그 object 안의 무언가를 수정하는건 가능.</li>
+          <ul>
+            <li>ex. player = false; -> 에러 발생</li>
+            <li>field값 update하기 : player.name = "Boyoon"</li>
+            <li>object 안 property 추가하기: player.lastName="Choi";</li>
+          </ul>
+        </ul>
+      </div>
+      <div id="2-7" class="idv_course">
+        <h3>2-7. Functions part one</h3>
+        <ul>
+          <li>
+            함수 정의 ex. function sayHello(nameOfPerson){
+            console.log("Hello"+nameOfPerson); }
+          </li>
+          <li>함수 실행 ex. sayHello("Boyoon")</li>
+        </ul>
+      </div>
+      <div id="2-8" class="idv_course">
+        <h3>2-8. Functions part two</h3>
+        <ul>
+          <li>NaN: Not a Number</li>
+          <li>object안에 function 선언 가능</li>
+          <ul>
+            <li>
+              const player = {name: "boyoon",
+              <mark>sayHello: function() {console.log("hello!");}</mark>}
+            </li>
+            <li>호출: player.sayHello()</li>
+          </ul>
+        </ul>
+      </div>
+      <div id="2-11" class="idv_course">
+        <h3>2-11. Returns</h3>
+        <ul>
+          <li>console.log(): log something on console.(기록하여 보여줌)</li>
+        </ul>
+      </div>
+      <div id="2-13" class="idv_course">
+        <h3>2-13. Conditionals</h3>
+        <ul>
+          <li>
+            <b>prompt()</b> : show a window to a user, and receive an input
+            value
+          </li>
+          <ul>
+            <li>ex. const age = prompt("How old are you?");</li>
+            <li>and javascript is paused, waiting for a user to input sth.</li>
+            <li>
+              we don't use it anymore. it's not pretty (we can't apply any css
+              on the message), and some browsers block the pop-up
+            </li>
+            <li><b>input value는 무조건 string</b></li>
+          </ul>
+          <li>
+            <b>typeof : </b>type 확인하기. <b>typeof variable_to_check</b>
+          </li>
+          <li>
+            <b>parseInt()</b> : convert a string to a number. <br />
+            숫자가 아닌 것을 parse하려고 하면 NaN 리턴
+          </li>
+        </ul>
+      </div>
+      <div id="2-14" class="idv_course">
+        <h3>2-14. Conditionals part two</h3>
+        <ul>
+          <li><b>isNaN()</b>: NaN인지 아닌지 알려줌.</li>
+          <li>JS에서 비교연산 : <b>===</b> <- 얘 빼고는 Python이랑 비슷</li>
+        </ul>
+      </div>
+    </div>
+    <div id="course3">
+      <h2>Javascript on the browser</h2>
+      <div id="course3-0" class="idv_course">
+        <h3>3-0. The document object</h3>
+        <ul>
+          <li>The point of using JS is to make HTML interactive.</li>
+          <li>console에 document 입력하면 HTML 보여줌.</li>
+          <li>
+            document is an object that is included in browser. basically refers
+            to HTML. litterally means your web site.
+          </li>
+          <li>
+            JS is already configured to be able to access and read your html.
+          </li>
+          <li>
+            console에서 document 변경도 가능. ex. document.title="hello" (but,
+            refresh하면 다시 원래대로 돌아감. js파일에 해당 코드 써놓으면 항상
+            적용)
+          </li>
+        </ul>
+      </div>
+      <div id="course3-1" class="idv_course">
+        <h3>3-1. HTML in Javascript</h3>
+        <ul>
+          <li>
+            <b>document.getElementById()</b> : 해당 id를 가진 element를 string
+            형식으로 전달받는 함수
+          </li>
+          <li>property 이름을 이용해 <b>HTML 내용 바꾸기 가능</b></li>
+          <ul>
+            <li>ex. const title = document.getElementById("title");</li>
+            <li><b>title.innerText="Gotya!";</b></li>
+            <li>
+              id로 element 찾기 ->
+              <b>document.querySelector("#hello");</b> 이렇게도 가능함
+            </li>
+          </ul>
+        </ul>
+      </div>
+      <div id="course3-2" class="idv_course">
+        <h3>3-2. Searching for elements</h3>
+        <ul>
+          <li>
+            <b>document.getElementsByClassName("hello")</b> : 해당 class를 가진
+            elements들의 array를 리턴받음
+          </li>
+          <li>
+            <b>document.getElementsByTagName("h1")</b> : h1 tag들의 array를
+            리턴받음.
+          </li>
+          <li>
+            <mark><b>document.querySelector()</b></mark> : element 선택 with CSS
+            notation
+          </li>
+          <ul>
+            <li>ex. document.querySelector(".hello h1:first-child");</li>
+            <li>
+              ex. document.querySelector(".hello h1") : hello 클래스 안에 있는
+              h1 tag
+            </li>
+            <li>-> hello 클래스가 많으면 첫번째의 h1 tag만 리턴함.</li>
+          </ul>
+          <li>
+            <mark><b>document.querySelectorAll()</b></mark> : 첫번째만
+            리턴하는게 아니라 조건에 맞는 elements들 전부 array로 리턴
+          </li>
+        </ul>
+      </div>
+      <div id="course3-3" class="idv_course">
+        <h3>3-3. Events</h3>
+        <ul>
+          <li>
+            if you want to look at inside element, <b>console.dir(title);</b>
+          </li>
+          <ul>
+            <li>이 항목들 전부 JS object들</li>
+            <li>그 중 on으로 시작하는 것들은 <b>event</b>들!</li>
+            <li>JS object들 내부 property 변경 가능</li>
+            <li>ex. title.style.color="blue";</li>
+          </ul>
+          <li>JS에서 대부분 할 일은 listening to events</li>
+          <li>
+            ex. click event가 발생할 때마다 "clicked!" 출력<br />const title =
+            document.querySelector(".hello h1");<br />function
+            handleTitleClick(){ console.log("clicked!"); }
+            <br />title.<mark>addEventListener</mark>("click",
+            handleTitleClick);
+          </li>
+        </ul>
+      </div>
+      <div id="course3-4" class="idv_course">
+        <h3>3-4. Events part two</h3>
+        <ul>
+          <li>
+            event를 찾는 방법(구글링) :
+            <ul>
+              <li>
+                <b>mdn</b>(Mozilla Developer Network)에 검색 -> "Web APIs"가
+                포함된 페이지를 찾아
+              </li>
+              <li>
+                아니면 <b>console.dir()</b> 안에 element 넣고, 결과로 나온
+                property들을 보고 선택 (on이 붙어있는 것들. on을 떼고 사용하면
+                됨.) ex.<b>console.dir(title)</b>
+              </li>
+            </ul>
+          </li>
+          <li>ex. 마우스가 element 위로 올라올 때 -> <b>mouseenter</b></li>
+          <li>ex. 마우스가 떠날 때 -> <b>mouseleave</b></li>
+          <ul>
+            <li>function handleMouseEnter() { consolg.log("mouse here"); }</li>
+            <li>title.addEventListener("mouseenter", handleMouseEnter);</li>
+          </ul>
+        </ul>
+      </div>
+      <div id="course3-5" class="idv_course">
+        <h3>3-5. More events</h3>
+        <ul>
+          <li>Event handling의 다른 방법</li>
+          <ul>
+            <li>
+              <b>title.<mark>onclick</mark> = handleTitleClick;</b>
+            </li>
+            <li>
+              <b>title.<mark>onmouseenter</mark> = handleMouseEnter;</b>
+            </li>
+          </ul>
+          <li>
+            but <b>.addEventLister</b>를 사용하면 나중에
+            <b>.removeEventListener</b>를 사용할 수 있어서 좋음.
+          </li>
+          <li>
+            document처럼 <b>window</b>도 기본적으로 제공됨. 말 그대로 브라우저
+            윈도우.
+          </li>
+          <li>
+            ex. <b>document.body.style.backgroundColor = "tomato";</b> ->
+            body처럼 중요한 것들만 이런 식으로 불러낼 수 있음.(body, head,
+            title, ...) h1등은 이렇게 안돼요
+            <ul>
+              <li>cf. JS에서 스타일 만지는거 not ideal.</li>
+            </ul>
+          </li>
+          <li>
+            유저가 copy 했을 때 이벤트(다 mdn documentation에 있음)
+            <ul>
+              <li>function handleWindowCopy(){ alert("copier!"); }</li>
+              <li>
+                window.addEventListener("<mark>copy</mark>", handleWidowCopy);
+              </li>
+            </ul>
+          </li>
+          <li>
+            유저가 wifi에 연결돼 있는지도 알 수 있음.
+            <ul>
+              <li>function handleWindowOffline(){ alert("SOS no Wifi!"); }</li>
+              <li>
+                function handleWindowOnline(){ alert("Hey wifi's back! :D"); }
+              </li>
+              <li>
+                window.addEventListener("<mark>offline</mark>",
+                handleWindowOffline);
+              </li>
+              <li>
+                window.addEventListener("<mark>online</mark>",
+                handleWindowOnline);
+              </li>
+            </ul>
+          </li>
+          <li>
+            text내용 바꾸기:
+            <b>title.<mark>innerText</mark>="Mouse is here!";</b>
+          </li>
+          <li>마우스 우 클릭 이벤트 : <mark>contextmenu</mark></li>
+        </ul>
+      </div>
+      <div id="course3-7" class="idv_course">
+        <h3>3-7. CSS in Javascript part two</h3>
+        <ul>
+          <li>
+            css파일 안에 .active { color: tomato; }, js파일 안에 function
+            handleTitleClick(){h1.className = "active"; }를 써서, 사용자가 h1을
+            클릭하면 글자 색이 변하게 할 수도 있음.
+          </li>
+          <li>
+            cf. <b>h1.className="active"</b> -> class 이름을 replace 해버림ㅠ
+            initial class name들을 잃을 수 있음
+          </li>
+        </ul>
+      </div>
+      <div id="course3-8" class="idv_course">
+        <h3>3-8. CSS in Javascript part three</h3>
+        <ul>
+          <li><b>classList</b>: to work with list of classes.</li>
+          <li>
+            <b>.contains()</b>: check if element contains certain class
+            <ul>
+              <li>ex. h1.classList.contains("clicked");</li>
+            </ul>
+          </li>
+          <li>
+            <b>.remove()</b>: remove a class from list of classes
+            <ul>
+              <li>ex. h1.classList.remove("clicked");</li>
+            </ul>
+          </li>
+
+          <li>
+            <b>.add()</b>: add a class to list of classes
+            <ul>
+              <li>ex. h1.classList.add("clicked");</li>
+            </ul>
+          </li>
+          <li>
+            <b><mark>.toggle()</mark></b
+            >: check if the class name exists, and if it exists, toggle removes
+            it. And if it doesn't exist, toggle adds it.
+            <ul>
+              <li>ex. h1.classList.toggle("clicked");</li>
+              <li>
+                ex. 스크린 버튼 클릭 - 꺼져있으면 켜지고, 켜져있으면 꺼지고
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="course4">
+      <h2>Login</h2>
+      <div id="course4-0" class="idv_course">
+        <h3>4-0. Input values</h3>
+        <ul>
+          <li>
+            button클릭 시 이벤트
+            <ul>
+              <li>
+                function handleClickButton(){ console.dir(loginInput);
+                console.log(loginInput.value); }
+              </li>
+              <li>
+                const loginButton = document.querySelector("#login-form button",
+                handleClickButton);
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course4-1" class="idv_course">
+        <h3>4-1. Form submission</h3>
+        <ul>
+          <li>
+            문자열 길이 구하기 : <mark>.length</mark>
+            <ul>
+              <li>if(username.length>15){...}</li>
+            </ul>
+          </li>
+          <li>
+            HTML input tag에서 제약을 걸 수 있음
+            <ul>
+              <li>
+                ex. input required maxlength="15" type="text" placeholder="hey"
+                ...
+              </li>
+              <li>
+                to trigger validation of the input, the input has to be
+                <b>inside form tag</b>
+              </li>
+            </ul>
+          </li>
+          <li>
+            form 안의 button이나 type="submit"인 input을 클릭하면(or 그냥
+            Enter를 누르면) form이 submit됨 -> button을 click하는 것에 신경쓰지
+            않아도 됨
+          </li>
+          <li>
+            let's stop the browser from refreshing and let's save the value of
+            the user.
+          </li>
+        </ul>
+      </div>
+      <div id="course4-2" class="idv_course">
+        <h3>4-2. Events</h3>
+        <ul>
+          <li>refreshing is default bahavior of submit</li>
+          <li>
+            preventing refreshing...
+            <ul>
+              <li>
+                function onLoginSubmit(<u>tomato</u>){
+                <mark><u>tomato</u>.preventDefault();</mark> }
+              </li>
+              <li>loginForm.addEventListener("submit", onLoginSubmit);</li>
+            </ul>
+          </li>
+          <li>
+            모든 EventListener function의 첫 번째 argument는 항상 지금 막 벌어진
+            일들에 대한 정보 object. (happens automatically. ex.submitter,
+            target, timeStamp, etc.)
+          </li>
+          <li>
+            <b>preventDefault()</b> -> stops default behavior of any event
+          </li>
+        </ul>
+      </div>
+      <div id="course4-3" class="idv_course">
+        <h3>4-3. Events part two</h3>
+        <ul>
+          <li>
+            .preventDefault()는 link(anchor tag)에도 적용 가능.(해당 링크로
+            이동하는 default behavoir를 prevent함
+            <ul>
+              <li>
+                ex. function handleLinkClick(<u>event</u>){
+                <u>event</u>.<b>preventDeafult();</b> }
+              </li>
+              <li>link.addEventListener("click", handleLinkClick);</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course4-4" class="idv_course">
+        <h3>4-4. Getting username</h3>
+        <ul>
+          <li>
+            form을 submit하는 순간 form이 없어지게 만들기
+            <ul>
+              <li>(in CSS file) .hidden { display:none; }</li>
+              <li>
+                (in JS file) function onLoginSubmit(event){<br />
+                event.preventDefault();<br />const username = loginInput.value;
+                <br /><b>loginForm.classList.add("hidden")</b> };
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            input value가 h1에 나타나게 만들기(h1 id는 greeting)
+            <ul>
+              <li>const greeting = document.querySelector("#greeting");</li>
+              <li>
+                (function onLoginSubmit(event) 내부) <br />greeting.innerText =
+                "Hello "+username; <br />greeting.classList.remove("hidden");
+              </li>
+            </ul>
+          </li>
+          <li>
+            일반적으로 string만 포함된 변수는 대문자로 표기
+            <ul>
+              <li>ex. HIDDEN_CLASSNAME = "hidden";</li>
+            </ul>
+          </li>
+          <li>
+            두 개의 string 합치기
+            <ol>
+              <li>"Hello "+username</li>
+              <li>`Hello ${username}`</li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+      <div id="course4-5" class="idv_course">
+        <h3>4-5. Saving username</h3>
+        <ul>
+          <li>
+            새로고침한 다음에도 value를 기억 -> <b>localStorage</b>라는 API
+            이용(already exists on browser, tiny little DB). <br />확인하고
+            싶으면 inspect -> Application -> (왼쪽)Storage
+          </li>
+          <li>
+            <b>localStorage.setItem()</b> : to save item
+            <ul>
+              <li>ex. localStorage.setItem("username", "boyoon");</li>
+            </ul>
+          </li>
+          <li>
+            <b>localStorage.getItem()</b>: to get item
+            <ul>
+              <li>ex. localStorage.getItem("username");</li>
+            </ul>
+          </li>
+          <li>
+            <b>localStorage.removeItem()</b>: to remove item
+            <ul>
+              <li>ex. localStorage.removeItem("username");</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course4-6" class="idv_course">
+        <h3>4-6. Loading username</h3>
+        <ul>
+          <li>
+            Local Storage에 이미 username이 있으면, form이 아니라 h1 보여주기.
+            <ul>
+              <li>
+                const savedUsername = localStorage.getItem("username");<br />if(savedUsername
+                === null){ //show the form }<br />else{ //show the greetings }
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course4-7" class="idv_course">
+        <h3>4-7. Super recap</h3>
+      </div>
+    </div>
+    <div id="course5">
+      <h2>Clock</h2>
+      <div id="course5-0" class="idv_course">
+        <h3>5-0. Intervals</h3>
+        <ul>
+          <li>
+            <mark><b>setInterval()</b></mark
+            >: 주기적으로 함수를 실행
+            <ul>
+              <li>ex. 5초마다 sayHello() 실행하기</li>
+              <li>function sayHello() { console.log("hello"); }</li>
+              <li>
+                <b>setInterval(sayHello, 5000);</b> //5000 milliseconds = 5
+                seconds
+              </li>
+              <br />
+              <li>
+                ex. 페이지 로드하자마자 실행, 그 이후 1초마다 한 번씩 실행
+              </li>
+              <li>getClock();</li>
+              <li>setInterval(getClock, 1000);</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course5-1" class="idv_course">
+        <h3>5-1. Timeouts and Dates</h3>
+        <ul>
+          <li>
+            <mark><b>setTImeout()</b></mark> : 좀 기다렸다가 interval 시작하게
+            만들기
+            <ul>
+              <li>ex. setTimeout(sayHello, 5000);</li>
+            </ul>
+          </li>
+          <li>
+            <b><mark>Date object</mark></b
+            >: new Date() -> give me today's date and time
+            <ul>
+              <li>ex1</li>
+              <li>const date = new Date();</li>
+              <li>date.getDate() //16 (16th this month)</li>
+              <li>date.getDat() //0 means Sunday</li>
+              <li>date.getFullYear() //2021</li>
+              <li>date.getHours() //19</li>
+              <li>date.getMinutes() //14</li>
+              <li>date.getSeconds()</li>
+              <br />
+              <li>ex2</li>
+              <li>const clock = document.querySelect("h2#clock");</li>
+              <li>
+                function getClock() {
+                <ul>
+                  <li>const date = new Date();</li>
+                  <li>
+                    clock.innerText =
+                    `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+                    }
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course5-2" class="idv_course">
+        <h3>5-2. PadStart</h3>
+        <ul>
+          <li>
+            Javascript에서는 웬만한 기능들이 이미 함수로 구현돼있을 가능성이 큼
+          </li>
+          <li>
+            <mark><b>padStart()</b></mark
+            >: string formatting
+            <ul>
+              <li>
+                ex. "1".padStart(2,"0"); //should be 2 characters long. if not,
+                add "0" on the start of the string -> returns "01"
+              </li>
+              <li>cf. padEnd()도 있음</li>
+            </ul>
+          </li>
+          <li>
+            change from number to string:
+            <b><mark>String(</mark>new Date().getHours()<mark>)</mark>;</b>
+          </li>
+        </ul>
+      </div>
+      <div id="course5-3" class="idv_course">
+        <h3>5-3. Recap</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+    </div>
+    <div id="course6">
+      <h2>Quote and Background</h2>
+      <div id="course6-0" class="idv_course">
+        <h3>6-0. Quotes</h3>
+        <ul>
+          <li>to get random number, we use Math module.</li>
+          <li>
+            <b>Math.random()</b> : returns random number btw 0 and 1
+            <ul>
+              <li>to get a number btw 0 and 10, <b>Math.random()*10</b></li>
+            </ul>
+          </li>
+          <ul>
+            <li><b>round()</b>: ex. round(1.8) -> 2</li>
+            <li><b>Math.ceil()</b>: ex. Math.ceil(1.01) -> 2</li>
+            <li><b>Math.floor()</b>: ex. Math.floor(1.99) -> 1</li>
+          </ul>
+          <li>get length of an array: quotes<b>.length</b></li>
+        </ul>
+      </div>
+      <div id="course6-1" class="idv_course">
+        <h3>6-1. Background</h3>
+        <ul>
+          <li>
+            <b><mark>document.createElement();</mark></b
+            >Javascript로 html에 태그 추가하기
+            <ul>
+              <li>const bgImage = document.createElement("img");</li>
+              <li>bgImage.src = `img/${chosenImage}`;</li>
+              <li>
+                <b>document.body.appendChild(bgImage);</b>
+                <ul>
+                  <li>cf. prepend: body태그의 맨 앞에 붙임</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="course7">
+      <h2>To do list</h2>
+      <div id="course7-0" class="idv_course">
+        <h3>7-0. Setup</h3>
+        <ul>
+          <li>
+            input에서 Enter를 누르면 입력값이 사라지게 하기
+            <ul>
+              <li>
+                function handleToDoSubmit(event){
+                <ul>
+                  <li>event.preventDefault();</li>
+                  <li>const newTodo = toDoInput.value;</li>
+                  <li>toDoInput.value="";</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course7-1" class="idv_course">
+        <h3>7-1. Adding ToDos</h3>
+        <ul>
+          <li>
+            code. handleToDoSubmit()에서 paintToDo(newTodo) 호출
+            <ul>
+              <li>
+                function paintTodo(newTodo){
+                <ul>
+                  <li>const li = document.createElement("li");</li>
+                  <li>const span = document.createElement("span");</li>
+                  <li>li.appendChild(span);</li>
+                  <li>span.innerText = newTodo;</li>
+                  <li>toDoList.appendChild(li); //toDoList는 ul tag</li>
+                </ul>
+              </li>
+              <li>}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="coruse7-2" class="idv_course">
+        <h3>7-2. Deleting To Dos</h3>
+        <ul>
+          <li>
+            <b>path</b>: event가 어디서 발생했는지 보여줌
+            <ul>
+              <li>
+                (paintTodo() 내부) button.addEventListener("click", deleteToDo);
+              </li>
+              <li>
+                (deleteTodo() 내부) function deleteToDo(event) {
+                console.log(event); } //path를 볼 수 있음
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>event.target.parentElement</b> : parent element를 알 수 있음
+            <ul>
+              <li>
+                <b>event.target.parentElement.innetText</b> : parent element의
+                innerText도 볼 수 있음!
+              </li>
+            </ul>
+          </li>
+          <li>
+            delete to-do
+            <ul>
+              <li>const li = event.target.parentElement;</li>
+              <li><b>li.remove()</b></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course7-3" class="idv_course">
+        <h3>7-3. Saving To Dos</h3>
+        <ul>
+          <li>
+            refresh를 해도 To Dos가 남아있게 하려면 localStorage이용
+            <ul>
+              <li>but localStorage에는 array를 저장할 수 없음ㅜ</li>
+            </ul>
+          </li>
+          <li>
+            array에 element 추가:
+            <ul>
+              <li>toDos = [];</li>
+              <li>toDos.<b>push</b>(newTodo);</li>
+            </ul>
+          </li>
+          <li>
+            localStorage에 toDos 저장하기(array가 아니라 text로 저장됨)
+            <ul>
+              <li>localStorage.setItem("todos", toDos);</li>
+            </ul>
+          </li>
+          <li>
+            다른 자료형을 string으로 바꾸기 -> <b>JSON.stringfy()</b> : take
+            Javascript object or array and make it into a string.
+            <ul>
+              <li>const player = {name: "nico";};</li>
+              <li>JSON.stringify(player)</li>
+            </ul>
+          </li>
+          <li>
+            localStorage에 array로 저장하기
+            <ul>
+              <li>
+                function saveToDos() {
+                <ul>
+                  <li>
+                    <b>localStorage.setItem("todos", JSON.stringify(toDos));</b>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course7-4" class="idv_course">
+        <h3>7-4. Loading To Dos part one</h3>
+        <ul>
+          <li>
+            string을 array로 바꾸기: <b>JSON.parse</b>("[1,2,3,4]") -> [1, 2, 3,
+            4]
+          </li>
+          <li><b>!==</b>: not equal</li>
+          <li>
+            execute a function for each item of an array :
+            <b>array_name<mark>.forEach</mark>(function_name)</b>;
+            <ul>
+              <li>아니면 .forEach() 괄호 안에 함수를 직접 쓸 수도 있음</li>
+              <li>
+                array_name.forEach(<b
+                  >(item)=>console.log("this is the turn of ", item)</b
+                >); //array의 element가 하나씩 출력됨.
+              </li>
+              <li><b>=></b> : arrow function</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course7-5" class="idv_course">
+        <h3>7-5. Loading To Dos part two</h3>
+        <ul>
+          <li>
+            code
+            <ul>
+              <li>
+                if(savedToDos !== null) {
+                <ul>
+                  <li>const parsedToDos = JSON.parse(savedToDos);</li>
+                  <li>
+                    toDos = parsedToDos; //if something is already saved in
+                    localStorage, restore
+                  </li>
+                  <li>parsedToDos.forEach(paintToDo);</li>
+                </ul>
+              </li>
+              <li>}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course7-6" class="idv_course">
+        <h3>7-6/ Deleting To Dos part one</h3>
+        <ul>
+          <li>To do element를 delete할 때 localStorage에도 반영이 돼야 함.</li>
+          <li>localStorage is a place where we copy toDos array.</li>
+          <li>
+            instead of an array, let's have an object? (with an ID) -> let's
+            create IDs with <b>Date.now()</b>. this gives you milliseconds, it
+            almost looks random.
+          </li>
+          <li>li tag에 id 추가하기: <b>li.id</b>=newToDoObj.id;</li>
+        </ul>
+      </div>
+      <div id="course7-7" class="idv_course">
+        <h3>7-7. Deleting To Dos part two</h3>
+        <ul>
+          <li>let's create a new array without to-be-deleted item.</li>
+          <li>
+            <b>[1,2,3,4]<mark>.filter</mark>(function);</b> -> 여기서 function은
+            true 혹은 false를 리턴. 그럼 filter가 forEach()처럼 동작하면서
+            element 하나하나 filtering해줌. and returns a new array.
+            <ul>
+              <li>array에서 3을 제외하고 싶으면(item shouldn't be 3)</li>
+              <li>[1,2,3,4,5]<b>.filter((item)=>item!==3);</b></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course7-8" class="idv_course">
+        <h3>7-8. Deleting To Dos part three</h3>
+        <ul>
+          <li>parseInt(li.id); -> string을 int로 바꾸기</li>
+        </ul>
+      </div>
+    </div>
+    <div id="course8">
+      <h2>Weather</h2>
+      <div id="course8-0" class="idv_course">
+        <h3>8-0. Geolocation</h3>
+        <ul>
+          <li>
+            <mark
+              ><b
+                >navigator.geolocation.getCurrentPosition(success, error)</b
+              ></mark
+            >
+            : get location of user
+            <ul>
+              <li>
+                <b>success</b> : a callback function that takes a
+                GeolocationPosition object as its sole input parameter.
+                Geolocation에 성공하면 실행되는 함수.
+              </li>
+              <li>
+                <b>error</b> : an optional callback function that takes a
+                GeolocationPositionError object as its sole input parameter.
+                실패하면 실행되는 함수.
+              </li>
+              <li>ex. latitude & longitutde구하기</li>
+              <li>
+                function onGeoOK(position) {
+                <ul>
+                  <li>const lat = position.coords.latitude;</li>
+                  <li>const lng = position.coords.longitude;</li>
+                  <li>}</li>
+                </ul>
+              </li>
+              <li>navigator.geolocation.getCurrentPosition(onGeoOK);</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course8-1" class="idv_course">
+        <h3>8-1. Weather</h3>
+        <ul>
+          <li>
+            <b>API</b>: how we can communicate with other servers. <br />In this
+            case, we'll communicate with openweathermap server.
+          </li>
+          <li>
+            We'll use <b>Current Weather Data</b> from openweathermap.org/api<br />click
+            <b>API doc</b> and move to
+            <b
+              >By geographic coordinates<br />api.openweathermap.org/data/2.5/...
+              복사, {} 항목들 replace accordingly하고 브라우저 URL칸에 입력하면
+              정보 볼 수 있음.</b
+            >
+          </li>
+          <li>
+            <b><mark>fetch(url);</mark></b> -> call the url, and fetch the
+            result.
+            <ul>
+              <li>브라우저 검사->Network에서 확인할 수 있음.</li>
+              <li>
+                it's a promise -> it can take some time(we have to wait for the
+                server)
+              </li>
+              <li>
+                <b>fetch(url)<mark>.then(response => response.json())</mark></b
+                >: get response in json
+              </li>
+              <li>
+                fetch(url).then(response => response.json())<b
+                  >.then((data)=> {const name = data.name; const weather =
+                  data.weather[0].main;});</b
+                >
+                -> get city name and weather. fetch해온 결과물을 보면서 작성하면
+                됨.
+              </li>
+            </ul>
+          </li>
+          <li>
+            url 마지막에 <b>&unit=metric</b> 넣으면 화씨 온도가 아니라 섭씨
+            온도를 얻을 수 있음. (사이트에 다 나와있음)
+          </li>
+        </ul>
+      </div>
+      <div id="course8-2" class="idv_course">
+        <h3>8-2. Conclusions</h3>
+      </div>
+    </div>
+  </body>
+</html>
