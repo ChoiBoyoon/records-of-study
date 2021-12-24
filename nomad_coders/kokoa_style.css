@@ -207,4 +207,8 @@
         color: var(--main-color);
         border: var(--default-border);
       }
+
+      li li {
+        color: navy;
+      }
     </style>

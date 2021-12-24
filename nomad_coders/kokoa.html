@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" href="kokoa_style.css" />
     <link rel="shortcut icon" href="tab_icon.png" />
-    <title>Kakao-clone Boyoon CHOI</title>
+    <title>Kakao-clone</title>
     <meta name="description" content="this is my website :)" />
     <meta charset="utf-8" />
     <link href="styles.css" rel="stylesheet" />
@@ -908,6 +908,76 @@
                 </ul>
               </li>
               <li>}</li>
+            </ul>
+          </li>
+          <li>animation더 확인하려면 구글링 해보세요. ex.animista.net/</li>
+        </ul>
+      </div>
+      <div id="4-5" class="idv_course">
+        <h3>4-5. Media Queries</h3>
+        <ul>
+          <li>
+            <b>media query</b>>: only with CSS, you can detect the size of the
+            user's screen.
+          </li>
+          <li>
+            cf. 스마트폰
+            <ul>
+              <li><b>portrait</b> 모드 : 세로 방향으로 들었을 때</li>
+              <li><b>landscape</b> 모드 : 가로 방향으로 들었을 때</li>
+              <li>
+                ex. @media screen and <u>(orientation: landscape)</u> {...}
+              </li>
+            </ul>
+          </li>
+          <li>
+            ex. width가 400px 이하면 배경색 토마토
+            <ul>
+              <li>
+                @media screen and (max-width: 400px) {
+                <ul>
+                  <li>background-color: tomato;</li>
+                </ul>
+              </li>
+              <li>}</li>
+            </ul>
+          </li>
+          <li>
+            ex. width가 650px이상 750px 이하일 떄 적용..
+            <ul>
+              <li>
+                @media screen and (min-width: 650px) and (max-width: 750px)
+                {...}
+              </li>
+            </ul>
+          </li>
+          <li>
+            브라우저에서 검사-> Element왼쪽을 누르면 다른 화면에서 테스트할 수
+            있음! (depending on 기종, after flipping, etc...)
+          </li>
+        </ul>
+      </div>
+      <div id="4-6" class="idv_course">
+        <h3>4-6. Media queries and recap</h3>
+        <ul>
+          <li>
+            <b>@media</b>: condition을 넣는 방법. if @media .... is true, run
+            {...}
+          </li>
+          <li>
+            cf. display가 레티나인지도 알 수 있음! <br />aspect-ratio
+            (width-to-height aspect ratio of the viewport)
+          </li>
+          <li>
+            ex. print할 때 display 바꾸기
+            <ul>
+              <li>
+                @media print{
+                <ul>
+                  <li>body { background-color: tomato; }</li>
+                </ul>
+                }
+              </li>
             </ul>
           </li>
         </ul>

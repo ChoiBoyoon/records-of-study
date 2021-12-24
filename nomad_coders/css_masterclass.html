@@ -36,11 +36,98 @@
       </div>
       <div id="course0-3" class="idv_class">
         <h3>0-3. What are we using</h3>
-        <ul>
+        <ol>
           <li>Visual Studio Code</li>
           <li>Crome browser or Brave browser(ad-less version of Google)</li>
-          <li>node.js</li>
+          <li>
+            node.js : because we're going to work with SCSS, and we're going to
+            compile that with node.
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div id="course1">
+      <h2>Flexbox</h2>
+      <div id="course1-0" class="idv_class">
+        <h3>1-0. Life before flexbox</h3>
+        <ul>
+          <li>
+            block : doesn't allow any other element next to it. (display:
+            block;) ex.div
+          </li>
+          <li>
+            <b>display: inline-block</b>: 서로 옆에 올 수 있지만 block 속성을
+            유지함.(ex. width, height, ...)
+            <ul>
+              <li>
+                but box들의 위치를 지정하는게 어려움 + 화면 비율에 따라
+                유동적으로 적용되지 않음. -> <b>flexbox</b>를 이용하자! (cf.
+                flexbox를 보완: <b>grid</b>)
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>display: inline</b>: inline은 box가 아님. 유동적인 element. ex.
+            text
+          </li>
         </ul>
+      </div>
+      <div id="course1-1" class="idv_class">
+        <h3>1-1. First rule of flexbox</h3>
+        <ul>
+          <li>
+            create <b>flexbox container</b> (we talk to direct parent)
+            <ul>
+              <li>display: flex;</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>1-2. Main axis and cross axis</h3>
+        <ul>
+          <li><b>flex-direction: row;</b> <- default</li>
+          <li>
+            flex-direction은 <b>main axis</b>, 나머지는 <b>cross axis.</b><br />
+            <img src="https://i.stack.imgur.com/9Oxw7.png" width="400px;" />
+          </li>
+          <li>
+            <b>justify-content</b>: modify the position of flex children
+            <u>on main axis.</u>
+          </li>
+          <li>
+            <b>align-items: center;</b> -> wrapper의 높이가 box의 높이와 같으면
+            아무 일도 일어나지 않음.
+            <ul>
+              <li>flexbox container에 <b>height:100vh</b> 등을 넣으면 됨.</li>
+            </ul>
+          </li>
+          <li>
+            <b>align-items: stretch;</b>: box의 height가 지정되어 있지 않은
+            경우, wrapper의 높이만큼 쭉 늘어남.
+          </li>
+        </ul>
+      </div>
+      <div id="course1-3" class="idv_class">
+        <h3>1-3. Column and row</h3>
+      </div>
+      <div id="course1-4" class="idv_class">
+        <h3>1-4. align-self and order</h3>
+      </div>
+      <div id="course1-5" class="idv_class">
+        <h3>1-5. wrap, nowrap, reverse, align-content</h3>
+      </div>
+      <div id="course1-6" class="idv_class">
+        <h3>1-6. flex-grow, flex-shrink</h3>
+      </div>
+      <div id="course1-7" class="idv_class">
+        <h3>1-7. flex-basis</h3>
+      </div>
+      <div id="course1-8" class="idv_class">
+        <h3>1-8. Flexbox Froggy 1-13</h3>
+      </div>
+      <div id="course1-9" class="idv_class">
+        <h3>1-9. Flexbox Froggy 14-24</h3>
       </div>
     </div>
   </body>
