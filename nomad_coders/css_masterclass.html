@@ -108,29 +108,542 @@
           </li>
         </ul>
       </div>
-      <div id="course1-3" class="idv_class">
-        <h3>1-3. Column and row</h3>
-        <ul>
-          <li></li>
-        </ul>
-      </div>
+
       <div id="course1-4" class="idv_class">
         <h3>1-4. align-self and order</h3>
+        <ul>
+          <li>실제로 wrapper의 자식을 수정하는 경우</li>
+          <ol>
+            <li>
+              <b>align-self</b> : align-items랑 비슷한 역할(main axis가 row일 때
+              세로축) <br />but only for one box.
+              <ul>
+                <li>ex.</li>
+                <li>.child:nth-child(2) { align-self: center; }</li>
+                <li>.child:nth_child(3) { align-self: flex-end; }</li>
+              </ul>
+            </li>
+            <li>
+              <b>order</b>: HTML을 변경할 수 없을 때 유용할 수 있음. <br />여러
+              element가 같은 order값을 가질 수도 있음.
+              <ul>
+                <li>ex. order: 1;</li>
+              </ul>
+            </li>
+          </ol>
+        </ul>
       </div>
       <div id="course1-5" class="idv_class">
         <h3>1-5. wrap, nowrap, reverse, align-content</h3>
+        <ul>
+          <li>
+            flexbox는 모든 요소들이 한 라인에 있게 하려고 함. 박스들의 너비가
+            바뀌더라도..
+          </li>
+          <li>
+            <b>flex-wrap</b>
+            <ul>
+              <li>
+                <b>flex-wrap: nowrap;</b> : default. 무슨 짓을 하더라도
+                element들을 같은 줄에 있게 함
+              </li>
+              <li>
+                <b>flex-wrap: wrap;</b> : children의 크기를 유지. 여러 줄로
+                출력될 수 있음.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>flex-direction: row-reverse;</b>,
+            <b>flex-direction: row-reverse;</b> : row, column 순서를 뒤집음.
+            (1,2,3 -> 3,2,1)
+          </li>
+          <li>flex-wrap: wrap-reverse;도 가능..</li>
+          <li>
+            <mark><b>align-content</b></mark> : element들이 여러 라인으로 출력될
+            때, 그 <u>라인들 사이의 간격</u>.
+            <ul>
+              <li>
+                <b>align-content: flex-start;</b>: 라인 사이의 간격이 없어짐.
+              </li>
+              <li>
+                <b>align-content: space-between;</b>: 라인이 두 줄이면, 첫째
+                줄은 맨 위에, 둘째 줄은 바닥으로.
+              </li>
+              <li><b>align-content: space-around;</b>: default.</li>
+              <li>
+                align-content는 여러 줄들 사이의 간격을 지정하며, align-items는
+                컨테이너 안에서 어떻게 모든 요소들이 정렬하는지를 지정합니다.
+              </li>
+              <li>
+                한 줄만 있는 경우, align-content는 효과를 보이지 않습니다.
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-6" class="idv_class">
         <h3>1-6. flex-grow, flex-shrink</h3>
+        <ul>
+          <li>
+            <b>flex-shrink</b>: flex-wrap: nowrap;이 적용된 상태라 width가
+            squeezed될 때
+            <ul>
+              <li>default: flex-shrink: 1;</li>
+              <li>
+                <b>flex-shrink:2;</b> -> 해당 box는 width가 두 배로 줄어들음.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>flex-grow</b>:
+            <ul>
+              <li>default: flex-grow:0;</li>
+              <li>
+                <b>flex-grow: 1;</b> -> 해당 box의 width가 window를 채울 수
+                있을만큼 늘어남. (남은 공간을 다 가져감.)
+              </li>
+              <li>
+                ex. 남아있는 공간의 2/3는 2번 child, 1/3은 1번 child가 가져감.
+                <ul>
+                  <li>child:nth-child(2) {flex-grow:2;}</li>
+                  <li>child:nth-child(3) {flex-grow:1;}</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-7" class="idv_class">
         <h3>1-7. flex-basis</h3>
-      </div>
-      <div id="course1-8" class="idv_class">
-        <h3>1-8. Flexbox Froggy 1-13</h3>
+        <ul>
+          <li>
+            <b>flex-basis</b>: initial width.(when <u>main axis</u> is row)
+            <ul>
+              <li>child에서 적용되는 property.</li>
+              <li>flex-grow, flex-shrink때문에 변경될 수 있는 사이즈.</li>
+              <li>width:300px처럼 지정하는 것보다 나음.</li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-9" class="idv_class">
         <h3>1-9. Flexbox Froggy 14-24</h3>
+        <ul>
+          <li>
+            flex-direction과 flex-wrap은 자주 같이 쓰임 -> 한 번에 해결:
+            <b>flex-flow</b>
+            <ul>
+              <li>ex. flex-flow: column wrap;</li>
+              <li>
+                위 코드는 flex-direction: column; flex-wrap: wrap;과 같음.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>Grid</h2>
+      <div id="course2-2" class="idv_class">
+        <h3>2-2. CSS Grid basic concepts</h3>
+        <ul>
+          <li>you talk to parent. <b>display: grid;</b></li>
+          <li>
+            <b>grid-template-columns: 20px 55px 89px 100px;</b> -> 각각 column의
+            width지정(첫 번째는 20px, 두 번째는 55px, ...)
+          </li>
+          <li>
+            <b>grid-template-rows: 100px 50px 300px;</b> -> 각 row의 height지정
+          </li>
+          <li><b>column-gap: 10px;</b> -> column들 사이의 거리</li>
+          <li><b>row-gap: 10px;</b> -> row들 사이의 거리</li>
+        </ul>
+      </div>
+      <div id="course2-3" class="idv_class">
+        <h3>2-3. Grid template areas</h3>
+        <ul>
+          <li>
+            4개의 column, 4개의 row를 만드려면..
+            <ul>
+              <li>grid-template-columns: 100px 100px 100px 100px;</li>
+              <li>grid-template-rows: 50px 50px 50px 50px;</li>
+            </ul>
+            ->repeat을 이용하면
+            <ul>
+              <li>grid-template-columns: <b>repeat(4, 100px)</b>;</li>
+              <li>grid-template-rows: <b>repeat(4, 50px)</b>;</li>
+            </ul>
+            cf. 이런 것도 가능함
+            <ul>
+              <li>
+                grid-template-rows: 100px repeat(2, 200px) 100px; //첫번째 4번째
+                row는 100px
+              </li>
+            </ul>
+            cf. 이런 것도 가능함
+            <ul>
+              <li>
+                grid-template-column: auto 200px; //take as much as you like,
+                and 마지막 column은 200px
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>grid-template-areas</b>: visually design your layout.
+            <ul>
+              <li>
+                ex. grid-template-areas:
+                <ul>
+                  <li>"header header header header"</li>
+                  <li>"content content content nav"</li>
+                  <li>"content content content nav"</li>
+                  <li>"footer footer footer footer";</li>
+                </ul>
+              </li>
+              <li>
+                -> 그리고 각 div들에게 이름을 알려줘야 함.
+                <ul>
+                  <li>
+                    ex. .header { grid-area: header; } //cf. class이름이랑 상관
+                    없음
+                  </li>
+                </ul>
+              </li>
+              <li>
+                ex. grid-template-areas:
+                <ul>
+                  <li>"header header header header"</li>
+                  <li>
+                    "content content . nav" ->이렇게 쓰면 . 부분에 빈 공간이
+                    생김
+                  </li>
+                  <li>"content content . nav"</li>
+                  <li>"footer footer footer footer";</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course2-4" class="idv_class">
+        <h3>2-4. Rows and columns</h3>
+        <ul>
+          <li>
+            column과 row의 숫자를 이용해서 layout을 만들어봅시다. <br />각각의
+            div에 어디서 시작하고 어디서 끝나는지 알려줄 수 있음.
+            <ul>
+              <li>
+                cf. start & end means <b><u>line</u></b> here.
+              </li>
+              <li>
+                grid-column-start: 1;<br />grid-column-end: 5; -> column 4개
+                박스만큼 차지
+              </li>
+            </ul>
+          </li>
+          <li><b>gap: 10px;</b> : box들끼리 떨어져있게 만들기</li>
+          <li>
+            이전 강의 grid-template-areas와 같은 결과물을 만들 수 있지만. 계속
+            stretching stuff하고 반복하는거 별로 좋지 않아..
+          </li>
+        </ul>
+      </div>
+      <div id="course2-5" class="idv_class">
+        <h3>2-5. Shortcuts</h3>
+        <ul>
+          <li><b>grid-column: 1/5;</b> -> start=1, end=5</li>
+          <li>
+            instead of counting, <b>-1</b>: means 'the end'
+            <ul>
+              <li>ex. grid-colum: 1/-1;</li>
+            </ul>
+          </li>
+          <li><b>-2</b>: one before the last one. 맨 끝에서 두 번쨰.</li>
+          <li>
+            <b>grid-column: span 4;</b> -> 사이즈를 알려줌. cell 4개 사이즈
+          </li>
+          <li><b>grid-row: 2 / span 2;</b> -> 시작점은 2, 사이즈는 cell 2개</li>
+        </ul>
+      </div>
+      <div id="course2-6" class="idv_class">
+        <h3>2-6. Line naming</h3>
+        <ul>
+          <li>
+            line naming : grid-column: span 4; -> 이런거 하면 쓸 수 있음.
+            니꼬쌤은 별로 안쓰지만 살다보면 쓸 날이 올지도.
+            <ul>
+              ex.
+              <li>
+                grid-template-columns: [first-line] 100px [second-line] 100px
+                [thrid-line] 100px [forth-line]; //box가 3개면 라인은 4개<br />
+                .content { grid-column: first-line / fourth-line; }
+              </li>
+              ex.
+              <li>
+                grid-template-rows: repeat(4, 100px [sexy-line]); <br />//이
+                경우 첫번쨰 라인은 없음. 100px [sexy-line] 100px [..].. 과
+                같음.<br /><b>grid-row: 2/4;</b> ->
+                <b>grid-row: sexy-line 1/sexy-line 3;</b>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course2-7" class="idv_class">
+        <h3>2-7. Grid template</h3>
+        <ul>
+          <li>
+            <b>fr</b>: fraction. "사용 가능한 공간".
+            <ul>
+              <li>측정 단위. measurement. pixel이나 %와 같은 것.</li>
+              <li>navigator가 아니라 grid container에서 얻는 것.</li>
+              <li>
+                fluid. 100px은 컴퓨터에선 별 거 아니지만 스마트폰에선 엄청난
+                크기. 픽셀은 더 이상 쓰지 않을거임.
+              </li>
+              <li>
+                각 fr 단위들은 사용가능한 공간을 하나로 공유하여 할당합니다.
+              </li>
+            </ul>
+          </li>
+          <li>
+            grid-template-columns: repeat(4, 1fr);으로 고치면, column 4개가
+            (grid 내부의) width 100%를 다 차지함. take as much as you can.
+          </li>
+          <li>
+            grid-tempalte-rows: repeat(4, 1fr); -> vertically available space가
+            없으면 사라져버림! -> grid의 height를 지정합시다.
+          </li>
+          <li>
+            <b>grid-template</b> : mother of all shortcuts.
+            <ol>
+              <li>grid-area들 지정하기. ex. .header { grid-area: header; }</li>
+              <li>
+                ex. grid-template:
+                <ul>
+                  <li>"header header header header" 1fr</li>
+                  <li>"content content content nav" 2fr</li>
+                  <li>"footer footer footer footer" 1fr / 1fr 1fr 1fr 1fr;</li>
+                </ul>
+              </li>
+              <li>after "...", specify <u>height of each rows.</u></li>
+              <li>
+                in the end, after "/", specify
+                <u>width of each column.</u> repeat() doesn't work here.
+              </li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+      <div id="course2-8" class="idv_class">
+        <h3>2-8. Place items</h3>
+        <ul>
+          <li>
+            <b>justify-items:</b>
+            <ul>
+              <li>
+                justify-items: <b>stretch;</b> -> default. cell을 채우기 위해
+                grid를 stretch함.
+              </li>
+              <li>
+                justify-items: <b>start;</b> -> 앞에서부터 자리 차지. div의
+                default 크기는 content의 크기.
+              </li>
+              <li>그 외에도 center, end, etc.</li>
+            </ul>
+          </li>
+          <li><b>align-items:</b> -> justify-items와 비슷 but vertical.</li>
+          <li>
+            <b>place-items:</b> -> first align and justify.
+            <ul>
+              <li>ex. place-items: stretch center;</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course2-9" class="idv_class">
+        <h3>2-9. Place content</h3>
+        <ul>
+          <li><b>item</b>: each one of the cells.</li>
+          <li><b>content</b>: the whole grid.</li>
+          <li>
+            <b>justify-content: </b> -> move the whole grid.
+            <ul>
+              <li>ex. justify-content: center; -> 전체 grid가 가운데로 모임</li>
+            </ul>
+          </li>
+          <li>align-content도 있음.</li>
+          <li>
+            place-contenr: vertical first and then horizontal.
+            <ul>
+              <li>ex. place-contenr: end center; //맨 아래 가운데로</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course2-10" class="idv_class">
+        <h3>2-10. Auto columns and rows</h3>
+        <ul>
+          <li>
+            <b>align-self, justify-self</b>: specified and applied only on child
+            <ul>
+              <li>ex. align-self: end; 맨 아래로</li>
+              <li>ex. justify-self: center; 가운데로(horizontally)</li>
+              <li>
+                ex. place-self: start end; -> vertical first and then
+                horizontal. 맨 위 오른쪽 끝으로 감.
+              </li>
+            </ul>
+          </li>
+          <li>
+            cf. (shortcut) <mark><b>.item*50 > {$} -> Enter</b></mark> ->
+            &lt;div class="item"&gt;1&lt;/div&gt; 부터 &lt;div
+            class="item"&gt;50&lt;/div&gt; 까지 생겨남
+          </li>
+          <li>
+            <b>grid-auto-rows</b> : if there is more content than we specified
+            rows, automatically create rows.
+            <ul>
+              <li>
+                ex. grid-auto-rows: 100px; -> happens to out-of-size content
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>grid-auto-flow</b> : if there is more content than we specified,
+            it goes to this direction.
+            <ul>
+              <li>
+                ex. grid-auto-flow: column; -> order 순서가 바뀜. column
+                방향으로.
+              </li>
+              <li>it's like flex-direction</li>
+              <li>default is grid-auto-flow: <u>row</u>;</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course2-11" class="idv_class">
+        <h3>2-11. minmax</h3>
+        <ul>
+          <li>
+            <b>minmax</b> : specifies how little and how big elements can be.
+            <ul>
+              <li>
+                ex. grid-template-columns: repeat(10,
+                <b>minmax(100px, 1fr)</b>); -> 최소한 100px는 돼야 함(cannot be
+                shrinked more than that) & 최대는 1fr(사실상 노신경 whatever)
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course2-12" class="idv_class">
+        <h3>2-12. auto-fill and auto-fit</h3>
+        <ul>
+          <li>
+            <b>auto-fill and auto-fit</b> will be used
+            <u>only in repeat function.</u>
+
+            <ul>
+              <li>
+                instead of specifying number(because we don't know how many data
+                we'll get), we write auto-fill.
+              </li>
+              <li>
+                for responsive design or fluid stuff(when you don't know items)
+              </li>
+              <li>basis of responsive design.</li>
+            </ul>
+          </li>
+          <li>
+            <b>auto-fill</b>: create many (empty) columns as possible, and fills
+            the row.
+            <ul>
+              <li>
+                ex. grid-template-columns: repeat(<b>auto-fill</b>,
+                minmax(100px, 1fr));
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>auto-fit</b>: stretch the current elements to fit the space
+            <ul>
+              <li>
+                ex. grid-template-columns: repeat(<b>auto-fit</b>, minmax(100px,
+                1fr));
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course2-13" class="idv_class">
+        <h3>2-13. min-content max-content</h3>
+        <ul>
+          <li>size를 지정하는 것. 어떻게 해도 <u>content is preserved.</u></li>
+          <li>
+            <b>min-content</b>: make the box as tiny as the continent can be.
+            (구겨넣는다고 생각) without breaking or anything sticking out.
+          </li>
+          <li>
+            <b>max-content</b>: make the box as big as the content can take.
+            (content를 쫙 핀 만큼의 크기) without 빈공간?
+            <ul>
+              <li>
+                ex. grid-template-columns: repeat(auto-fit, minmax(20px,
+                <b>max-content</b>));<br />-> stretches, but not more than
+                max-content
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div id="course3">
+        <h2>SCSS</h2>
+        <div id="course3-0" class="idv_class">
+          <h3>3-0. CSS preprocessors and set up</h3>
+          <ul>
+            <li>
+              <b>SCSS</b>: CSS preprocessor.
+              <ul>
+                <li>we write Sassy CSS and compile them into normal CSS.</li>
+                <li>
+                  other preprocessors: Sass(first, has different syntax than
+                  SCSS but almost same as SCSS), stylus, less(very similar to
+                  SCSS)
+                </li>
+                <li>
+                  becoming more and more industrial standard. So much better
+                  than CSS.
+                </li>
+                <li>
+                  makes CSS like a programming language. - improved syntax,
+                  variables, functions, extend, ...
+                </li>
+                <li>not easy to use. need compiler & build step.</li>
+              </ul>
+            </li>
+            <li>
+              <b>gulp</b>: nodeJS package that allows you to compile and
+              transform new code to old code (or SCSS/Sass to normal CSS)
+            </li>
+            <li>go to Nicolas' Github and downlaod everything..</li>
+          </ul>
+        </div>
+        <div id="course3-1" class="idv_class">
+          <h3>3-1. Variables and Nesting</h3>
+        </div>
+        <div id="course3-2" class="idv_class">
+          <h3>3-2. Mixins</h3>
+        </div>
+        <div id="course3-3" class="idv_class">
+          <h3>3-3. Extends</h3>
+        </div>
+        <div id="course3-4" class="idv_class">
+          <h3>3-4. Awesome Mixins and conclusions</h3>
+        </div>
       </div>
     </div>
   </body>
