@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Youtube Clone</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html"><span>뒤로가기</span></a>
+    </header>
+    <h1>[풀스택] 유튜브 클론 코딩</h1>
+    <div id="course1">
+      <h2>Introduction</h2>
+      <div id="course1-3" class="idv_class">
+        <h3>What is Node JS</h3>
+        <ul>
+          <li><b>Node.js</b> is a JavaScript outside of browser.</li>
+          <li>
+            Node.js is a JavaScript runtime built on Chrome's V8 JavaScript
+            engine.
+          </li>
+          <li>
+            Javascript outside of browser. When JS was created, it was used only
+            on browsers. (it was the purpose of it..)
+          </li>
+          <li>
+            created by Ryan Dahl. he wanted to use JS for other stuffs. download
+            Node.js means downloading JS! it's separated from browser.
+          </li>
+          <li>
+            thanks to Node.js, we have React Native(using JS and ReactJS, we can
+            build Android, iOS applications), Electron(you can build desktop
+            apps ex.VS Code, Slack, Facebook Messenger)
+          </li>
+          <li>revolutionary. it changed everything.</li>
+        </ul>
+      </div>
+      <div id="course1-4" class="idv_class">
+        <h3>What is NPM</h3>
+        <ul>
+          <li>
+            <b>npm</b> is a package manager for the JavaScript programming
+            language.
+            <ul>
+              <li>npm.Inc. is a subsidiary of GitHub.</li>
+              <li>
+                npm is the default package manager for the JavaScript runtime
+                environment Node.js.
+              </li>
+              <li>free. already have installed. nodeJS comes with npm.</li>
+              <li>
+                yarn is practically same thing, but we'll focus on npm in this
+                course.
+                <ul>
+                  <li>
+                    package ex: <b>express</b> -> 설치: npm install express
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            npm은 nodeJS와 상호작용을 할 수 있게 해줌. npm allows you to
+            interact with nodeJS. it allows you to download packages and many
+            other stuffs.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>Set Up</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>2-0. Your first nodeJS project</h3>
+        <ul>
+          <li><b>json</b>: way to save information in files.</li>
+          <li>
+            in cas of nodeJS, the name of the file must be <b>package.json</b>
+          </li>
+          <li>
+            니꼬쌤 방식으로 git repository 만들기
+            <ol>
+              <li><b>mkdir</b>로 새로운 디렉토리 만들기</li>
+              <li>console창에 <b>git init</b> 입력</li>
+              <li>GitHub가서 new repository 만들기</li>
+              <li>
+                <b>git remote add origin {URL}</b> 입력. {URL}은 새로 생성한
+                repository의 URL
+              </li>
+            </ol>
+          </li>
+          <li>
+            콜솔창에 <b>npm init</b> 입력 -> npm helps create sexy package.json.
+            <ul>
+              <li>
+                package name, version, description, author 등등 확인하거나
+                입력하고 엔터 -> package.json이 만들어짐!
+              </li>
+            </ul>
+          </li>
+          <li>(shortcut) terminal 열기: <mark>control+`</mark>(backtick)</li>
+        </ul>
+      </div>
+      <div id="course2-1" class="idv_class">
+        <h3>2-1. Installing Express</h3>
+        <ul>
+          <li>
+            terminal에 <b>node index.js</b> 입력하면 index.js가
+            실행됨(console.log("Hello"); -> Hello 출력)<br />but 이렇게 안할거임
+          </li>
+          <li>
+            We're going to run our files using package.json. The "main" is used
+            when you create and publish a package, and people install your
+            package. In our case, we don't need it, it's okay to delete it (from
+            package.json)
+          </li>
+          <li>
+            <b>scripts</b>: something that you want to run. You can run your
+            scripts on console.
+            <ul>
+              <li>
+                (package.json내부) <b>"scripts": { "win":"node index.js" }</b>,
+                입력
+              </li>
+              <li>
+                (console에서) <b>npm run win</b> 입력 -> 화면에 Hello 출력
+              </li>
+            </ul>
+          </li>
+          <li>
+            package설치: <b>npm i express</b> (=== npm install express)
+            <ul>
+              <li>
+                node-mocules라는 폴더가 생김. npm으로 설치한 모든 패키지가
+                저장됨.
+              </li>
+              <li>
+                express폴더, lib 폴더, package.json 파일을 보면 "dependencies"가
+                있음
+              </li>
+              <li>
+                <b>dependencies</b>: express가 작동되려면 필요한 패키지들
+                <ul>
+                  <li>
+                    ex. 난 핸드폰 없이 집에 안나감 -> 핸드폰은 나의 dependency
+                  </li>
+                </ul>
+              </li>
+              <li>cf. devDependencies는 설치되지 않음.</li>
+              <li>
+                내 package.json파일에 "dependencies":{"express":"^4.17.2"}가
+                자동으로 추가됨.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course2-2" class="idv_class">
+        <h3>2-2. Understanding Dependencies</h3>
+        <ul>
+          <li>
+            node_modules폴더, package-lock.json 삭제 -> console에
+            <b>npm i</b> 입력 -> package.json 내부 dependencies를 찾아서 알아서
+            설치해줌.
+            <ul>
+              <li>
+                node_modules폴더 등을 깃허브에 올릴 필요 없음.
+                <br />.gitignore파일 안에 /node_modules 씁시다.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>npm i</b>를 할 땐 package.json을 닫고 합시다. conflit on
+            version(버전 충돌)이 일어나서 에러가 뜰 수도 있음.
+          </li>
+        </ul>
+      </div>
+      <div id="course2-3" class="idv_class">
+        <h3>2-3. The Tower of Babel</h3>
+        <ul>
+          <li>
+            express 어플리케이션 만들기
+            <ol>
+              <li>(index.js 안에)const express = require("express");</li>
+              <li>const app = express();</li>
+            </ol>
+          </li>
+          <li>
+            <b>Babel</b>: JavaScript compiler.
+            <ul>
+              <li>
+                아직 nodeJS가 이해하지 못하는 최신 JS 코드가 있음
+                <ol>
+                  <li>we use only JS that nodeJS understands</li>
+                  <li>
+                    use Babel -> nodeJS가 JS를 문제없이 이해하도록 변환해줌
+                  </li>
+                </ol>
+              </li>
+              <li>
+                We'll use one for nodeJS.
+                <b>npm install --save-dev @babel/core</b>
+                <ul>
+                  <li>--save-dev 없이 설치하면 "dependencies"로 감.</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <b>devDependencies</b>: 개발자에게 필요한 dependencies. (ex.
+            자동차에게 네비게이션, 라디오)
+          </li>
+          <li>
+            <b>dependencies</b>: 프로젝트에게 필요 (ex. 자동차에게 가솔린, 전기)
+            <ul>
+              <li>
+                "@babel/core":"^7.13.10"이 "dependencies"에 있든
+                "devDependencies"에 있든 상관x. 어차피 node_modules폴더로
+                들어감. 사람을 위한 구분.
+              </li>
+            </ul>
+          </li>
+          <li>
+            create configuration file: (console에)
+            <b>touch babel.config.json</b> -> babel 웹사이트에서
+            copy/paste하라고 하는거 copy/paste(follow instructions)
+          </li>
+          <li>
+            <b>npm install @babel/preset-env --save-dev</b>
+            <ul>
+              <li><b>preset</b>: babel을 위한 엄청 거대한 플러그인</li>
+              <li>
+                <b>preset-env</b>: a smart preset that allows you to use the
+                latest JavaScript
+                <ul>
+                  <li>
+                    cf. @babel/preset-react, @babel/preset-typescript도 있음.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course2-4" class="idv_class">
+        <h3>2-4. Nodemon</h3>
+        <ul>
+          <li>
+            babel로 컴파일하는 scripts 만들기 - <b>nodemon</b> 사용
+            <ul>
+              <li>설치: npm install @babel/node --save-dev</li>
+              <li>
+                (package.json 안에) "script":{"dev":"babel-node index.js"} ->
+                babel-node is a command.
+              </li>
+            </ul>
+          </li>
+          <li>
+            babel 설치한 덕을 누려보자.
+            <ul>
+              <li>
+                const express = require("express"); ->
+                <b>import express from "express";</b>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>nodemon</b>: 우리가 만든 파일이 수정되는걸 감시해주는 패키지.
+            파일이 수정되면 nodemon이 알아서 재시작을 해줌. command+S 누를
+            때마다 재시작. 콘솔이 죽지 않음
+            <ul>
+              <li>설치: npm i nodemon --save-dev</li>
+              <li>
+                (package.json 안에 수정)
+                <b>"script":{"dev":"nodemon --exec babel-node index.js" }</b>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="course3">
+      <h2>Introduciton to Express</h2>
+      <div id="course3-0" class="idv_class">
+        <h3>3-0. Your first server</h3>
+        <ul>
+          <li>
+            <b>express()</b>: creates an express application.
+            <ul>
+              <li>
+                const app = express(); -> now app is an express application.
+              </li>
+            </ul>
+          </li>
+          <li>to make an application listen. listen has a callback.</li>
+          <li>
+            <b>callback</b>: 서버가 시작될 때 작동되는 함수. 서버에게 어떤
+            port를 listening할지 얘기해줘야 함. 보통 높은 숫자의 port는
+            비어있음.
+          </li>
+          <li>
+            server: computer that is always online, and connected to the
+            interent. and always listening.
+          </li>
+          <li>
+            서버를 시작했다면 localhost를 통해서 접속 가능. 브라우저에
+            <b>localhost:4000</b> 입력
+          </li>
+          <li>to kill your server: <b>control+c</b></li>
+        </ul>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>3-1. GET Requests</h3>
+        <ul>
+          <li>현재 localhost:5000의 화면에 <b>Cannot Get /</b>가 떠있음.</li>
+          <li>
+            <b>/</b> : 서버의 root
+            <ul>
+              <li>ex. google.com === google.com/</li>
+            </ul>
+          </li>
+          <li><b>GET</b>: in this case, HTTP method.</li>
+          <li>
+            <b>HTTP</b>: how we talk to servers or servers communicate with each
+            other. most solid, oldest, and the first one.
+          </li>
+          <li>browsers request to website, and get you the page.</li>
+        </ul>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>3-2. GET Requests part two</h3>
+        <ul>
+          <li>
+            express()랑 app.listen() 사이에 we'll configure our application
+          </li>
+        </ul>
+        <ol>
+          <li>
+            how to respond to GET request
+            <ul>
+              <li>
+                app.get("/", callback_function);
+                <ul>
+                  <li>
+                    ex. app.get("/", () => console.log("Sombody is trying to go
+                    home."); //browser에 표시x. 우리 console에 표시될거임.
+                  </li>
+                  <li>
+                    get만 하고 respond를 안하면 브라우저는 평생 기다릴거임ㅠ
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            how the HTTP <b>request</b> works
+            <ul>
+              <li><b>request</b>: user asks you sth or sends you sth</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+      <div id="course3-3" class="idv_class">
+        <h3>3-3. Responses</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course3-4" class="idv_class">
+        <h3>3-4. Recap</h3>
+      </div>
+      <div id="course3-5" class="idv_class">
+        <h3>3-5. Middlewares part one</h3>
+      </div>
+      <div id="course3-6" class="idv_class">
+        <h3>3-6. Middlewares part two</h3>
+      </div>
+      <div id="course3-7" class="idv_class">
+        <h3>3-7. Setup Recap</h3>
+      </div>
+      <div id="course3-8" class="idv_class">
+        <h3>3-8. Servers Recap</h3>
+      </div>
+      <div id="course3-9" class="idv_class">
+        <h3>3-9. Controllers Recap</h3>
+      </div>
+      <div id="course3-10" class="idv_class">
+        <h3>3-10. Middleware Recap</h3>
+      </div>
+      <div id="course3-11" class="idv_class">
+        <h3>3-11. External Middlewares</h3>
+      </div>
+    </div>
+    <div id="course4">
+      <h2>Routers</h2>
+      <div id="course4-0" class="idv_class">
+        <h3>4-0. What are routers?</h3>
+      </div>
+      <div id="course4-1" class="idv_class">
+        <h3>4-1. Making our routers</h3>
+      </div>
+      <div id="course4-2" class="idv_class">
+        <h3>4-2. Cleaning the code</h3>
+      </div>
+      <div id="course4-3" class="idv_class">
+        <h3>4-3. Exports</h3>
+      </div>
+      <div id="course4-4" class="idv_class">
+        <h3>4-4. Router recap</h3>
+      </div>
+      <div id="course4-5" class="idv_class">
+        <h3>4-5. Architecture recap</h3>
+      </div>
+      <div id="course4-6" class="idv_class">
+        <h3>4-6. Planning routes</h3>
+      </div>
+      <div id="course4-7" class="idv_class">
+        <h3>4-7. URL parameters part one</h3>
+      </div>
+      <div id="course4-8" class="idv_class">
+        <h3>4-8. URL parameters part two</h3>
+      </div>
+    </div>
+    <div id="course5">
+      <h2>Templates</h2>
+      <div id="course5-0" class="idv_class">
+        <h3>5-0. Returning HTML</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-1" class="idv_class">
+        <h3>5-1. Configuring Pug</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-2" class="idv_class">
+        <h3>5-2. Partials</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-3" class="idv_class">
+        <h3>5-3. Extending templates</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-4" class="idv_class">
+        <h3>5-4. Variables to templates</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-5" class="idv_class">
+        <h3>5-5. Recap</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-6" class="idv_class">
+        <h3>5-6. MVP styles</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-7" class="idv_class">
+        <h3>5-7. Conditionals</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-8" class="idv_class">
+        <h3>5-8. Iteration</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-9" class="idv_class">
+        <h3>5-9. Mixins</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-10" class="idv_class">
+        <h3>5-10. Recap</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
