@@ -366,7 +366,23 @@
       <div id="course3-3" class="idv_class">
         <h3>3-3. Responses</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            route handler has 2 objects
+            <ol>
+              <li><b>request(req)</b> : first argument</li>
+              <li><b>response(res)</b> : second argument</li>
+            </ol>
+            <ul>
+              <li>those are given to us by express(상속받음)</li>
+            </ul>
+          </li>
+          <li>
+            <b>res.end();</b> : end the response. server doesn't send browser
+            anything.
+          </li>
+          <li>
+            <b>res.send("Hello World!");</b> : browser화면에 string이 표시됨.
+          </li>
         </ul>
       </div>
       <div id="course3-4" class="idv_class">
