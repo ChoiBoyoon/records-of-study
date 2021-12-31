@@ -377,19 +377,83 @@
             </ul>
           </li>
           <li>
-            <b>res.end();</b> : end the response. server doesn't send browser
+            <b>res.end();</b> -> end the response. server doesn't send browser
             anything.
           </li>
           <li>
-            <b>res.send("Hello World!");</b> : browser화면에 string이 표시됨.
+            <b>res.send("Hello World!");</b> -> browser화면에 string이 표시됨.
           </li>
+          <li>response를 안해주면 브라우저는 계속 기다림..</li>
         </ul>
       </div>
       <div id="course3-4" class="idv_class">
         <h3>3-4. Recap</h3>
+        <ul>
+          <li>
+            request, response properties -> expreejs.com 들어가서 확인 고
+            <ul>
+              <li>ex. res.cookie() : cookie를 보낼 수 있음.</li>
+              <li><b>res.end()</b> : 접속종료 시키기(finish the connection)</li>
+              <li>
+                <b>res.send()</b> : html을 보낼 수도 있음. but not recommended..
+              </li>
+            </ul>
+          </li>
+          <li>
+            express의 blueprint는 아주 작음.
+            <ol>
+              <li><b>express()</b></li>
+              <li><b>Application</b></li>
+              <li><b>Request</b></li>
+              <li><b>Response</b></li>
+              <li>
+                <b>Router</b>: the way we organize routes. handler로 URL들을
+                정돈.
+              </li>
+            </ol>
+          </li>
+        </ul>
       </div>
       <div id="course3-5" class="idv_class">
         <h3>3-5. Middlewares part one</h3>
+        <ul>
+          <li>
+            <b>middleware</b>: software in the middle of request and response.
+            <ul>
+              <li>작업을 다음 함수에게 넘기는 함수. not response</li>
+            </ul>
+          </li>
+          <li>
+            용어 정리?
+            <ul>
+              <li>middleware is handler and handler is middleware.</li>
+              <li>handler is controller.</li>
+            </ul>
+          </li>
+          <li>
+            <b>next</b> argument: call the next function. 말 그대로 get()내부의
+            '다음' 함수
+            <ul>
+              <li>
+                const gossipMiddleware = (req, res, next) => {
+                <ul>
+                  <li>console.log("I'm in the middle!");</li>
+                  <li>next(); //여기서 next는 handleHome</li>
+                </ul>
+              </li>
+              <li>};</li>
+              <li>
+                const handleHome = (req, res) => {
+                <ul>
+                  <li>return res.end();</li>
+                </ul>
+                };
+              </li>
+              <li>app.get("/", gossipMiddleware, handleHome);</li>
+            </ul>
+          </li>
+          <li>all controllers can be middlewares.</li>
+        </ul>
       </div>
       <div id="course3-6" class="idv_class">
         <h3>3-6. Middlewares part two</h3>
