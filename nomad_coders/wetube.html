@@ -457,6 +457,16 @@
       </div>
       <div id="course3-6" class="idv_class">
         <h3>3-6. Middlewares part two</h3>
+        <ul>
+          <li>
+            <b>app.use()</b>: create global middleware. work on any URL.
+            <ul>
+              <li>순서 중요. get()전에 use()가 위치해야함.</li>
+              <li>ex. app.use(gossipMiddleware);</li>
+              <li>app.get("/", handleHome);</li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course3-7" class="idv_class">
         <h3>3-7. Setup Recap</h3>
