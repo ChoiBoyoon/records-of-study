@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airbnb Clone</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+    <h1>Airbnb Clone</h1>
+    <div id="course0">
+      <h2>Introduction</h2>
+    </div>
+    <div id="course1">
+      <h2>Environment Setup</h2>
+      <div id="course1-1" class="idv_class">
+        <h3>1-1. Meet Pipenv</h3>
+        <ul>
+          <li>
+            pipenv 설치하기
+            <ul>
+              <li>
+                Mac의 경우 Homebrew로 설치하는게 좋음.
+                <ul>
+                  <li>https://brew.sh/</li>
+                  <li>
+                    Homebrew: the missing package manager for macOS(or Linux)
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Homebrew가 잘 안되면 그냥
+                <b>sudo -H pip install -U pipenv</b> 해버려도 됨
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>1-2. Creating our Env and Installing Django</h3>
+        <ul>
+          <li>
+            개발환경 구축하기
+            <ol>
+              <li>
+                <b>pipenv --three</b> => Python 3 최신버전 설치, create a bubble
+              </li>
+              <li><b>pipenv shell</b> => get us inside the bubble</li>
+              <li>
+                <b>pipenv install Django==2.2.5</b> => install Django inside the
+                bubble
+              </li>
+              <li>깃허브에 연결 등 다음단계로!</li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-3" class="idv_class">
+        <h3>1-3. Creathe the Github repository</h3>
+        <ul>
+          <li>
+            (단축키)terminal 열기: <b><mark>control+`</mark></b>
+          </li>
+          <li>GitHub</li>
+          <ol>
+            <li>github.com에서 new repository만들고 URL 복사</li>
+            <li>(terminal에서) git init</li>
+            <li>git remote add origin (URL 붙여넣기)</li>
+            <li>git add .</li>
+            <li>
+              git commit -m "메시지 내용" => create environment pip 어쩌고 뜸
+            </li>
+            <li>touch README.md</li>
+            <li>
+              touch .gitignore => default python gitignore 검색해서
+              복붙하기(파이썬 프로젝트에서 일반적으로 github에 올리지 않는 것들)
+              + .DS_Store(Mac에서 생성하는 파일)
+            </li>
+          </ol>
+        </ul>
+      </div>
+      <div id="course1-4" class="idv_class">
+        <h3>1-4. Testing the bubble</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>Introduction to Django</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>2-0. Creating a Django project</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course2-1" class="idv_class">
+        <h3>2-1. Setting up VSCode and Python like a PRO</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course2-2" class="idv_class">
+        <h3>2-2. Falling in love with Django part one</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course2-3" class="idv_class">
+        <h3>2-3. Falling in love with Django part otwo</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course2-4" class="idv_class">
+        <h3>2-4. Django migrations</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+    </div>
+    <div id="course3">
+      <h2>User App</h2>
+    </div>
+    <div id="course4">
+      <h2>Room App</h2>
+    </div>
+    <div id="course5">
+      <h2>All other apps</h2>
+    </div>
+    <div id="course6">
+      <h2>Room Admin</h2>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../nomad_coders/general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Learn the Command Line</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+    <h1>Learn the Command Line</h1>
+    <div id="course3">
+      <h2>Configuring the Environment</h2>
+      <ul>
+        <li>
+          <b>nano</b>: keyboard-only text editor that exists in the command line
+        </li>
+        <li><b>bash profile</b></li>
+        <li>
+          how to store <b>shorthands(called alias)</b> for commonly used
+          commands
+        </li>
+        <li>
+          how to establish and access <b>global command-line variables</b>
+        </li>
+        <li>
+          what the <b>PATH variable</b> is and how to check which directories
+          executable commands come from
+        </li>
+      </ul>
+      <div id="course3-0" class="idv_class">
+        <h3>3-0. Intro to Environment</h3>
+        <ul>
+          <li>
+            Each time we launch the terminal application, it creates a new
+            session. The session immediately loads settings and preferences that
+            make up the command line <i>environment</i>.
+          </li>
+          <li>
+            We can configure the environment to support the commands and
+            programs we create. This enables us to
+            <u>customize greetings</u> and create nicknames
+            <u>(aliases) for commands</u>, and <u>create variables</u> to share
+            across commands and programs.
+          </li>
+        </ul>
+        <ol>
+          <li><b>nano hello.txt</b> -> open the nano text editor</li>
+          <li>write <b>"Hello, I am nano."</b></li>
+          <li>save file: <b>Ctrl+O</b> (O stands for output)</li>
+          <li>exit nano: <b>Ctrl+X</b> (X stand for exit), <b>Ctrl+C</b></li>
+          <li><b>cat hello.txt</b> -> confirm contents in hello.txt</li>
+        </ol>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>3-1. Nano</h3>
+        <ul>
+          <li>
+            <b>nano</b> is a command line text editor.
+            <ul>
+              <li>
+                It works the same way as a desktop text editor like TextEdit or
+                Notepad, except that it is accessible from the command line and
+                only accepts keyboard input.
+              </li>
+            </ul>
+          </li>
+          <li><b>clear</b>: clear the text in the current terminal window</li>
+          <li><b>^</b>: stands for the Ctrl key</li>
+        </ul>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>3-2. Bash Profile</h3>
+        <ul>
+          <li>
+            <b>bash profile</b>: a file used to store environment settings for
+            your terminal.
+            <ul>
+              <li>accessible by the name <b>~/.bash_profile</b></li>
+              <li><b>~</b> -> represents the user's home directory</li>
+              <li><b>.</b> -> indicates a hidden file</li>
+              <li>
+                The name <b>~/.bash_profile</b> is important, since this is how
+                the command line recognizes the bash profile.
+              </li>
+              <li>
+                <b>nano ~/.bash_profile</b>: to open and edit the bash profile
+              </li>
+              <li>
+                when you edit the bash file, you can add commands to execute
+                every time a new terminal session is started.
+                <ul>
+                  <li>
+                    ex. if you have an echo statement in the bash profile, that
+                    will echo when a terminal session begins.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>source ~/.bash_profile</b>: to activate the changes made in
+                ~/.bash_profile for the current session
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course3-3" class="idv_class">
+        <h3>3-3. Aliases</h3>
+        <ul>
+          <li>
+            <b>alias</b> command: create keyboard shortcuts, or aliases, for
+            commonly used commands.
+            <ul>
+              <li>ex. alias pd="pwd"</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course3-4" class="idv_class">
+        <h3>3-4. environment variables</h3>
+        <ul>
+          <li>
+            <b>environment variables</b>: variables that can be used across
+            commands and programs and hold information about the environment.
+          </li>
+          <li>
+            ex. <b>export USER="Boyoon CHOI"</b> (in ~/.bash_profile)
+            <ul>
+              <li>
+                <u>USER="Boyoon CHOI"</u> sets the environment variable USER to
+                a name "Boyoon CHOI." Usually the USER variable is set to the
+                name of the computer's owner.
+              </li>
+              <li>
+                <u>export</u>: makes the variable to be available to all child
+                sessions initiated from the session you are in. This is a way to
+                make the variable persist across programs.
+              </li>
+              <li>
+                (command)<u>echo $USER</u>: returns the value of the variable.
+                <ul>
+                  <li>
+                    <b>$</b> is always used when returning a variable's value
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course3-5" class="idv_class">
+        <h3>3-5. PS1 environment variable</h3>
+        <ul>
+          <li>
+            <b>PS1</b>: an environment variable that defines the makeup and
+            style of the command prompt.
+          </li>
+          <li>
+            ex. <b>export PS1=">>"</b> (in ~/.bash_profile)
+            <ul>
+              <li>
+                sets the command prompt variable and exports the variable. Here
+                we change the default command prompt from $ to >>.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course3-6" class="idv_class">
+        <h3>3-6. HOME environment variable</h3>
+        <ul>
+          <li>
+            <b>HOME</b>: an environment variable that displays the path of the
+            home directory(~).
+            <ul>
+              <li>
+                You can specify and change the HOME variable if needed, but in
+                most cases this is not necessary.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course3-7" class="idv_class">
+        <h3>3-7. PATH environment variable</h3>
+        <ul>
+          <li>
+            <b>PATH</b>: an environment variable that stores a list of
+            directories separated by a colon.
+            <ul>
+              <li>
+                each directory contains scripts for the command line to execute.
+              </li>
+              <li>
+                The PATH variable simply lists which directories contain
+                scripts.
+              </li>
+              <li>
+                for example, many commands(pwd, ls..) are scripts stored in the
+                /bin directory. When you type the <u>ls</u> command,
+                <u>/bin/ls</u> is executed.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course3-8" class="idv_class">
+        <h3>3-8. env</h3>
+        <ul>
+          <li>
+            <b>env</b>: command. stands for "environment" and returns a list of
+            the environment variables for the current user.
+          </li>
+          <li>
+            ex. <b>env | grep PATH</b>
+            <ul>
+              <li>displays the value of the PATH environment variable.</li>
+              <li>
+                the standard output of env is "piped" to the grep command.
+              </li>
+              <li>
+                <u>grep</u> searches for the value of the variable PATH and
+                outputs it to the terminal.
+              </li>
+              <li>this is the same output as <u>echo $PATH</u></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course3-9" class="idv_class">
+        <h3>3-9. Review</h3>
+        <ul>
+          <li>
+            The <i>environment</i> refers to the preferences and settings of the
+            current user.
+          </li>
+          <li>
+            The <i>nano</i> editor is a command line text editor used to
+            configure the environment.
+          </li>
+          <li>
+            <b>~/.bash_profile</b> is where environment settings are stored. You
+            can edit this file with nano.
+          </li>
+          <li>
+            <i>Environment variables</i> are variables that can be used across
+            commands and programs and hold information about the environment.
+            <ul>
+              <li>
+                <code>export VARIABLE="Value"</code> sets and exports an
+                environment variable.
+              </li>
+              <li><code>USER</code> is the name of the current user.</li>
+              <li><code>PS1</code> is the command prompt.</li>
+              <li>
+                <code>HOME</code> is the home directory. It is usually not
+                customized.
+              </li>
+              <li>
+                <code>PATH</code> returns a colon <code>:</code> separated list
+                of file paths. It is customized in advanced cases.
+              </li>
+              <li>
+                <code>env</code> returns a list of environment variables. You
+                can redirect the output, using <code>grep</code> to select the
+                variable you want to see.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

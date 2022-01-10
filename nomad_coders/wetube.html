@@ -1120,13 +1120,40 @@
       <div id="course6-1" class="idv_class">
         <h3>6-1. Array Database part two</h3>
         <ul>
-          <li>hey</li>
+          <li>{video:video}와 {video}는 같은 표현 (in ES6)</li>
+          <li>
+            ternary operator
+            <ul>
+              <li>ex. #{video.views === 1 ? "view" : "views"}</li>
+            </ul>
+          </li>
+          <li>(html)오른쪽 화살표: <b>&rarr ;</b> (스페이스 x)</li>
+          <li>
+            href="<b>/</b>edit" &rarr; <b>absolute url</b>. root/edit으로 이동
+          </li>
+          <li>
+            href="edit" &rarr; <b>relative url</b>. ex. root/videos/edit으로
+            이동.
+            <ul>
+              <li>
+                cf.(우리 코드에서) href=`${video.id}/edit` => video/id/edit으로
+                이동
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course6-2" class="idv_class">
         <h3>6-2. Edit video part one</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            <b>GET</b>: form의 default. <br />form(action="/save-changes") ->
+            submit시 .../save-changes?로 이동
+            <ul>
+              <li>ex. 네이버, 구글 등에 검색할 때</li>
+            </ul>
+          </li>
+          <li><b>POST</b>: 입력받은 데이터가 우리 database를 수정할 때</li>
         </ul>
       </div>
       <div id="course6-3" class="idv_class">
