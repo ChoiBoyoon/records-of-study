@@ -86,7 +86,19 @@
       <div id="course1-4" class="idv_class">
         <h3>1-4. Testing the bubble</h3>
         <ul>
-          <li>hey</li>
+          <li>그냥 terminal에서 django-admin 입력하면 아무것도 안나옴.</li>
+          <li>
+            pipenv shell 입력 후, django-admin -> 결과가 나옴.
+            <ul>
+              <li>
+                cf. <b>which django-admin</b> -> django-admin의 경로 출력됨
+              </li>
+            </ul>
+          </li>
+          <li>
+            terminal을 종료하거나 컴퓨터를 다시 켠 후에는 pipenv shell을 다시
+            입력해야 함.
+          </li>
         </ul>
       </div>
     </div>
@@ -95,39 +107,451 @@
       <div id="course2-0" class="idv_class">
         <h3>2-0. Creating a Django project</h3>
         <ul>
-          <li>hey</li>
+          <li>(terminal에) <b>django-admin startproject config</b> 입력</li>
+          <li>
+            config 디렉토리가 생성됨. 그 안에 있는 config 디렉토리, manage.py를
+            밖으로 빼고 빈 디렉토리 삭제.
+          </li>
+          <li>
+            manage.py를 클릭 -> 파이썬 버전이 다르다는 경고창 -> pipenv
+            --three로 설치한 것과 같은 버전 선택
+          </li>
         </ul>
       </div>
       <div id="course2-1" class="idv_class">
         <h3>2-1. Setting up VSCode and Python like a PRO</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            파이썬은 conpile 언어가 아님. runtime 언어 -> 에러가 있으면 모든
+            것이 다 폭발!
+            <ul>
+              <li>
+                cf. 컴파일 언어는 compiler가 있어서 프로그램 시작 전에 에러를
+                잡음.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Linter</b>: 에러가 생길 부분을 미리 감지 + try to respect Python
+            conventions
+            <ul>
+              <li>Python pep : style guide. 파이썬 코드를 쓸 때 권장사항</li>
+              <li>
+                pylint도 괜찮지만 니코쌤은 <b><mark>flint</mark></b> 추천
+              </li>
+              <li>
+                <b>command+shift+p -> select linter -> flint8</b> -> .vscode라는
+                디렉토리 생성됨. 그 안에 settings.json 안에 보면 확인 가능
+              </li>
+              <li>
+                한 줄에 포함된 문자가 너무 많다고 에러표시->일단 max=88 char로
+                수정합시다.<br />
+                (settings.json 내부)
+                <b>"python.linting.flake8Args":["--max-line-length=88"]</b>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Formatter</b>: format your code. 여기서 우리는
+            <b><mark>black</mark></b
+            >을 사용할거임.
+            <ul>
+              <li>
+                cf. prettier 때문에 black이 동작하지 않으면, settings.json
+                내부에
+                <ul>
+                  <li>"editor.defaultFormatter": null,</li>
+                  <li>"python.formatting.provider": "black"</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course2-2" class="idv_class">
         <h3>2-2. Falling in love with Django part one</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            config 내부
+            <ul>
+              <li>
+                <b>__init__.py</b>: Python needs it. Everytime you make a folder
+                that you want to use in Python, you need to put it in the
+                folder. 디렉토리를 파이썬 패키지처럼 쓸 수 있게 만들어줌.<br />we
+                put it on a folder so we can import from Python code
+              </li>
+              <li>
+                <b>settings.py</b>: Django가 우리에게 제공한 것. admin,
+                sessions, staticfiles 등이 이미 마련돼있음.
+                <ul>
+                  <li>
+                    cf. TIME_ZONE="UTC" -> "UTC"는 "Europe/London"과 같음.
+                    timezonedb.com/time-zones 체크해보자.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>django documentation: by far the best!</li>
         </ul>
       </div>
       <div id="course2-3" class="idv_class">
         <h3>2-3. Falling in love with Django part otwo</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            command+디렉토리 이름 클릭 -> 그 디렉토리로 바로 이동해서 코드를 볼
+            수 있음. (IntelliSens 라고 불리는 기능)
+          </li>
+          <li>
+            terminal에서.. <b>python manage.py runserver</b>
+            <ul>
+              <li>
+                localhost:8000/admin -> 어드민 패널로 이동. (만들어져있음! wow)
+              </li>
+            </ul>
+          </li>
+          <li>cf. localhost:8000 === 127.0.0.1:8000 (같음)</li>
+          <li><b>Ctrl+Z</b>: 서버 종료</li>
+          <li>
+            console에 <b><mark>python manage.py migrate</mark></b> 입력, 다시
+            runserver -> local:8000/admin 가보면 달라져있음.
+            <ul>
+              <li>
+                Error: That port is already in use 가 뜨는 경우, 서버를 껐는데
+                포트를 반환하지 않고 가지고 있는 경우가 있기 때문. <br />연결을
+                끊어버리려면: <b>sudo lsof -t -i tcp:8000 | xargs kill -9</b>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>python manager.py createsuperuser</b> -> superuser를 생성할 수
+            있음!
+            <ul>
+              <li>password validator 들이 이미 작동하고 있는것도 확인 가능</li>
+              <li>이 superuser 계정으로 admin pannel 사용 가능! wow!</li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course2-4" class="idv_class">
         <h3>2-4. Django migrations</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            자동으로 생성돼있던 db.sqlite3를 삭제하면 에러.. <br />db.sqlite3는
+            <ol>
+              <li>SQL로 직접 정의 (지금은 굳이 안배워도 됨)</li>
+              <li>
+                migration(데이터 유형 변경). models 에 뭔가 변경 -> django를
+                이용해서 migration
+              </li>
+            </ol>
+          </li>
+
+          <li>
+            <b>SQL</b>: structured query language. they are like Excel sheets.
+          </li>
+          <li>
+            how to create migrations: <b>python manage.py makemigrations</b>
+          </li>
+          <li>
+            <b>Django migrations</b>: to change the shape of the data on the
+            database
+          </li>
+        </ul>
+      </div>
+      <div id="course2-5" class="idv_class">
+        <h3>2-5. Django Applications</h3>
+        <ul>
+          <li>
+            Django project has many applications. project is a group of
+            applications.
+          </li>
+          <li>
+            <b>Django Application</b>: a group of functions specific to a part
+            of our project (users, photos, messages)
+          </li>
+          <li>
+            너무 많은 기능을 가진 app을 만드는건 바람직하지 않아. 한 문장으로
+            app을 표현할 수 있어야 함. -> 문장 안에 and가 들어간다면 다른
+            app으로 만드는게 좋아<br />Django applications should be as small as
+            possible.
+          </li>
+        </ul>
+      </div>
+      <div id="course2-6" class="idv_class">
+        <h3>2-6. Creating the Apps!</h3>
+        <ul>
+          <li>
+            <b>django-admin startapp 앱이름(ex.rooms)</b> -> 앱이름 폴더가 생김.
+            그 안에 생긴 파일을 이름은 절대 변경x, 삭제도 안돼 but 새로운 파일
+            만드는건 괜찮음
+            <ul>
+              <li>cf. 앱 이름은 plural. rooms(o), room(x)</li>
+              <li>cf. 앱 지우기: rm -rf 앱이름</li>
+            </ul>
+          </li>
+          <li>
+            users app -> 실제 사용 유저들만을 위한 분리된 admin 창이 필요.
+            django admin은 관리자를 위한 것이지, 유저들을 위한 것이 아님.
+          </li>
+        </ul>
+      </div>
+      <div id="course2-7" class="idv_class">
+        <h3>2-7. Explaining the Apps</h3>
+        <ul>
+          <li>A framework uses your code, you use the library.</li>
+          <li>
+            <b>framwork</b>: you play by the rules of framworks. 파일명, 변수명
+            등은 optional하지 않아
+          </li>
+          <li><b>library</b>: you just use it to build stuff. ex.React</li>
+          <li><b>admin.py</b>: configure the Django Admin panel</li>
+          <li>
+            models are data. <b>models.py</b>: describes the shape of our app's
+            data.
+          </li>
+          <li>views: what users will see.</li>
         </ul>
       </div>
     </div>
     <div id="course3">
       <h2>User App</h2>
+      <div id="course3-0" class="idv_class">
+        <h3>3-0. Replacing default user</h3>
+        <ul>
+          <li>
+            We use <b>AbstractUser</b> to extend and add more data to the users
+            in our app
+          </li>
+          <li>
+            앱을 만든 다음에는 config 디렉토리 안, settings.py 안,
+            INSTALLED_APPS = [...]에 추가해줘야함(install)<br />
+            if we don't install the apps we created, Django won't be aware of
+            them.
+          </li>
+          <li>
+            Substituting a custom User model - Some kinds of projects may have
+            authentication requirements for which Django's built-in User model
+            is not always appropriate. Django allows you to override the default
+            user model by providing a value for the AUTH_USER_MODEL setting that
+            references a custom model:
+            <code>AUTH_USER_MODEL = 'myapp.MyUser'</code>
+            (docs.djangoproject.com/en/2.2/topics/auth/customizing/ 참고)
+          </li>
+          <li>
+            우리는 프로필 사진 설정, 성별, 자기소개 등 더 많은 정보가 필요해 ->
+            상속 받아서 확장할거임.
+          </li>
+          <li>
+            Inheritance example
+            <ul>
+              class Dog():
+              <ul>
+                legs=4<br />eyes=4
+              </ul>
+            </ul>
+            <ul>
+              class GoldenRetriever(Dog): //Dog class를 상속
+              <ul>
+                color="yellow"
+              </ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>3-1. Introduction to the User Model</h3>
+        <ul>
+          <li>
+            migration하기
+            <ul>
+              <li>python manage.py <b>makemigrations</b></li>
+              <li>python manage.py <b>migrate</b></li>
+            </ul>
+          </li>
+          <li>
+            let's connect <u>models.py</u> to <u>admin.py</u> (both are in users
+            directory)
+            <ul>
+              <li>
+                admin.py 내부에 아래 코드를 추가 -> admin 패널에 Users가 추가됨
+                <ul>
+                  from . import models<br /><br />
+                  @admin.register(models.User)<br />
+                  class CustomUserAdmin(admin.ModelAdmin):
+                  <ul>
+                    pass
+                  </ul>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            user가 bio 필드를 가지도록 만들기. (models.py 내부)
+            <ul>
+              class User(AbstractUser):
+              <ul>
+                bio = models.TextField(default="") -> 이 라인을 추가한 다음엔
+                migration을 해줘야 함(데이터베이스에 알려줘)
+              </ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>3-2. First Model Fields</h3>
+        <ul>
+          <li>
+            필드가 비어있을 때 어떻게?
+            <ol>
+              <li>
+                <b>default=""</b> => 디폴트 값을 지정(이 경우 빈 string)
+                <ul>
+                  ex. bio = models.TextField(<u>default=""</u>)
+                </ul>
+              </li>
+              <li>
+                <b>null=True</b> => null(비어있음)을 허용
+                <ul>
+                  ex. bio = models.TextField(<u>null=True</u>)
+                </ul>
+              </li>
+            </ol>
+            <ul>
+              <li>
+                + <b>blank=True</b>: 빈칸으로 제출하려고 하면 오류 남. db랑
+                format이랑 다름. format을 위해 추가합시다.
+                <ul>
+                  ex. bio = models.TextField(default="",
+                  <u>blank=True</u
+                  >)
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            convention of Python - when you create a class, you add an
+            explanation on the first line => 그 클래스가 쓰이는 다른 곳에
+            마우스를 갖다 대면 설명이 보임
+            <ul>
+              <li>
+                ex. class User(AbstractUser):<br />"""Custom User Model"""
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>pillow</b>: Python library that handles images
+            <ul>
+              <li>설치: pipenv install Pillow</li>
+            </ul>
+          </li>
+          <li>
+            <b>models.CharField</b>: 한 줄 문자열. max_length 필요
+            <ul>
+              <li>ex. gender = models.CharField(max_length=10, null=True)</li>
+              <li>
+                (성별 등)여러 옵션 중 하나를 선택해야 하는 경우
+                <ul>
+                  GENDER_FEMALE = "female"<br />GENDER_MALE = "male"<br />GENDER_OTHER
+                  = "other"<br /><br />
+                  GENDER_CHOICES = (
+                  <ul>
+                    (GENDER_FEMALE, "Female"),<br />(GENDER_MALE, "Male"),<br />(GENDER_OTHER,
+                    "Other)
+                  </ul>
+                  )<br /><br />gender = models.CharField(choices =
+                  GENDER_CHOICES, max_length=10, null=True)
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>models.TextField</b>: 글자수 제한 없음. 여러 줄 가능.
+            <ul>
+              ex. bio = models.TextField(default="")
+            </ul>
+          </li>
+          <li><b>( )</b>: tuple</li>
+        </ul>
+      </div>
+      <div id="course3-3" class="idv_class">
+        <h3>3-3. Finishing User Model</h3>
+        <ul>
+          <li>
+            <b>decorator</b>: @로 시작. 클래스 바로 위에
+            <ul>
+              <li>
+                ex. 아래 두 코드는 같음<br />@admin.register(models.User)<br />class
+                CustomUserAdmin(admin.ModelAdmin):
+                <ul>
+                  pass
+                </ul>
+                <br />admin.site.register(models.User, CustomUserAdmin)
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course3-4" class="idv_class">
+        <h3>3-4. Falling in love with Admin Panel</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course3-5" class="idv_class">
+        <h3>3-5. UserAdmin + CustomAdmin</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course3-6" class="idv_class">
+        <h3>3-6. RECAP OMG!</h3>
+        <ul>
+          <li>
+            <b>ORM (object relational mapping)</b> : Django has it. 파이썬
+            코드를 SQL문으로 바꿔서 데이터베이스가 알아들을 수 있게 만듦.
+          </li>
+        </ul>
+      </div>
     </div>
     <div id="course4">
       <h2>Room App</h2>
+      <div id="course4-0" class="idv_class">
+        <h3>4-0. TimeStampedModel</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course4-1" class="idv_class">
+        <h3>4-1. Room Model part one</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course4-2" class="idv_class">
+        <h3>4-2. Foreing Keys like a Boss</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course4-3" class="idv_class">
+        <h3>4-3. ManyToMany like a Boss</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course4-4" class="idv_class">
+        <h3>4-4. on_delete, Amenity, Facility, HouseFule Model</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course4-5" class="idv_class">
+        <h3>4-5. Meta Class and Photos Model</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
     </div>
     <div id="course5">
       <h2>All other apps</h2>
