@@ -429,6 +429,7 @@
               </li>
             </ul>
           </li>
+          <li><b>from . import models</b> -> import models from 같은 폴더</li>
           <li>
             convention of Python - when you create a class, you add an
             explanation on the first line => 그 클래스가 쓰이는 다른 곳에
@@ -495,22 +496,66 @@
       <div id="course3-4" class="idv_class">
         <h3>3-4. Falling in love with Admin Panel</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            admin에 model이 나타나게 만드는 방법
+            <ol>
+              <li>
+                <b>decorator</b>: @로 시작. 클래스 바로 위에 <br /><b
+                  >@admin.register(models.User)</b
+                >
+                -> I want to see User in the admin panel<br />class
+                CustomUserAdmin(admin.ModelAdmin): -> And this is the class
+                that'll control the User
+                <ul>
+                  pass<br /><br />
+                </ul>
+              </li>
+              <li>
+                class CustomUserAdmin(admin.ModelAdmin):
+                <ul>
+                  pass
+                </ul>
+                <b>admin.site.register(models.User, CustomUserAdmin)</b>
+              </li>
+            </ol>
+          </li>
+          <li>
+            <b>ModelAdmin.list_display</b>: control which fields are displayed
+            on the change list page of the admin. admin 패널에서 어떤 필드를
+            보여줄 지 결정.
+          </li>
         </ul>
       </div>
       <div id="course3-5" class="idv_class">
         <h3>3-5. UserAdmin + CustomAdmin</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            (users 디렉토리 내의 admin.py에 추가)
+            <ul>
+              <li>from django.contrib.auth.admin import UserAdmin</li>
+              <li>class CustomUserAdmin(<u>UserAdmin</u>) <- 수정!</li>
+            </ul>
+            -> 입력받을 항목들이 grouping 돼있음 & 비밀번호 수정 가능해짐. but
+            우리가 만든 custom user model은 사라짐ㅠ, fieldsets으로 해결
+          </li>
+          <li>
+            <b>fieldset</b>: group of fields
+            <ul>
+              ex. fieldsets = UserAdmin.fieldsets +
+              (("CustomFields",{"fields":("avatar","gender","bio")}),)
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course3-6" class="idv_class">
         <h3>3-6. RECAP OMG!</h3>
         <ul>
+          <li><b>config</b>: master folder. 나머지는 폴더들은 applications</li>
           <li>
             <b>ORM (object relational mapping)</b> : Django has it. 파이썬
             코드를 SQL문으로 바꿔서 데이터베이스가 알아들을 수 있게 만듦.
           </li>
+          <li>model을 만들 때 <u>migraiton은 한 번만</u> 하는 게 좋음</li>
         </ul>
       </div>
     </div>
@@ -519,25 +564,108 @@
       <div id="course4-0" class="idv_class">
         <h3>4-0. TimeStampedModel</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            <b>core 디렉토리</b> 만들기: django-admin startapp core
+            <ul>
+              <li>
+                안 models.py에 다른 application에서 재사용 가능한 common파일
+                만들기
+              </li>
+              <li>
+                db에 등록되지 않길 원함. 이 모델을 쓰는 다른 모델들이 db에
+                들어갈거임 -> <b>Meta class : put extra information</b>
+              </li>
+              <li>
+                <b>abstract model</b>: model that doesn't go to database.
+                <ul>
+                  class Meta:
+                  <ul>
+                    abstract=True
+                  </ul>
+                </ul>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course4-1" class="idv_class">
         <h3>4-1. Room Model part one</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            <b>django-countries</b>: a Django application that provides country
+            choices for use with forms, flag icons static files, etc.
+            <ul>
+              <li>install: pipenv install django-countries</li>
+              <li>
+                from django_countries import CountryField
+                <ul>
+                  (...)<br />country=CountryField()
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            import 순서: Python -> Django -> third party -> my apps
+            <ul>
+              ex. import os -> from django.db import models -> from
+              django_countries.fields import CountryField -> from core import
+              models as core_models
+            </ul>
+          </li>
+          <li>
+            model들을 연결하는 방법 : <b>ForeignKey</b>
+            <ul>
+              <li>
+                ex. room이랑 user연결.<br />from users import models as
+                user_models<br />class Room(core_models.TimeStampedModel):
+                <ul>
+                  host = models.<b>ForeignKey(user_models.User</b>,
+                  on_delete=models.CASCADE)
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>DateField</b>
+            <ul>
+              <li>
+                <b>auto_now=True</b> -> model을 <u>save</u>할 때 date, time을
+                기록 (update할 때마다)
+              </li>
+              <li>
+                <b>auto_now_add=True</b> -> model을 <u>생성</u>할 때마다 수시로
+                업데이트 됨
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course4-2" class="idv_class">
         <h3>4-2. Foreing Keys like a Boss</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            <b>one-to-many relationship</b>: a user can have many rooms, or many
+            posts. and rooms and posts can have only one user.
+          </li>
         </ul>
       </div>
       <div id="course4-3" class="idv_class">
         <h3>4-3. ManyToMany like a Boss</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            <b>__str__</b>: string method. all the Python classes have this.
+            <ul>
+              <li>
+                ex. 아래 코드를 rooms의 models.py에 추가하면 Rooms>Room
+                object(1)가 아니라 Rooms>Tree House처럼 표시됨.<br />def
+                __str__(self):
+                <ul>
+                  return self.name
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>many-to-many : I can have several room types.</li>
         </ul>
       </div>
       <div id="course4-4" class="idv_class">

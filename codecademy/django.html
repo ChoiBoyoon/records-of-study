@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../nomad_coders/general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Build Python Web Apps with Django</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+
+    <h1>Build Python Web Apps with Django</h1>
+    <div id="course0">
+      <h2>Introduction to the Web</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>Welcome to Build Python Web Apps with Django</h3>
+        <ol>
+          <li>
+            <b>Introduction to the Web</b>: get acquainted with the fundamentals
+            of what makes a web application.
+          </li>
+          <li>
+            <b>Introduction to Django</b>: learn how web applications function,
+            and create your own first app!
+          </li>
+          <li>
+            <b>Templates in Django</b>: make use of Django's templates that
+            combine HTML and Python to present web pages for you users.
+          </li>
+          <li>
+            <b>Data in Django</b>: create the informational backbone of your
+            app. decide how to structure the information in your database and
+            how to interact with it.
+          </li>
+          <li>
+            <b>Views in Django</b>: finish off the Models-Views-Templates design
+            pattern to control what information shows up in your templates.
+          </li>
+          <li>
+            <b>Forms in Django</b>: get user input using forms and safely
+            include that information into your database.
+          </li>
+          <li>
+            <b>Admin and Authentication in Django</b>: set up accounts and
+            control the access of your web application.
+          </li>
+          <li>
+            <b>Deploying a Django Project</b>: learn how to locally install
+            Django and set up your project for others to see and use.
+          </li>
+          <li>
+            <b>Capstone Project</b>: put all of your knowledge to the test and
+            build a fully-featured Django application.
+          </li>
+        </ol>
+      </div>
+      <div id="course0-1" class="idv_class">
+        <h3>Getting Acquainted with JavaScript and the DOM</h3>
+        <ul>
+          <li>
+            <b>DOM(Document Object Model)</b>: the web pages that make up the
+            app as an object
+            <ul>
+              <li>the entire page is one object that can be manipulated.</li>
+              <li>ex. title = document.getElementById('title');</li>
+            </ul>
+            <img
+              src="https://static-assets.codecademy.com/Courses/Learn-JavaScript/DOM/dom_diagram.svg"
+              height="350px"
+            />
+          </li>
+        </ul>
+      </div>
+      <div id="course1">
+        <h2>Introduction to Django</h2>
+        <div id="course1-0" class="idv_class">
+          <h3>1-0. Front and Back</h3>
+          <ul>
+            <li>
+              <b>front-end</b>: the parts of a webpage that a visitor can
+              interact with and see.
+              <ul>
+                <li>
+                  composed of JavaScript, CSS, HTML, and other static assets
+                </li>
+                <li>
+                  <b>static assets</b>: files that don't change. (ex. images or
+                  videos) when a visitor navigates to a webpage, those are sent
+                  to their browser.
+                </li>
+              </ul>
+            </li>
+            <li>
+              when referring to the <b>client</b> in web development, we're
+              usually referring to the non-human requester of content.
+              <ul>
+                <li>
+                  in the case of visiting a website,
+                  <u>the client is the browser</u>.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>back-end</b>: consists of all the behind-the-scenes processes
+              and data that make a website function and send resources to
+              clients.
+            </li>
+          </ul>
+        </div>
+        <div id="course1-1" class="idv_class">
+          <h3>1-1. The Web Server</h3>
+          <ul>
+            <li>
+              <b>web server</b>: a process running on a computer that listens
+              for incoming requests for information over the internet and sends
+              back responses.
+            </li>
+            <li>
+              <b>protocol</b>: specific format of a request(and the resulting
+              response)
+              <ul>
+                <li>ex. HTTP: the protocol used to access websites.</li>
+              </ul>
+            </li>
+            <li>
+              <b>static website</b>: not interactive. the simplest website, a
+              client makes a single request. might be a good choice for a simple
+              personal website.
+            </li>
+            <li>
+              but modern web applications are interactive and complex. To
+              accomplish this level of complexity, an equally complex back-end
+              is required.
+            </li>
+          </ul>
+        </div>
+        <div id="course1-2" class="idv_class">
+          <h3>1-2. So what is the Back-end?</h3>
+          <ul>
+            <li>
+              <b>dynamic content</b>: cater to the specific user rather than
+              sending the same files to every visitor of a webpage.
+            </li>
+            <li>
+              <b>application</b> or <b>application server</b>: collection of
+              programming logic required to deliver dynamic content to a client,
+              manage security, process payments, and myriad other tasks
+            </li>
+            <li>
+              cf. <b>Google Doodle</b>: special, temporary alteration of the
+              logo on Google's homepages.
+            </li>
+          </ul>
+        </div>
+        <div id="course1-3" class="idv_class">
+          <h3>1-3. Storing Data</h3>
+          <ul>
+            <li>
+              By some measures, 90% of the world's data has been generated in
+              just the past two years.
+            </li>
+          </ul>
+          <ol>
+            <li>
+              <b>relational databases</b>
+              <ul>
+                <li>store information in tables with columns and rows.</li>
+                <li>
+                  <b>SQL</b>(Structured Query Language): programming language
+                  for accessing and changing data stored in relational
+                  databases. <br />cf. SQL is a programming language but
+                  <u>not a general-purpose programming language</u>.<br />cf.
+                  <u>programming language</u>: a vocabulary and set of
+                  grammatical rules for instructing a computer or computing
+                  device to perform specific tasks.
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>non-relational databases</b>(also known as
+              <b>NoSQL databases</b>)
+              <ul>
+                <li>
+                  use other systems such as key-value pairs or a document
+                  storage model.
+                </li>
+                <li>ex. MongoDB, Redis</li>
+              </ul>
+            </li>
+          </ol>
+          <ul>
+            <li>
+              In addition to the database itself, the back-end needs a way to
+              programmatically access, chnage, and analyze the data stored
+              there.
+            </li>
+          </ul>
+        </div>
+        <div id="course1-4" class="idv_class">
+          <h3>1-4. What is an API?</h3>
+          <ul>
+            <li>
+              <b>web API</b>: a collection of predefined ways of, or rules for,
+              interacting with a web application's data, often through an HTTP
+              request-response cycle.
+              <ul>
+                <li>
+                  this type of request indicates how it would like to interact
+                  with a web application's data(create, read, update, delete)
+                  and it receives some data back as a response.
+                </li>
+                <li>
+                  some web APIs are open to the public. ex. Instagram
+                  (instagram.com/developers) <br />others are only used by the
+                  web application internally
+                </li>
+              </ul>
+            </li>
+            <li>
+              <b>API</b>: a back-end often includes API in order to have
+              consistent ways of interacting with data.
+              <ul>
+                <li>stands for Application Program Interface</li>
+                <li>can mean a lot of different things.</li>
+              </ul>
+            </li>
+            <li></li>
+          </ul>
+        </div>
+        <div id="course1-5" class="idv_class">
+          <h3>1-5. Authorization and Authentication</h3>
+          <ul>
+            <li>
+              <b>authentication</b>: the process of validating the identity of a
+              user.
+            </li>
+            <li><b>authorization</b>: controls</li>
+          </ul>
+        </div>
+        <div id="course1-6" class="idv_class">
+          <h3>1-6. Different Back-end Stacks</h3>
+        </div>
+      </div>
+      <div id="course2">
+        <h2>Templates in Django</h2>
+      </div>
+      <div id="course3">
+        <h2>Data in Django</h2>
+      </div>
+      <div id="course4">
+        <h2>Views in Django</h2>
+      </div>
+      <div id="course5">
+        <h2>Forms in Django</h2>
+      </div>
+      <div id="course6">
+        <h2>Accounts and Authentication in Django</h2>
+      </div>
+      <div id="course7">
+        <h2>Deploying a Django Project</h2>
+      </div>
+      <div id="course8">
+        <h2>Build Python Web Apps with Django Capstone Project</h2>
+      </div>
+    </div>
+  </body>
+</html>
