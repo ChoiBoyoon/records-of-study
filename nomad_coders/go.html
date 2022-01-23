@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>쉽고 빠른 Go 시작하기</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html"><span>뒤로가기</span></a>
+    </header>
+    <h1>쉽고 빠른 Go 시작하기</h1>
+    <div id="course0">
+      <h2>Introduction</h2>
+      <ul>
+        <li>Go코드는 무조건 Go PATH 디렉토리에 저장되어야 함.</li>
+        <li>by default, Go PATH directory is (Mac)/(local)user/go/</li>
+        <li>
+          Node.js나 Python은 모듈, 패키지를 다운받을 수 있는 곳이 한정적.
+          (npmjs.com, pypi.org)
+        </li>
+        <li>
+          <b>Go</b>는 어디서나 다운받을 수 있음 -> 도메일별로 분류. github,
+          golang, google.golang, ...
+        </li>
+      </ul>
+    </div>
+    <div id="course1">
+      <h2>Theory</h2>
+      <div id="course1-0" class="idv_class">
+        <h3>1-0. Main Package</h3>
+        <ul>
+          <li>
+            <b>main.go</b> -> this name is not optional. this will be compiled.
+            entry point.
+            <ul>
+              <li>
+                경우에 따라 compile이 필요 없을수도 있음. ex. building library
+                for someone else
+              </li>
+              <li>cf. learning.go 등으로 이름을 지으면 컴파일이 안될거야.</li>
+            </ul>
+          </li>
+          <li>
+            starting point : <b>func main() {}</b> -> 반드시 정의되어야 함.
+            (it's different from js, python, ... and similar to C)
+          </li>
+          <li>
+            <mark><b>fmt.Println("Hello world!");</b></mark> -> println: print
+            line
+          </li>
+        </ul>
+      </div>
+      <div id="course1-1" class="idv_class">
+        <h3>1-1. Packages and Imports</h3>
+        <ul>
+          <li>
+            fmt.Println("Hello world!");를 실행하면 자동으로 import "fmt"가 생김
+            (VScode의 기능임..)
+          </li>
+          <li>
+            대문자로 시작하는 함수-> 다른 파일에서 import 가능
+            <ul>
+              <li>ex. func SayHello() -> 다른 파일에서 import 가능</li>
+              <li>ex. func sayBye() -> 다른 파일에서 import 안됨.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>1-2. Variables and Constants</h3>
+        <ul>
+          <li>JavaScript에서 variable은 let, constant는 const</li>
+          <li>Python에서는 모든 것이 variables</li>
+          <li>
+            Go에서는 데이터 타입을 명시해야 함 like C
+            <ul>
+              <li>ex. <b>const</b> name string = "Boyoon"; //상수</li>
+              <li>
+                ex. <b>var</b> name string = "Boyoon"; //변수
+                <ul>
+                  축약형:
+                  <b>name := "Boyoon";</b>
+                  이렇게 쓰면 Go가 type을 찾아줌.
+                  <ul>
+                    func안에서만 가능
+                  </ul>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-3" class="idv_class">
+        <h3>1-3. Functions part one</h3>
+        <ul>
+          <li>
+            함수를 만들 때 매개변수, 리턴값의 type을 알려줘야 함.
+            <ul>
+              <li>
+                ex. func multiply(a int, b int) int {
+                <ul>
+                  return a*b;
+                </ul>
+                }
+              </li>
+              <li>
+                ex. func multiply(a, b int) int { //->같은 코드
+                <ul>
+                  return a*b;
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
+          <li>
+            functions can have multiple return values
+            <ul>
+              <li>
+                ex. func lenAndUpper(name string) (int, string) {
+                <ul>
+                  return
+                  <u>len(name)</u
+                  >,
+                  <u>strings.ToUpper(name)</u>
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>_</b>: ignored value
+            <ul>
+              <li>ex. totalLength, _ := lenAndUpper("Boyoon");</li>
+            </ul>
+          </li>
+          <li>
+            <b>...</b>: flexible하게 매개변수 입력받기?
+            <ul>
+              <li>
+                ex. func repeatMe(words ...string) {
+                <ul>
+                  fmt.Println(words)
+                </ul>
+                }<br />func main(){
+                <ul>
+                  repeatMe("hello","world","this","is","me");
+                </ul>
+                }
+                <br />=> array가 출력됨. [hello world this is me]
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-4" class="idv_class">
+        <h3>1-4. Functions part two</h3>
+        <ul>
+          <li>
+            <b>naked return</b>: func lenAndUpper(name string)(<u>여기서 리턴</u
+            >){}
+            <ul>
+              <li>
+                ex. func lenAndUpper(name string) (length int, uppercase string)
+                {
+                <ul>
+                  length=len(name);<br />uppercase = strings.ToUpper(name);<br />return;
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b><mark>defer</mark></b
+            >: execute sth after function returns
+            <ul>
+              <li>
+                ex. func lenAndUpper(name string) (length int, uppercase string)
+                {
+                <ul>
+                  defer fmt.Println("I'm done");<br />length = len(name);<br />uppercase
+                  = strings.ToUpper(name);<br />return;
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-5" class="idv_class">
+        <h3>1-5. for, range, ...args</h3>
+        <ul>
+          <li><b>for</b>: only way to loop in Go</li>
+          <li>
+            <b>range</b> 사용
+            <ul>
+              <li>
+                ex. func superAdd(numbes ...int) {
+                <ul>
+                  for index, number := range numbers{
+                  <ul>
+                    fmt.Println(index, number);
+                  </ul>
+                  }
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
+          <li>
+            초기식, 조건식, 증감식
+            <ul>
+              <li>
+                ex. func superAdd(numbers ...int) {
+                <ul>
+                  for i:=0; i < len(numbers); i++ {
+                  <ul>
+                    fmt.Println(numbers[i]);
+                  </ul>
+                  }
+                </ul>
+              </li>
+            </ul>
+            }
+          </li>
+          <li>
+            ex. func superAdd(numbers ...int) int {
+            <ul>
+              total := 0<br />
+              for _, number := range number {
+              <ul>
+                total += number;
+              </ul>
+              }
+              <br />return total;
+            </ul>
+            }
+          </li>
+        </ul>
+      </div>
+      <div id="course1-6" class="idv_class">
+        <h3>1-6. If with a Twist</h3>
+        <ul>
+          <li>
+            <b>variable expression</b>: if를 쓰는 순간 variable을 만들 수 있음.
+            if문이 끝나면 그 variable은 사라짐.
+            <ul>
+              <li>
+                ex. func canIDrink(age int) bool {
+                <ul>
+                  if koreanAge := age+2; koreanAge<18 {
+                  <ul>
+                    return false;
+                  </ul>
+                  }<br />return true;
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-7" class="idv_class">
+        <h3>1-7. Switch</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course1-8" class="idv_class">
+        <h3>1-8. Pointers!</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course1-9" class="idv_class">
+        <h3>1-9. Arrays and Slices</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course1-10" class="idv_class">
+        <h3>1-10. Maps</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course1-11" class="idv_class">
+        <h3>1-11. Structs</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>Bank & Dictionary Projects</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>2-0. Account + NewAccount</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course2-1" class="idv_class">
+        <h3>2-1. Methods part one</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course2-2" class="idv_class">
+        <h3>2-2. Methods part two</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course2-3" class="idv_class">
+        <h3>2-3. Finishing up</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course2-4" class="idv_class">
+        <h3>2-4. Dictionary part one</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course2-5" class="idv_class">
+        <h3>2-5. Add Method</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course2-6" class="idv_class">
+        <h3>2-6. Update Delete</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
