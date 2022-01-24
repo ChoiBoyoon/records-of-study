@@ -265,31 +265,131 @@
       <div id="course1-7" class="idv_class">
         <h3>1-7. Switch</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            C의 switch와 동일. if, else if, else if, ... 대신 사용 가능.
+            <ul>
+              <li>
+                ex. func canIDrink(age int) bool { //->age에 16 넘겨주면 true
+                리턴됨
+                <ul>
+                  switch koreanAge := age; koreanAge {<br />
+                  case 18:
+                  <ul>
+                    return true;
+                  </ul>
+                  case 10:
+                  <ul>
+                    return false;
+                  </ul>
+                  }<br />return false;
+                </ul>
+
+                }
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course1-8" class="idv_class">
         <h3>1-8. Pointers!</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            Go allows you to do <u>low-level programming</u> with high-level
+            code. -> 메모리를 직접 관리할 수 있음.
+            <ul>
+              <li>
+                ex. func main(){
+                <ul>
+                  a := 2<br />fmt.Println(&a); //0xc000b2008
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>*</b>: see through sth
+            <mark>(&: 주소 보기, *: 내용물 보기)</mark>
+            <ul>
+              <li>
+                ex. func main(){
+                <ul>
+                  a := 2<br />
+                  b := &a ;
+                  <br />
+                  fmt.Println(*b); //a값을 바꾸면 *b값도 같이 바뀜
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course1-9" class="idv_class">
         <h3>1-9. Arrays and Slices</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            Go에선 array를 선언할 때 길이를 specify해줘야 함
+            <ul>
+              <li>ex. names := [5]string{"a", "b", "c"};</li>
+            </ul>
+          </li>
+          <li>
+            <b>slice</b>: Array without length
+            <ul>
+              <li>ex. names := []string{"a", "b", "c"};</li>
+              <li>ex. names = append(names, "d");</li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course1-10" class="idv_class">
         <h3>1-10. Maps</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            <b>map</b>: Python, JavaScript의 object랑 비슷. key와 value의 type이
+            정해져 있음.
+            <ul>
+              <li>
+                ex. nico := map[string]string{"name":"nico", "age":"12"};
+                <br />for key, value := range nico {
+                <ul>
+                  fmt.Println(key, value);
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course1-11" class="idv_class">
         <h3>1-11. Structs</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            <b>struct</b>: map이랑 비슷, more flexible.
+            <ul>
+              <li>
+                ex. type person struct {
+                <ul>
+                  name string<br />age int<br />favFood []string
+                </ul>
+                }<br />func main(){
+                <ul>
+                  favFood := []string{"kimchi", "sushi"};<br />nico :=
+                  person{name:"nico", age:12, favFood:favFood};
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
+          <li>
+            method도 포함할 수 있음. but constructor method는 없음
+            <ul>
+              <li>
+                cf.constructor: Python의 __init__, JavaScript의 constructor()
+              </li>
+            </ul>
+          </li>
+          <li>Go는 class, object가 없음..</li>
         </ul>
       </div>
     </div>
@@ -298,31 +398,112 @@
       <div id="course2-0" class="idv_class">
         <h3>2-0. Account + NewAccount</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            Go에는 constructor가 없음 -> constructor역할을 하는 function을 만듦.
+          </li>
         </ul>
       </div>
       <div id="course2-1" class="idv_class">
         <h3>2-1. Methods part one</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            Array 구조체의 method 만들기. 구조체 외부에 선언
+            <ul>
+              <li>
+                func (a *Account) Deposit (amount int) {
+                <ul>
+                  a.balance += amount //(*a).balance += amount 와 동일하게
+                  동작함... 뭐지
+                </ul>
+                }
+              </li>
+              <li>
+                (a Account): receiver, a 매개변수의 자료형은 Account.
+                <ul>
+                  convention: 구조체 첫 글자의 소문자
+                </ul>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course2-2" class="idv_class">
         <h3>2-2. Methods part two</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            Go에 try-except, try-catch는 없음. error를 직접 처리해야 함
+            <ul>
+              <li>
+                ex. var <u>errNoMoney</u> = erros.New("Can't withdraw")<br />
+                if a.balance < amount {
+                <ul>
+                  return
+                  <u>errNoMoney</u>
+                </ul>
+                }
+              </li>
+              <li>
+                ex. err := account.Withdraw(20)<br />if err != nil {
+                <ul>
+                  log.Println(err)
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
+          <li><b>nil</b>: none, null과 같음.</li>
         </ul>
       </div>
       <div id="course2-3" class="idv_class">
         <h3>2-3. Finishing up</h3>
         <ul>
-          <li>hey</li>
+          <li>Python에서 print(class)를 하면 class 내부 __str__가 호출됨.</li>
+          <li>
+            Go에서 구조체를 print하면 String()이 호출됨.
+            <ul>
+              <li>
+                ex. String()을 override하려면<br />func (a Account) String()
+                string {
+                <ul>
+                  return fmt.Sprint(a.Owner(), "'s account. \nHas: ", s.Balance)
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
+          <li><b>Sprint</b>: string을 프린트</li>
+          <li>method는 type에도 넣을 수 있음.</li>
         </ul>
       </div>
       <div id="course2-4" class="idv_class">
         <h3>2-4. Dictionary part one</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            types can have Methods
+            <ul>
+              <li>ex. type Dictionary map[string]string</li>
+            </ul>
+          </li>
+          <li>
+            map에서 key로 value에 접근하면, 2개의 값이 리턴됨. (1)value,
+            (2)boolean(key-value가 존재하는지)
+            <ul>
+              <li>ex. i, ok := m["route"]</li>
+            </ul>
+          </li>
+          <li>
+            cf. Dictionary is a hashmap. -> 메소드에서 Dictionary의 값을
+            수정하기 위해 포인터를 사용하지 않아도 됨.
+            <ul>
+              <li>
+                ex. func (d Dictionary) Add(word, def string) {
+                <ul>
+                  d[word]=def
+                </ul>
+                }
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course2-5" class="idv_class">
@@ -333,6 +514,135 @@
       </div>
       <div id="course2-6" class="idv_class">
         <h3>2-6. Update Delete</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+    </div>
+    <div id="course3">
+      <h2>URL checker & Go routines</h2>
+      <div id="course3-0" class="idv_class">
+        <h3>3-0. hitURL</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>3-1. Slow URLChecker</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>3-2. Goroutines</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course3-3" class="idv_class">
+        <h3>3-3. Channels</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course3-4" class="idv_class">
+        <h3>3-4. Channels Recap</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course3-5" class="idv_class">
+        <h3>3-5. One more recap</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course3-6" class="idv_class">
+        <h3>3-6. URLChecker + Go Routines</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course3-7" class="idv_class">
+        <h3>3-7. FAST URLChecker</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+    </div>
+    <div id="course4">
+      <h2>Job scrapper</h2>
+      <div id="course4-0" class="idv_class">
+        <h3>4-0. getPages part one</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course4-1" class="idv_class">
+        <h3>4-1. getPages part two</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course4-2" class="idv_class">
+        <h3>4-2. extractJob part one</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course4-3" class="idv_class">
+        <h3>4-3. extractJob part two</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course4-4" class="idv_class">
+        <h3>4-4. Writing jobs</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course4-5" class="idv_class">
+        <h3>4-5. Channels time</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course4-6" class="idv_class">
+        <h3>4-6. More Channels time</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course4-7" class="idv_class">
+        <h3>4-7. Recap</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+    </div>
+    <div id="course5">
+      <h2>Web server with Echo</h2>
+      <div id="course5-0" class="idv_class">
+        <h3>5-0. Setup part one</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-1" class="idv_class">
+        <h3>5-1. Setup part two</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-2" class="idv_class">
+        <h3>5-2. File Download</h3>
+        <ul>
+          <li>hey</li>
+        </ul>
+      </div>
+      <div id="course5-3" class="idv_class">
+        <h3>5-3. Conclusions</h3>
         <ul>
           <li>hey</li>
         </ul>
