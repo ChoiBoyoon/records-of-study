@@ -491,6 +491,11 @@
               <li>ex. i, ok := m["route"]</li>
             </ul>
           </li>
+        </ul>
+      </div>
+      <div id="course2-5" class="idv_class">
+        <h3>2-5. Add Method</h3>
+        <ul>
           <li>
             cf. Dictionary is a hashmap. -> 메소드에서 Dictionary의 값을
             수정하기 위해 포인터를 사용하지 않아도 됨.
@@ -506,16 +511,15 @@
           </li>
         </ul>
       </div>
-      <div id="course2-5" class="idv_class">
-        <h3>2-5. Add Method</h3>
-        <ul>
-          <li>hey</li>
-        </ul>
-      </div>
       <div id="course2-6" class="idv_class">
         <h3>2-6. Update Delete</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            Dictionary에서 item을 delete하기
+            <ul>
+              <li>ex. delete(d, word)</li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -524,19 +528,67 @@
       <div id="course3-0" class="idv_class">
         <h3>3-0. hitURL</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            <b>hit</b>: 인터넷 웹 서버의 파일 1개에 접속하는 것
+            <ul>
+              <li>
+                ex. import "net/http"<br />resp, err := <b>http.Get(url)</b>
+              </li>
+            </ul>
+          </li>
+          <li>Get response의 status code 400부터는 뭔가 문제가 있는 것.</li>
         </ul>
       </div>
       <div id="course3-1" class="idv_class">
         <h3>3-1. Slow URLChecker</h3>
         <ul>
-          <li>hey</li>
+          <li><b>panic</b>: 컴파일러가 못찾아낸 에러</li>
+          <li>
+            uninitialized한 map은 nil. 값을 넣을 수 없음.
+            <ul>
+              <li>
+                ex. var results map[string]string<br />results["hello"] =
+                "hello"
+              </li>
+              <li>
+                해결
+                <ol>
+                  <li>var results = map[string]string{}</li>
+                  <li>
+                    var results = make(map[string]string)<br />cf. make():
+                    initialize an empty map
+                  </li>
+                </ol>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course3-2" class="idv_class">
         <h3>3-2. Goroutines</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            <b>goroutine</b>: 다른 함수와 동시에 실행시키는 함수. parellel,
+            concurrency
+            <ul>
+              <li>
+                ex. a_function()과 b_function()을 동시에 실행<br /><b
+                  ><mark>go</mark></b
+                >
+                a_function()<br />b_function()
+              </li>
+              <li>
+                cf. main() 안을 전부 go로 채워버리면 main()은 할 일이 없어짐...
+                -> 아무것도 실행되지 않고 종료
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>time.Sleep(time.Second)</b>: 1초 동안 sleep. import "time"
+            <ul>
+              <li>cf. 5초 쉬기: time.Sleep(time.Second*5)</li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course3-3" class="idv_class">
