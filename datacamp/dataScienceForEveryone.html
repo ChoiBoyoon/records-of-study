@@ -221,15 +221,173 @@
       <h2>Data Collection and Storage</h2>
       <div id="course1-0" class="idv_class">
         <h3>1-0. Data sources</h3>
+        <ul>
+          <li>
+            company data
+            <ul>
+              <li>collected by companies</li>
+              <li>helps them make data-driven decisions</li>
+              <li>
+                ex. web events, survey data(ex. NPS. net promoter score),
+                customer data, logistics data, financial transactions
+              </li>
+            </ul>
+          </li>
+          <li>
+            open data
+            <ul>
+              <li>free, open data sources</li>
+              <li>
+                data APIs: request data over the internet
+                <ul>
+                  <li>ex. Twitter, Wikipedia, Google maps, ..</li>
+                </ul>
+              </li>
+              <li>
+                Public records
+                <ul>
+                  <li>
+                    ex. by international organizations e.g., World Bank, UN, WTO
+                  </li>
+                  <li>
+                    ex. by national statistics offices e.g., censuses, surveys
+                  </li>
+                  <li>
+                    ex. government agencies e.g., weather, population,
+                    environment<br />data.gov (the US)<br />data.europa.eu (the
+                    EU)
+                  </li>
+                </ul>
+              </li>
+              <li>can be used, shared, and built-on by anyone</li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-1" class="idv_class">
         <h3>1-1. Data types</h3>
+        <ul>
+          <li>
+            Quantitative data
+            <ul>
+              <li>deals with numbers</li>
+              <li>data can be measured</li>
+            </ul>
+          </li>
+          <li>
+            Qualitative data
+            <ul>
+              <li>deals with descriptions</li>
+              <li>data can be observed but not measured ex.color, smell</li>
+            </ul>
+          </li>
+          <li>
+            Other data types
+            <ul>
+              <li>
+                ex. Image data, text data, geospatial data, network data, ..
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-2" class="idv_class">
         <h3>1-2. Data storage and retrieval</h3>
+        <ul>
+          <li>
+            Things to consider when storing data
+            <ul>
+              <li>
+                Location
+                <ul>
+                  <li>
+                    Parallel storage solutions - stored in many different
+                    computers (cluster, server)
+                  </li>
+                  <li>
+                    Cloud storage: Azure, AWS, Google Cloud
+                    <ul>
+                      <li>
+                        also help you with data analytics, machine learning, ..
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Data type
+                <ul>
+                  <li>
+                    unstructured -> document database
+                    <ul>
+                      <li>
+                        ex. email, text, video and audio files, web pages, ..
+                      </li>
+                    </ul>
+                  </li>
+                  <li>tabular -> relational database</li>
+                </ul>
+              </li>
+              <li>
+                Retrieval
+                <ul>
+                  <li>
+                    Data querying
+                    <ul>
+                      <li>document db -> NoSQL</li>
+                      <li>relational db -> SQL</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-3" class="idv_class">
         <h3>1-3. Data Pipelines</h3>
+        <ul>
+          <li>
+            data pipeline
+            <ul>
+              <li>moves data into defined stages. highly customized</li>
+              <li>
+                automated collection and storage
+                <ul>
+                  <li>scheduled horly, daily, weekly, etc.</li>
+                  <li>triggered by an event</li>
+                </ul>
+              </li>
+              <li>monitored with generated alerts</li>
+              <li>necessary for big data projects</li>
+              <li><b>ETL</b>: Extract Transform Load</li>
+              <li>one of popular tools : <b>Airflow</b></li>
+            </ul>
+          </li>
+          <li>
+            Transform
+            <ul>
+              <li>
+                with all the data coming in, how do we keep it organized and
+                easy to use?
+              </li>
+              <li>Joining data sources into one data set</li>
+              <li>
+                Converting data structures to fit database schemas
+                <ul>
+                  <li>
+                    cf. a database's schema infroms us how data must be
+                    structured before loading it in.
+                  </li>
+                </ul>
+              </li>
+              <li>removing irrelevant data</li>
+              <li>
+                data preparation and exploration doesn't occur at this stage.
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
     <div id="course2">
