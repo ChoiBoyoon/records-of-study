@@ -394,27 +394,229 @@
       <h2>Preparation, Exploration, and Visualization</h2>
       <div id="course2-0" class="idv_class">
         <h3>2-0. Data Preparation</h3>
+        <ul>
+          <li>
+            <b>tidy data</b>: a way of presenting a matrix of data, with
+            observations on rows and variables as columns.
+          </li>
+          <li>
+            removing duplicates, verifying data types, handling missing values,
+            ensuring values use the same measurement system
+          </li>
+          <li>
+            <mark>missing values?</mark>
+            <ul>
+              <li>locate the exact value</li>
+              <li>take an aggregate value(mean, median, etc.)</li>
+              <li>drop the observation all together -> less training data..</li>
+              <li>ignore if your algorithm allows it</li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course2-1" class="idv_class">
         <h3>2-1. Exploratory Data Analysis</h3>
+        <ul>
+          <li>
+            EDA
+            <ul>
+              <li>exploring the data</li>
+              <li>formulating hypothesis</li>
+              <li>assessing characteristics</li>
+              <li>visualizing</li>
+              <li>looking for outliers</li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course2-2" class="idv_class">
         <h3>2-2. Visualization</h3>
+        <ul>
+          <li>
+            one picture is worth a thousand words... if the picture makes sense
+          </li>
+          <li>
+            use color when necessary, preferably use color palettes accessible
+            to <b>colorblind</b> people
+          </li>
+          <li>use readable fonts</li>
+          <li>labels: title, x-axis, y-axis, legend</li>
+          <li>
+            <b>dashboard</b>: group all the relevant information in one place to
+            make it easier to gather insights and act on them.
+          </li>
+          <li>
+            <b>BI tools</b>: clean, explore, visualize data, and build
+            dashboards.
+            <ul>
+              <li>ex. Tableau, Looker, PowerBI</li>
+              <li>or you can use Python, R, JS, etc.</li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
     <div id="course3">
       <h2>Experimentation and Prediction</h2>
       <div id="course3-0" class="idv_class">
         <h3>3-0. A/B Testing</h3>
+        <ul>
+          <li>
+            Experiments help drive decisions and draw conclusions
+            <ol>
+              <li>Form a question</li>
+              <li>Form a hypothesis</li>
+              <li>Collect data</li>
+              <li>Test the hypothesis with a statistical test</li>
+              <li>Interpret results</li>
+            </ol>
+          </li>
+          <li>
+            A/B testing == Champion/Challenger testing: used to make a choice
+            between two options.
+            <ul>
+              <li><b>Sample size</b>: number of data points used</li>
+              <li>
+                <b>Statistical significance</b>: result is likely not due to
+                chance
+                <ul>
+                  <li>Given assumptions of statistical model</li>
+                  <li>
+                    Use <b>statistical tests</b> to calculate this:
+                    <ul>
+                      <li>e.g., t-test, Z-test, ANOVA, Chi-square test</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            A/B Testing Steps
+            <ol>
+              <li>
+                Picking a metric to track
+                <ul>
+                  <li>ex. click-through rate</li>
+                </ul>
+              </li>
+              <li>
+                Calculating sample size
+                <ul>
+                  <li>
+                    if the rate is much larger or smaller than 50%, we need a
+                    larger sample size
+                  </li>
+                  <li>click-rate is typically under 3%.</li>
+                  <li>
+                    larger sample size allows us to detect small changes.
+                    <ul>
+                      <li>
+                        cf. test's sensitivity: tells us how samll of a change
+                        in our metric we can detect.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>Running the experiment</li>
+              <li>
+                Cehcking for significance
+                <ul>
+                  <li>
+                    What if the results aren't significant?
+                    <ul>
+                      <li>Difference is smaller than the threshold we chose</li>
+                      <li>Running our test longer won't help</li>
+                      <li>
+                        Still might be a difference; it's just small and
+                        insignificant to us.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </li>
+        </ul>
       </div>
       <div id="course3-1" class="idv_class">
         <h3>3-1. Time seires forecasting</h3>
+        <ul>
+          <li>
+            statistical model
+            <ul>
+              <li>represent a real-world process with statistics</li>
+              <li>
+                mathematical relationships between variables, including random
+                variables
+              </li>
+              <li>based on statistical assumptions and historical data</li>
+            </ul>
+          </li>
+          <li>
+            <b>time series data</b>: a series of data points sequenced by time
+            <ul>
+              <li>ex. stock prices, gas prices, unemployment rates, etc.</li>
+              <li>
+                <b>seasonality</b>: when there are repeating patterns related to
+                time such as months and weeks.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>confidence intervals</b>: model is x% sure that the true value
+            will fall in this area
+            <ul>
+              <li>can help us buffer for the unexpected.</li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course3-2" class="idv_class">
         <h3>3-2. Supervised machine learning</h3>
+        <ul>
+          <li>
+            <b>supervised machine learning</b>: predictions from data with
+            labels and features
+            <ul>
+              <li>
+                ex. recommendation systems, diagnosing biomedical images,
+                recognizing hand-written digits, predicting customer churn
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course3-3" class="idv_class">
         <h3>3-3. Clustering</h3>
+        <ul>
+          <li>
+            <b>clustering</b>
+            <ul>
+              <li>divide unlabeled data into different categories</li>
+              <li>
+                ex. customer segmentation, image segmentation, anomaly detection
+              </li>
+              <li>
+                steps
+                <ol>
+                  <li>select features</li>
+                  <li>select number of clusters</li>
+                  <li>use clusters to solve problems</li>
+                </ol>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>unsupervised machine learning</b>: uses data with only features
+            <ul>
+              <li>
+                you can use it even when you don't know much about your dataset.
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </body>
