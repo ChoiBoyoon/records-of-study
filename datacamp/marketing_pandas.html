@@ -18,7 +18,7 @@
         <h3>1-0. Introduction to pandas for marketing</h3>
         <ul>
           <li>
-            data scientist on a marketing team
+            <b>data scientist on a marketing team</b>
             <ul>
               <li>analyzing marketing <b>campaign performance</b></li>
               <li>
@@ -45,23 +45,231 @@
               </li>
             </ul>
           </li>
+          <li>
+            Ensuring the <b>validity</b> of your dataset should alwyas be the
+            first step you take when beginning analysis on a new dataset.
+            <ul>
+              <li>
+                df.<b><mark>describe()</mark></b
+                >: print the statistics of all columns (summary statistics)
+              </li>
+              <li>
+                df.<b><mark>info()</mark></b
+                >: identify the data types and number of non-missing values
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course0-1" class="idv_class">
         <h3>1-1. Data types and type of a column</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            <b>Feature engineering</b>: adding new columns that derive
+            information from existing data or based on domain knowledge
+          </li>
+          <li>
+            Check the data type
+            <ul>
+              <li>
+                ex. print(marketing['converted']<b><mark>.dtype</mark></b
+                >)
+              </li>
+            </ul>
+          </li>
+          <li>
+            Changing the data type of a column
+            <ul>
+              <li>
+                ex. marketing['converted'] = marketing['converted']<b
+                  ><mark>.astype('bool')</mark></b
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Creating new boolean columns
+            <ul>
+              <li>
+                ex. marketing['is_house_ads'] = <b><mark>np.where</mark></b
+                >(
+                <ul>
+                  marketing['marketing_channel'] == 'House Ads', True, False
+                </ul>
+                )
+              </li>
+            </ul>
+          </li>
+          <li>
+            Mapping values to existing columns
+            <ul>
+              <li>
+                in a large dataset, it can be computationally inefficient to
+                store columns of strings
+              </li>
+              <li>
+                ex. channel_dict = {"House Ads":1, "Instagram":2, "Facebook":3,
+                "Email":4, "Push":5}<br />marketing['channel_code'] =
+                marketing['marketing_channel']<b
+                  ><mark>.map(channel_dict)</mark></b
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Date columns
+            <ul>
+              <li>
+                often, you'll have date columns that are improperly read as
+                objects by pandas.
+              </li>
+              <li>
+                ex. marketing = pd.read_csv('marketing.csv',
+                <b
+                  ><mark>parse_dates</mark>=['date_served',
+                  'date_subscribed']</b
+                >)
+              </li>
+              <li>
+                ex. marketing['date_served'] =
+                <b><mark>pd.to_datetime</mark></b
+                >(marketing['date_served'])
+              </li>
+            </ul>
+          </li>
+          <li>
+            Date attributes
+            <ul>
+              <li>
+                ex. marketing['day_served'] = marketing['date_served']<b
+                  ><mark>.dt.dayofweek</mark></b
+                >
+                <ul>
+                  <li>cf. dt: accessor</li>
+                  <li>cf. 0: monday, 1: tuesday, ...</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course0-2" class="idv_class">
         <h3>1-2. Initial exploratory analysis</h3>
         <ul>
-          <li>hey</li>
+          <li>
+            How many users see marketing assets?
+            <ul>
+              <li>
+                ex. daily_users = marketing<b
+                  >.groupby(['date_served'])['user_id'].nunique())</b
+                >
+                <br />-> 하루동안 광고에 노출된 유저들의 unique id 개수
+              </li>
+            </ul>
+          </li>
+          <li>
+            Visualizing results
+            <ul>
+              <li>
+                ex. import matplotlib.pyplot as plt<br /><br />daily_users.plot()<br /><br />plt.title('Daily
+                number of users who see ads')<br />plt.xlabel('Date')<br />plt.ylabel('Number
+                of users')<br />plt.xticks(rotation=45) //to increase
+                legibility<br />plt.show()
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
     <div id="coruse1">
       <h2>2. Exploratory Analysis & Summary Statistics</h2>
+      <div id="course1-0" class="idv_class">
+        <h3>1-0. Introduction to common marketing metrics</h3>
+        <ul>
+          <li>
+            common metrics
+            <ul>
+              <li>
+                <b>conversion rate</b> :
+                <u>typically the most important metric.</u><br />(Number of
+                people who convert)/(Total number of people we marketed to)
+                <ul>
+                  <li>
+                    ex. subscribers =
+                    marketing[marketing['converted']==True]['user_id'].nunique()<br />total
+                    = marketing['user_id'].nunique()<br />conv_rate =
+                    subscribers / total<br />print(round(conv_rate*100, 2), '%')
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>retention rate</b>: gives you a sense of whether your
+                marketing campaign converted
+                <u>subscribers who were actually interested</u> in the
+                product.<br />(Number of people who remain subscribed)/(Total
+                number of people who converted)
+                <ul>
+                  <li>
+                    ex. retained =
+                    marketing[marketing['is_retained']==True]['user_id'].nunique()<br />
+                    subscribers =
+                    marketing[marketing['converted']==True]['user_id'].nunique()<br />retention
+                    = retained / subscribed <br />print(round(retention*100, 2),
+                    '%')
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-1" class="idv_class">
+        <h3>1-1. Customer segmentation</h3>
+        <ul>
+          <li>
+            segmenting: breaking down metrics by specific characteristics.
+            <ul>
+              <li>
+                ex. Age, Gender, Location, Past interactions with the business,
+                Marketing channels users interacted with
+              </li>
+              <li>
+                ex. house_ads =
+                marketing[marketing['subscribing_channel']=='House Ads']<br />retained
+                =
+                house_ads[house_ads['is_retained']==True]['user_id'].nunique()<br />subscribers
+                =
+                house_ads[house_ads['converted']==True]['user_id'].nunique()<br />retention_rate
+                = retained / subscribers<br />print(round(retention_rate*100,
+                2), '%')
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            segmenting using pandas - <b>groupby()</b>
+            <ul>
+              <li>
+                ex. retained = marketing[marketing['is_retained']==True]<b
+                  ><mark>.groupby(['subscribing_channel'])</mark></b
+                >['user_id'].nunique()
+              </li>
+              <li>
+                ex. subscribers = marketing[marketing['converted']==True]<b
+                  ><mark>.groupby(['subscribing_channel'])</mark></b
+                >['user_id'].nunique()
+              </li>
+              <li>channel_retention_rate = (retained/subscribers)*100</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>1-2. Plotting campaign results (1)</h3>
+      </div>
+      <div id="course1-3" class="idv_class">
+        <h3>1-3. Plotting campaign results (2)</h3>
+      </div>
     </div>
     <div id="course2">
       <h2>3. Conversion Attribution</h2>
