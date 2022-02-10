@@ -266,16 +266,208 @@
       </div>
       <div id="course1-2" class="idv_class">
         <h3>1-2. Plotting campaign results (1)</h3>
+        <ul>
+          <li>
+            It is critical for data scientists to communicate results clearly to
+            business stakeholders.
+          </li>
+          <li>
+            Comparing language conversion rates
+            <ul>
+              <li>
+                ex. import matplotlib.pyplot as plt<br /><br />language_conversion_rate.plot(kind='bar')<br /><br />plt.title('Conversion
+                rate by language\n', size=16)<br />plt.xlabel('Language',
+                size=14)<br />plt.ylabel('Conversion rate(%)', size=14)<br />plt.show()
+              </li>
+            </ul>
+          </li>
+          <li>
+            Preparing data to be plotted over time
+            <ul>
+              <li>
+                ex. daily_retention_rate =
+                pd.DataFrame(daily_retention_rate.reset_index())
+                <br />daily_retention_rate.columns = ['date_subscribed',
+                'retention_rate']
+                <br /><br />daily_retention_rate.plot('date_subscribed',
+                'retention_rate')<br /><br />plt.title('Daily subscriber
+                quality\n', size=16)<br />plt.ylabel('1-month retention rate
+                (%)', size=14)<br />plt.xlabel('Date', size=14)<br /><br /><b
+                  ><mark>plt.ylim(0)</mark></b
+                >
+                #Set the y-axis to begin at 0 <br />plt.show()
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-3" class="idv_class">
         <h3>1-3. Plotting campaign results (2)</h3>
+        <ul>
+          <li>
+            Grouping by multiple columns
+            <ul>
+              <li>
+                ex. language = marketing.groupby(<b
+                  >['date_served', 'language_preferred']</b
+                >)['user_id'].count()
+              </li>
+            </ul>
+          </li>
+          <li>
+            Unstacking after groupby
+            <ul>
+              <li>
+                ex. language = pd.DataFrame(language<b>.unstack(level=1)</b>)
+              </li>
+            </ul>
+          </li>
+          <li>
+            Plotting preferred language over time
+            <ul>
+              <li>
+                ex. language.plot()<br />plt.title('Daily language
+                preferences')<br />plt.xlabel('Date')<br />plt.ylabel('Users')<br /><b
+                  ><mark
+                    >plt.legend(loc='upper right',
+                    labels=language.columns.values)</mark
+                  ></b
+                ><br />plt.show()
+              </li>
+            </ul>
+          </li>
+          <li>
+            Creating grouped bar charts
+            <ul>
+              <li>
+                ex. language_age = marketing.groupby(['language_preferred',
+                'age_group'])['user_id'].count()<br />language_age =
+                pd.DataFrame(language_age.unstack(level=1)) <br /><br />
+                language_age.plot(kind='bar')<br />plt.title('Language
+                preference by age group')<br />plt.xlabel('Language')<br />plt.ylabel('Users')<br />plt.legend(loc='upper
+                right', labels = language_age.columns.values)<br />plt.show()
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
     <div id="course2">
       <h2>3. Conversion Attribution</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>2-0. Building functions to automate analysis</h3>
+        <ul>
+          <li>
+            Building a retention function
+            <ul>
+              <li>
+                ex. def <b>retention rate</b>(dataframe, column_names):
+                <ul>
+                  retained =
+                  dataframe[dataframe['is_retained']==True].groupby(column_names)['user_id'].nunique()<br />converted
+                  =
+                  dataframe[dataframe['converted']==True].groupby(column_names)['user_id'].nunique()<br />retention_rate
+                  = retained/converted<br />return retention_rate
+                </ul>
+              </li>
+              <li>
+                ex. daily_retention = retention_rate(marketing,
+                ['date_subscribed', 'subscribing_channel'])<br />daily_retention
+                = pd.DataFrame(daily_retention.unstack(level=1))
+              </li>
+              <li>
+                ex. daily_retention.plot(date_subscribed, conversion_rate)<br />plt.title('Daily
+                channel retention rate\n', size=16)<br />plt.ylabel('Retention
+                Rate (%)', size=14)<br />plt.xlabel('Date', size=14)<br />plt.show()
+              </li>
+            </ul>
+          </li>
+          <li>
+            Plotting function
+            <ul>
+              <li>
+                ex. def <b>plotting</b>(dataframe):
+                <ul>
+                  for column in dataframe:
+                  <ul>
+                    plt.plot(dataframe.index, dataframe[column])<br />plt.tilte('Daily
+                    '+column+' retention rate\n', size=16)<br />plt.ylabel('Retention
+                    rate (%)', size=14)<br />plt.xlabel('Date', size=14)<br />plt.show()
+                  </ul>
+                </ul>
+              </li>
+              <li>ex. plotting(daily_channel_retention)</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course2-1" class="idv_class">
+        <h3>2-1. Identifying inconsistencies</h3>
+      </div>
+      <div id="course2-2" class="idv_class">
+        <h3>2-2. Resolving inconsistencies</h3>
+        <ul>
+          <li>
+            Assessing impact
+            <ul>
+              <li>
+                ex. house_ads_no_bug = house_ads[house_ads['date_served'] <
+                '2018-01-11']<br />lang_conv = conversion_rate(house_ads_no_bug,
+                ['language_displayed'])<br /><br />spanish_index =
+                lang_conv['Spanish'] / lang_conv['English']<br />arabic_index =
+                lang_conv['Arabic'] / lang_conv['English']<br />german_index =
+                lang_conv['German'] / lang_conv['English']
+                <i
+                  >#4.48 -> English 유저 한 명이 converted 될 때, German 유저는
+                  4.5명이 converted됨.</i
+                ><br /><br />language_conversion =
+                house_ads.groupby(['date_served',
+                'language_preferred']).agg({'user_id':'nunique',
+                'converted':'sum'})<br />expected_conversion =
+                pd.DataFrame(language_conversion.unstack(level=1))<br />
+                <img
+                  src="marketingpandas0.png"
+                  width="400px"
+                /><br /><br />#create English conversion rate column<br />language_conversion['actual_english_conversions']=language_conversion.loc['2018-01-11':'2018-01-31'][('converted','English')]
+                <br /><br />language_conversion['expected_spanish_rate'] =
+                language_conversion['actual_english_rate']*spanish_index<br />language_conversion['expected_arabic_rate']
+                = language_conversion['actual_english_rate']*arabic_index<br />language_conversion['expected_german_rate']
+                = language_conversion['actual_english_rate']*german_index<br /><br />language_conversion['expected_spanish_conversion']
+                =
+                language_conversion['expected_spanish_rate']/100*language_conversion[('user_id',
+                'Spanish')]<br />language_conversion['expected_arabic_conversion']
+                =
+                language_conversion['expected_arabic_rate']/100*language_conversion[('user_id',
+                'Arabic')]<br />language_conversion['expected_german_conversion']
+                =
+                language_conversion['expected_german_rate']/100*language_conversion[('user_id',
+                'German')] <br /><br />#determining the number of lost
+                subscribers<br />bug_period =
+                language_conversion.loc['2018-01-11':'2018-01-31']<br />expected_subs
+                = bug_period['expected_spanish_conv_rate'].agg('sum') +
+                bug_period['expected_arabic_conv_rate'].agg('sum') +
+                bug_period['expected_german_conv_rate'].agg('sum')<br />actual_subs
+                = bug_period[('converted', 'Spanish')].sum() +
+                bug_period[('converted', 'Arabic')].sum() +
+                bug_period[('converted', 'German')].sum()<br /><br />lost_subs =
+                expected_subs - actual_subs
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
     <div id="course3">
       <h2>4. Personalization A/B Test</h2>
+      <div id="course3-0" class="idv_class">
+        <h3>3-0. A/B testing for marketing</h3>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>3-1. Calculating lift & significance testing</h3>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>3-2. A/B testing & segmenting function</h3>
+      </div>
     </div>
   </body>
 </html>
