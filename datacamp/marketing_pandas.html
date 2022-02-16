@@ -462,14 +462,140 @@
       <div id="course3-0" class="idv_class">
         <h3>3-0. A/B testing for marketing</h3>
         <ul>
-          <li>dd</li>
+          <li>
+            Test allocation
+            <ul>
+              <li>
+                ex. email = marketing[marketing['marketing_channel'] ==
+                'Email']<br />allocation =
+                email.groupby(['variant'])['user_id'].nunique()<br />allocation.plot(kind='bar')<br /><br />plt.title('Personalization
+                test allocation')<br />plt.xticks(rotation=0)<br />plt.ylabel('#
+                participants')<br />plt.show()<br /><br />cf. variant는
+                'control', 'personalization' (controlled group and the group who
+                received email with personalized message)
+              </li>
+            </ul>
+          </li>
+          <li>
+            Setting up our data to evaluate the test
+            <ul>
+              <li>
+                subscribers = email.groupby(['user_id',
+                'variant']['converted'].max()<br />subscribers =
+                pd.DataFrame(subscribers.unstack(level=1))<br /><br />control =
+                subscribers['control'].dropna()<br />personalization =
+                subscribers['personalization'].dropna()<br /><br />print("Control
+                conversion rate: ", np.mean(control)) #0.28<br />print("Personalization
+                conversion rate: ", np.mean(personalization)) #0.39
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course3-1" class="idv_class">
         <h3>3-1. Calculating lift & significance testing</h3>
+        <ul>
+          <li>
+            what's the lift ? -> Was the conversion rate higher for the
+            treatment and by how much?
+            <ul>
+              <li>(a'+a)/a</li>
+              <li>
+                ex. a_mean = np.mean(control)<br />b_mean =
+                np.mean(personalization)<br />lift = (b_mean - a_mean)/a_mean<br />print("lift:
+                ", str(round(lift*100, 2)) + '%') #lift: 194.23%
+              </li>
+            </ul>
+          </li>
+          <li>
+            T-distribution
+            <ul>
+              <li>
+                <b>statistical significance</b> is vital to understanding
+                whether a test showed a positive result by chance or if it is
+                reflective of a true difference between the variants.
+              </li>
+              <li>
+                One way to calculate <b>statistical significance</b> is by
+                conduction a two-sample t-test.
+              </li>
+              <li>
+                uses the mean and the sample variance to determine the
+                likelihood that the variation between the two samples occurred
+                by chance.
+              </li>
+              <img src="marketingpandas1.png" height="300px" />
+              <li>
+                the smaller the overlap between the two distributions, the more
+                likely there is a true difference between the two samples.
+              </li>
+            </ul>
+          </li>
+          <li>
+            P-values
+            <ul>
+              <li>
+                T-statistic of 1.96 is typically statistically significant at
+                the 95% level
+              </li>
+              <li>
+                Depending on the context of the test, you may be comfortable
+                with a lower or higher level of statistical significance.
+              </li>
+              <li>
+                <b
+                  ><mark>
+                    from scipy.stats import ttest_ind<br />t =
+                    ttest_ind(control, personalized)</mark
+                  ><br />print(t)</b
+                >
+              </li>
+              <li>
+                a p-value less than 0.05 is typically considered statistically
+                significant at 95% significance level.
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course3-2" class="idv_class">
         <h3>3-2. A/B testing & segmenting function</h3>
+        <ul>
+          <li>
+            Don't forget about <b>segmentation</b>!
+            <ul>
+              <li>
+                it's important to break down results by various demographics in
+                order to obtain a holistic understanding of the impact of the
+                test.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Personalization test segmented <u>by language</u>
+            <ul>
+              <li>
+                for language in
+                np.unique(marketing['language_displayed'].values):
+                <ul>
+                  print(language)<br /><br />language_data =
+                  marketing[(marketing['marketing_channel']=='Email') &
+                  (marketing['language_displayed']==language)]<br />subscribers
+                  = language_data.groupby(['user_id',
+                  'variant'])['converted'].max()<br />subscribers =
+                  pd.DataFrame(subscribers.unstack(level = 1))<br />control =
+                  subscribers['control'].dropna()<br />personalization =
+                  subscribers['personalization'].dropna()<br /><br />print('lift:
+                  ', lift(control, personalization))<br />print('t-statistic: ',
+                  stats.ttest_ind(control, personalization), '\n\n')<br /><br /><img
+                    src="marketingpandas2.png"
+                    height="270px"
+                  />
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </body>
