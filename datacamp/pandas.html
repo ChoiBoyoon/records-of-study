@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../nomad_coders/general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Manipulation with pandas</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+    <h1>Data Manipulation with pandas</h1>
+    <div id="course0">
+      <h2>1. Transforming DataFrames</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>Introducing DataFrames</h3>
+        <ul>
+          <li>
+            <b>pandas</b>: Python package for data manipulation. it can also be
+            used for data visualization.
+            <ul>
+              <li>
+                built on top of two essential Python packages, <b>NumPy</b> and
+                <b>Matplotlib</b>
+                <ul>
+                  <li>
+                    <b>NumPy</b>: provides multidimensional array objects for
+                    easy data manipulation
+                  </li>
+                  <li>
+                    <b>Matplotlib</b>: has powerful data visualization
+                    capabilities
+                  </li>
+                </ul>
+              </li>
+              <li>
+                designed to work with rectangular data (aka "tabular data")
+              </li>
+            </ul>
+          </li>
+          <li>
+            Exploring a DataFrame
+            <ul>
+              <li>
+                <b>.info()</b>: displays the names of columns, the data types,
+                and whether they have any missing values
+              </li>
+              <li><b>.shape</b>: number of rows and columns</li>
+              <li>
+                <b>.describe()</b>: computes summary statistics for numerical
+                columns (ex. mean, median)
+                <ul>
+                  <li>
+                    <b>count</b>: the number of non-missing values in each
+                    column
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Components of a DataFrame
+            <ul>
+              <li>
+                <b>.values</b>: contains the data values in a 2-dimensional
+                NumPy array
+              </li>
+              <li><b>.columns</b>: columns names</li>
+              <li><b>.index</b>: row numbers or row names</li>
+            </ul>
+          </li>
+          <li>
+            pandas Philosophy
+            <ul>
+              <li>
+                <b>The Zen of Python</b>: There should be one - and preferably
+                only one - obvious way to do it.
+                <ul>
+                  <li>
+                    -> pandas deliberately doesn't follow this philosophy.
+                    (there are often multiple ways to solve a problem)
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course0-1" class="idv_class">
+        <h3>Sorting and subsetting</h3>
+        <ul>
+          <li>
+            Sorting
+            <ul>
+              <li>
+                <b>.sort_values(</b>column_name<b>)</b>: change the order of the
+                rows
+                <ul>
+                  <li><b>ascending</b>=False: 큰 수 -> 작은 수</li>
+                  <li>
+                    we can sort by multiple variables
+                    ex.dogs.sort_values(["weight_kg","height_cm"])
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Subsetting multiple columns
+            <ul>
+              <li>ex. dogs[["breed", "height_cm"]]</li>
+              <li>ex. dogs[dogs["height_cm"] > 50]</li>
+              <li>ex. dogs[dogs["date_of_birth"] > "2010-01-01"]</li>
+              <li>
+                <b>isin()</b>
+                <ul>
+                  <li>
+                    ex. is_black_or_brown = dogs["color"]<b>.isin(</b>["Black",
+                    "Brown"])
+                  </li>
+                  <li>
+                    ex. colors = ["brown", "black", "tan"]<br />condition =
+                    dogs["color"].isin(colors)
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>cf. <b>&</b>: "bitwise and" orperator</li>
+        </ul>
+      </div>
+      <div id="course0-2" class="idv_class">
+        <h3>New columns</h3>
+        <ul>
+          <li>
+            Adding new column
+            <ul>
+              <li>ex. dogs["height_m"] = dogs["height_cm"]/100</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="course1">
+      <h2>2. Aggregating DataFrames</h2>
+      <div id="course1-0" class="idv_class">
+        <h3>Summary statistics</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course1-1" class="idv_class">
+        <h3>Counting</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>Grouped summary statistics</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course1-3" class="idv_class">
+        <h3>Pivot tables</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>3. Slicing and Indexing DataFrames</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>Explicit indexes</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course2-1" class="idv_class">
+        <h3>Slicing and subsetting with .loc and .iloc</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course2-2" class="idv_class">
+        <h3>Working with pivot tables</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <div id="course3">
+      <h2>4. Creating and Visualizing DataFrames</h2>
+      <div id="course3-0" class="idv_class">
+        <h3>Visualizing your data</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>Missing values</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>Creating DataFrames</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course3-3" class="idv_class">
+        <h3>Reading and writing CSVs</h3>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
