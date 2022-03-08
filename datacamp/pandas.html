@@ -44,13 +44,15 @@
             Exploring a DataFrame
             <ul>
               <li>
-                <b>.info()</b>: displays the names of columns, the data types,
-                and whether they have any missing values
+                <b><mark>.info()</mark></b
+                >: displays the names of columns, the data types, and whether
+                they have any missing values
               </li>
               <li><b>.shape</b>: number of rows and columns</li>
               <li>
-                <b>.describe()</b>: computes summary statistics for numerical
-                columns (ex. mean, median)
+                <b><mark>.describe()</mark></b
+                >: computes summary statistics for numerical columns (ex. mean,
+                median)
                 <ul>
                   <li>
                     <b>count</b>: the number of non-missing values in each
@@ -148,14 +150,50 @@
       <div id="course1-0" class="idv_class">
         <h3>Summary statistics</h3>
         <ul>
-          <li></li>
+          <li>
+            <b><mark>.agg</mark></b
+            >: allows you to apply your own custom functions to a DataFrame, as
+            well as apply functions to more than one column of a DataFrame at
+            once
+          </li>
+          <li>
+            <b><mark>.quantile</mark></b
+            >: returns percentiel
+            <ul>
+              <li>
+                ex. def pct30(column):<br />
+                <ul>
+                  return column.quantile(0.3)
+                </ul>
+                dogs["weight_kg"].agg(pct30) //returns thirtieth percentile of
+                the dogs' weight
+              </li>
+              <li>ex. dogs[["weight_kg", "heigth_cm"]].agg(pct30)</li>
+              <li>
+                ex. def pct40(column):<br />
+                <ul>
+                  return column.quantile(0.4)
+                </ul>
+                dogs["weight_kg"].agg([pct30, pct40])
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b><mark>.cumsum</mark></b
+            >: cumulative sum
+            <ul>
+              <li>ex. dogs["weight_kg"].cumsum()</li>
+            </ul>
+          </li>
+          <li>
+            <b>inter-quartile range</b>: the 75th percentile minus the 25th
+            percentile.
+          </li>
         </ul>
       </div>
       <div id="course1-1" class="idv_class">
         <h3>Counting</h3>
-        <ul>
-          <li></li>
-        </ul>
+        <ul></ul>
       </div>
       <div id="course1-2" class="idv_class">
         <h3>Grouped summary statistics</h3>
