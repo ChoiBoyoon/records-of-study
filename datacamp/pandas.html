@@ -180,9 +180,12 @@
           </li>
           <li>
             <b><mark>.cumsum</mark></b
-            >: cumulative sum
+            >: cumulative sum. returns a whole column.<br />
+            <b><mark>.cummax()</mark></b
+            >: cumulative max # (위에서부터) 가장 큰 숫자
             <ul>
-              <li>ex. dogs["weight_kg"].cumsum()</li>
+              <li>ex. dogs["cum_weight"] = dogs["weight_kg"].cumsum()</li>
+              <li>ex. dogs["cum_max_weight"] = dogs["weight_kg".cummax()</li>
             </ul>
           </li>
           <li>
@@ -194,19 +197,129 @@
       <div id="course1-1" class="idv_class">
         <h3>Counting</h3>
         <ul>
-          <li></li>
+          <li>
+            <b>.drop_duplicates(subset="column_name")</b>
+            <ul>
+              <li>ex. vet_visits.<u>drop_duplicates(subset="name")</u></li>
+              <li>
+                ex. unique_dogs = vet_visits.<u
+                  >drop_duplicates(subset=["name", "breed"])</u
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>.value_counts()</b>
+            <ul>
+              <li>ex. unique_dogs["breed"].value_counts(sort=True)</li>
+              <img src="manipulationpandas1.png" width="270px" />
+              <li>
+                to get proportions of the total<br />unique_dogs["breed"].value_counts(<b>normalize=True</b>)
+              </li>
+              <img src="manipulationpandas2.png" width="270px" />
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course1-2" class="idv_class">
         <h3>Grouped summary statistics</h3>
         <ul>
-          <li></li>
+          <li>
+            <b><mark>.groupby()</mark></b
+            >: for grouped summaries
+            <ul>
+              <li>ex. dogs.groupby("color")["weight_kg"].mean()</li>
+              <img src="manipulationpandas3.png" width="270px" />
+            </ul>
+          </li>
+          <li>
+            multiple grouped summaries
+            <ul>
+              <li>
+                ex. dogs.groupby("color")["weight_kg"].agg([min, max, sum])
+              </li>
+              <img src="manipulationpandas4.png" width="270px" />
+            </ul>
+          </li>
+          <li>
+            Grouping by multiple variables
+            <ul>
+              <li>ex. dogs.groupby(["color", "breed"])["weight_kg"].mean()</li>
+              <img src="manipulationpandas5.png" width="270px" />
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course1-3" class="idv_class">
         <h3>Pivot tables</h3>
         <ul>
-          <li></li>
+          <li>.pivot_table() method is an alternative to .groupby()</li>
+          <li>
+            ex. dogs.pivot_table(values="weight_kg", index="color)
+            <ul>
+              <li>
+                cf. by default, pivot_table takes the <b>mean</b> value for each
+                group.
+              </li>
+              <img src="manipulationpandas6.png" width="220px" />
+            </ul>
+          </li>
+          <li>
+            <b>aggfunc</b>: for different statistics
+            <ul>
+              <li>
+                ex. dogs.pivot_table(values="weight_kg", index="color",
+                <u>aggfunc=np.median</u>)
+              </li>
+            </ul>
+          </li>
+          <li>
+            multiple statistics
+            <ul>
+              <li>
+                ex. dogs.pivot_table(values="weight_kg", index="color",
+                <u>aggfunc=[np.mean, np.median])</u>
+              </li>
+              <img src="manipulationpandas7.png" width="140px" />
+            </ul>
+          </li>
+          <li>
+            Pivot on two variables : to group by two variables, we can pass a
+            second variable name into the columns argument.
+            <ul>
+              <li>
+                ex. dogs.pivot_table(values="weight_kg", index="<u>color</u>",
+                <u>columns="breed"</u>, fill_value=0)
+              </li>
+              <img src="manipulationpandas8.png" width="340px" />
+              <li>
+                cf. dogs.groupby(["<u>color</u>",
+                "<u>breed</u>"])["weight_kg"].mean()
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>fill_value=0</b> -> NaN을 0으로 바꿔줌.
+            <ul>
+              <li>
+                cf. what to replace missing values with is a topic big enough to
+                have <a href="missing_data.html">its own course.</a> <br />but
+                the simplest thing to do is to substitute a dummy value.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>margins=True</b> -> the last row and last column of the pivot
+            table contain the mean of all the values in the column or row (not
+            including the missing values that were filled with 0s.)
+            <ul>
+              <img src="manipulationpandas9.png" width="410px" />
+              <li>
+                cf. the value in the bottom right, in the last row and last
+                column, is the mean weight of all the dogs in the dataset.
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -215,6 +328,57 @@
       <div id="course2-0" class="idv_class">
         <h3>Explicit indexes</h3>
         <ul>
+          <li>
+            Setting a column as the index
+            <ul>
+              <li>
+                ex. dogs_ind = dogs<b><mark>.set_index</mark>("name")</b>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Removing an index
+            <ul>
+              <li>
+                ex. dogs_ind.<b><mark>reset_index()</mark></b> -> 원래 index는
+                column이 됨.
+              </li>
+              <li>
+                ex. dogs_ind.reset_index(<b>drop=True</b>) -> 원래 index는
+                사라짐
+              </li>
+            </ul>
+          </li>
+          <li>
+            Indexes make subsetting simpler
+            <ul>
+              <li>
+                ex. dogs[dogs["name"].isin(["Bella", "Stella"]))<br />
+                -> dogs_ind<b>.loc</b>[["Bella","Stella"]]
+              </li>
+              <li>cf. <b>loc</b> filters on index values</li>
+            </ul>
+          </li>
+          <li>Index values don't need to be unique</li>
+          <li>
+            Multi-level indexes a.k.a. hierarchical indexes
+            <ul>
+              <li>you can include multiple columns in the index</li>
+              <li>ex. dogs_ind3 = dogs.set_index(["breed", "color"])</li>
+              <li>
+                there's an implication that the inner level of index is nested
+                inside the outer level.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Subset inner level with a list of tuples.
+            <ul>
+              <li>
+                ex. dogs_ind3.loc[[("Labrador", "Brown"), ("Chihuahua", "Tan")]]
+              </li>
+            </ul>
+          </li>
           <li></li>
         </ul>
       </div>
