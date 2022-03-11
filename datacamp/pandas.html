@@ -353,7 +353,7 @@
             Indexes make subsetting simpler
             <ul>
               <li>
-                ex. dogs[dogs["name"].isin(["Bella", "Stella"]))<br />
+                ex. dogs[dogs["name"].isin(["Bella", "Stella"])]<br />
                 -> dogs_ind<b>.loc</b>[["Bella","Stella"]]
               </li>
               <li>cf. <b>loc</b> filters on index values</li>
@@ -379,7 +379,26 @@
               </li>
             </ul>
           </li>
-          <li></li>
+          <li>
+            Sorting by index values
+            <ul>
+              <li>
+                ex. dogs_ind3<b><mark>.sort_index()</mark></b>
+              </li>
+              <li>
+                ex. dogs_ind3.sort_index(level=["color", "breed"],
+                ascending=[True, False])
+              </li>
+            </ul>
+          </li>
+          <li>
+            cf. problems
+            <ul>
+              <li>Index values are just data</li>
+              <li>Indexes violate "tidy data" principles</li>
+              <li>You need to learn two syntaxes</li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course2-1" class="idv_class">
