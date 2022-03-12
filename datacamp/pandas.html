@@ -354,7 +354,8 @@
             <ul>
               <li>
                 ex. dogs[dogs["name"].isin(["Bella", "Stella"])]<br />
-                -> dogs_ind<b>.loc</b>[["Bella","Stella"]]
+                -> dogs_ind<b><mark>.loc</mark></b
+                >[["Bella","Stella"]]
               </li>
               <li>cf. <b>loc</b> filters on index values</li>
             </ul>
@@ -368,6 +369,15 @@
               <li>
                 there's an implication that the inner level of index is nested
                 inside the outer level.
+              </li>
+              <li>
+                benefit: make it more natural to reason about nested categorical
+                variables
+              </li>
+              <li>
+                downside: code for manipulating indexes is different from the
+                code for manipulating columns, so you have to learn two syntaxes
+                and keep track of how your data is represented.
               </li>
             </ul>
           </li>
@@ -389,6 +399,7 @@
                 ex. dogs_ind3.sort_index(level=["color", "breed"],
                 ascending=[True, False])
               </li>
+              <li>cf. column의 값을 기준으로 sort : <u>.sort_values()</u></li>
             </ul>
           </li>
           <li>
@@ -404,7 +415,79 @@
       <div id="course2-1" class="idv_class">
         <h3>Slicing and subsetting with .loc and .iloc</h3>
         <ul>
-          <li></li>
+          <li>
+            <b>Slicing</b>: a technique for selecting consecutive elements
+          </li>
+          <li>
+            Sort the index before you slick
+            <ul>
+              <li>
+                ex. dogs_srt = dogs.set_index(["breed", "color"]).sort_index()
+              </li>
+            </ul>
+          </li>
+          <li>
+            Slicing the outer index level
+            <ul>
+              <li>
+                ex. dogs_srt.loc["Chow Chow":"Poodle"]
+                <ul>
+                  cf. The final value "Poodle" is included!
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Slicing the inner index levels - to pass the first and last
+            positions as tuples
+            <ul>
+              <li>
+                ex. dogs_srt.loc[("Labrador", "Brown"):("Schnauzer", "Grey")]
+              </li>
+            </ul>
+          </li>
+          <li>
+            Slicing columns
+            <ul>
+              <li>dogs_srt.loc[:, "name":"height"]</li>
+            </ul>
+          </li>
+          <li>
+            Slice on rows and columns at the same time
+            <ul>
+              <li>
+                ex. dogs_srt.loc[("Labrador", "Brownn"):("Schnquzer", "Grey"),
+                "name":"height_cm"]
+              </li>
+            </ul>
+          </li>
+          <li>
+            To subset DataFrames by a range of dates
+            <ul>
+              <li>
+                ex. dogs = dogs.set_index("date_of_birth").sort_index()<br />dogs.loc["2014-08-25":"2016-09-16"]
+              </li>
+              <li>
+                ex. dogs<u>.loc["2014":"2016"]</u> #date_of_birth between
+                2014-01-01 and 2016-12-31
+              </li>
+            </ul>
+          </li>
+          <li>
+            Subsetting by row/column number
+            <ul>
+              <li>
+                ex. print(dogs.loc[2:5, 1:4])
+                <ul>
+                  cf. like list slicing and unlike loc, the final values aren't
+                  included
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Dates in <b>ISO 8601 format</b>: "yyyy-mm-dd", "yyyy-mm", "yyyy"
+          </li>
         </ul>
       </div>
       <div id="course2-2" class="idv_class">
