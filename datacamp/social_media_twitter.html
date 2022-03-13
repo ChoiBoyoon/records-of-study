@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../nomad_coders/general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analyzing Social Media Data in Python</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+    <h1>Analyzing Social Media Data in Python</h1>
+    <div id="course0">
+      <h2>Basics of Analyzing Twitter Data</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>0-0. Analyzing Twitter data</h3>
+        <ul>
+          <li>
+            Twitter can help provide insight into popular trends and important
+            cultural and policital moments.
+            <ul>
+              <li>
+                for a data scientist in industry, it can be used for tasks such
+                as <u>marketing</u> or <u>product analysis</u>.
+              </li>
+              <li>
+                for a computational social scientist, it can be used as
+                <u>a measure of public opinion</u> on important political or
+                social topics.
+              </li>
+            </ul>
+          </li>
+          <li>
+            What you can't analyze..
+            <ul>
+              <li>Can't collect data on observers</li>
+              <li>
+                Free-level of access is restrictive
+                <ul>
+                  <li>Can't collect historical data</li>
+                  <li>
+                    Only a <b>1%</b> (unverified) sample -> still
+                    <b>a few million tweets!</b>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Within a tweet
+            <ul>
+              <li>Text</li>
+              <li>User profile information</li>
+              <li>Geolocation</li>
+              <li>Retweets and quoted tweets</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course0-0" class="idv_class">
+        <h3>0-1. Collecting data through the Twitter API</h3>
+        <ul>
+          <li>
+            API: Application Programming Interface
+            <ul>
+              <li>Method of accessing data</li>
+              <li>
+                Many social media companies have some kind of API which are made
+                available to third-party developers and researchers.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Twitte APIs
+
+            <ul>
+              <li>
+                <b>Search API</b>: allows access to tweets from the past week
+              </li>
+              <li><b>Ads API</b>: focuses on Twitter ads</li>
+              <li>and Streaming API, etc.</li>
+            </ul>
+          </li>
+          <li>
+            <b>Streaming API</b>: allows us to collect a sample of tweets
+            <u>in real-time</u> based on keywords, user IDs, and locations.
+            <ul>
+              <li>The connection stays open until you close it.</li>
+              <li>
+                has 2 endpoints
+                <ul>
+                  <li>
+                    <b>Filter endpoint</b>: you can request data on a few
+                    hundred <u>keywords</u>, a few thousand <u>user IDs</u>, and
+                    25 <u>location</u> ranges.
+                  </li>
+                  <li>
+                    <b>Sample endpoint</b>: Twitter returns 1% of
+                    <u>random sample</u>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>tweepy</b>: Python package for accessing Streaming API
+            <ul>
+              <li>
+                tweepy abstracts much of the work we need to set up a stable
+                Twitter Streaming API connection.
+              </li>
+              <li>
+                you have to set up your own Twitter account and API keys for
+                authentication.
+              </li>
+              <li>
+                requires an object called <b>SListener</b> which tells it how to
+                handle incoming data
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>SListener</b>
+            <ul>
+              <li>
+                from tweepy.streaming import StreamListener<br />import time<br /><br />
+                class SListener(StreamListener): <br />
+                <ul>
+                  def __init__(self, api = None):
+                  <ul>
+                    self.output = open('tweets_%s.json' %
+                    <ul>
+                      time.strftime('%Y%m%d-%H%M%S'), 'w')
+                    </ul>
+                    self.api = api or API()
+                  </ul>
+                  ...<br /><br />
+                </ul>
+              </li>
+              <li>
+                SListener inherits from a general 'StreamListener' class
+                included with `tweepy`
+              </li>
+              <li>
+                it opens a new timestamped file in which to store tweets and
+                takes an optional API argument.
+              </li>
+              <li>we first must authenticate with Twitter.</li>
+            </ul>
+          </li>
+          <li>
+            <b>tweepy authentication</b>
+            <ul>
+              <li>
+                from tweepy import OAuthHandler<br />from tweepy import API<br /><br />auth
+                = OAuthHandler(consumer_key, consumer_secret)<br />auth.set_access_token(access_token,
+                access_token_secret)<br />api = API(auth) <br /><br />
+              </li>
+              <li>
+                OAuthentication: the authentication protocol which the Twitter
+                API uses
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Collecting data with tweepy</b>
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course0-0" class="idv_class">
+        <h3>0-2. Understanding Twitter JSON</h3>
+      </div>
+    </div>
+    <div id="course1">
+      <h2>Processing Twitter text</h2>
+      <div id="course1-0" class="idv_class">
+        <h3>1-0. Processing Twitter text</h3>
+      </div>
+      <div id="course1-1" class="idv_class">
+        <h3>1-1. Counting words</h3>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>1-2. Time series</h3>
+      </div>
+      <div id="course1-3" class="idv_class">
+        <h3>1-3. Sentiemnt analysis</h3>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>Twitter Networks</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>2-0. Twitter networks</h3>
+      </div>
+      <div id="course2-1" class="idv_class">
+        <h3>2-1. Importing and visualizing Twitter networks</h3>
+      </div>
+      <div id="course2-2" class="idv_class">
+        <h3>2-2. Individual-level network metrics</h3>
+      </div>
+    </div>
+    <div id="course3">
+      <h2>Putting Twitter data on the map</h2>
+      <div id="course3-0" class="idv_class">
+        <h3>3-0. Maps and Twitter data</h3>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>3-1. Geographical data in Twitter JSON</h3>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>3-2. Creating Twitter maps</h3>
+      </div>
+    </div>
+  </body>
+</html>
