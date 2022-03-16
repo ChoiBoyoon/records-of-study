@@ -15,7 +15,78 @@
     <div id="course1">
       <h2>#1 Save the Pandas</h2>
       <div id="course1-0" class="idv_class">
-        <h3>1-0. hello</h3>
+        <h3>1-0. Introduction to Pandas and Jupyter</h3>
+        <ul>
+          <li>Pandas는 기본적으로 CSV 파일을 다루기 위해 만들어짐.</li>
+        </ul>
+      </div>
+      <div id="course1-1" class="idv_class">
+        <h3>1-1. Getting Total Cases Globally</h3>
+        <ul>
+          <li>
+            daily_df[["Confirmed", "Deaths", "Recovered"]].sum()
+            <b><mark>.reset_index(name="count")</mark></b> -> 이렇게 하면
+            series가 아니라 dataframe 형식을 유지함.
+          </li>
+          <li>
+            칼럼 이름 바꾸기
+            <ul>
+              <li>
+                daily_df = daily_df<b
+                  ><mark>.rename(columns={"index":"condition"})</mark></b
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>1-2. Getting Total Cases by Country</h3>
+        <ul>
+          <li>
+            daily_df = daily_df.groupby("Country_Region").sum()
+            <ul>
+              <li>
+                뒤에 .reset_index() 붙여주면 index였던 Country가 칼럼이 됨
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-3" class="idv_class">
+        <h3>1-3. Global Time Series Part One</h3>
+        <ul>
+          <li>
+            Jupyter theme 변경하기
+            <ol>
+              <li><code>pip install jupyterthemes</code></li>
+              <li><code>jt -t monokai</code> : 니코쌤이랑 같은 검은 배경</li>
+              <li>
+                Command(Ctrl)+C : 실행중인 jupyter notebook을 kill (kill the
+                server)
+              </li>
+            </ol>
+            <ul>
+              <li>
+                cf.
+                https://github.com/dunovank/jupyter-themes/blob/master/README.md
+              </li>
+            </ul>
+          </li>
+          <li>
+            필요없는 column들 drop하기
+            <ul>
+              <li>df.drop(['B','C'], axis=1)</li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course1-4" class="idv_class">
+        <h3>1-4. Global Time Series Part Two</h3>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>1-2. Getting Total Cases by Country</h3>
       </div>
     </div>
     <div class="course2">
