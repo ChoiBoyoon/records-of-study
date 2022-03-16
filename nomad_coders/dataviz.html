@@ -59,11 +59,20 @@
           <li>
             Jupyter theme 변경하기
             <ol>
-              <li><code>pip install jupyterthemes</code></li>
-              <li><code>jt -t monokai</code> : 니코쌤이랑 같은 검은 배경</li>
               <li>
-                Command(Ctrl)+C : 실행중인 jupyter notebook을 kill (kill the
-                server)
+                <code
+                  ><b><mark>pip install jupyterthemes</mark></b></code
+                >
+              </li>
+              <li>
+                <code
+                  ><b><mark>jt -t monokai</mark></b></code
+                >
+                : 니코쌤이랑 같은 검은 배경
+              </li>
+              <li>
+                <u>Command(Ctrl)+C</u> : 실행중인 jupyter notebook을 kill (kill
+                the server)
               </li>
             </ol>
             <ul>
@@ -73,24 +82,208 @@
               </li>
             </ul>
           </li>
-          <li>
-            필요없는 column들 drop하기
-            <ul>
-              <li>df.drop(['B','C'], axis=1)</li>
-            </ul>
-          </li>
-          <li></li>
         </ul>
       </div>
       <div id="course1-4" class="idv_class">
         <h3>1-4. Global Time Series Part Two</h3>
+        <ul>
+          <li>
+            필요없는 column들 drop하기
+            <ul>
+              <li>ex. df.drop(['B','C'], axis=1)</li>
+            </ul>
+          </li>
+          <li>
+            merge
+            <ul>
+              <li>ex. df1.merge(df2)</li>
+            </ul>
+          </li>
+        </ul>
       </div>
-      <div id="course1-2" class="idv_class">
-        <h3>1-2. Getting Total Cases by Country</h3>
+      <div id="course1-5" class="idv_class">
+        <h3>1-5. Country Time Series part One</h3>
+        <ul>
+          <li>
+            pandas.Dataframe<b><mark>.loc</mark></b
+            >: access a group of rows and columns by labels or a boolean array
+            <ul>
+              <li>ex. df = df.loc[df["Country/Region"]=="Afghanistan"]</li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="course2">
       <h2>#2 Dashboard</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>2-0. Introduction to Dash</h3>
+        <ul>
+          <li>Dash: Python코드로 react application을 만들어줌</li>
+          <li>
+            https://dash.plotly.com/layout에서 코드 복붙, 실행하면 Dash is
+            running on http://127.0.0.1:8050이 뜸 <br />Serving Falsk app "main"
+            -> Dash는 flask 위에서 작동됨
+          </li>
+          <li>VS code에서 코드를 변경하면 dash에 바로 반영됨(!)</li>
+        </ul>
+      </div>
+      <div id="course2-1" class="idv_class">
+        <h3>2-1. Layouts in Dash</h3>
+        <ul>
+          <li>
+            Dash의 멋진 2 concepts
+            <ol>
+              <li>Layout: puts HTML on the screen</li>
+              <li>Callbacks : make everything interactive</li>
+            </ol>
+            <ul></ul>
+          </li>
+          <li>Dash의 레이아웃 위에 올라가는 것들은 모두 창에서 보여짐</li>
+          <li>
+            두 가지 옵션 사용 가능
+            <ul>
+              <li>
+                app.layout = html.Div( #니꼬쌤의 preference
+                <ul>
+                  children=[
+                  <ul>
+                    html.H1()
+                  </ul>
+                  ]
+                </ul>
+                )
+              </li>
+              <li>
+                app.layout = html.Div(
+                <ul>
+                  html.H1()
+                </ul>
+                )
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course2-2" class="idv_class">
+        <h3>2-2. Countries Tables part One</h3>
+      </div>
+      <div id="course2-3" class="idv_class">
+        <h3>2-3. Cleaning the Code</h3>
+      </div>
+      <div id="course2-4" class="idv_class">
+        <h3>2-4. Introduction to Plotly</h3>
+        <ul>
+          <li>Plotly: 지도를 위해 사용하는 라이브러리</li>
+          <li>
+            Dash is made by Plotly
+            <ul>
+              <li>Dash는 Python 코드로 react application을 만들어 줌</li>
+              <li>
+                Plotly: Data Visualization을 할 수 있게 해줌.(오픈소스 graphing
+                library) JS, R, python에서 사용 가능
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>plotly express</b>: plotly 패키지의 일부. 만들어져 있는 지도를
+            준비해 줌.
+          </li>
+        </ul>
+      </div>
+      <div id="course2-5" class="idv_class">
+        <h3>2-5. Building the Map Figure</h3>
+        <ul>
+          <li>
+            px.scatter_geo()로 간단하게 맵을 만들 수 있음.
+            <ul>
+              <li>
+                ex. <b><mark>fig = px.scatter_geo</mark></b
+                >(countries_df)<br /><b><mark>fig.show()</mark></b>
+              </li>
+              <li>
+                <b><code>size="Confirmed"</code></b> #각 bubble의 사이즈를 정할
+                칼럼 이름
+              </li>
+              <li>
+                <b><code>size_max = 40</code></b> #max size 지정 (버블의
+                사이즈가 너무 작아서 불만이면 이거 수정)
+              </li>
+              <li>
+                <b><code>template = "plotly_dark"</code></b> #맵의 디자인 결정.
+                ggplot2, seaborn, simple_white, plotly 등등 사용 가능
+                <ul>
+                  cf. plotly.com/python/templates/ 참고
+                </ul>
+              </li>
+              <li>
+                <b><code>locations = "Country_Region"</code></b
+                >: 버블 표시의 기준이 될 칼럼?
+              </li>
+              <li>
+                <b><code>locationmode = "country names"</code></b>
+              </li>
+              <li>
+                <b><code>color = "Confirmed"</code></b
+                >: 해당 칼럼 기준으로 버블 색이 변경됨
+              </li>
+              <li>
+                <b><code>hover_name = "Country_Region"</code></b
+                >: 마우스가 버블 위에 hover하면 해당 칼럼 정보가 뜸
+              </li>
+              <li>
+                <b
+                  ><code
+                    >hover_data = {"Confirmed":":,",
+                    "Country_Region":False}</code
+                  ></b
+                >: confirmed 숫자는 세 자리마다 칼럼이 찍혀서 나오고(1,000처럼),
+                "Country_Region"정보는 숨겨짐
+                <ul>
+                  cf. string format 참고:
+                  https://mkaz.blog/code/python-string-format-cookbook
+                </ul>
+              </li>
+              <li></li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course2-6" class="idv_class">
+        <h3>2-6. Bars Figure</h3>
+      </div>
+      <div id="course2-7" class="idv_class">
+        <h3>2-7. Bars Figure part Two</h3>
+      </div>
+      <div id="course2-8" class="idv_class">
+        <h3>2-8. Styles and Colors</h3>
+      </div>
+    </div>
+    <div class="course3">
+      <h2>#3 Interactivity</h2>
+      <div id="course3-0" class="idv_class">
+        <h3>3-0. Introduction to Callbacks</h3>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>3-1. Recap and Dropdown</h3>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>3-2. Countries Dropdown and Graph part One</h3>
+      </div>
+      <div id="course3-3" class="idv_class">
+        <h3>3-3. Countries Graph part Two</h3>
+      </div>
+      <div id="course3-4" class="idv_class">
+        <h3>3-4. Updating the Graph</h3>
+      </div>
+      <div id="course3-5" class="idv_class">
+        <h3>3-5. Conclusions</h3>
+      </div>
+      <div id="course3-6" class="idv_class">
+        <h3>3-6. Bonus Deploying to Heroku</h3>
+      </div>
     </div>
   </body>
 </html>
