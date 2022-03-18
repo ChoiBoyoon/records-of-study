@@ -253,15 +253,50 @@
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
         </ul>
       </div>
       <div id="course2-6" class="idv_class">
         <h3>2-6. Bars Figure</h3>
+        <ul>
+          <li>
+            bar 그래프 만들기
+            <ul>
+              <code
+                >fig = px.bar(totals_df, x="condition", y="count")<br />fig.show()</code
+              >
+            </ul>
+          </li>
+          <li>
+            스타일 변경: <b>template</b>
+            <ul>
+              <code>
+                fig = px.bar(totals_df, x="condition", y="count",
+                <b>template="plotly_dark"</b>)</code
+              >
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course2-7" class="idv_class">
         <h3>2-7. Bars Figure part Two</h3>
+        <ul>
+          <li>
+            scatter_geo 색상 바꾸기 -> built-in continuous color scales in
+            python 확인
+            <ul>
+              <li>
+                <b
+                  ><code
+                    >color_continuous_scale=px.colors.sequential.Oryel,</code
+                  ></b
+                >
+              </li>
+              <li>cf. plotly.com/python/builtin-colorscales/</li>
+              <li>cf. 니꼬썜은 항상 Oryel을 씀.</li>
+              <li>ex. Plotly3, Viridis, Cividis, Inferno, Magma, etc.</li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course2-8" class="idv_class">
         <h3>2-8. Styles and Colors</h3>
