@@ -251,6 +251,10 @@
                   cf. plotly.com/python/map-configuration/#map-projections
                 </ul>
               </li>
+              <li>
+                <b><code>tilte="Confirmed Cases by Country"</code></b
+                >: 타이틀 추가
+              </li>
             </ul>
           </li>
         </ul>
@@ -296,16 +300,100 @@
               <li>ex. Plotly3, Viridis, Cividis, Inferno, Magma, etc.</li>
             </ul>
           </li>
+          <li>
+            layout 변경하기
+            <ul>
+              <li>
+                ex.(bar 그래프)<br />fig<b>.update_layout</b>(
+                <ul>
+                  xaxis=dict(title="Condition")<br />yaxis=dict(title="Count")
+                </ul>
+                ) <br />cf. px.bar()안에 labels={"condition":"Condition"}처럼
+                넣어도 됨.
+              </li>
+              <li>
+                ex. (scatter_geo에서 margin 설정. 지도의 크기가 커짐)<br />fig<b>.update_layout</b>(
+                <ul>
+                  margin=dict(l=0, r=0, t=50, b=0)
+                </ul>
+                )
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course2-8" class="idv_class">
         <h3>2-8. Styles and Colors</h3>
+        <ul>
+          <li>
+            bar그래프에서 각 column의 색을 다르게 표시하기
+            <ul>
+              <li>
+                px.bar()안에,
+                <code>color=["Confirmed", "Deaths", "Recovered"]</code>
+              </li>
+            </ul>
+          </li>
+          <li>flatuicolors.com/palette/defo : 유용한 사이트. 색상 가져오기</li>
+          <li>
+            <b>update_traces</b>: bar graph의 색깔을 내가 원하는 대로 변경
+            <ul>
+              <li>
+                <code
+                  >bars_graph<b>.update_traces</b>(marker_color=["#e74c3c",
+                  "#8e44ad", "#27ae60"])</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="course3">
       <h2>#3 Interactivity</h2>
       <div id="course3-0" class="idv_class">
         <h3>3-0. Introduction to Callbacks</h3>
+        <ul>
+          <li>
+            <b>Dash</b>
+            <ul>
+              <li>HTML components</li>
+              <li>
+                Core components : make the dashboard interactive
+                <ul>
+                  <li>generate react.js code</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><b>callback</b> takes 2 things; output & input</li>
+          <li>
+            <code
+              >from dash.dependencies import Input, Output<br /><br />html.Div(
+              <ul>
+                children=[
+                <ul>
+                  dcc.Input(id="hello-input"),<br />html.H2(children="Hello",
+                  id="hello-output")
+                </ul>
+                ]
+              </ul>
+              )<br /><br />@app.<b>callback</b>(Output("hello-output",
+              "children"), [Input("hello-input", "value")])<br />def
+              update_hello(value):
+              <ul>
+                if value is None:
+                <ul>
+                  return "Hello Anonymous"
+                </ul>
+                else:
+                <ul>
+                  return f"Hello {value}"
+                </ul>
+              </ul></code
+            >
+          </li>
+        </ul>
       </div>
       <div id="course3-1" class="idv_class">
         <h3>3-1. Recap and Dropdown</h3>
@@ -315,6 +403,44 @@
       </div>
       <div id="course3-3" class="idv_class">
         <h3>3-3. Countries Graph part Two</h3>
+        <ul>
+          <li>
+            Plotly : 그래프의 많은 부분에 손을 대고 싶다면(ex. 선 위에 점 찍기
+            등)
+            <ul>
+              ex.
+              <code
+                >import <b>plotly.graph_objects as go</b><br />import numpy as
+                np<br /><br />x = np.arange(10)<br />fig =
+                <b>go.Figure</b>(data=go.Scatter(x=x, y=x**2))<br />fig=show()</code
+              >
+            </ul>
+          </li>
+          <li>Plotly express</li>
+          <li>
+            line 그래프에서 각 line의 색 변경
+            <ul>
+              <li>
+                ex.
+                <code
+                  >fig = px.line(df, x="date", y=["confirmed", "deaths",
+                  "recovered"])<br />fig["data"][0]["line"]["color"] = "red"<br />fig["data"][1]["line"]["color"]
+                  = "pink"<br />...</code
+                >
+              </li>
+              <li>
+                ex.
+                <code
+                  >fig = px.line(df, x="date", y=["confirmed", "deaths",
+                  "recovered"],
+                  <b>color_discrete_map</b>
+                  = {"confirmed":"red", "deaths":"pink", "recovered":"green"}
+                  )</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course3-4" class="idv_class">
         <h3>3-4. Updating the Graph</h3>
