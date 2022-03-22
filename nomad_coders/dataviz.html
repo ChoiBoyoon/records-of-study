@@ -457,10 +457,30 @@
               <li>AWS보다 비쌈</li>
               <li>아시아 지역이 없음;</li>
               <li>but 정말 빠르게 deploy할 수 있음. in less than 5 mins</li>
+              <li>
+                <b>Heroku CLI</b>: 콘솔에서 Heroku랑 communicate할 수 있게 해줌.
+              </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
+
+          <li>
+            <b><code>pip freeze > requirements.txt</code></b> : import해야하는
+            패키지들 목록을 담은 텍스트 파일을 만들어줌. Heroku에 deploy하기
+            전에 필요한 것만 남기고 다 지웁시다.
+          </li>
+          <li>
+            <b>procfile</b>: 어떤 종류의 어플리케이션을 deploy하는지 heroku에게
+            정보를 줌
+          </li>
+          <li>
+            <b>gunicorn</b>: 파이썬을 위한 진짜 서버
+            <ul>
+              <li>
+                강력하고 동시에 많은 사람들이 접속 가능. 일반 dash 서버를
+                사용하면 안돼요
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
