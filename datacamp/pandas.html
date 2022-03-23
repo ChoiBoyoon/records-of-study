@@ -422,7 +422,9 @@
             Sort the index before you slick
             <ul>
               <li>
-                ex. dogs_srt = dogs.set_index(["breed", "color"]).sort_index()
+                ex. dogs_srt = dogs.<b>set_index</b>(["breed", "color"]).<b
+                  >sort_index()</b
+                >
               </li>
             </ul>
           </li>
@@ -477,7 +479,8 @@
             Subsetting by row/column number
             <ul>
               <li>
-                ex. print(dogs.loc[2:5, 1:4])
+                ex. print(dogs.<b><mark>iloc</mark></b
+                >[2:5, 1:4])
                 <ul>
                   cf. like list slicing and unlike loc, the final values aren't
                   included
@@ -493,7 +496,24 @@
       <div id="course2-2" class="idv_class">
         <h3>Working with pivot tables</h3>
         <ul>
+          <li>
+            Pivoting the dog table
+            <ul>
+              <li>
+                dogs_height_by_breed_vs_color =
+                dog_pack.pivot_table("height_cm", index="breed",
+                columns="color")
+              </li>
+            </ul>
+          </li>
+          <li>
+            .loc[] + slicing is a power combo
+            <ul>
+              <li>dogs_height_by_breed_vs_color.loc["Chow Chow":"Poodle"]</li>
+            </ul>
+          </li>
           <li></li>
+          <li>Pivot tables are DataFrames with sorted indexes.</li>
         </ul>
       </div>
     </div>
