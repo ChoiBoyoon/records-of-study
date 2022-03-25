@@ -422,9 +422,8 @@
             Sort the index before you slick
             <ul>
               <li>
-                ex. dogs_srt = dogs.<b>set_index</b>(["breed", "color"]).<b
-                  >sort_index()</b
-                >
+                ex. dogs_srt = dogs.<b><mark>set_index</mark></b
+                >(["breed", "color"]).<b><mark>sort_index()</mark></b>
               </li>
             </ul>
           </li>
@@ -432,7 +431,8 @@
             Slicing the outer index level
             <ul>
               <li>
-                ex. dogs_srt.loc["Chow Chow":"Poodle"]
+                ex. dogs_srt.<b><mark>loc</mark></b
+                >["Chow Chow":"Poodle"]
                 <ul>
                   cf. The final value "Poodle" is included!
                 </ul>
@@ -444,7 +444,8 @@
             positions as tuples
             <ul>
               <li>
-                ex. dogs_srt.loc[("Labrador", "Brown"):("Schnauzer", "Grey")]
+                ex. dogs_srt.<b><mark>loc</mark></b
+                >[("Labrador", "Brown"):("Schnauzer", "Grey")]
               </li>
             </ul>
           </li>
@@ -467,7 +468,9 @@
             To subset DataFrames by a range of dates
             <ul>
               <li>
-                ex. dogs = dogs.set_index("date_of_birth").sort_index()<br />dogs.loc["2014-08-25":"2016-09-16"]
+                ex. dogs = dogs.<b>set_index</b>("date_of_birth").<b
+                  >sort_index()</b
+                ><br />dogs.loc["2014-08-25":"2016-09-16"]
               </li>
               <li>
                 ex. dogs<u>.loc["2014":"2016"]</u> #date_of_birth between
@@ -476,7 +479,7 @@
             </ul>
           </li>
           <li>
-            Subsetting by row/column number
+            <b>Subsetting by <u>row/column number</u></b>
             <ul>
               <li>
                 ex. print(dogs.<b><mark>iloc</mark></b
@@ -512,8 +515,28 @@
               <li>dogs_height_by_breed_vs_color.loc["Chow Chow":"Poodle"]</li>
             </ul>
           </li>
-          <li></li>
-          <li>Pivot tables are DataFrames with sorted indexes.</li>
+          <li>
+            The axis argument
+            <ul>
+              <li>
+                default value: "index"(calculate the statistic across rows)
+              </li>
+              <li>
+                ex. dogs_height_by_breed_vs_color.mean(<b>axis="index"</b>)
+              </li>
+              <li>
+                ex. dogs_height_by_breed_vs_color.mean(<b>axis="columns"</b>)
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            to access the components of a date(year, month, and day)
+            <ul>
+              <li>ex. dataframe["column"].dt.year</li>
+              <li>ex. dataframe["column"].dt.month</li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
