@@ -545,6 +545,71 @@
       <div id="course3-0" class="idv_class">
         <h3>Visualizing your data</h3>
         <ul>
+          <li>
+            <b>Histograms</b> : y-axis represents the number of instances
+            <ul>
+              <li>
+                ex. import matplotlib.pyplot as plt<br />dog_pack["height_cm"]<b
+                  >.hist()</b
+                ><br />plt.show()
+              </li>
+              <li>
+                cf. <b>bins</b> : adjust the number of bars
+                <ul>
+                  <li>
+                    ex. dog_pack["height_cm"].hist(<b>bins=20</b>)<br />plt.show()
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Bar plots</b>: reveal relationships between a categorical
+            variable and a numeric variable
+            <ul>
+              <li>
+                ex. avg_weight_by_breed =
+                dog_pack.groupby("breed")["weight_kg"].mean()<br />avg_weight_by_breed.plot(<b>kind="bar"</b>,
+                title="Mean Weight by Dog Breed")<br />plt.show()
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Line plots</b>: great for visualizing changes in numeric
+            variables over time
+            <ul>
+              <li>
+                ex. sully.plot(x="date", y="weight_kg",
+                <b>kind="line"</b>, <b>rot=45</b>)<br />plt.show()
+                <ul>
+                  <li>cf. rot=45 : rotate the x-axis labels</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Scatter plots</b> : great for visualizing relationships between
+            two numeric values
+            <ul>
+              <li>
+                ex. dog_pack.plot(x="height_cm", y="weight_kg",
+                kind="scatter")<br />plt.show()
+              </li>
+              <li>
+                <b>Layering plots</b> : plots can be layered on top of one
+                another.
+                <ul>
+                  <li>
+                    ex.
+                    dog_pack[dog_pack["sex"]=="F"]["height_cm"].hist(alpha=0.7)<br />dog_pack[dog_pack["sex"]=="M"]["height_cm"].hist(alpha=0.7)<br />plt.legend(["F",
+                    "M"])<br />plt.show()
+                  </li>
+                  <li><b>alpha</b>: make the histograms translucent</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li></li>
           <li></li>
         </ul>
       </div>
