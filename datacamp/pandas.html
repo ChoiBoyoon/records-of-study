@@ -614,6 +614,50 @@
       <div id="course3-1" class="idv_class">
         <h3>Missing values</h3>
         <ul>
+          <li>
+            In pandas DataFrame, missing values are indicated with
+            <b>NaN</b> (not a number)
+          </li>
+          <li>
+            Detecting missing values
+            <ul>
+              <li>
+                ex. dogs.<b>isna()</b> -> True, False로 이뤄진 dataframe을 리턴
+              </li>
+              <li>ex. dogs.isna().<b>any()</b> -> 각 칼럼에 NaN이 있나 없나</li>
+            </ul>
+          </li>
+          <li>
+            Counting missing values
+            <ul>
+              <li>dogs.isna().<b>sum()</b> -> NaN의 수를 셈</li>
+            </ul>
+          </li>
+          <li>
+            Plotting missing values
+            <ul>
+              <li>
+                ex. import matplotlib.pyplot as plt<br />dogs.isna().sum().plot(kind="bar")<br />plt.show()
+              </li>
+            </ul>
+          </li>
+          <li>
+            Remove the rows that contain missing values
+            <ul>
+              <li>ex. dogs.<b>dropna()</b></li>
+              <li>
+                -> not ideal if you have a lot of missing data(that means losing
+                a lot of observations)
+              </li>
+            </ul>
+          </li>
+          <li>
+            Replacing missing values
+            <ul>
+              <li>ex. dogs.<b>fillna(0)</b></li>
+            </ul>
+          </li>
+          <li></li>
           <li></li>
         </ul>
       </div>
