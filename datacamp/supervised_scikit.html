@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../nomad_coders/general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Supervised Learning with scikit-learn</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+    <h1>Supervised Learning with scikit-learn</h1>
+    <div id="course0">
+      <h2>0. Classification</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>0-0. Supervised Learning</h3>
+        <ul>
+          <li>
+            What is <b>machine learning</b>?
+            <ul>
+              <li>
+                the art and science of:
+                <ul>
+                  <li>
+                    Giving computers the ability to learn to make decisions from
+                    data
+                  </li>
+                  <li>without being explicitly programmed!</li>
+                </ul>
+              </li>
+              <li>
+                Examples:
+                <ul>
+                  <li>
+                    Learning to predict whether an email is spam or not (labeled
+                    -> <b>supervised learning</b>)
+                  </li>
+                  <li>
+                    Clustering wikipedia entries into different categories (no
+                    label -> <b>unsupervised learning</b>)
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Unsupervised learning</b>
+            <ul>
+              <li>Uncovering hidden patterns from unlabeled data</li>
+              <li>
+                Example:
+                <ul>
+                  <li>
+                    Grouping customers into distinct categories (Clustering)
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Reinforcement learning</b>
+            <ul>
+              <li>
+                Software agents interact with an environment
+                <ul>
+                  <li>Learn how to optimize their behavior</li>
+                  <li>Given a system of rewards and punishments</li>
+                  <li>Draws inspiration from behavioral psychology</li>
+                </ul>
+              </li>
+              <li>
+                Applications
+                <ul>
+                  <li>Economics</li>
+                  <li>Genetics</li>
+                  <li>Game playing</li>
+                </ul>
+              </li>
+              <li>
+                In 2016, reinforcement learning was used to train
+                <b>Google DeepMind's AlphaGo</b> (first computer to defeat the
+                world champion in Go)
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Supervised Learning</b>
+            <ul>
+              <li>Predictor variables/features and a target variable</li>
+              <li>
+                Aim: Predict the target variable, given the predictor variables
+                <ul>
+                  <li>
+                    <b>Classification</b>: Target variable consists of
+                    categories
+                  </li>
+                  <li><b>Regression</b>: Target variable is continuous</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Naming conventions
+            <ul>
+              <li>Features = predictor variables = independent variables</li>
+              <li>Target variable = dependent variable = response variable</li>
+            </ul>
+          </li>
+          <li>
+            Supervised learning
+            <ul>
+              <li>
+                Automate time-consuming or expensive manual tasks
+                <ul>
+                  <li>ex. doctor's diagnosis</li>
+                </ul>
+              </li>
+              <li>
+                Make predictions about the future
+                <ul>
+                  <li>ex. will a customer click on an ad or not?</li>
+                </ul>
+              </li>
+              <li>
+                Need labeled data
+                <ul>
+                  <li>Historical data with labels</li>
+                  <li>Experiments to get labeled data</li>
+                  <li>Crowd-sourcing labeled data ex.reCAPTCHA</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            scikit-learn
+            <ul>
+              <li>integrates well with the SciPy stack</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course0-1" class="idv_class">
+        <h3>0-1. Exploratory data analysis</h3>
+        <ul>
+          <li>
+            The Iris dataset in scikit learn
+            <ul>
+              <li>
+                from sklearn import datasets<br />import pandas as pd<br />import
+                numpy as np<br />import matplotlib.pyplot as plt<br />plt.style.use('ggplot')<br />iris
+                = datasets.load_iris()<br />type(iris) #->
+                sklearn.datasets.base.Bunch
+                <ul>
+                  <li>
+                    cf. Bunch: similar to a dictionary in that it contains
+                    key-value pairs
+                  </li>
+                </ul>
+                type(iris.data), type(iris.target) #-> 둘 다 numpy.ndarray<br />iris.data.shape
+                #->(150, 4)<br />iris.target_names #-> array(['setosa',
+                'versicolor', 'virginica'], dtype='< U10')
+              </li>
+            </ul>
+          </li>
+          <li>
+            Exploratory Data Analysis(EDA)
+            <ul>
+              <li>
+                X = iris.data<br />y = iris.target<br />df = pd.DataFrame(X,
+                columns = iris.feature_names)<br />print(df.head())
+              </li>
+            </ul>
+          </li>
+          <li>
+            Visual EDA
+            <ul>
+              <li>
+                _ = pd.plotting.scatter_matrix(df, c=y, figsize = [8, 8], s=150,
+                market = 'D')
+                <ul>
+                  <li>c=y #-> data points will be colored by their species</li>
+                  <li>s=150 #-> shape</li>
+                  <li>marker='D' #-> market size</li>
+                </ul>
+              </li>
+              <li>
+                cf. Seaborn's countplot
+                <ul>
+                  <li>
+                    plt.figure() #-> set up a new figure<br />sns.countplot(x='education',
+                    hue='party', data=df, palette='RdBu')<br />plt.xticks([0,1],
+                    ['No', 'Yes'])<br />plt.show()
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course0-2" class="idv_class">
+        <h3>0-2. The classification challenge</h3>
+        <ul>
+          <li>
+            k-Nearest Neighbors
+            <ul>
+              <li>
+                Basic idea: Predict the label of a data point by
+                <ul>
+                  <li>Looking at the 'k' closest labeled data points</li>
+                  <li>Taking a majority vote</li>
+                </ul>
+              </li>
+              <li></li>
+            </ul>
+          </li>
+          <li>
+            Scikit-learn fit and predict
+            <ul>
+              <li>
+                All machine learning models implemented as Python classes
+                <ul>
+                  <li>
+                    They implement the algorithms for learning and predicting
+                  </li>
+                  <li>Store the information learned from the data</li>
+                </ul>
+              </li>
+              <li>
+                Training a model on the data = <b>'fitting'</b> a model to the
+                data
+                <ul>
+                  <li><b>.fit()</b> method</li>
+                </ul>
+              </li>
+              <li>
+                To predict the labels of new data: <b>.predict()</b> method
+              </li>
+              <li>
+                from sklearn.neighbors import KNeighborsClassifier<br />knn =
+                KNeighborsClassifier(n_neighbors=6)<br />knn.<b>fit</b>(iris['data'],
+                iris['target])
+              </li>
+              <li>
+                cf. iris['data'].shape #-> (150, 4)<br />iris['target'].shape
+                #-> (150, )
+              </li>
+            </ul>
+          </li>
+          <li>
+            The scikit-learn API requires that
+            <ul>
+              <li>the data as a NumPy array or pandas DataFrame</li>
+              <li>features take on continous values (not categories)</li>
+              <li>no missing values in the data</li>
+            </ul>
+          </li>
+          <li>
+            Predicting on unlabeled data
+            <ul>
+              <li>
+                X_new = np.array([5.6, 2.8, 3.9, 1.1], [5.7, 2.6, 3.8, 1.3],
+                [4.7, 3.2, 1.3, 0.2])<br />prediction =
+                knn.<b>predict</b>(X_new)<br />print('Prediction:
+                {}'.format(prediction)) #-> Prediction: [1 1 0]
+              </li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course0-3" class="idv_class">
+        <h3>0-3. Measuring model performance</h3>
+      </div>
+    </div>
+    <div id="course1">
+      <h2>1. Regression</h2>
+      <div id="course1-0" class="idv_class">
+        <h3>1-0. Introduction to regression</h3>
+      </div>
+      <div id="course1-1" class="idv_class">
+        <h3>1-1. The basics of linear regression</h3>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>1-2. Cross-validation</h3>
+      </div>
+      <div id="course1-3" class="idv_class">
+        <h3>1-3. Regularized regression</h3>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>2. Fine-tuning your model</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>2-0. How good is your model?</h3>
+      </div>
+      <div id="course2-1" class="idv_class">
+        <h3>2-1. Logistic regression and the ROC curve</h3>
+      </div>
+      <div id="course2-2" class="idv_class">
+        <h3>2-2. Area under the ROC curve</h3>
+      </div>
+      <div id="course2-3" class="idv_class">
+        <h3>2-3. Hyperparameter tuning</h3>
+      </div>
+      <div id="course2-4" class="idv_class">
+        <h3>2-4. Hold-out set for final evaluation</h3>
+      </div>
+    </div>
+    <div id="course3">
+      <h2>3. Preprocessing and pipelines</h2>
+      <div id="course3-0" class="idv_class">
+        <h3>3-0. Preprocessing data</h3>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>3-1. Handling missing data</h3>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>3-2. Centering and scaling</h3>
+      </div>
+    </div>
+  </body>
+</html>
