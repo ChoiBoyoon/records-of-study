@@ -363,6 +363,56 @@
       <h2>1. Regression</h2>
       <div id="course1-0" class="idv_class">
         <h3>1-0. Introduction to regression</h3>
+        <ul>
+          <li>
+            In regression tasks, the target value is a continuously varying
+            variable, such as a country's GDP or the price of a house.
+          </li>
+          <li>
+            Boston housing data
+            <ul>
+              <li>CRIM: per capita crime rate</li>
+              <li>NX: nitric oxcides concentration</li>
+              <li>RM: average number of rooms per dwelling</li>
+              <li>
+                MEDV: the median value of owner occupied homes in thousands of
+                dollars.
+              </li>
+              <li>
+                Creating feature and target arrays
+                <ul>
+                  <li>
+                    <code
+                      >X = boston.drop('MEDV', axis=1).values<br />y =
+                      boston['MEDV'].values</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Predicting house value from a single feature
+                <ul>
+                  <li>X_rooms = x[:5]</li>
+                  <li>
+                    y = y.reshape(-1, 1)<br />X_rooms = X_rooms.reshape(-1, 1)
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Plotting house value vs. number of rooms
+                <ul>
+                  <li></li>
+                </ul>
+              </li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course1-1" class="idv_class">
         <h3>1-1. The basics of linear regression</h3>
