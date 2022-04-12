@@ -378,35 +378,48 @@
                 MEDV: the median value of owner occupied homes in thousands of
                 dollars.
               </li>
+            </ul>
+          </li>
+          <li>
+            Creating feature and target arrays
+            <ul>
               <li>
-                Creating feature and target arrays
-                <ul>
-                  <li>
-                    <code
-                      >X = boston.drop('MEDV', axis=1).values<br />y =
-                      boston['MEDV'].values</code
-                    >
-                  </li>
-                </ul>
+                <code
+                  >X = boston.drop('MEDV', axis=1).values<br />y =
+                  boston['MEDV'].values</code
+                >
               </li>
+            </ul>
+          </li>
+          <li>
+            Predicting house value from a single feature
+            <ul>
+              <li>X_rooms = x[:5]</li>
               <li>
-                Predicting house value from a single feature
-                <ul>
-                  <li>X_rooms = x[:5]</li>
-                  <li>
-                    y = y.reshape(-1, 1)<br />X_rooms = X_rooms.reshape(-1, 1)
-                  </li>
-                </ul>
+                y = y.reshape(-1, 1)<br />X_rooms = X_rooms.reshape(-1, 1)
               </li>
+            </ul>
+          </li>
+          <li>
+            Plotting house value vs. number of rooms
+            <ul>
               <li>
-                Plotting house value vs. number of rooms
-                <ul>
-                  <li></li>
-                </ul>
+                plt.scatter(X_rooms, y)<br />plt.ylabel('Value of house /1000
+                ($)')<br />plt.xlabel('Number of rooms')<br />plt.show()
               </li>
-              <li></li>
-              <li></li>
-              <li></li>
+            </ul>
+          </li>
+          <li>
+            Fitting a regression model
+            <ul>
+              <li>
+                import numpy as np<br />from sklearn.linear_model import
+                LinearRregression<br /><br />reg = LinearRegression()<br />reg.fit(X_rooms,
+                y)<br />prediction_space = np.linspace(min(X_rooms),
+                max(X_rooms)).reshape(-1, 1)<br /><br />plt.scatter(X_rooms, y,
+                color='blue')<br />plt.plot(prediction_space,
+                reg.predict(prediction_space), color='black', linewidth=3)<br />plt.show()
+              </li>
             </ul>
           </li>
           <li></li>
