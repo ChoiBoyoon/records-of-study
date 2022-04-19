@@ -458,13 +458,61 @@
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>
+            Linear regression on all features
+            <ul>
+              <li>
+                <code>
+                  from sklearn.model_selection import train_test_split<br />from
+                  sklearn.linear_model import LinearRegression<br /><br />X_train,
+                  X_test, y_train, y_test = train_test_split(X, y,
+                  test_size=0.3, random_state=42)<br />reg_all =
+                  LinearRegression()<br />reg_all.fit(X_train, y_train)<br />y_pred
+                  = reg_all.predict(X_test)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>R squared</b>: the default scoring method for linear regression
+            <ul>
+              <li>
+                quantifies the mount of variance in the target variable that is
+                predicted from the feature variables.
+              </li>
+              <li><code>reg_all.score(X_test, y_test)</code></li>
+              <li>
+                cf. you'll never use linear regression out of the box like this:
+                you will most likely wish to use <b><u>regularization</u></b>
+                <ul>
+                  -> places further constraints on the model coefficients
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>the Root Mean Squared Error (RMSE)</b>: another commonly used
+            metric to evaluate regression models.
+            <ul>
+              <li>
+                <code
+                  >from sklearn.metrics import mean_squared_error<br />...<br />rmse
+                  = np.sqrt(mean_squared_error(y_test, y_pred))</code
+                >
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course1-2" class="idv_class">
         <h3>1-2. Cross-validation</h3>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course1-3" class="idv_class">
         <h3>1-3. Regularized regression</h3>
