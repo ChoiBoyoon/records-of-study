@@ -507,15 +507,93 @@
       <div id="course1-2" class="idv_class">
         <h3>1-2. Cross-validation</h3>
         <ul>
+          <li>
+            Cross-validation: a vital step in evaluating a model
+            <ul>
+              <li>
+                maximizes the amount of data that is used to train the model.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Cross-validation motivation
+            <ul>
+              <li>Model performance is dependent on way the data is split</li>
+              <li>Not representative of the model's ability to generalize</li>
+              <li>Solution: cross-validation!</li>
+            </ul>
+          </li>
+          <li>
+            Cross-validation and model performance
+            <ul>
+              <li>5 folds = 5-fold CV</li>
+              <li>10 folds = 10-fold CV</li>
+              <li>k folds = k-fold CV</li>
+              <li>
+                More folds = More computationally expensive
+                <ul>
+                  <b>%timeit</b
+                  >: to see how long each CV takes<br />-> ex.
+                  <code>%timeit cross_val_score(reg, X, y cv=10)</code>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Cross-validation in scikit-learn
+            <ul>
+              <li>
+                <code
+                  >from sklearn.model_selection import cross_val_score<br />from
+                  sklearn.linear_model import LinearRegression<br />reg =
+                  LinearRegression()<br />cv_results = cross_val_score(reg, X,
+                  y, cv=5)<br />print(cv_results)<br />np.mean(cv_results)</code
+                >
+              </li>
+              <li>
+                By default, <code>cross_val_score()</code> function uses R
+                squared as the metric of choice of regression.
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-3" class="idv_class">
+        <h3>1-3. Regularized regression</h3>
+        <ul>
+          <li>
+            Why regularize?
+            <ul>
+              <li>Recall: Linear regression minimizes a loss function</li>
+              <li>It chooses a coefficient for each feature variable</li>
+              <li>Large coefficients can lead to overfitting</li>
+              <li>Penalizing large coefficients: Regularization</li>
+            </ul>
+          </li>
+          <li>
+            Ridge regression
+            <ul>
+              <li>Loss function = OLS loss function +</li>
+              <li>Alpha: Parameter we need to choose</li>
+              <li>Picking alpha here is similar to picking k in k-NN</li>
+              <li>Hyperparameter tuning (More in Chapter 3)</li>
+              <li>
+                Alpha controls model complexity
+                <ul>
+                  <li>Alpha = 0 : We get back OLS(Can lead to overfitting)</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
           <li></li>
           <li></li>
           <li></li>
           <li></li>
           <li></li>
         </ul>
-      </div>
-      <div id="course1-3" class="idv_class">
-        <h3>1-3. Regularized regression</h3>
       </div>
     </div>
     <div id="course2">
