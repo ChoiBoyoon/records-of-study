@@ -573,7 +573,10 @@
           <li>
             Ridge regression
             <ul>
-              <li>Loss function = OLS loss function +</li>
+              <li>
+                Loss function = OLS loss function +
+                <img src="supervised1.png" height="45px" />
+              </li>
               <li>Alpha: Parameter we need to choose</li>
               <li>Picking alpha here is similar to picking k in k-NN</li>
               <li>Hyperparameter tuning (More in Chapter 3)</li>
@@ -581,12 +584,64 @@
                 Alpha controls model complexity
                 <ul>
                   <li>Alpha = 0 : We get back OLS(Can lead to overfitting)</li>
+                  <li>Very high alpha : Can lead to underfitting</li>
                 </ul>
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
+          <li>
+            Ridge regression in scikit-learn
+            <ul>
+              <li>
+                <code>
+                  from sklearn.linear_model import Ridge<br />X_train, X_test,
+                  y_train, y_test = train_test_split(X, y, test_size=0.3,
+                  random_state=42)<br />ridge = Ridge(alpha=0.1,
+                  normalize=True)<br />ridge.fit(X_train, y_train)<br />ridge_pred
+                  = ridge.predict(X_test)<br />ridge.score(X_test, y_test)
+                </code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Lasso regression
+            <ul>
+              <li>
+                Loss function = OLS loss function +
+                <img src="supervised2.png" height="45px" />
+              </li>
+              <li>
+                <code
+                  >from sklearn.linear_model import Lasso<br />X_train, X_test,
+                  y_train, y_test = train_test_split(X, y, test_size=0.3,
+                  random_state=42)<br />lasso = Lasso(alpha=0.1,
+                  normalize=True)<br />lasso.fit(X_train, y_train)<br />lasso_pred
+                  = lasso.pred(X_test)<br />lasso.score(X_test, y_test)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Lasso regression for feature selection
+            <ul>
+              <li>Can be used to select important features of a dataset</li>
+              <li>
+                Shrinks the coefficients of less important features to exactly 0
+              </li>
+              <li>
+                <code
+                  >from sklearn.linear_model import Lasso<br />names =
+                  boston.drop('MEDV', axis=1).columns<br />lasso =
+                  Lasso(alpha=0.1)<br />lasso_coef = lasso.fit(X,y).coef_<br />_
+                  = plt.plot(range(len(names)), lasso_coef)<br />_ =
+                  plt.xticks(range(len(names)), names, rotation=60)<br />_ =
+                  plt.ylabel('Coefficients')<br />plt.show()</code
+                >
+              </li>
+              <img src="supervised3.png" height="250px" />
+              <li>(-> the most important predictor is number of rooms)</li>
+            </ul>
+          </li>
           <li></li>
           <li></li>
           <li></li>
