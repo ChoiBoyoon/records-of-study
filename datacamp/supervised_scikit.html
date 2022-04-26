@@ -693,11 +693,62 @@
           <li>
             Dianosing classification predictions
             <ul>
-              <li>Confusion matrix</li>
+              <li>
+                Confusion matrix<br /><img
+                  src="supervised4.png"
+                  height="120px"
+                />
+              </li>
+            </ul>
+          </li>
+          <li>
+            Metrics from confusion matrix
+            <ul>
+              <li>
+                <b>precision</b>: tp / (tp + fp)
+                <ul>
+                  <li>aka ppv(positive predictive value)</li>
+                  <li>
+                    high precision: not many real emails predicted as spam
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <b>recall</b>: tp / (tp + fn)
+                <ul>
+                  <li>
+                    also called sensitivity, hit rate, or true positive rate
+                  </li>
+                  <li>high recall: predicted most spam emails correctly</li>
+                </ul>
+              </li>
+              <li>
+                <b>F1 score</b>: 2 * (preciison*recall) / (precision+recall)
+                <ul>
+                  <li>harmonic mean of precision and recall</li>
+                </ul>
+              </li>
               <li></li>
             </ul>
           </li>
-          <li></li>
+          <li>
+            Confusion matrix in scikit-learn
+            <ul>
+              <li>
+                <code
+                  >from sklearn.metrics import classification_report<br />from
+                  sklearn.metrics import confusion_matrix<br /><br />knn =
+                  KNeighborsClassifier(n_neighbors = 8)<br />X_train, X_test,
+                  y_train, y_test = train_test_split(X, y, test_size=0.4,
+                  random_state = 42)<br />knn.fit(X_train, y_train)<br />y_pred
+                  = knn.predict(X_test)<br /><mark
+                    >print(confusion_matrix(y_test, y_pred))<br />print(classification_report(y_test,
+                    y_pred))</mark
+                  ></code
+                >
+              </li>
+            </ul>
+          </li>
           <li></li>
           <li></li>
         </ul>
