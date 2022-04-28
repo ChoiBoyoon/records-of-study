@@ -749,12 +749,81 @@
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
         </ul>
       </div>
       <div id="course2-1" class="idv_class">
         <h3>2-1. Logistic regression and the ROC curve</h3>
+        <ul>
+          <li>
+            Logistic regression -> used in classification problems, not
+            regression problems
+          </li>
+          <li>
+            Logistic regression for binary classification
+            <ul>
+              <li>Logistic regression outputs probabilities</li>
+              <li>
+                If the probability 'p' is greater than 0.5 -> the data is
+                labeled '1'
+              </li>
+              <li>
+                If the probability 'p' is less than 0.5 -> the data is labeled
+                '0'
+              </li>
+            </ul>
+          </li>
+          <li>
+            Logistic regression in scikit-learn
+            <ul>
+              <li>
+                <code
+                  >from sklearn.linear_model import LogisticRegression<br />from
+                  sklearn.model_selection import train_test_split<br /><br />logreg
+                  = LogisticRegression()<br />X_train, X_test, y_train, y_test =
+                  train_test_split(X, y, test_size = 0.4, random_state = 42)<br />logreg.fit(X_train,
+                  y_train)<br />y_pred = logreg.predict(X_test)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Probability thresholds
+            <ul>
+              <li>
+                By default, logistic regression threshold = 0.5 (not specific to
+                logistic regression ex. KNN)
+              </li>
+            </ul>
+          </li>
+          <li>
+            The ROC curve
+            <ul>
+              <li>the receiver operating characteristic curve</li>
+              <li>
+                The set of points we get when trying all possible thresholds
+              </li>
+              <img src="supervised6.png" height="250px" />
+            </ul>
+          </li>
+          <li>
+            Plotting the ROC curve
+            <ul>
+              <li>
+                <code
+                  >from sklearn.metrics import roc_curve<br />y_pred_prob =
+                  logreg.predict_proba(X_test)[:, 1]<br />fpr, tpr, thresholds =
+                  roc_curve(y_test, y_pred_prob)<br /><br />plt.plot([0,1],
+                  [0,1], 'k--')<br />plt.plot(fpr, tpr, label = 'Logistic
+                  Regression')<br />plt.xlabel('False Positive Rate')<br />plt.ylabel('True
+                  Positive Rate')<br />plt.title('Logistic Regression ROC
+                  curve')<br />plt.show()</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course2-2" class="idv_class">
         <h3>2-2. Area under the ROC curve</h3>
