@@ -821,12 +821,48 @@
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
         </ul>
       </div>
       <div id="course2-2" class="idv_class">
         <h3>2-2. Area under the ROC curve</h3>
+        <ul>
+          <li>
+            Area under the ROC curve (AUC)
+            <ul>
+              <li>Larger area under the ROC = better model</li>
+              <li>Another popular metric for classification model</li>
+              <img src="supervised7.png" height="260px" />
+            </ul>
+          </li>
+          <li>
+            AUC in scikit-learn
+            <ul>
+              <li>
+                <code
+                  >from sklearn.metrics import roc_auc_score<br />logreg =
+                  LogisticRegressions()<br />X_train, X_test, y_train, y_test =
+                  train_test_split(X, y, test_size = 0.4, random_state = 42)<br />logreg.fit(X_train,
+                  y_train)<br />y_pred_prob =
+                  logreg.predict_proba(X_test)[:,1]<br />roc_auc_score(y_test,
+                  y_pred_prob)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            AUC using cross-validation
+            <ul>
+              <li>
+                <code
+                  >from sklearn.model_selection import cross_val_score<br />cv_scores
+                  = cross_val_score(logreg, X, y, cv=5, scoring='roc_auc')<br />print(cv_scores)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course2-3" class="idv_class">
         <h3>2-3. Hyperparameter tuning</h3>
