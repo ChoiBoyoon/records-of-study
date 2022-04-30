@@ -831,6 +831,16 @@
             <ul>
               <li>Larger area under the ROC = better model</li>
               <li>Another popular metric for classification model</li>
+              <li>
+                If a binary classifier randomly makes guesses(correct 50%)-> AUC
+                is 0.5
+                <ul>
+                  <li>
+                    If the AUC is greater more than 0.5, the model is better
+                    than random guessing
+                  </li>
+                </ul>
+              </li>
               <img src="supervised7.png" height="260px" />
             </ul>
           </li>
@@ -860,12 +870,85 @@
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
         </ul>
       </div>
       <div id="course2-3" class="idv_class">
         <h3>2-3. Hyperparameter tuning</h3>
+        <ul>
+          <li>
+            Hyperparameter tuning
+            <ul>
+              <li>Linear regression: Choosing parameters</li>
+              <li>Ridge/Lasso regression: Choosing alpha</li>
+              <li>k-Nearest Neighbors: Choosing n_neighbors</li>
+              <li>Parameters like alpha and k: Hyperparameters</li>
+              <li>Hyperparameters cannot be learned by fitting the model</li>
+            </ul>
+          </li>
+          <li>
+            Choosing the correct hyperparameter
+            <ul>
+              <li>Try a bunch of different hyperparameter values</li>
+              <li>Fit all of them separately</li>
+              <li>See how well each performs</li>
+              <li>Choose the best performing one</li>
+              <li>
+                It is essential to use cross-validation (train test split alone
+                would risk overfitting the hyperparameter to the test set)
+              </li>
+              <li>-> Doing so in this fashion is the current standard</li>
+            </ul>
+          </li>
+          <li>
+            Grid search cross-validation
+            <ul>
+              <li>
+                can be computationally expensive (-> we can use
+                RandomizedSearchCV)
+              </li>
+              <img src="supervised8.png" height="180px" />
+            </ul>
+          </li>
+          <li>
+            GridSerachCV in scikit-learn
+            <ul>
+              <li>
+                <code
+                  >from sklearn.model_selection import GridSearchCV<br />param_grid
+                  = {'n_neighbors':np.array(1,50)}<br />knn =
+                  KNeighborsClassifier()<br />knn_cv = GridSearchCV(knn,
+                  param_grid, cv=5)<br />knn_cv.fit(X,y)<br />knn_cv.best_params_
+                  #{'n_neighbors': 12}<br />knn_cv.best_score_
+                  #0.933216168717</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            cf. Logistic regression's regularization parameter: <b>C</b>
+            <ul>
+              <li>C controls the inverse of the regularization strength</li>
+              <li>
+                A large C can lead to an overfit model, while a small C can lead
+                to an underfit model
+              </li>
+            </ul>
+          </li>
+          <li>
+            RandomizedSearchCV
+            <ul>
+              <li>not all hyperparameter values are tried out.</li>
+              <li>
+                a fixed number of hyperparameter settings is sampled from
+                specified probabilty distributions.
+              </li>
+              <li>
+                will never outperform GridSearchCV but it's valuable because it
+                saves on computation time.
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course2-4" class="idv_class">
         <h3>2-4. Hold-out set for final evaluation</h3>
