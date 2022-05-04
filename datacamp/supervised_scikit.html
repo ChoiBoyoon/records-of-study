@@ -1074,6 +1074,70 @@
       </div>
       <div id="course3-1" class="idv_class">
         <h3>3-1. Handling missing data</h3>
+        <ul>
+          <li>
+            <b>NaN:</b>
+            <ul>
+              <li>
+                efficient and simplified way of internally representing missing
+                data
+              </li>
+              <li>
+                lets us take advantage of pandas methods such as
+                <code>.dropna()</code> and <code>.fillna()</code>, as well as
+                scikit-learn's Imputation transformer <code>Imputer()</code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Dropping missing data
+            <ul>
+              <li>
+                <code
+                  >df.insulin.replace(0, np.nan, inplace=True)<br />df.triceps.replace(0,
+                  np.nan, inplace=True)<br />df.bmi.replace(0, np.nan,
+                  inplace=True)<br />df.info()<br /><br />df = df.dropna() #we
+                  lose half of our data!<br />df.shape</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Imputing missing data
+            <ul>
+              <li>Making an educated guess about the missing values</li>
+              <li>Example: Using the mean of the non-missing entries</li>
+              <li>
+                <code
+                  >from sklearn.preprocessing import Imputer<br />imp =
+                  Imputer(missing_values = 'NaN', strategy = 'mean', axis=0)
+                  #axis=0 means we will impute along columns<br />imp.fit(X)<br />X
+                  = imp.transform(X) #imputers are known as transformers</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Imputing within a pipeline
+            <ul>
+              <li>
+                <code
+                  >from sklearn.pipeline import Pipeline<br />from
+                  sklearn.preprocessing import Imputer<br />imp =
+                  Imputer(missing_values = 'NaN', strategy = 'mean', axis=0)<br />logreg
+                  = LogisticRegression()<br />steps = [('imputation', imp),
+                  ('logistic_regression', logreg)]<br />pipeline =
+                  Pipeline(steps)<br />X_train, X_test, y_train, y_test =
+                  train_test_split(X, y, test_size=0.3, random_state=42)<br />pipeline.fit(X_train,
+                  y_train)<br />y_pred = pipeline.predict(X_test)<br />pipeline.score(X_test,
+                  y_test)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course3-2" class="idv_class">
         <h3>3-2. Centering and scaling</h3>
