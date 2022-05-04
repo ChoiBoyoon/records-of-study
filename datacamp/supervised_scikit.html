@@ -1014,12 +1014,62 @@
           <li>
             Dummy variables
             <ul>
-              <img src="" alt="" />
+              <img src="supervised10.png" height="110px" />
+              <img src="supervised11.png" height="110px" />
             </ul>
           </li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>
+            Dealing with categorical features in Python
+            <ul>
+              <li>scikit-learn: OneHotEncoder()</li>
+              <li>
+                pandas: get_dummies()
+                <ul>
+                  <li>
+                    <code
+                      >import pandas as pd<br />df = pd.read_csv('auto.csv')<br /><mark
+                        >df_origin = pd.get_dummies(df)</mark
+                      ><br />df_origin = df_origin.drop('origin_Asia',
+                      axis=1)</code
+                    >
+                  </li>
+                  <li>
+                    <code
+                      >import pandas as pd<br />df = pd.read_csv('auto.csv')<br /><mark
+                        >df_origin = pd.get_dummies(df, drop_first=True)</mark
+                      ></code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Linear regression with dummy variables
+            <ul>
+              <li>
+                <code
+                  >from sklearn.model_selection import train_test_split<br />from
+                  sklearn.linear_model import Ridge<br />X_train, X_test,
+                  y_train, y_test = train_test_split(X, y, test_size=0.3,
+                  random_state = 42)<br />ridge = Ridge(alpha=0.5,
+                  normalize=True).fit(X_train, y_train)<br />ridge.score(X_test,
+                  y_test)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            cf. 카테고리별로 boxplot 그리기
+            <ul>
+              <li>
+                <code
+                  >import pandas as pd<br />df = pd.read_csv('gapminder.csv')<br />df.boxplot('life',
+                  'Region', rot=60) #Region별 life의 boxplot을 보여줌<br />plt.show()</code
+                >
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course3-1" class="idv_class">
