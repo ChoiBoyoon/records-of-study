@@ -743,7 +743,7 @@
                   random_state = 42)<br />knn.fit(X_train, y_train)<br />y_pred
                   = knn.predict(X_test)<br /><mark
                     >print(confusion_matrix(y_test, y_pred))<br />print(classification_report(y_test,
-                    y_pred))c</mark
+                    y_pred))</mark
                   ></code
                 ><br /><br /><img src="supervised5.png" height="140px" />
               </li>
@@ -1094,10 +1094,19 @@
             <ul>
               <li>
                 <code
-                  >df.insulin.replace(0, np.nan, inplace=True)<br />df.triceps.replace(0,
-                  np.nan, inplace=True)<br />df.bmi.replace(0, np.nan,
-                  inplace=True)<br />df.info()<br /><br />df = df.dropna() #we
+                  >df.insulin.<mark>replace(0, np.nan, inplace=True)</mark
+                  ><br />df.triceps.<mark>replace(0, np.nan, inplace=True)</mark
+                  ><br />df.bmi.<mark>replace(0, np.nan, inplace=True)</mark
+                  ><br />df.info()<br /><br />df = <mark>df.dropna()</mark> #we
                   lose half of our data!<br />df.shape</code
+                ><br /><br />
+              </li>
+
+              <li>
+                <code
+                  ><mark>df[df=='?']=np.nan</mark> #Convert '?' to NaN<br />print(<mark>df.isnull().sum()</mark>)
+                  #print the number of NaNs<br />df = df.dropna() #drop missing
+                  values</code
                 >
               </li>
             </ul>
@@ -1105,7 +1114,12 @@
           <li>
             Imputing missing data
             <ul>
-              <li>Making an educated guess about the missing values</li>
+              <li>Making an educated guess about the missing values.</li>
+              <li>
+                This is where domain knowledge is useful, but in the absence of
+                it, you can impute missing values with the mean or the median of
+                the row or column.
+              </li>
               <li>Example: Using the mean of the non-missing entries</li>
               <li>
                 <code
@@ -1118,17 +1132,22 @@
             </ul>
           </li>
           <li>
-            Imputing within a pipeline
+            Imputing within a <b>pipeline</b>
             <ul>
               <li>
+                What makes pipelines so incredibly useful is the simple
+                interface that they provide.
+              </li>
+              <li>
                 <code
-                  >from sklearn.pipeline import Pipeline<br />from
+                  ><mark>from sklearn.pipeline import Pipeline</mark><br />from
                   sklearn.preprocessing import Imputer<br />imp =
                   Imputer(missing_values = 'NaN', strategy = 'mean', axis=0)<br />logreg
                   = LogisticRegression()<br />steps = [('imputation', imp),
-                  ('logistic_regression', logreg)]<br />pipeline =
-                  Pipeline(steps)<br />X_train, X_test, y_train, y_test =
-                  train_test_split(X, y, test_size=0.3, random_state=42)<br />pipeline.fit(X_train,
+                  ('logistic_regression', logreg)]<br /><mark
+                    >pipeline = Pipeline(steps)</mark
+                  ><br />X_train, X_test, y_train, y_test = train_test_split(X,
+                  y, test_size=0.3, random_state=42)<br />pipeline.fit(X_train,
                   y_train)<br />y_pred = pipeline.predict(X_test)<br />pipeline.score(X_test,
                   y_test)</code
                 >
@@ -1139,6 +1158,13 @@
       </div>
       <div id="course3-2" class="idv_class">
         <h3>3-2. Centering and scaling</h3>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
     </div>
   </body>
