@@ -1159,11 +1159,131 @@
       <div id="course3-2" class="idv_class">
         <h3>3-2. Centering and scaling</h3>
         <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>
+            Why scale your data?
+            <ul>
+              <li>Many models use some form of distance to inform them</li>
+              <li>Features on larger scales can unduly influence the model</li>
+              <li>
+                Example: k-NN uses distance explicitly when making predictions
+              </li>
+              <li>We want features to be on a similar scale</li>
+            </ul>
+          </li>
+          <li>
+            Ways to normalize your data
+            <ul>
+              <li>
+                <b>Standardization</b>: Subtract the mean and divide by
+                variance.
+              </li>
+              <li>
+                All features are centered around zero and have variance one
+              </li>
+              <li>Can also subtract the minimum and divide by the range</li>
+              <li>Minimum zero and maximum one</li>
+              <li>Can also normalize so the data ranges from -1 to +1</li>
+              <li>See scikit-learn doc for further details</li>
+            </ul>
+          </li>
+          <li>
+            Scaling in scikit-learn
+            <ul>
+              <li>
+                <code
+                  ><mark
+                    >from sklearn.preprocessing import scale<br />X_scaled =
+                    scale(X)</mark
+                  ></code
+                ><br /><img src="supervised12.png" width="350px" />
+              </li>
+            </ul>
+          </li>
+          <li>
+            Scaling in a pipeline
+            <ul>
+              <li>
+                <code
+                  ><mark>from sklearn.preprocessing import StandardScaler</mark
+                  ><br />steps = [(<mark>'scaler', StandardScaler()</mark>),
+                  ('knn', KNeighborsClassifier())]<br />pipeline =
+                  Pipeline(steps)<br />X_train, X_test, y_train, y_test =
+                  train_test_split(X, y, test_size=0.2, random_state=21)<br />knn_scaled
+                  = pipeline.fit(X_train, y_train)<br />y_pred =
+                  pipeline.predict(X_test)<br />accuracy_score(y_test,
+                  y_pred)</code
+                >
+                #0.956
+              </li>
+              <li>
+                <code
+                  >knn_unscaled = KNeighborsClassifier().fit(X_train,
+                  y_train)<br />knn_unscaled.score(X_test, y_test)</code
+                >
+                #0.928
+              </li>
+            </ul>
+          </li>
+          <li>
+            CV and scaling in a pipeline
+            <ul>
+              <li>
+                <code
+                  >steps = [('scaler', StandardScaler()), ('knn',
+                  KNeighborsClassifier())]<br />pipeline = Pipeline(steps)<br />parameters
+                  = {knn__n_neighbors: np.arange(1, 50)}<br />X_train, X_test,
+                  y_train, y_test = train_test_split(X, y, test_size=0.2,
+                  random_state=21)<br />cv = GridSearchCV(pipeline,
+                  param_grid=parameters)<br />cv.fit(X_train, y_train)<br />y_pred
+                  = cv.predict(X_test)</code
+                ><br /><img src="supervised13.png" width="500px" />
+              </li>
+            </ul>
+          </li>
+          <li>
+            SVM classifier
+            <ul>
+              <li>
+                C: controls the regularization strength. It is analogous to the
+                C you tuned for logistic regression in Chapter 3.
+              </li>
+              <li>gamma: controls the kernel coefficient.</li>
+              <li>
+                <code
+                  >steps = [('scaler', StandardScaler()), ('SVM', SVC())]<br />pipeline
+                  = Pipeline(steps)<br />parameters = {'SVM__C':[1, 10, 100],
+                  'SVM__gamma':[0.1, 0.01]}<br />X_train, X_test, y_train,
+                  y_test = train_test_split(X, y, test_size=0.2,
+                  random_state=21)<br />cv = GridSearchCV(pipeline, param_grid =
+                  parameters)<br />cv.fit(X_train, y_train)<br />y_pred =
+                  cv.predict(X_test)<br />pirnt("Accuracy:
+                  {}".format(cv.score(X_test, y_test)))<br />print(classification_report(y_test,
+                  y_pred))<br />print("Tuned Model Parameters:
+                  {}".format(cv.best_params_))</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            ElasticNet
+            <ul>
+              <li>
+                <code
+                  >steps = [('imputation', Imputer(missing_values='NaN',
+                  strategy='mean', axis=0), ('scaler', StandardScaler()),
+                  ('elasticnet', ElasticNet())]<br />pipeline =
+                  Pipeline(steps)<br />parameters =
+                  {'elasticnet__l1_ratio':np.linspace(0,1,30)}<br />X_train,
+                  X_test, y_train, y_test = train_test_split(X, y,
+                  test_size=0.4, random_state=42)<br />gm_cv =
+                  GridSearchCV(pipeline, param_grid=parameters)<br />gm_cv.fit(X_train,
+                  y_train)<br />r2 = gm_cv.score(X_test, y_test)<br />print("Tuned
+                  ElasticNet Alpha: {}".format(gm_cv.best_params_))<br />print("Tuned
+                  ElasticNet R squared: {}".format(r2))</code
+                >
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
