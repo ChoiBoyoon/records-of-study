@@ -44,13 +44,100 @@
               </li>
             </ul>
           </li>
+          <li>
+            to put the x-axis on a logarithmic scale
+            <ul>
+              <li>
+                <code
+                  >plt.scatter(gdp_cap, life_exp)<br /><mark
+                    >plt.xscale('log')</mark
+                  ><br />plt.show()</code
+                >
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course0-1" class="idv_class">
         <h3>0-1. Histogram</h3>
+        <ul>
+          <li>
+            Histogram
+            <ul>
+              <li>Explore dataset</li>
+              <li>Get idea about distribution</li>
+              <li>default number of bins: 10</li>
+            </ul>
+          </li>
+          <li>
+            Matplotlib example
+            <ul>
+              <li>
+                <code
+                  >import matplotlib.pyplot as plt<br />help(plt.hist)<br />values
+                  = [0, 0.6, 1.4, 1.6, 2.2, 2.5, 2.6, 3.2, 3.5, 3.9, 4.2, 6]<br />plt.hist(values,
+                  bins=3)<br />plt.show()</code
+                ><br /><img src="intermediate2.png" height="150px" />
+              </li>
+            </ul>
+          </li>
+          <li>
+            example: Population pyramid
+            <ul>
+              <img src="intermediate3.png" height="260px" />
+            </ul>
+          </li>
+          <li>
+            <code><b>plt.show()</b></code
+            >: displays a plot
+          </li>
+          <li>
+            <code><b>plt.clf()</b></code
+            >: cleans it up so you can start afresh.
+          </li>
+        </ul>
       </div>
       <div id="course0-2" class="idv_class">
         <h3>0-2. Customization</h3>
+        <ul>
+          <li>
+            Data visualization
+            <ul>
+              <li>
+                Many options
+                <ul>
+                  <li>Different plot types</li>
+                  <li>Many customizations</li>
+                </ul>
+              </li>
+              <li>
+                Choice depends on
+                <ul>
+                  <li>Data</li>
+                  <li>Sotry you want to tell</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Axis labels, Title, Ticks, ...
+            <ul>
+              <li>
+                <code
+                  >import matplotlib.pyplot as plt<br />year = [1950, 1951,
+                  1952, ... ,2100]<br />pop =[2.538, 2.57, 2.62, ... ,10.85]<br /><br />plt.plot(year,
+                  pop)<br /><br />#Add more data<br />year = [1800, 1850,
+                  1900]+year<br />pop = [1.0, 1.262, 1.650]+pop<br /><br />plt.xlabel('Year')<br />plt.ylabel('Population')<br />plt.title('World
+                  Population Proejction')<br />plt.yticks([0, 2, 4, 6, 8, 10],
+                  ['0', '2B', '4B', '6B', '8B', '10B'])<br /><br />plt.show()</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
     </div>
     <div id="course1">
