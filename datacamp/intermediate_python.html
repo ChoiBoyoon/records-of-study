@@ -128,15 +128,33 @@
                   1952, ... ,2100]<br />pop =[2.538, 2.57, 2.62, ... ,10.85]<br /><br />plt.plot(year,
                   pop)<br /><br />#Add more data<br />year = [1800, 1850,
                   1900]+year<br />pop = [1.0, 1.262, 1.650]+pop<br /><br />plt.xlabel('Year')<br />plt.ylabel('Population')<br />plt.title('World
-                  Population Proejction')<br />plt.yticks([0, 2, 4, 6, 8, 10],
-                  ['0', '2B', '4B', '6B', '8B', '10B'])<br /><br />plt.show()</code
+                  Population Proejction')<br /><mark
+                    >plt.yticks([0, 2, 4, 6, 8, 10], ['0', '2B', '4B', '6B',
+                    '8B', '10B'])</mark
+                  ><br /><br />plt.show()</code
                 >
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>
+            scatter plot에서 bubble size 옵션
+            <ul>
+              <li>
+                <code
+                  >plt.scatter(gdp_cap, life_exp, <mark>size=pop</mark>)</code
+                ><br /><img src="intermediate4.png" height="250px" />
+              </li>
+            </ul>
+          </li>
+          <li>
+            np.array(): creates a numpy array from the list
+            <ul>
+              <li><code>np_pop = np.array(pop)</code></li>
+              <li>
+                <code>np_pop * 2</code> -> each array element will be doubled
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -144,15 +162,202 @@
       <h2>1. Dictionaries & Pandas</h2>
       <div id="course1-0" class="idv_class">
         <h3>1-0. Dictionaries, Part1</h3>
+        <ul>
+          <li>
+            List
+            <ul>
+              <li>
+                <code
+                  >pop = [30.55, 2.77, 39.21]<br />countries = ["afghanistan",
+                  "albania", "algeria"]<br />ind_alb =
+                  countries.index("albania")<br />ind_alb #1<br />pop[ind_alb]
+                  #2.77</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Dictionary
+            <ul>
+              <li>
+                <code
+                  >world = {"afghanistan":30.55, "albania":2.77,
+                  "algeria":39.21}<br />world["albania"] #2.77</code
+                >
+              </li>
+              <li>
+                Python can make the lookup of these keys very fast, even for
+                huge dictionaries
+              </li>
+              <li>Dictionaries are inherently unordered.</li>
+            </ul>
+          </li>
+          <li>
+            print out the keys in a dictionary
+            <ul>
+              <li><code>print(world<mark>.keys()</mark>)</code></li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-1" class="idv_class">
         <h3>1-1. Dictionaries, Part2</h3>
+        <ul>
+          <li>
+            The last pair specified will be kept in the resulting dictionary
+            <ul>
+              <li>
+                <code
+                  >dict_ex = {'a':1, 'a':2}<br />print(dict_ex) #{'a':2}</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Recap
+            <ul>
+              <li>
+                Keys have to be "immutable" objects
+                <ul>
+                  <li>ex. strings, booleans, integers, floats</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Add a new key-value pair to a dictionary
+            <ul>
+              <li>
+                <code
+                  >world["sealand"] = 0.000027<br />"sealand" in world
+                  #True</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Change values
+            <ul>
+              <li><code>world["sealand"] = 0.000028</code></li>
+            </ul>
+          </li>
+          <li>
+            Remove a key-value pair
+            <ul>
+              <li>
+                <code><mark>del(</mark>world["sealand"])</code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            List vs. Dictionary
+            <ul>
+              <img src="intermediate5.png" height="150px" />
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-2" class="idv_class">
         <h3>1-2. Pandas, Part1</h3>
+        <ul>
+          <li>
+            Pandas
+            <ul>
+              <li>High level data manipulation tool</li>
+              <li>created by Wes McKinney</li>
+              <li>Built on NumPy</li>
+              <li>In 2D NumPy arrays, columns can't have different types</li>
+            </ul>
+          </li>
+          <li>
+            DataFrame from Dictionary
+            <ul>
+              <li>
+                <code
+                  >dict = {"country":["Brazil", "Russia", "India", "China",
+                  "South Africa"], "capital":["Brasilia", "Moscow", "New Delhi",
+                  "Beijing", "Pretoria"]}<br />import pandas as pd<br />brics =
+                  pd.DataFrame(dict)<br />brics.index = ["BR", "RU", "IN", "CH",
+                  "SA"]</code
+                >
+              </li>
+              <li>
+                <code
+                  >brics = pd.read_csv("path/to/brics.csv",
+                  <mark>index_col = 0</mark>)<br
+                /></code>
+                #index_col -> the first column contains the row indexes
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-3" class="idv_class">
         <h3>1-3. Pandas, Part2</h3>
+        <ul>
+          <li>
+            Index and select data
+            <ul>
+              <li>Square brackets</li>
+              <li>
+                Advanced methods
+                <ul>
+                  <li>loc</li>
+                  <li>iloc</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Column Access []
+            <ul>
+              <li>
+                <code
+                  >brics["country"]<br />type(brics["country"])
+                  #pandas.core.series.Series</code
+                >
+              </li>
+              <li>cf. Series: a 1-dimensional array that can be labeled</li>
+              <li>
+                <code
+                  >type(brisc[["country"]]) #pandas.core.frame.DataFrame<br />brics[["country",
+                  "capital"]]</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            To select rows from a DataFrame
+            <ul>
+              <li>
+                <code
+                  >brics[1:4] #to get the second, third and fourth rows</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Discussion []
+            <ul>
+              <li>Square bracket: limited functionality</li>
+              <li>
+                Ideally
+                <ul>
+                  <li>2D NumPy arrays</li>
+                  <li><code>my_array[rows, columns]</code></li>
+                </ul>
+              </li>
+              <li>
+                pandas
+                <ul>
+                  <li><mark>loc (label-based)</mark></li>
+                  <li><mark>iloc (integer position-based)</mark></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
       </div>
     </div>
     <div id="course2">
