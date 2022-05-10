@@ -344,7 +344,9 @@
                 Ideally
                 <ul>
                   <li>2D NumPy arrays</li>
-                  <li><code>my_array[rows, columns]</code></li>
+                  <li>
+                    <code>my_array<mark>[rows, columns]</mark></code>
+                  </li>
                 </ul>
               </li>
               <li>
@@ -356,7 +358,88 @@
               </li>
             </ul>
           </li>
-          <li></li>
+          <li>
+            Row Access loc
+            <ul>
+              <li>
+                <code>brics.loc<mark>["RU"]</mark></code>
+              </li>
+              <img src="intermediate6.png" height="100px" /><br />result: Series
+              <li>
+                <code>brics.loc<mark>[["RU"]]</mark></code>
+              </li>
+              <img src="intermediate7.png" height="45px" /><br />result:
+              DataFrame
+              <li><code>brics.loc[["RU", "IN", "CH"]]</code></li>
+            </ul>
+          </li>
+          <li>
+            Row & Column loc
+            <ul>
+              <li>
+                <code
+                  >brics.loc[["RU", "IN", "CH"], ["country", "capital"]]</code
+                >
+              </li>
+              <img src="intermediate8.png" height="85px" />
+              <li>
+                <code
+                  >brics.loc[:, ["country", "capital"]] #select all rows, 2
+                  columns</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Recap
+            <ul>
+              <li>
+                Square brackets
+                <ul>
+                  <li>
+                    Column access: <code>brics[["country", "capital"]]</code>
+                  </li>
+                  <li>
+                    Row access: only through slicing - <code>brics[1:4]</code>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                loc (label-based)
+                <ul>
+                  <li>
+                    Row access: <code>brics.loc[["RU", "IN", "CH"]]</code>
+                  </li>
+                  <li>
+                    Column access:
+                    <code>brics.loc[:, ["country", "capital"]]</code>
+                  </li>
+                  <li>
+                    Row & Column access:<br />
+                    <code
+                      >brics.loc[["RU", "IN", "CH"], ["country",
+                      "capital"]]</code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            If you want to subset Pandas DataFrames based on their position, or
+            index, you'll need the iloc function.
+          </li>
+          <li>
+            Row Access iloc
+            <ul>
+              <li>
+                <code
+                  >brics.iloc[[1]] #return the second row<br />brics.iloc[[1,2,3]]<br />brics.iloc[[1,2,3],
+                  [0,1]]<br />brics.iloc[:, [0,1]]</code
+                >
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -364,6 +447,24 @@
       <h2>2. Logic, Control Flow and Filtering</h2>
       <div id="course2-0" class="idv_class">
         <h3>2-0. Comparison Operators</h3>
+        <ul>
+          <li>
+            Other comparisons
+            <ul>
+              <li>
+                ex. <code>"carl" < "chris"</code> #True. According to the
+                alphabet, carl comes before chris.
+              </li>
+              <li>cf. <code>3 < "chris"</code> #TypeError</li>
+            </ul>
+          </li>
+          <li>
+            cf. a boolean is a special kind of integer:
+            <code>True</code> corresponds to 1, <code>False</code> corresponds
+            to 0
+          </li>
+          <li></li>
+        </ul>
       </div>
       <div id="course2-1" class="idv_class">
         <h3>2-1. Boolean Operators</h3>
