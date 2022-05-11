@@ -267,6 +267,7 @@
               <li>created by Wes McKinney</li>
               <li>Built on NumPy</li>
               <li>In 2D NumPy arrays, columns can't have different types</li>
+              <li>de facto standard for dataset manipulation.</li>
             </ul>
           </li>
           <li>
@@ -456,6 +457,10 @@
                 alphabet, carl comes before chris.
               </li>
               <li>cf. <code>3 < "chris"</code> #TypeError</li>
+              <li>
+                For string comparison, Python determines the relationship based
+                on alphabetical order.
+              </li>
             </ul>
           </li>
           <li>
@@ -463,29 +468,197 @@
             <code>True</code> corresponds to 1, <code>False</code> corresponds
             to 0
           </li>
-          <li></li>
         </ul>
       </div>
       <div id="course2-1" class="idv_class">
         <h3>2-1. Boolean Operators</h3>
+        <ul>
+          <li>
+            and
+            <ul>
+              <li>
+                <code>True and True #True</code><br /><code
+                  >False and True #False</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            or
+            <ul>
+              <li>
+                <code
+                  >True or True #True<br />Flase or True #True<br />False or
+                  False #False</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            not
+            <ul>
+              <li>
+                <code>not True #False<br />not False #True</code>
+              </li>
+              <li>
+                <b>not</b> has a higher priority than <b>and</b> and <b>or</b>,
+                it is executed first.
+              </li>
+            </ul>
+          </li>
+          <li>
+            NumPy
+            <ul>
+              <li><code>bmi > 21 and bmi < 22 #ValueError</code></li>
+              <li>
+                <code><mark>logical_and()</mark></code>
+                <ul>
+                  <li>ex. <code>np.logical_and(bmi>21, bmi<22)</code></li>
+                  <li>ex. <code>bmi[np.logical_and(bmi>21, bmi<22)]</code></li>
+                </ul>
+              </li>
+              <li>
+                <code><mark>logical_or()</mark></code>
+              </li>
+              <li>
+                <code><mark>logical_not()</mark></code>
+              </li>
+              <li>
+                cf. comparison operators(<, >=, ...) work with NumPy arrays
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course2-2" class="idv_class">
         <h3>2-2. if, elif, else</h3>
+        <ul>
+          <li>Conditional statements: if, else, elif</li>
+        </ul>
       </div>
       <div id="course2-3" class="idv_class">
         <h3>2-3. Filtering Pandas DataFrames</h3>
+        <ul>
+          <li>
+            Select countries with area over 8 million km2
+            <ul>
+              <li><code>brics[brics["area"] > 8]</code></li>
+            </ul>
+          </li>
+          <li>
+            Boolean operators
+            <ul>
+              <li>
+                <code
+                  >import numpy as np<br />brics[np.logical_and(brics["area"]>8,
+                  brics["area"]<10)]</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
     <div id="course3">
       <h2>3. Loops</h2>
       <div id="course3-0" class="idv_class">
         <h3>3-0. while loop</h3>
+        <ul>
+          <li>
+            While loop = repeated if statement
+            <ul>
+              <li>Numerically calculating model</li>
+              <li>"repeating action until condition is met"</li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course3-1" class="idv_class">
         <h3>3-1. for loop</h3>
+        <ul>
+          <li>
+            ex.
+            <code
+              >fam = [1.73, 1.68, 1.71, 1.89]<br />for height in fam:
+              <ul>
+                print(height)
+              </ul></code
+            >
+          </li>
+          <li>
+            If you want index value as well -> <b>enumerate</b>
+            <ul>
+              <li>
+                <code
+                  >fam = [1.73, 1.68, 1.71, 1.89]<br />for index, height in
+                  enumerate(fam):
+                  <ul>
+                    print("index "+str(index)+": "+str(height))
+                  </ul></code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Loop over string
+            <ul>
+              <li>
+                <code
+                  >for c in "family":
+                  <ul>
+                    print(c.capitalize())
+                  </ul></code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course3-2" class="idv_class">
         <h3>3-2. Loop Data Structures Part 1</h3>
+        <ul>
+          <li>
+            Dictionary
+            <ul>
+              <li>
+                <code
+                  >world = {"afghanistan":30.55, "albania":2.77,
+                  "algeria":39.21}<br />for key, values in
+                  <mark>world.items()</mark>: <u>#method</u>
+                  <ul>
+                    print(key + "--" + str(value))
+                  </ul></code
+                >
+              </li>
+              <li>
+                cf. dictionaries are inherently unordered -> the order in which
+                they're iterated over is not fixed.
+              </li>
+              <li></li>
+            </ul>
+          </li>
+          <li>
+            2D NumPy arrays
+            <ul>
+              <li>
+                <code
+                  >import numpy as np<br />np_height = np.array([1.73, 1.68,
+                  1.71, 1.89, 1.79])<br />np_weight = np.array([65.4, 59.2,
+                  63.6, 88.4, 68.7])<br />meas = np.array([np_height,
+                  np_weight])<br />for val in np.<mark>nditer</mark>(meas):
+                  <u>#function</u>
+                  <ul>
+                    print(val) #we get 10 printouts (first all the height, then
+                    all the weights)
+                  </ul></code
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course3-3" class="idv_class">
         <h3>3-3. Loop Data Structures Part 2</h3>
