@@ -70,43 +70,365 @@
                       <code>print(even_nums[1]) #4</code>
                     </ul>
                   </li>
-                  <li></li>
-                  <li></li>
                 </ul>
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>
+            <code><b>return x, y</b></code> has the same result as
+            <code><b>return (x, y)</b></code
+            >: the former actually packs x and y into a tuple under the hood!
+          </li>
         </ul>
-      </div>
-      <div id="course0-2" class="idv_class">
-        <h3>0-2. Bringing it all together</h3>
       </div>
     </div>
     <div id="course1">
       <h2>1. Default arguments, variable-length arguments and scope</h2>
       <div id="course1-0" class="idv_class">
         <h3>1-0. Scope and user-defined functions</h3>
+        <ul>
+          <li>
+            Crash course on scope in functions
+            <ul>
+              <li>Not all objects are accessible everywhere in a script</li>
+              <li>
+                Scope - part of the program where an object or name may be
+                accessible
+                <ul>
+                  <li>
+                    <b>Global scope</b> - defined in the main body of a script
+                  </li>
+                  <li><b>Local scope</b> - defined inside a function</li>
+                  <li>
+                    <b>Built-in scope</b> - names in the pre-defined built-ins
+                    module
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Global vs local scope
+            <ul>
+              <li>
+                any time we call the name in the local scope of the function, it
+                will look first in the local scope. If Python cannot find the
+                name in the local scope, it will then look in the global scope.
+              </li>
+              <li>
+                ex.
+                <code
+                  >new_val = 10<br /><br />def squre(value): #전역변수 new_val은
+                  변경되지 않음
+                  <ul>
+                    new_val = value**2<br />return new_val
+                  </ul>
+                  square(3) #9 <br />print(new_val) #10</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Global vs local scope (2)
+            <ul>
+              <li>
+                ex.
+                <code
+                  >new_val = 10<br />def square(value): #함수 내에서 전역 변수
+                  new_val값을 변경
+                  <ul>
+                    <b>global new_val</b
+                    ><br />new_val = new_val **2
+                    <br />return new_val
+                  </ul>
+                  square(3) #100<br />print(new_val) #100</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-1" class="idv_class">
         <h3>1-1. Nestled functions</h3>
+        <ul>
+          <li>
+            Returning functions
+            <ul>
+              <li>
+                ex.
+                <code
+                  >def raise_val(n): #함수를 리턴하는 함수
+                  <ul>
+                    def inner(x):
+                    <ul>
+                      raised = x ** n<br />return raised
+                    </ul>
+                    return inner
+                  </ul>
+                  square = raise_val(2)<br />cube = raise_val(3)<br />print(square(2),
+                  cube(4)) #4 64</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Using nonlocal
+            <ul>
+              <li>
+                <code
+                  >def outer():
+                  <ul>
+                    n=1<br />def inner():
+                    <ul>
+                      <b>nonlocal n</b
+                      ><br />n = 2<br />print(n)
+                    </ul>
+                    inner()<br />print(n)
+                  </ul>
+                  outer() #2 2</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Scopes searched - <b>LEGB rule</b>
+            <ul>
+              <li>Local scope</li>
+              <li>Enclosing functions</li>
+              <li>Global</li>
+              <li>Built-in</li>
+            </ul>
+          </li>
+          <li>
+            closure - the nested or inner function remembers the state of its
+            enclosing scope when called.
+          </li>
+        </ul>
       </div>
       <div id="course1-2" class="idv_class">
         <h3>1-2. Default and flexible arguments</h3>
-      </div>
-      <div id="course1-3" class="idv_class">
-        <h3>1-3. Bringing it all together</h3>
+        <ul>
+          <li>
+            Add a default argument
+            <ul>
+              <li>
+                ex.
+                <code
+                  >def power(number, pow=1):
+                  <ul>
+                    """Raise number to the power of pow."""<br />new_value =
+                    number ** pow<br />return new_value
+                  </ul>
+                  power(9, 2) #81<br />power(9) #9</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <mark>Flexible arguments: *args</mark>
+            <ul>
+              <li>
+                ex.
+                <code
+                  >def add_all(<mark>*args</mark>):
+                  <ul>
+                    """Sum all values in *args together."""
+                    <br />
+                    sum_all = 0<br />for num in
+                    <mark>args</mark
+                    >:
+                    <ul>
+                      sum_all += num
+                    </ul>
+                    return sum_all
+                  </ul>
+                  add_all(5,10,15,20) #50
+                </code>
+              </li>
+              <li>
+                cf. within the function definition,
+                <u><code>args</code> is a tuple</u>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <mark>Flexible arguments: **kwargs</mark> #keyword arguments
+            <ul>
+              <li>
+                <code
+                  >def print_all(<mark>**kwargs</mark>):
+                  <ul>
+                    """Print out key-value pairs in **kwargs."""<br />for key,
+                    value in
+                    <mark>kwargs</mark
+                    >.items():
+                    <ul>
+                      print(key+": "+value)
+                    </ul>
+                  </ul>
+                  print_all(name="dumbledore", job="headmaster")<br /><br />(result)<br />job:
+                  headmaster<br />name: dumbledore</code
+                >
+              </li>
+              <li>
+                cf. within the function definition,
+                <u><code>kwargs</code> is a dictionary.</u>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
     <div id="course2">
       <h2>2. Lambda functions and error-handling</h2>
       <div id="course2-0" class="idv_class">
         <h3>2-0. Lambda functions</h3>
+        <ul>
+          <li>
+            Lambda functions
+            <ul>
+              <li>
+                allow you to write functions in a quick and potentially dirty
+                way
+              </li>
+              <li>
+                The best use case : when you want these simple functionalities
+                to be anonymously embedded within larger expressions.
+              </li>
+              <li>
+                <code
+                  >raise_to_power = <mark>lambda x,y: x**y</mark
+                  ><br />raise_to_power(2,3) #8</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b><mark>map()</mark></b>
+            <ul>
+              <li>
+                applies the function to ALL elements in the sequence (over an
+                object such as a list)
+              </li>
+              <li>takes two arguments: <code>map(func, seq)</code></li>
+              <li>
+                <code
+                  >nums = [48, 6, 9, 21, 1]<br />square_all =
+                  <mark>map(lambda num: num**2, nums</mark
+                  >)<br />print(square_all) # &lt;map object at 0x103e065c0&gt;
+                  <br />print(list(square_all)) #[2304, 36, 441, 1]</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            ex.
+            <code
+              >def echo_word(word1, echo):
+              <ul>
+                words = word1*echo<br />return words
+              </ul> </code
+            >is same as..<code
+              ><br />echo_word = (lambda word1, echo: word1*echo)</code
+            >
+          </li>
+          <li>
+            <b><mark>filter()</mark></b
+            >: offers a way to filter out elements from a list that don't
+            satisfy certain criteria.
+            <ul>
+              <li>
+                <code
+                  >fellowship = ['frodo', 'samwise', 'merry', 'pippin',
+                  'aragorn', 'boromir', 'legolas', 'gimli', 'gandalf']<br />result
+                  = <mark>filter(lambda string: len(string)>6, fellowship)</mark
+                  ><br />result_list = list(result)<br />print(result_list)
+                  #['samwise', 'aragorn', 'boromir', 'legolas', 'gandalf']</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <mark><b>reduce()</b></mark
+            >: useful for performing some computation on a list and, unlike
+            map() and filter(), returns a single value as a result.
+            <code>ex. 입력은 list, 출력은 str</code>
+            <ul>
+              <li>
+                <code
+                  ><mark>from functools import reduce</mark><br />stark =
+                  ['robb', 'sansa', 'arya', 'brandon', 'rickon']<br />result =
+                  <mark>reduce(lambda item1, item2: item1+item2, stark)</mark
+                  ><br />print(result) #robbsansaaryabrandonrickon</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course2-1" class="idv_class">
         <h3>2-1. Introduction to error handling</h3>
+        <ul>
+          <li>
+            Errors and exceptions
+            <ul>
+              <li>Exceptions - caught during execution</li>
+              <li>
+                Catch exceptions with try-except clause
+                <ul>
+                  <li>Runs the code following try</li>
+                  <li>
+                    If there's an exception, run the code following except
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <code
+                  >def sqrt(x):
+                  <ul>
+                    """Returns the square root of a number."""<br />try:
+                    <ul>
+                      return x**0.5
+                    </ul>
+                    except:
+                    <ul>
+                      print('x must be an int or float')
+                    </ul>
+                  </ul>
+                  sqrt(4) #2.0<br />sqrt(10.0) #3.1622776601683795<br />sqrt('hi')
+                  #x must be an int or float</code
+                >
+              </li>
+              <li>
+                <code
+                  >def sqrt(x):
+                  <ul>
+                    if x&lt;0:
+                    <ul>
+                      <mark>raise ValueError</mark
+                      >('x must be non-negative')
+                    </ul>
+                    try:
+                    <ul>
+                      return x**0.5
+                    </ul>
+                    except
+                    <mark>TypeError</mark
+                    >: #다른 에러는 무시하고 TypeError만 잡고 싶을 때
+                    <ul>
+                      print('x must be an int or float')
+                    </ul>
+                  </ul></code
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course2-2" class="idv_class">
         <h3>2-2. Bringing it all together</h3>
