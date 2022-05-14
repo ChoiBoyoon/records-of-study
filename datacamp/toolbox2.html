@@ -16,6 +16,83 @@
       <h2>0. Using iterators in PythonLand</h2>
       <div id="course0-0" class="idv_class">
         <h3>0-0. Introduction to iterators</h3>
+        <ul>
+          <li>
+            Iterator vs. iterables
+            <ul>
+              <li>
+                Iterable
+                <ul>
+                  <li>
+                    Examples: lists, strings, dictionaries, file connections
+                  </li>
+                  <li>
+                    An object with an associated <code>iter()</code> method
+                  </li>
+                  <li>
+                    Applying <code>iter()</code> to an iterable creates an
+                    iterator
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Iterator
+                <ul>
+                  <li>Produces next value with <code>next()</code></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Iterating over iterables: next()
+            <ul>
+              <li>
+                <code
+                  >word = 'Da'<br />it = iter(word)<br />next(it) #'D'<br />next(it)
+                  #'a' <br />next(it) #에러!(StopIteration)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Iterating at once with *
+            <ul>
+              <li>
+                <code
+                  >word = 'Data'<br />it = iter(word)<br />print(*it) #D a t
+                  a<br />print(*it) #no more values to go through!</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Iterating over dictionaries
+            <ul>
+              <li>
+                <code
+                  >pythonistas = {'hygo': 'browne-anderson',
+                  'francis':'castro'}<br />for key, value in
+                  pythonistas.items():
+                  <ul>
+                    print(key, value) #francis castro \n hugo brwone-anderson
+                  </ul></code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Iterating over file connections
+            <ul>
+              <li>
+                <code
+                  >file = open('file.txt')<br />it = iter(file)<br />print(next(it))
+                  #This is the fist line<br />print(next(it)) #This is the
+                  second line.</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course0-1" class="idv_class">
         <h3>0-1. Playing with iterators</h3>
