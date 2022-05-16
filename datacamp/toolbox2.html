@@ -24,6 +24,9 @@
                 Iterable
                 <ul>
                   <li>
+                    an object that can return iterator (with iter() method)
+                  </li>
+                  <li>
                     Examples: lists, strings, dictionaries, file connections
                   </li>
                   <li>
@@ -38,6 +41,10 @@
               <li>
                 Iterator
                 <ul>
+                  <li>
+                    an object that keeps state and produces the next value when
+                    you call next() on it.
+                  </li>
                   <li>Produces next value with <code>next()</code></li>
                 </ul>
               </li>
@@ -48,8 +55,11 @@
             <ul>
               <li>
                 <code
-                  >word = 'Da'<br />it = iter(word)<br />next(it) #'D'<br />next(it)
-                  #'a' <br />next(it) #에러!(StopIteration)</code
+                  >word = 'Da'<br />it = <mark>iter</mark>(word)<br /><mark
+                    >next</mark
+                  >(it) #'D'<br /><mark>next</mark>(it) #'a' <br /><mark
+                    >next</mark
+                  >(it) #에러!(StopIteration)</code
                 >
               </li>
             </ul>
@@ -92,28 +102,390 @@
               </li>
             </ul>
           </li>
+          <li>
+            <b>range()</b> : creates a range object with an iterator that
+            produces the values until it reaches the limit (in case of
+            <code>range(5)</code>, until the value 4)
+          </li>
+          <li><b>Googol</b>: 10<sup>10</sup>, a 1 followed by a hundred 0s.</li>
         </ul>
       </div>
       <div id="course0-1" class="idv_class">
         <h3>0-1. Playing with iterators</h3>
+        <ul>
+          <li>
+            enumerate()
+            <ul>
+              <li>allow us to add a counter to any iterable.</li>
+              <li>
+                returns an enumerate object that produces a sequence of tuples
+              </li>
+              <li>
+                <code
+                  >avengers = ['hawkeye', 'iron man', 'thor', 'quicksilver']<br />e
+                  = enumerate(avengers)<br />print(type(e)) #&lt;class
+                  'enumerate'&gt;<br /><br />e_list = list(e) #turn enumerate
+                  object into a list of tuples<br />print(e_list) #[(0,
+                  'hawkeye'), (1, 'iron man'), (2, 'thor'), (3,
+                  'quicksilver')]</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            enumerate() and unpack
+            <ul>
+              <li>
+                <code
+                  >for index, value in enumerate(avengers):
+                  <ul>
+                    print(index, value)
+                  </ul>
+                  <br />(result)<br />0 hawkeye<br />1 iron man<br />
+                  2 thor<br />3 quicksilver</code
+                >
+              </li>
+              <li>
+                <code
+                  >for index, value in enumerate(avengers, start=10):
+                  <ul>
+                    print(index, value)
+                  </ul>
+                  <br />(result)<br />10 hawkeye<br />11 iron man ...</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            zip() : allow us to stitch together an arbitrary number of
+            iterables.
+            <ul>
+              <li>
+                takes any number of iterables and returns a zip object that is
+                an iterator of tuples.
+              </li>
+              <li>
+                <code
+                  >names = ['barton', 'stark', 'odison', 'maxioff']<br />z =
+                  zip(avengers, names)<br />print(type(z)) #&lt;class
+                  'zip'&gt;<br />z_list = list(z)<br />print(z_list)
+                  #[('hawkeye', 'barton'), ('iron man', 'stark'), ('thor',
+                  'odison'), ('quicksilver', 'maxioff')]</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            zip() and unpack
+            <ul>
+              <li>
+                <code
+                  >for z1, z2 in zip(avengers, names):
+                  <ul>
+                    print(z1, z2) #hawkeye barton ...
+                  </ul></code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Print zip() with *
+            <ul>
+              <li>
+                * unpacks an iterable such as a list or a tuple into positional
+                arguments in a function call.
+              </li>
+              <li>
+                <code
+                  >z = zip(avengers, names)<br />print(<mark>*z</mark>)
+                  #('hawkeye', 'barton') ('iron man', 'stark') ('thor',
+                  'odison') ('quicksilver', 'maxioff')</code
+                >
+              </li>
+              <li>
+                to unzip...
+                <ul>
+                  <code
+                    >z1 = zip(mutants, powers)<br />result1, result2 =
+                    <mark>zip(*z1)</mark></code
+                  >
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course0-2" class="idv_class">
         <h3>0-2. Using iterators to load large files into memory</h3>
+        <ul>
+          <li>
+            Loading data in chunks
+            <ul>
+              <li>There can be too much data to hold in memory</li>
+              <li>Solution: load data in chunks</li>
+              <li>
+                pandas function: raed_csv()
+                <ul>
+                  specify the chunk: chunksize
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Iterating over data
+            <ul>
+              <li>
+                <code
+                  >import pandas as pd<br />result = []<br />for chunk in
+                  <b>pd.read_csv('data.csv', chunksize=1000)</b>:
+                  <ul>
+                    result.append(sum(chunk['x']))
+                  </ul>
+                  total = sum(result)<br />print(total) #4252532</code
+                >
+              </li>
+              <li>
+                <code
+                  >import pandas as pd<br />total = 0<br />for chunk in
+                  <b>pd.read_csv('data.csv', chunksize=1000)</b>:
+                  <ul>
+                    total += sum(chunk['x'])
+                  </ul>
+                  print(total) #4252452</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
     <div id="course1">
       <h2>1. List comprehensions and generators</h2>
       <div id="course1-0" class="idv_class">
         <h3>1-0. List comprehensions</h3>
+        <ul>
+          <li>
+            Populate a list with a for loop
+            <ul>
+              <li>
+                <code
+                  >nums = [12, 8, 21, 3, 16]<br />new_nums = []<br />for num in
+                  nums: #inefficient(both computationally and in terms of coding
+                  time and space)
+                  <ul>
+                    new_nums.append(num+1)
+                  </ul>
+                  print(new_nums)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            A list comprehension
+            <ul>
+              <li>Collapse for loops for building lists into a single Line</li>
+              <li>
+                Components
+                <ul>
+                  <li>Iterable</li>
+                  <li>Iterable variable(represent members of iterable)</li>
+                  <li>Output expression</li>
+                </ul>
+              </li>
+              <li>
+                <code
+                  >nums = [12, 8, 21, 3, 16]<br />new_nums =
+                  <mark>[num+1 for num in nums]</mark></code
+                >
+              </li>
+              <li>
+                <code
+                  >result = <mark>[num for num in range(11)]</mark
+                  ><br />print(result) #[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Nested loops
+            <ul>
+              <li>
+                <code
+                  >pairs_1 = []<br />for num1 in range(0,2):
+                  <ul>
+                    for num2 in range(6,8)
+                    <ul>
+                      pairs_1.append((num1, num2))
+                    </ul>
+                  </ul>
+                  print(pairs_1) #[(0, 6), (0,7), (1,6), (1,7)]</code
+                >
+              </li>
+              <li>
+                <code
+                  >pairs_2 =
+                  <mark
+                    >[(num1, num2) for num1 in range(0,2) for num2 in
+                    range(6,8)]</mark
+                  ><br />print(pairs_2) #[(0, 6), (0,7), (1,6), (1,7)]</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-1" class="idv_class">
         <h3>1-1. Advaned comprehensions</h3>
+        <ul>
+          <li>
+            Conditionals in comprehensions
+            <ul>
+              <li>
+                Conditionals on the iterable<br /><code
+                  >[num**2 for num in range(10) if num*2 == 0]</code
+                >
+              </li>
+              <li>
+                cf. Python documentation on the % operator: The
+                <b>%(modulo) operator</b> yields the remainder from the division
+                of the first argument by the second<br /><code
+                  >5%2 #1<br />6%2 #0</code
+                >
+              </li>
+              <li>
+                Conditionals on the output expression<br /><code
+                  >[<mark>num**2 if num%2 == 0</mark> <mark>else 0</mark>
+                  <mark>for num in range(10)]</mark> #[0, 0, 4, 0, 16, 0, 36, 0,
+                  64, 0]</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Dict comprehensions
+            <ul>
+              <li>Create dictionaries</li>
+              <li>Use curly braces {} instead of brackets []</li>
+              <li>
+                <code
+                  >pos_neg = <mark>{num: -num for num in range(9)}</mark
+                  ><br />print(pos_neg) #{0:0, 1:-1, 2:-2, ...}<br />pritn(type(pos_neg))
+                  #&lt;class 'dict'&gt;</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-2" class="idv_class">
         <h3>1-2. Introduction to generator expressions</h3>
+        <ul>
+          <li>
+            Generator expressions
+            <ul>
+              <li>
+                Use () instead of []<br /><code
+                  >(2*num for num in range(10)) ##&lt;generator object
+                  &lt;genexpr&gt; at 0x1046bf888&gt;</code
+                >
+              </li>
+              <li>
+                when using .items() and range(), Python creates generators for
+                you behind the scenes.
+              </li>
+            </ul>
+          </li>
+          <li>
+            List comprehensions vs. generators
+            <ul>
+              <li>List comprehensions - returns a list</li>
+              <li>Generators - returns a generator object</li>
+              <li>Both can be iterated over</li>
+            </ul>
+          </li>
+          <li>
+            Printing values from generators
+            <ul>
+              <li>
+                <code
+                  >result = (num for num in range(6))<br />for num in result:
+                  <ul>
+                    print(num) #0 1 2 3 ...
+                  </ul></code
+                >
+              </li>
+              <li>
+                <code
+                  >result = (num for num in range(6))<br />print(list(result))
+                  #[0, 1, 2, 3, 4, 5]</code
+                >
+              </li>
+              <li>
+                <b>lazy evaluation</b> - evaluation of the expression is delayed
+                until its value is needed. This can help when working with
+                extremely large sequences as you don't want to store the entire
+                list in memory.<br /><code
+                  >print(next(result)) #0<br />print(next(result)) #1</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Generators vs. list comprehensions
+            <ul>
+              <li>
+                <code
+                  >[num for num in range(10**1000000)] #can't even be stored in
+                  memory -> will be disconnected</code
+                >
+              </li>
+              <li>
+                <code
+                  >(num for num in range(10**1000000)) #not yet create the
+                  entire list -> can easily create analogous generator
+                  object</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Generator functions
+            <ul>
+              <li>Produces generator objects when called</li>
+              <li>Defined like a regular function - def</li>
+              <li>
+                Yields a sequence of values instead of returning a single value
+              </li>
+              <li>Generates a value wiht yield keyword</li>
+              <li>
+                <code
+                  >def num_sequence(n):
+                  <ul>
+                    """generate values from 0 to n."""<br />i = 0<br />while i <
+                    n :
+                    <ul>
+                      yield i<br />i+=1
+                    </ul>
+                  </ul>
+                  result = num_sequence(5)<br />print(type(result)) #class
+                  'generator'<br />for item in result:
+                  <ul>
+                    print(item) #0 1 2 3 4
+                  </ul>
+                </code>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-3" class="idv_class">
         <h3>1-3. Wrapping up comprehensions and generators</h3>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
     </div>
     <div id="course2">
