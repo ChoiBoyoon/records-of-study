@@ -16,6 +16,78 @@
       <h2>0. Introduction and flat files</h2>
       <div id="course0-0" class="idv_class">
         <h3>0-0. Welcome to the course!</h3>
+        <ul>
+          <li>
+            Import data
+            <ul>
+              <li>Flat files e.g. .txts, .csvs</li>
+              <li>
+                Files from other software (ex. Excel spreadsheets, Stata, SAS
+                and MATLAB files)
+              </li>
+              <li>Relational databases (ex. SQLite, PostgreSQL)</li>
+            </ul>
+          </li>
+          <li>
+            Plain text files
+            <ul>
+              <li>
+                ex. the opening of Mark Twain's novel The Adventures of
+                Huckleberry Finn
+              </li>
+            </ul>
+          </li>
+          <li>
+            Table data
+            <ul>
+              <li>ex. titanic.csv</li>
+            </ul>
+          </li>
+          <li>
+            Reading a text file
+            <ul>
+              <li>
+                <code
+                  >filename = 'huck_finn.txt'<br />file = open(filename,
+                  mode='r') #'r' is to read<br />text = file.read()<br />file.close()
+                  #always best practice to clean while cooking<br />print(text)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Writing to a file
+            <ul>
+              <li>
+                <code
+                  >filename = 'huck_finn.txt'<br />file = open(filename,
+                  mode='w') #'w' is to write<br />file.close()</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Context manager with
+            <ul>
+              <li>
+                <code
+                  >with open('fuck_finn.txt', 'r') as file:
+                  <ul>
+                    print(file.read())
+                  </ul></code
+                >
+              </li>
+              <li>
+                it's best practice to use the with statement as you never have
+                to concern yourself with closing the files again.
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course0-1" class="idv_class">
         <h3>0-1. The importance of flat files in data science</h3>

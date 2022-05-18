@@ -393,6 +393,13 @@
                 when using .items() and range(), Python creates generators for
                 you behind the scenes.
               </li>
+              <li>
+                generators <u>allow users to lazily evaluate data</u>. The
+                concept of lazy evaluation is useful when you have to deal with
+                very large datasets because it lets you generate values in an
+                efficient manner by yielding only chunks of data at a time
+                instead of the whole thing at once.
+              </li>
             </ul>
           </li>
           <li>
@@ -501,15 +508,33 @@
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
         </ul>
       </div>
       <div id="course2-1" class="idv_class">
         <h3>2-1. Using Python generators for streaming data</h3>
+        <ul>
+          <li>
+            with: context manager
+            <ul>
+              <li>
+                to ensure that resources are efficiently allocated when opening
+                a connection to a file.
+              </li>
+              <li>ex. <code>with open('datacamp.csv') as datacamp</code></li>
+              <li>cf. file object is already a generator</li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course2-2" class="idv_class">
         <h3>2-2. Using pandas' read_csv iterator for streaming data</h3>
+        <ul>
+          <li>
+            <code>pd.read_csv(filename, chunksize=100)</code> -> This creates an
+            iterable <b>reader object</b>, which means that you can use next()
+            on it.
+          </li>
+        </ul>
       </div>
     </div>
   </body>
