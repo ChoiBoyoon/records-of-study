@@ -83,14 +83,72 @@
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>
+            Check whether the file is closed
+            <ul>
+              <li>
+                <code
+                  >file = open('moby_dick.txt', mode='r')<br />print(file<b>.closed</b>)
+                  #False<br />file.close()<br />print(file<b>.closed</b>)
+                  #True</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Print out the first line
+            <ul>
+              <li><code>file.readline()</code></li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course0-1" class="idv_class">
         <h3>0-1. The importance of flat files in data science</h3>
+        <ul>
+          <li>
+            Flat files
+            <ul>
+              <li>Text files containing records</li>
+              <li>That is, table data</li>
+              <li>Record: row or fields or attributes</li>
+              <li>Column: feature or attribute</li>
+            </ul>
+          </li>
+          <li>
+            Header
+            <ul>
+              <li>
+                row that occurs as the first row and describes the contents of
+                the data columns or states
+              </li>
+            </ul>
+          </li>
+          <li>
+            Files extension
+            <ul>
+              <li>.csv - Comma separated values</li>
+              <li>.txt - Text file</li>
+              <li>commas, tabs - Delimiters</li>
+            </ul>
+          </li>
+          <li>
+            How do you import flat files?
+            <ul>
+              <li>Two main packages: NumPy, pandas</li>
+              <li>
+                Here, you'll learn to import
+                <ul>
+                  <li>Flat files with numerical data (MNIST)</li>
+                  <li>
+                    Flat files with numerical data and strings (titanic.csv)
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
       </div>
       <div id="course0-2" class="idv_class">
         <h3>0-2. Importing flat files using NumPy</h3>
