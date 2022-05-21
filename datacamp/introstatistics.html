@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../nomad_coders/general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction to Statistics</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+    <h1>Introduction to Statistics</h1>
+    <div id="course0">
+      <h2>0. Summary Statistics</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>0-0. What is statistics?</h3>
+        <ul>
+          <li>
+            The field of statistics - the practice and study of collecting and
+            analyzing data
+          </li>
+          <li>
+            Two main branches of statistics:
+            <ul>
+              <li>
+                Descriptive/summary statistics - describing or summarizing data
+              </li>
+              <li>
+                Inferential statistics - collect a sample of data, and apply the
+                results to the population that the sample represents.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Statistics is everywhere!
+            <ul>
+              <li>Sports statistics</li>
+              <li>Personal finances</li>
+            </ul>
+          </li>
+          <li>
+            What can statistics do?
+            <ul>
+              <li>
+                Allow us to answer practical questions:
+                <ul>
+                  <li>What is the average salary in the USA?</li>
+                  <li>
+                    How many customer inquiries is a company likely to receive
+                    per week?
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Is has applications across society:
+                <ul>
+                  <li>Developing safer products such as cars or airplanes</li>
+                  <li>Help governments understand the needs of a population</li>
+                </ul>
+              </li>
+              <li>
+                Validates scientific breakthroughs, such as Covid-19 vaccines.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Limitations of statistics
+            <ul>
+              <li>
+                Statistics requires, measurable question:
+                <ul>
+                  <li>Is rock music more popular than jazz?</li>
+                  <li>On average, do women live longer than men?</li>
+                </ul>
+              </li>
+              <li>
+                We can't use statistics to find out why relationships exist.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Types of data
+            <ul>
+              <li>
+                numeric
+                <ul>
+                  <li>
+                    Continuous data
+                    <ul>
+                      <li>ex. Stock prices</li>
+                    </ul>
+                  </li>
+                  <li>
+                    Interval/count data
+                    <ul>
+                      <li>
+                        ex. How many cups of coffee do people drink per day?
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                categorical
+                <ul>
+                  <li>
+                    Nominal data
+                    <ul>
+                      <li>ex. Eye color</li>
+                    </ul>
+                  </li>
+                  <li>
+                    Ordinal data
+                    <ul>
+                      <li>
+                        ex. How strongly do you agree that basketball is the
+                        best sport?
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Inferential statistics
+            <ul>
+              <li>Use a sample to draw conclusions about a population</li>
+              <li>
+                How many people purchase clothing following social media
+                advertising?
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course0-1" class="idv_class">
+        <h3>0-1. Measures of center</h3>
+        <ul>
+          <li>
+            Why are measures of center useful?
+            <ul>
+              <li>Average number of sales orders per month</li>
+              <li>Typical cost of a house</li>
+              <li>Most common hair color</li>
+            </ul>
+          </li>
+          <li>Histograms - great way to summarize numeric data</li>
+          <li>
+            Where is the center of the data?
+            <ul>
+              <li>
+                <b>mean</b>(=average) : (sum of all values)/(counts of all
+                values)
+              </li>
+              <li>
+                <b>median</b>: middle value for a given variable.
+                <ul>
+                  <li>
+                    when we have even number of values, take two values closest
+                    to the middle, (v1+v2)/2
+                  </li>
+                  <li>
+                    less affected by outliers -> when the data is not
+                    symmetrical, better than mean
+                  </li>
+                </ul>
+              </li>
+              <li><b>mode</b>: most frequent value</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course0-2" class="idv_class">
+        <h3>0-2. Measures of spread</h3>
+        <ul>
+          <li>
+            Why is spread important?
+            <ul>
+              <li>Spread measures the variety of our data</li>
+              <li>
+                T-shirts typically cost $30
+                <ul>
+                  <li>Can cost between $10-200</li>
+                  <li>How likely is it one will cost $30?</li>
+                </ul>
+              </li>
+              <li>
+                If t-shirts were priced between $20-50
+                <ul>
+                  <li>
+                    Does this change the likelihood of finding one for $30?
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>Range = maximum - minimum</li>
+          <li>
+            Variance
+            <ul>
+              <li>distance = value - mean</li>
+              <li>calculate distances and add them up</li>
+              <li>to avoid negative distances added up, we square distances</li>
+              <li>and divide by number of values</li>
+            </ul>
+          </li>
+          <li>
+            Standard deviation
+            <ul>
+              <li>square root of variance</li>
+              <li>
+                Standard deviation close to zero = data clustered around the
+                mean
+              </li>
+            </ul>
+          </li>
+          <li>
+            Quartiles : splitting the data into fours equal parts (0%, 25%, 50%,
+            75%, 100%)
+            <ul>
+              <li>Second quartile(50%) = median</li>
+              <li>can be visualized with box plots</li>
+            </ul>
+          </li>
+          <li>
+            Interquartile range (IQR) = 3rd Quartile - 1st Quartile
+            <ul>
+              <li>less affected by extreme values</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="course1">
+      <h2>1. Probability and distributions</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>0-0. Welcome to the course!</h3>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>2. More Distributions and the Central Limit Theorem</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>0-0. Welcome to the course!</h3>
+      </div>
+    </div>
+    <div id="course3">
+      <h2>3. Correlation and Hypothesis Testing</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>0-0. Welcome to the course!</h3>
+      </div>
+    </div>
+  </body>
+</html>

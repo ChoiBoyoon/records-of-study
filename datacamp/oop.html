@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../nomad_coders/general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object-Oriented Programming in Python</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+    <h1>Object-Oriented Programming in Python</h1>
+    <div id="course0">
+      <h2>0. OOP Fundamentals</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>0-0. What is OOP?</h3>
+        <ul>
+          <li>
+            Procedural programming
+            <ul>
+              <li>Code as a sequence of steps</li>
+              <li>
+                Great for data analysis (ex. download -> process -> visualize)
+              </li>
+            </ul>
+          </li>
+          <li>
+            Object-oriented programming
+            <ul>
+              <li>Code as interactions of objects</li>
+              <li>Great for building frameworks and tools</li>
+              <li>Maintainable and reusable code!</li>
+            </ul>
+          </li>
+          <li>
+            Objects as data structures
+            <ul>
+              <li>Object = state + behavior</li>
+              <li>Encapsulation - building data with code operating on it</li>
+            </ul>
+          </li>
+          <li>
+            Classes as blueprints
+            <ul>
+              <li>
+                Class: blueprint for objects outlining possible states and
+                behaviors
+              </li>
+              <li>
+                a class in an abstract template, while an object is a concrete
+                representation of a class.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Objects in Python
+            <ul>
+              <li>Everything in Python is an object</li>
+              <li>Every object has a class</li>
+              <li>
+                Use type() to find the class (ex. the class of a numpy array is
+                called ndarray(numpy.ndarray))
+              </li>
+            </ul>
+          </li>
+          <li>
+            Attributes and methods
+            <ul>
+              <li>
+                <code
+                  >import numpy as np<br />a = np.array([1,2,3,4])<br />a.shape
+                  #(4,), this is attribute<br />a.reshape(2,2) #this is
+                  method</code
+                >
+              </li>
+              <li>
+                to list all the attributes and methods,
+                <b><code>dir(a)</code></b>
+              </li>
+            </ul>
+          </li>
+          <li>
+            to explore unfamiliar obejct,
+            <ul>
+              <li><mark>type(x)</mark> #ex. __main__.Employee</li>
+              <li><mark>dir(x)</mark> #shows list of attributes and methods</li>
+              <li><mark>help(x)</mark> #shows documentation</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course0-1" class="idv_class">
+        <h3>0-1. Class anatomy: attributes and methods</h3>
+        <ul>
+          <li>
+            A basic class
+            <ul>
+              <li>
+                <code
+                  >class Customer:
+                  <ul>
+                    pass #to create an "empty" class
+                  </ul></code
+                >
+              </li>
+              <li>
+                to create objects
+                <ul>
+                  <li>
+                    <code>c1 = Customer()<br />c2 = Customer()</code>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Add methods to a class
+            <ul>
+              <li>
+                <code
+                  >class Customer:
+                  <ul>
+                    def identify(self, name):
+                    <ul>
+                      print("I am Custoemr " + name)
+                    </ul>
+                  </ul>
+                  cust = Customer()<br />cust.identify("Boyoon") #I am Customer
+                  Boyoon</code
+                >
+              </li>
+              <li>method definition = funciton definition within class</li>
+              <li>
+                use <b>self</b> as the 1st argument in method definition (and
+                ignore it when calling method)
+              </li>
+            </ul>
+          </li>
+          <li>
+            What is self?
+            <ul>
+              <li>
+                classes are templates, how to refer data of a particular object?
+              </li>
+              <li>
+                <b>self</b> is a stand-in for a particular object used in class
+                definition
+              </li>
+              <li>should be the first argument of any method</li>
+              <li>
+                Python will take care of <b>self</b> when method called from an
+                object:<br /><code>cust.identify("Boyoon")</code> will be
+                interpreted as <code>Customer.identify(cust, "Boyoon")</code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            We need attributes
+            <ul>
+              <li>
+                Encapsulation: building data with methods that operate on data
+              </li>
+              <li>E.g. Customer's' name should be an attribute</li>
+              <li>Attributes are created by assignment(=) in methods</li>
+              <li>
+                <code
+                  >class Customer:
+                  <ul>
+                    def set_name(self, new_name):
+                    <ul>
+                      self.name = new_name
+                    </ul>
+                  </ul>
+                  cust = Customer()<br />cust.set_name("Boyoon CHOI")<br />print(cust.name)
+                  #Boyoon CHOI</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            setter methods : set attributes
+            <ul>
+              <li>often have pre-processing and checks built in</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course0-2" class="idv_class">
+        <h3>0-2. Class anatomy: the __init__ constructor</h3>
+        <ul>
+          <li>
+            Constructor
+            <ul>
+              <li>Add data to object when creating it</li>
+              <li>
+                Constructor __init__() method is called every time an object is
+                created
+              </li>
+              <li>
+                <code
+                  >class Customer:
+                  <ul>
+                    def __init__(self, name, balance=0):
+                    <ul>
+                      self.name = name<br />self.balance = balance<br />print("The
+                      __init__ method was called")
+                    </ul>
+                  </ul>
+                  cust1 = Customer("Boyoon", 1000) #The __init__ method was
+                  called<br />print(cust1.name) #Boyoon<br />print(cust1.balance)
+                  #1000<br />cust2 = Customer("Laura") #The __init__ method was
+                  called<br />print(cust2.balance) #0
+                </code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            If possible, try to avoid defining attributes outside the
+            constructor.
+            <ul>
+              <li>easier to know all the attributes</li>
+              <li>
+                attributes are created when the object is created -> you don't
+                have to worry about trying to access an attribution that doesn't
+                yet exist.
+              </li>
+              <li>more usable and maintainable code</li>
+            </ul>
+          </li>
+          <li>
+            Best Practices
+            <ol>
+              <li>
+                <b>Initialize attributes in <code>__init__()</code></b>
+              </li>
+              <li>
+                <b>Naming</b> - <b>CamelCase</b> for class,
+                <b>lower_snake_case</b> for functions and attributes
+              </li>
+              <li>
+                Keep <b>self</b> as self (you can use any name for the first
+                variable of a method, but use self (cf. "this" in Java))
+              </li>
+              <li>
+                Use <b>docstrings</b>
+                <ul>
+                  <li>
+                    ex.
+                    <code
+                      >class MyClass:
+                      <ul>
+                        """this class does nothing"""<br />pass
+                      </ul></code
+                    >
+                  </li>
+                  <li>displayed when help() is called on</li>
+                  <li>make the life of the person using your class easier</li>
+                </ul>
+              </li>
+            </ol>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="course1">
+      <h2>1. Inheritance and Polymorphism</h2>
+      <div id="course1-0" class="idv_class">
+        <h3>1-0. Instance and class data</h3>
+        <ul>
+          <li>
+            Core principles of OOP
+            <ul>
+              <li>
+                <b>Inheritance</b>:
+                <ul>
+                  <li>Extending functinality of existing code</li>
+                </ul>
+              </li>
+              <li>
+                <b>Polymorphism</b>:
+                <ul>
+                  <li>Creating a united interface</li>
+                </ul>
+              </li>
+              <li>
+                <b>Encalsulation</b>:
+                <ul>
+                  <li>Building of data and methods</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Instance-level data
+            <ul>
+              <li>
+                <code
+                  >class Employee:
+                  <ul>
+                    def __init__(self, name, salary):
+                    <ul>
+                      self.name = name<br />self.salary = salary
+                    </ul>
+                  </ul>
+                  emp1 = Employee("Teo Mille", 50000)<br />emp2 =
+                  Employee("Marta Popov", 65000)</code
+                >
+              </li>
+              <li>name, salary are instance attributes</li>
+              <li>self binds to an instance</li>
+            </ul>
+          </li>
+          <li>
+            Class-level data
+            <ul>
+              <li>Data shared among all instances of a class</li>
+              <li>Defind class attributes in the body of class</li>
+              <li>"Global variable" within the class</li>
+              <li>
+                <code
+                  >class Employee:
+                  <ul>
+                    <mark>MIN_SALARY</mark>
+                    = 30000<br />def __init__(self, name, salary):
+                    <ul>
+                      self.name = name<br />if
+                      salary>=<mark>Employee.MIN_SALARY</mark>:
+                      <ul>
+                        self.salary = salary
+                      </ul>
+                      else:
+                      <ul>
+                        self.salary =
+                        <mark>Employee.MIN_SALARY</mark>
+                      </ul>
+                    </ul>
+                  </ul></code
+                >
+              </li>
+              <li>MIN_SALARY is shared among all instances</li>
+              <li>Don't use self to define attribute</li>
+              <li>
+                use ClassName.ATTR_NAME to access the class attribute value
+              </li>
+            </ul>
+          </li>
+          <li>
+            Why use class attributes? - Global constants related to the class
+            <ul>
+              <li>minimal/maximal values for attributes</li>
+              <li>
+                commonly used values and constants, e.g. pi for a Circle class
+              </li>
+            </ul>
+          </li>
+          <li>
+            Class methods
+            <ul>
+              <li>
+                Methods are already "shared": same code for every instance
+              </li>
+              <li>Class methods can't use instance-level data</li>
+              <li>
+                <code
+                  >class MyClass:
+                  <ul>
+                    @classmethod #use decorator to declare a class method<br />
+                    def my_awesome_method(cls, args, ...): #cls argument refers
+                    to the class
+                    <ul>
+                      #Do stuff here<br />#Can't use any instance attributes :(
+                    </ul>
+                  </ul>
+                </code>
+              </li>
+              <li>main use case : alternative constructor</li>
+              <li></li>
+            </ul>
+          </li>
+          <li>
+            Alternative constructor
+            <ul>
+              <li>class can have only one __init__()</li>
+              <li>
+                Use class methods to create objects
+                <ul>
+                  <li>
+                    <code
+                      >@classmethod<br />def from_file(cls, filename):
+                      <ul>
+                        with open(filename, "r") as f:
+                        <ul>
+                          name = f.readline()
+                        </ul>
+                        return cls(name)
+                      </ul>
+                    </code>
+                  </li>
+                  <li>use return to return an object.</li>
+                  <li>cls(...) will call __init__(...)</li>
+                  <li>
+                    <code
+                      >emp = Employee.from_file("employee_data.txt")<br />type(emp)
+                      #__main__.Employee</code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course1-1" class="idv_class">
+        <h3>1-1. Class inheritance</h3>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>1-2. Customizing functionality via Inheritance</h3>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>2. Integrating with Standard Python</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>2-0. Operator overloading: comparison</h3>
+      </div>
+      <div id="course2-1" class="idv_class">
+        <h3>2-1. Operator overloading: string representation</h3>
+      </div>
+      <div id="course2-2" class="idv_class">
+        <h3>2-2. Exceptions</h3>
+      </div>
+    </div>
+    <div id="course3">
+      <h2>3. Best Practices of Class Design</h2>
+      <div id="course3-0" class="idv_class">
+        <h3>3-0. Designing for interitance and polymorphism</h3>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>3-1. Managing data access: private attributes</h3>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>3-2. Properties</h3>
+      </div>
+    </div>
+  </body>
+</html>

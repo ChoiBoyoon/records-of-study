@@ -147,20 +147,308 @@
               </li>
             </ul>
           </li>
-          <li></li>
+          <li>
+            Why we like flat files and the Zen of Python
+            <ul>
+              <li>
+                <b>PEP</b>: Python Enhancement Proposals. currently there are
+                hundreds of them
+              </li>
+              <li>
+                <b>PEP8</b>: a standard style guide for Python, written by Guido
+                van Rossum.
+              </li>
+              <li>
+                <b>PEP20</b> - abstract: Long time Pythoneer Tim Peters
+                succintly channels the BDFL's guiding principles for Python's
+                design into 20 aphorisms, only 19 of which have been written
+                down.
+                <ul>
+                  cf.
+                  <b>BDFL</b
+                  >: Benevolent Dictator For Life, a.k.a. Guido van Rossum
+                </ul>
+              </li>
+              <li>
+                You can print <b>the Zen of Python</b> in your shell by typing
+                <code>import this</code> into it!
+                <ul>
+                  <li>Beautiful is better than ugly.</li>
+                  <li>Explicit is better than implicit.</li>
+                  <li>Simple is better than complex.</li>
+                  <li>Complex is better than complicated.</li>
+                  <li><b>Flat is better than nested.</b></li>
+                  <li>Sparse is better than dense.</li>
+                  <li>Readability counts.</li>
+                  <li>
+                    Special cases aren't special enough to break the rules.
+                  </li>
+                  <li>Although practicality beats purity.</li>
+                  <li>Errors should never pass silently.</li>
+                  <li>Unless explicitly silenced.</li>
+                  <li>
+                    In the face of ambiguity, refuse the temptation to guess.
+                  </li>
+                  <li>
+                    There should be one -- and preferably only one -- obvious
+                    way to do it
+                  </li>
+                  <li>
+                    Although that way may not be obvious at first unless you're
+                    Dutch.
+                  </li>
+                  <li>Now is better than never.</li>
+                  <li>Although never is often better than *right* now</li>
+                  <li>
+                    If the implementation is hard to explain, it's a bad idea.
+                  </li>
+                  <li>
+                    If the implementation is easy to explain, it may be a good
+                    idea.
+                  </li>
+                  <li>
+                    Namespaces are one hooking great idea -- let's do more of
+                    those!
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course0-2" class="idv_class">
         <h3>0-2. Importing flat files using NumPy</h3>
+        <ul>
+          <li>
+            Why NumPy?
+            <ul>
+              <li>NumPy arrays: standard for storing numerical data</li>
+              <li>Essential for other packages: e.g. scikit-learn</li>
+              <li>loadtxt()</li>
+              <li>genfromtxt()</li>
+            </ul>
+          </li>
+          <li>
+            Importing flat files using NumPy
+            <ul>
+              <li>
+                <code
+                  >import numpy as np<br />filename = 'MNIST.txt'<br />data =
+                  <mark>np.loadtxt</mark>(filename, <u>delimiter = ','</u>)
+                  #default delimiter is any white space<br />data</code
+                >
+              </li>
+              <li>
+                <code
+                  >import numpy as np<br />filename = 'MNIST_header.txt'<br />data
+                  = np.loadtxt(filename, delimiter=',', <u>skiprows=1</u>) #if
+                  header has string in it<br />print(data)</code
+                >
+              </li>
+              <li>
+                If you want only 1st and 3rd columns<br /><code
+                  >import numpy as np<br />filename = 'MNIST_header.txt'<br />data
+                  = np.loadtxt(filename, delimiter=',', skiprow=1,
+                  <u>usecols=[0,2]</u>)<br />print(data)</code
+                >
+              </li>
+              <li>
+                to ensure all entries are imported as strings <br /><code
+                  >data = np.loadtxt(filename, delimiter=',',
+                  <u>dtype=str</u>)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <code><b>np.genfromtxt()</b></code
+            >: to import datasets which have different datatypes in different
+            columns. (structured array)
+            <ul>
+              <li>
+                If we pass <code>dtype=None</code> to it, it will figure out
+                what types each column should be.
+              </li>
+              <li>
+                <code
+                  >data = <mark>np.genfromtxt</mark>('titanic.csv',
+                  delimiter=',', <u>names=True</u>, dtype=None) #names=True ->
+                  tells us there is a header</code
+                >
+              </li>
+              <li>
+                Because numpy arrays have to contain elements that are all the
+                same type, the structured array solves this by a 1D array, where
+                each element of the array is a row of the flat file imported. to
+                check -> <code>np.shape(data)</code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <code><b>np.recfromcsv()</b></code
+            >: behaves similarly to <code>np.genfromtxt()</code>, except that
+            its default dtypes is None (+ default delimiter=',', default
+            names=True)
+            <ul>
+              <li>
+                <code
+                  >d = np.recfromcsv('titanic.csv') #위 코드랑 same result</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course0-3" class="idv_class">
         <h3>0-3. Importing flat files using pandas</h3>
+        <ul>
+          <li>
+            What a data scientist needs
+            <ul>
+              <li>Two-dimensional labeled data structure(s)</li>
+              <li>Columns of potentially different types</li>
+              <li>Manipulate, slice, reshape, groupby, join, merge</li>
+              <li>Perform statistics</li>
+              <li>Work with time series data</li>
+            </ul>
+          </li>
+          <li>
+            Pandas and the DataFrame
+            <ul>
+              <li>
+                What problem does pandas solve? Python has long been great for
+                data munging and preparation,
+                <u>but less so far data analysis and modeling</u>. pandas helps
+                fill this gap,
+                <u
+                  >enabling you to carry out your entire data analysis
+                  workflow</u
+                >
+                in Python without having to switch to a more domain specific
+                language like R.
+              </li>
+              <li>Dataframe = pythonic analog of R's data frame</li>
+              <li>
+                A matrix has rows and columns. A data frame has observations and
+                variables.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Manipulating pandas DataFrames
+            <ul>
+              <li>Exploratory data analysis</li>
+              <li>Data wrangling</li>
+              <li>Data preprocessing</li>
+              <li>Building models</li>
+              <li>Visualization</li>
+              <li>Standard and best practice to use pandas</li>
+            </ul>
+          </li>
+          <li>
+            Importing using pandas
+            <ul>
+              <li>
+                <code
+                  >import pandas as pd<br />filename = 'winequality-red.csv'<br />data
+                  = pd.read_csv(filename)<br />data.head()</code
+                >
+              </li>
+              <li>
+                to convert to a numpy array<br /><code
+                  >data_array = <mark>data.values</mark></code
+                >
+              </li>
+              <li>
+                to import first 5 rows<br /><code
+                  >pd.read_csv(filename, <u>nrows=5</u>, header=None)</code
+                >
+              </li>
+              <li>
+                when the data contains comments after the character '#', and is
+                tab-delimited<br /><code
+                  >pd.read_csv(filename, <u>sep='\t'</u>, <u>comment = '#'</u>,
+                  <u>na_values='Nothing'</u>)</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
     <div id="course1">
       <h2>1. Importing data from other file types</h2>
       <div id="course1-0" class="idv_class">
         <h3>1-0. Introduction to other file types</h3>
+        <ul>
+          <li>
+            Other file types
+            <ul>
+              <li>
+                Excel spreadsheets
+                <ul>
+                  <li>
+                    <code
+                      >import pandas as pd<br />file = 'urbanpop.xlsx'<br />data
+                      = pd.ExcelFile(file)<br />print(data.sheet_names)
+                      #['1960-1966', '1967-1974', '1975-2011']<br />df1 =
+                      data.parse('1960-1966') #sheet name, as a string<br />df2
+                      = data.parse(0) #sheet index, as a float</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>MATLAB files</li>
+              <li>SAS files</li>
+              <li>Stats files</li>
+              <li>
+                HDF5 #becoming a more prevalent way to store large datasets
+              </li>
+              <li>
+                Pickled files
+                <ul>
+                  <li>File type native to Python</li>
+                  <li>
+                    Motivation: many datatypes for which it isn't obvious how to
+                    store them
+                  </li>
+                  <li>Pickled files are serialized</li>
+                  <li>
+                    Serialize = convert object to byetestream(sequence of bytes)
+                  </li>
+                  <li>
+                    <code
+                      >import pickle<br />with open('pickled_fruit.pkl', 'rb')
+                      as file: #read only, binary file
+                      <ul>
+                        data = pickle.load(file)
+                      </ul>
+                      print(data) #{'peaches':13, 'apples':4,
+                      'oranges':11}</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>JSONs : appropriate for Python dictionaries</li>
+            </ul>
+          </li>
+          <li>
+            os : Python library, which consists of miscellaneous operating
+            system interfaces
+            <ul>
+              <li>
+                <code
+                  >import os<br />wd = os.getcwd() #stores the name of the
+                  current directory<br />os.listdir(wd) #outputs the contents of
+                  the directory in a list to the shell.</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course1-1" class="idv_class">
         <h3>1-1. Importing SAS/Stata files using pandas</h3>
