@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../nomad_coders/general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practicing Coding Interview Questions in Python</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+    <h1>Practicing Coding Interview Questions in Python</h1>
+    <div id="course0">
+      <h2>0. Python Data Structures and String Manipulation</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>0-0. What are the main data structures in Python?</h3>
+        <ul>
+          <li>
+            <b>List</b> : an ordered mutable sequence of items (e.g. numbers,
+            strings, etc)
+            <ul>
+              <li>
+                <code
+                  >my_list = [1,2,3,4]<br />print(my_list[2]) #3<br />print(my_list[0:3])
+                  #1,2,3</code
+                >
+              </li>
+              <li>
+                methods:
+                <ul>
+                  <li>.append()</li>
+                  <li>.remove()</li>
+                  <li>
+                    .pop() #removes the last item from a list and returns its
+                    value
+                  </li>
+                  <li>.count()</li>
+                  <li>
+                    <code
+                      >my_list.append(10)<br />my_list.remove(10)<br />my_list.pop()
+                      #3</code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Tuple</b> : an ordered <b>immutable</b> sequence of items
+            <ul>
+              <li><code>my_tuple = (1, 'apple', 2, 'banana')</code></li>
+            </ul>
+          </li>
+          <li>
+            <b>Set</b> : an <b>unordered</b> collection with
+            <b>no duplicate items</b>
+            <ul>
+              <li>
+                <code
+                  >my_set = set([1,2,3,4,5])<br />print(my_set) #{1,2,3,4,5}<br />my_set
+                  = set([1,1,1,2,2,2,3,4,4,5])<br />print(my_set)
+                  #{1,2,3,4,5}</code
+                >
+              </li>
+              <li>
+                methods:
+                <ul>
+                  <li>.add()</li>
+                  <li>.remove()</li>
+                  <li>
+                    .union()
+                    <ul>
+                      <li><code>my_set1.union(my_set2)</code></li>
+                    </ul>
+                  </li>
+                  <li>
+                    .intersection() : returns a new set with only common items
+                    <ul>
+                      <li><code>my_set1.intersection(my_set2)</code></li>
+                    </ul>
+                  </li>
+                  <li>
+                    .difference()
+                    <ul>
+                      <li><code>my_set1.difference(my_set2)</code></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Dictionary</b>: a collection of key-value pairs where keys are
+            unique and immutable
+            <ul>
+              <li>
+                <code
+                  >fruits = {'apple':10, 'oragne':6, 'banana':9}<br />fruits =
+                  dict([('apple', 10), ('orange',6), ('banana',9)])<br />fruits['apple']
+                  #10</code
+                >
+              </li>
+              <li>
+                <code
+                  >list(fruits.items()) #[('apple', 10), ('orange',6),
+                  ('banana',9)]</code
+                >
+              </li>
+              <li>
+                <code
+                  >fruits.keys() #dict_keys(['apple', 'orange', 'banana'])<br />fruits.values()
+                  #dict_values([10, 6, 9])</code
+                >
+              </li>
+              <li>
+                .popitem() #remove the last inserted key-value pair
+                <ul>
+                  <li><code>fruits.popitem('banana')</code></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course0-1" class="idv_class">
+        <h3>0-1. What are common ways to manipulate strings?</h3>
+        <ul>
+          <li>
+            __str__ constructor: when an instance is called with str(), this
+            method is executed
+            <ul>
+              <li>
+                <code
+                  >class newClass:
+                  <ul>
+                    def __init__(self, num):
+                    <ul>
+                      self.num = num
+                    </ul>
+                    def __str__(self):
+                    <ul>
+                      return str(self.num)
+                    </ul>
+                  </ul>
+                  nc = newClass(3)<br />str(nc) #'3'
+                </code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            .index()
+            <ul>
+              <li>
+                <code
+                  >s = "interview"<br />s.index('n') #1<br />s.index('i')
+                  #0</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Strings are immutable
+            <ul>
+              <li><code>s[0] = 'a' #TypeError</code></li>
+            </ul>
+          </li>
+          <li>
+            methods: .capitalize(), .lower(), .upper(), .replace() -> return a
+            new string object
+          </li>
+          <li>
+            .replace()
+            <ul>
+              <li>
+                <code
+                  >s1 = 'a dog ate my food'<br />s2 = s1.replace('dog',
+                  'cat')<br />print(s2) #a cat ate my food</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            create a string from a list of strings
+            <ul>
+              <li>
+                <code
+                  >l = ['I', 'like', 'to', 'study']<br />s = '
+                  '.<mark>join</mark>(l) #' ' is a delimiter between strings<br />print(s)
+                  #I like to study</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            breaking a string into a list of strings:
+            <ul>
+              <li>
+                <code
+                  >l = s.<mark>split</mark>(' ')<br />print(l) #['I', 'like',
+                  'to', 'study']</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            String methods with DataFrames
+            <ul>
+              <li>
+                <code
+                  >import pandas as pd<br />d = {name: ['john', 'amanda',
+                  'rick'], 'age':[35, 29, 19]}<br />D = pd.DataFrame(d)<br />print(D)<br />D['name']
+                  = D['name'].<mark>str.capitalize()</mark></code
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course0-2" class="idv_class">
+        <h3>0-2. How to write regular expressions in Python?</h3>
+      </div>
+    </div>
+    <div id="course1">
+      <h2>1. Iterable objects and representatives</h2>
+      <div id="course1-0" class="idv_class">
+        <h3>1-0. What are iterable objects?</h3>
+      </div>
+      <div id="course1-1" class="idv_class">
+        <h3>1-1. What is a list comprehension?</h3>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>1-2. What is a zip object?</h3>
+      </div>
+      <div id="course1-3" class="idv_class">
+        <h3>1-3. What is a generator and how to create one?</h3>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>2. Functions and lambda expressions</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>2-0. How to pass a variable number of arguments to a function?</h3>
+      </div>
+      <div id="course2-1" class="idv_class">
+        <h3>2-1. What is a lambda expression?</h3>
+      </div>
+      <div id="course2-2" class="idv_class">
+        <h3>2-2. What are the functions map(), filter(), reduce()?</h3>
+      </div>
+      <div id="course2-3" class="idv_class">
+        <h3>2-3. What is recursion?</h3>
+      </div>
+    </div>
+    <div id="course3">
+      <h2>3. Python for scientific computing</h2>
+      <div id="course3-0" class="idv_class">
+        <h3>3-0. What is the difference between a NumPy and a list?</h3>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>3-1. How to use the .apply() method on DataFrame?</h3>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>3-2. How to use the .groupby() method on a DataFrame?</h3>
+      </div>
+      <div id="course3-3" class="idv_class">
+        <h3>3-3. How to visualize data in Python?</h3>
+      </div>
+    </div>
+  </body>
+</html>

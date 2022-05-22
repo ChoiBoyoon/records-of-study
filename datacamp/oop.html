@@ -366,9 +366,10 @@
                 <code
                   >class MyClass:
                   <ul>
-                    @classmethod #use decorator to declare a class method<br />
-                    def my_awesome_method(cls, args, ...): #cls argument refers
-                    to the class
+                    <mark>@classmethod</mark>
+                    #use decorator to declare a class method<br />
+                    def my_awesome_method(<mark>cls</mark>, args, ...): #cls
+                    argument refers to the class
                     <ul>
                       #Do stuff here<br />#Can't use any instance attributes :(
                     </ul>
@@ -388,7 +389,8 @@
                 <ul>
                   <li>
                     <code
-                      >@classmethod<br />def from_file(cls, filename):
+                      ><mark>@classmethod</mark><br />def
+                      from_file(<mark>cls</mark>, filename):
                       <ul>
                         with open(filename, "r") as f:
                         <ul>
@@ -410,14 +412,171 @@
               </li>
             </ul>
           </li>
-          <li></li>
+          <li>
+            static method
+            <ul>
+              <li>not bound to a class instance</li>
+              <li>defined with the decorator @staticmethod</li>
+              <li>
+                mainly used for helper or utility functions that could as well
+                live outside of the class, but make more sense when bundled into
+                the class.
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
       <div id="course1-1" class="idv_class">
         <h3>1-1. Class inheritance</h3>
+        <ul>
+          <li>
+            Code reuse
+            <ol>
+              <li>
+                Someone has already done it
+                <ul>
+                  <li>Modules are great for fixed functionality</li>
+                  <li>OOP is great for customizing functionality</li>
+                </ul>
+              </li>
+              <li>DRY: Don't Repeat Yourself</li>
+            </ol>
+          </li>
+          <li>
+            Inheritance
+            <ul>
+              <li>New class functionality = Old class functionality + extra</li>
+            </ul>
+          </li>
+          <li>
+            Implementing class inheritance
+            <ul>
+              <li>
+                <code
+                  >class <b><u>BankAccount</u></b
+                  >:
+                  <ul>
+                    def __init__(self, balance):
+                    <ul>
+                      self.balance = balance
+                    </ul>
+                    def withdraw(self, amount):
+                    <ul>
+                      self.balance -= amount
+                    </ul>
+                  </ul>
+                  class SavingsAccount(<b><u>BankAccount</u></b
+                  >):
+                  <ul>
+                    pass
+                  </ul></code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Child class has all of the parent data
+            <ul>
+              <li>
+                <code
+                  >savings_acct = SavingsAccount(1000)<br />type(savings_acct)
+                  #__main__.SavingsAccount<br />savings_acct.balance #1000<br />savings_acct.withdraw(300)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Inheritance: "is-a" relationships
+            <ul>
+              <li>
+                A SavingsAccount is a BankAccount (just with some extra
+                features)
+              </li>
+              <li>
+                <code
+                  >savings_acct = SavingsAccount(1000)<br />isinstance(savings_acct,
+                  SavingsAccount) #True<br />isinstance(savings_acct,
+                  BankAccount) #True</code
+                >
+              </li>
+              <li>
+                <code
+                  >acct = BankAccount(1000)<br />isinstance(acct,
+                  SavingsAccount) #False<br />isinstance(acct, BankAccount)
+                  #True</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-2" class="idv_class">
         <h3>1-2. Customizing functionality via Inheritance</h3>
+        <ul>
+          <li>
+            Customizing constructors
+            <ul>
+              <li>
+                <code
+                  >class SavingsAccount(BankAccount):
+                  <ul>
+                    def __init__(self, balance, interest_rate):
+                    <ul>
+                      BankAccount.__init__(self, balance)<br />self.interest_rate
+                      = interest_rate
+                    </ul>
+                  </ul>
+                </code>
+              </li>
+              <li>Can run constructor of the parent class first</li>
+              <li>Add more functionality</li>
+              <li>
+                Don't have to call the parent constructors, but you'll likely to
+                almost always use the parent constructor.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Customizing functionality
+            <ul>
+              <li>
+                <code
+                  >class CheckingAccount(BankAccount):
+                  <ul>
+                    def __init__(self, balance, limit):
+                    <ul>
+                      BankAccount.__init__(self, content)<br />self.limit =
+                      limit
+                    </ul>
+                    def deposit(self, amount):
+                    <ul>
+                      self.balance += amount
+                    </ul>
+                    def withdraw(self, amount, fee=0):
+                    <ul>
+                      if fee <= self.limit:
+                      <ul>
+                        BankAccount.withdraw(self, amount-fee)
+                      </ul>
+                      else:
+                      <ul>
+                        BankAccount.withdraw(self, amount-self.limit)
+                      </ul>
+                    </ul>
+                  </ul>
+                </code>
+              </li>
+              <li>Can change the signature(add parameters)</li>
+              <li>
+                Use Parent.method(self, args...) to call a method from the
+                parent class
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
     </div>
     <div id="course2">
