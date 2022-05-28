@@ -391,9 +391,12 @@
                     <code
                       >import pandas as pd<br />file = 'urbanpop.xlsx'<br />data
                       = pd.ExcelFile(file)<br />print(data.sheet_names)
-                      #['1960-1966', '1967-1974', '1975-2011']<br />df1 =
-                      data.parse('1960-1966') #sheet name, as a string<br />df2
-                      = data.parse(0) #sheet index, as a float</code
+                      #['1960-1966', '1967-1974', '1975-2011']<br /><mark
+                        >df1 = data.parse('1960-1966')</mark
+                      >
+                      #sheet name, as a string<br />
+                      <mark>df2 = data.parse(0)</mark> #sheet index, as a
+                      float</code
                     >
                   </li>
                 </ul>
@@ -445,13 +448,77 @@
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
-          <li></li>
         </ul>
       </div>
       <div id="course1-1" class="idv_class">
         <h3>1-1. Importing SAS/Stata files using pandas</h3>
+        <ul>
+          <li>
+            SAS and Stata files
+            <ul>
+              <li>
+                SAS: Statistical Analysis System
+                <ul>
+                  <li>business analytics and biostatistics</li>
+                  <li>extension name: .sas7bdat</li>
+                </ul>
+              </li>
+              <li>
+                Stata: "Statistics" + "data"
+                <ul>
+                  <li>academic social sciences research</li>
+                  <li>ex. economics, epidemiology</li>
+                  <li>extension name: .dta</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            SAS files
+            <ul>
+              <li>
+                Used for:
+                <ul>
+                  <li>Advanced analytics</li>
+                  <li>Multivariate analysis</li>
+                  <li>Business intelligence</li>
+                  <li>Data management</li>
+                  <li>Predictive analytics</li>
+                  <li>Standard for computational analysis</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Importing SAS files
+            <ul>
+              <li>
+                <code
+                  >import pandas as pd<br /><mark
+                    >from sas7bdat import SAS7BDAT</mark
+                  ><br />with
+                  <mark>SAS7BDAT</mark>('urbanpop<mark>.sas7bdat</mark>') as
+                  file:
+                  <ul>
+                    df_sas = file<mark>.to_data_frame()</mark>
+                  </ul></code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Importing Stata files
+            <ul>
+              <li>
+                <code
+                  >import pandas as pd<br />data =
+                  <mark>pd.read_stata</mark>('urbanpop<mark>.dta</mark>')</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
       </div>
       <div id="course1-2" class="idv_class">
         <h3>1-2. Importing HDF5 files</h3>
