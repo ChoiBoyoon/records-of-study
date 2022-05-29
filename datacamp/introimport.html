@@ -585,29 +585,226 @@
               <li>Based in Champaign, Illinois</li>
             </ul>
           </li>
-          <li></li>
         </ul>
       </div>
       <div id="course1-3" class="idv_class">
         <h3>1-3. Importing MATLAB files</h3>
+        <ul>
+          <li>
+            MATLAB : "Matrix Laboratory"
+            <ul>
+              <li>Industry standard in engineering and science</li>
+              <li>powerful linear algebra and matrix capabilities</li>
+              <li>
+                the academic world finds it difficult to shake off old habits
+              </li>
+              <li>
+                Data saved as .mat files -> the file format native to MATLAB
+              </li>
+            </ul>
+          </li>
+          <li>
+            SciPy to the rescue!
+            <ul>
+              <li>scipy.io.loadmat() - read .mat files</li>
+              <li>scipy.io.savemat() - write .mat files</li>
+            </ul>
+          </li>
+          <li>
+            Importing a .mat file
+            <ul>
+              <li>
+                <code
+                  >import scipy.io<br />filename = 'workspace.mat'<br />mat =
+                  <mark>scipy.io.loadmat</mark>(filename)<br />print(type(mat))
+                  #&lt;class 'dict'&gt;<br />print(type(mat['x'])) #&lt;class
+                  'numpy.ndarray'&gt;</code
+                >
+              </li>
+              <li>keys = MATLAB variable names</li>
+              <li>valeus = objects assigned to variables</li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
     <div id="course2">
       <h2>2. Working with relational databases in Python</h2>
       <div id="course2-0" class="idv_class">
         <h3>2-0. Introduction to relational databases</h3>
+        <ul>
+          <li>
+            What is relational database?
+            <ul>
+              <li>Based on relational model of data</li>
+              <li>First described by Edgar "Ted" Codd</li>
+            </ul>
+          </li>
+          <li>
+            Relational model
+            <ul>
+              <li>Widely adopted</li>
+              <li>
+                Codd's 12 Rules/Commandments
+                <ul>
+                  <li>Consists of 13 rules (zero-indexed!)</li>
+                  <li>
+                    Describes what a Relational Database Management System
+                    should adhere to to be considered relational
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Relational Database Management Systems
+            <ul>
+              <li>PostgreSQL</li>
+              <li>MySQL</li>
+              <li>SQLite</li>
+              <li>SQL = Structured Query Language</li>
+              <li>querying = getting data out from the database</li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course2-1" class="idv_class">
         <h3>2-1. Creating a database engine in Python</h3>
+        <ul>
+          <li>
+            Creating a database engine
+            <ul>
+              <li>
+                SQLite database
+                <ul>
+                  <li>Fast and simple</li>
+                </ul>
+              </li>
+              <li>
+                SQLAlchemy
+                <ul>
+                  <li>
+                    Works with many Relational Database Management Systems
+                  </li>
+                  <li>
+                    <code
+                      >from sqlalchemy import create_engine<br />engine =
+                      create_engine('sqlite:///Northwind.sqlite')</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Getting table names
+                <ul>
+                  <li>
+                    <code
+                      >table_names = engine.table_names()<br />print(table_names)</code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course2-2" class="idv_class">
         <h3>2-2. Querying relational databases in Python</h3>
+        <ul>
+          <li>
+            Basic SQL query
+            <ul>
+              <li>
+                <code>SELECT * FROM Table_name</code>: Returns all columns of
+                all rows of the table
+              </li>
+            </ul>
+          </li>
+          <li>
+            Workflow of SQL querying
+            <ul>
+              <li>Import packages and functions</li>
+              <li>Create the database engine</li>
+              <li>Connect to the engine</li>
+              <li>Query the database</li>
+              <li>Save query results to a DataFrame</li>
+            </ul>
+          </li>
+          <li>
+            Your first SQL query
+            <ul>
+              <li>
+                <code
+                  >from sqlalchemy import create_engine<br />import pandas as
+                  pd<br />engine =
+                  create_engine('sqlite:///Northwind.sqlite')<br /><mark
+                    >con = engine.connect()</mark
+                  ><br /><mark>rs = con.execute("SELECT * FROM Orders")</mark
+                  ><br />df = pd.DataFrame(<mark>rs.fetchall()</mark>)<br /><mark
+                    >df.columns = rs.keys()</mark
+                  >
+                  #to correctly set column names<br />con.close() #close the
+                  connection</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Using the context manager
+            <ul>
+              <li>
+                <code
+                  >with engine.connect() as con:
+                  <ul>
+                    rs = con.execute("SELECT OrderID, OrderDate, ShipName FROM
+                    Orders")<br />df =
+                    pd.DataFrame(<mark>rs.fetchmany(size=5)</mark>) #import 5
+                    rows<br />df.columns = rs.keys()
+                  </ul></code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course2-3" class="idv_class">
         <h3>2-3. Querying relational databases directly with pandas</h3>
+        <ul>
+          <li>
+            The pandas way to query
+            <ul>
+              <li>
+                <code
+                  >df = pd.read_sql_query("SELECT * FROM Orders", engine)</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course3-3" class="idv_class">
         <h3>3-3. Advanced querying: exploiting table relationships</h3>
+        <ul>
+          <li>
+            INNER JOIN in Python (pandas)
+            <ul>
+              <li>
+                <code
+                  >from sqlalchemy import create_engine<br />import pandas as
+                  pd<br />engine =
+                  create_engine('sqlite:///Northwind.sqlite')<br />df =
+                  pd.read_sql_query("SELECT OrderID, CompanyName FROM Orders
+                  INNER JOIN Customers on
+                  Orders.CustomerID=Customers.CustomerID", engine)<br />print(df.head())</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
     </div>
   </body>
