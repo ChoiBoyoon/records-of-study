@@ -517,11 +517,76 @@
               </li>
             </ul>
           </li>
-          <li></li>
         </ul>
       </div>
       <div id="course1-2" class="idv_class">
         <h3>1-2. Importing HDF5 files</h3>
+        <ul>
+          <li>
+            HDF files
+            <ul>
+              <li>Hierarchical Data Format version 5</li>
+              <li>Standard for storing large quantities of numerical data</li>
+              <li>Datasets can be hundreds of gigabytes or terabytes</li>
+              <li>HDF5 can scale to exabytes</li>
+            </ul>
+          </li>
+          <li>
+            Importing HDF5 files
+            <ul>
+              <li>
+                <code
+                  >import h5py<br />filename =
+                  'H-H1_LOSC_4_V1-815411200-4096.hdf5'<br />data =
+                  h5py.File(filename, 'r') #'r' is to read<br />print(type(data))
+                  #&lt;class 'h5py._h1.files.File'&gt;</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            The structure of HDF5 files
+            <ul>
+              <li>
+                <code
+                  >for key in data.keys():
+                  <ul>
+                    print(key) #meta quality strain
+                  </ul>
+                  print(type(data['meta'])) #&lt;class
+                  'h5py._h1.group.Group'&gt;</code
+                >
+              </li>
+              <li><b>meta</b>: Meta-data for the file</li>
+              <li><b>quality</b>: Refers to data quality</li>
+              <li>
+                <b>strain</b>: Strain data from the interferometer, In some
+                sense, this is "the data", the main measurement performed by
+                LIGO.
+              </li>
+              <li>
+                <code
+                  >for key in data['meta'].keys():
+                  <ul>
+                    print(key) #Description DescriptionURL Detector Duration
+                    GPSstart Observatory Type UTCstart
+                  </ul>
+                  print(np.array(data['meta']['Description']),
+                  np.array(data['meta']['Detector'])) #b'Strain data time series
+                  from LIGO' b'H1'</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            The HDF Project
+            <ul>
+              <li>Actively maintained by the HDF Group</li>
+              <li>Based in Champaign, Illinois</li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
       </div>
       <div id="course1-3" class="idv_class">
         <h3>1-3. Importing MATLAB files</h3>
