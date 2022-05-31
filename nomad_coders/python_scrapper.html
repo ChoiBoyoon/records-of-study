@@ -40,11 +40,14 @@
             root(https://SuperScrapper.boyoonchoi.repl.co/), we execute a python
             function
             <ul>
-              <li>@app.route("/")</li>
-              <li>def home():</li>
-              <ul>
-                <li>return "Hello!"</li>
-              </ul>
+              <li>
+                <code
+                  >@app.route("/")<br />def home():
+                  <ul>
+                    return "Hello!"
+                  </ul></code
+                >
+              </li>
             </ul>
           </li>
           <li>
@@ -52,11 +55,14 @@
             https://SuperScrapper.boyoonchoi.repl.co/contact, we execute a
             following function
             <ul>
-              <li>@app.route("/contact")</li>
-              <li>def contact():</li>
-              <ul>
-                <li>return "Contact me!"</li>
-              </ul>
+              <li>
+                <code
+                  >@app.route("/contact")<br />def contact():
+                  <ul>
+                    return "Contact me!"
+                  </ul></code
+                >
+              </li>
             </ul>
           </li>
           <li><b>@</b>: decorator. looks for a <u>function</u> under it.</li>
@@ -68,12 +74,13 @@
           <li>
             <b><></b>: placeholder.
             <ul>
-              <li>@app.route("/&lt;username&gt;")</li>
               <li>
-                def potato(username):
-                <ul>
-                  <li>return f"Hello {username}"</li>
-                </ul>
+                <code
+                  >@app.route("/&lt;username&gt;")<br />def potato(username):
+                  <ul>
+                    return f"Hello {username}"
+                  </ul></code
+                >
               </li>
             </ul>
           </li>
@@ -81,13 +88,14 @@
           <li>
             how to send HTML to user
             <ul>
-              <li>from flask import <b>render_template</b></li>
-              <li>@app.route("/")</li>
               <li>
-                def home():
-                <ul>
-                  <li>return render_template("home.html")</li>
-                </ul>
+                <code
+                  >from flask import <b>render_template</b
+                  ><br />@app.route("/")<br />def home():
+                  <ul>
+                    return render_template("home.html")
+                  </ul>
+                </code>
               </li>
             </ul>
           </li>
@@ -114,36 +122,33 @@
             사용자로부터 받은 입력값을 처리하고 싶어! <b>request</b>: 데이터를
             웹사이트로 보내는 것
             <ul>
-              <li>from flask <b>import request</b></li>
-              <li>@app.route("/report")</li>
               <li>
-                def report():
-                <ul>
-                  <li>print(<b>request.args.get('word')</b>)</li>
-                  <li>
-                    #-> print(request.args)로 쓰면 전부 가져옴(dictionary).
-                    화면에 출력되진x
-                  </li>
-                  <li>
-                    #출력하려면 word=request.args.get('word') -> return word
-                  </li>
-                </ul>
+                <code
+                  >from flask <b>import request</b
+                  ><br />@app.route("/report")<br />def report():
+                  <ul>
+                    print(request.args.get('word'))
+                  </ul></code
+                >
               </li>
+              <li>
+                #-> print(request.args)로 쓰면 전부 가져옴(dictionary). 화면에
+                출력되진x
+              </li>
+              <li>#출력하려면 word=request.args.get('word') -> return word</li>
             </ul>
           </li>
           <li>
             How do we send info to a template?
             <ul>
-              <li>@app.route("/report")</li>
               <li>
-                def report():
-                <ul>
-                  <li>word = request.args.get('word')</li>
-                  <li>
-                    return <b>render_template</b>("report.html",
-                    <b>searchingBy=word</b>)
-                  </li>
-                </ul>
+                <code
+                  >@app.route("/report")<br />def report():
+                  <ul>
+                    word=request.args.get('word')<br />return
+                    render_template("report.html", searchingBy=word)
+                  </ul></code
+                >
               </li>
             </ul>
             -> report.html 내부 word가 들어갈 자리에는 <b>{{searchingBy}}</b>
@@ -161,19 +166,17 @@
           <li>
             Redirect시키기
             <ul>
-              <li>from flask import <b>redirect</b></li>
               <li>
-                if word:
-                <ul>
-                  <li>word = word.lower()</li>
-                </ul>
-              </li>
-
-              <li>
-                else:
-                <ul>
-                  <li>return <b>redirect("/")</b> #go home</li>
-                </ul>
+                <code
+                  >from flask import <b>redirect</b><br />if word:
+                  <ul>
+                    word = word.lower()
+                  </ul>
+                  else:
+                  <ul>
+                    return redirect("/") #go home
+                  </ul></code
+                >
               </li>
             </ul>
           </li>
@@ -190,50 +193,40 @@
             let's implement fake db -> should be outside of route. if somebody
             checks the same keyword, we don't have to hit scrapper every time.
             <ul>
-              <li><b>db[word]=jobs</b></li>
+              <li>
+                <code><b>db[word]=jobs</b></code>
+              </li>
             </ul>
           </li>
           <li>
             code:
             <ul>
-              <li>db={}</li>
-              <li>@app.route("/report")</li>
               <li>
-                def report():
-                <ul>
-                  <li>word=request.args.get("word")</li>
-                  <li>
-                    if word:
+                <code
+                  >db={}<br />@app.route("/report")<br />def report():
+                  <ul>
+                    word = request.args.get("word")<br />if word:
                     <ul>
-                      <li>word=word.lower()</li>
-                      <li>fromDb=db.get(word)</li>
-                      <li>
-                        if fromDb:
-                        <ul>
-                          <li>jobs = fromDb</li>
-                        </ul>
-                      </li>
-                      <li>
-                        else:
-                        <ul>
-                          <li>jobs = get_so_jobs(word)</li>
-                          <li>db[word] = jobs</li>
-                        </ul>
-                      </li>
+                      word = word.lower()<br />fromDb = db.get(word)<br />if
+                      fromDb:
+                      <ul>
+                        jobs = fromDb
+                      </ul>
+                      else:
+                      <ul>
+                        jobs = get_so_jobs(word)<br />db[word]=jobs
+                      </ul>
                     </ul>
-                  </li>
-                  <li>
                     else:
                     <ul>
-                      <li>return redirect("/")</li>
+                      return redirect("/")
                     </ul>
-                  </li>
-                  <li>
                     return render_template("report.html", searchingBy=word,
                     resultsNumber=len(jobs))
-                  </li>
-                </ul>
+                  </ul></code
+                >
               </li>
+
               <li>
                 cf. jobs는 dictionary들의 array-> len()을 쓰면 element 수를 구할
                 수 있음.

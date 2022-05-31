@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../nomad_coders/general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regular Expressions in Python</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+    <h1>Regular Expressions in Python</h1>
+    <div id="course0">
+      <h2>0. Basic Concepts of String Manipulation</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>0-0. Introduction to string manipulation</h3>
+        <ul>
+          <li>
+            Why it is important
+            <ul>
+              <li>
+                Clean dataset to prepare it for text mining or sentiment
+                analysis
+              </li>
+              <li>
+                Process email content to feed a machine learning algorithm that
+                decides whether an email is spam
+              </li>
+              <li>
+                Parse and extract specific data from a website to build a
+                datbase
+              </li>
+            </ul>
+          </li>
+          <li>
+            Strings
+            <ul>
+              <li>Sequence of characters</li>
+              <li>
+                Length
+                <ul>
+                  <li>
+                    <code
+                      >my_string = "awesome day"<br />len(my_string) #11</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Convert to string
+                <ul>
+                  <li><code>str(123) #"123"</code></li>
+                </ul>
+              </li>
+              <li>
+                Concatenation
+                <ul>
+                  <li>
+                    <code
+                      >string1="Winter is"<br />string2="coming"<br />print(string1
+                      + " " + string2)</code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Indexing
+            <ul>
+              <li>
+                Bracket notation
+                <ul>
+                  <li>
+                    <code
+                      >print(string1[0]) #W<br />print(string1[1]) #i<br />print(string1[-1])
+                      #s</code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Slicing
+            <ul>
+              <li><code>print(string1[0:6]) #Winter</code></li>
+            </ul>
+          </li>
+          <li>
+            Stride
+            <ul>
+              <li><code>print(string1[0:6:2]) #Wne</code></li>
+              <li>
+                to get a reversed string<br /><code
+                  >print(string1[::-1]) #retniW
+                </code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            cf. palindrome: a sequence of characters that can be read the same
+            backward as forward.
+            <ul>
+              <li>ex. madam<br />no lemon, no molen</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course0-1" class="idv_class">
+        <h3>0-1.String operations</h3>
+        <ul>
+          <li>
+            Adjusting cases
+            <ul>
+              <li><code>my_string = "Winter Is Coming"</code></li>
+              <li>
+                to lowercase:
+                <code
+                  >print(my_string<mark>.lower()</mark>) #winter is coming</code
+                >
+              </li>
+              <li>
+                to uppercase:
+                <code
+                  >print(my_string<mark>.upper()</mark>) #WINTER IS COMING</code
+                >
+              </li>
+              <li>
+                to capitalize:
+                <code
+                  >print(my_string<mark>.capitalize()</mark>) #Winter is
+                  coming</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Splitting into a list of substrings
+            <ul>
+              <li>
+                <code
+                  >my_string = "Lannisters always pay their debts"<br />my_string<mark>.split</mark>(sep="
+                  ", <b>maxsplit=2</b>) #['Lannisters', 'always', 'pay their
+                  debts']<br />my_string<mark>.rsplit</mark>(sep=" ",
+                  <b>maxsplit=2</b>) #['Lannisters always pay', 'their',
+                  'debts']</code
+                >
+              </li>
+              <li><b>maxsplit</b>: maximum number of substrings</li>
+              <li><b>rsplit()</b>: begins at the right of the string</li>
+            </ul>
+          </li>
+          <li>
+            Escape sequences
+            <ul>
+              <li>\n: newline</li>
+              <li>\r: carriage return</li>
+              <li>
+                <code
+                  >my_string = "hello\nworld"<br />print(my_string)
+                  <br />#hello<br />world</code
+                >
+              </li>
+              <li>
+                <code
+                  >my_string<mark>.splitlines()</mark> #['hello', 'world']</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Joining
+            <ul>
+              <li>Concatenate string from list or another iterable</li>
+              <li>
+                <code
+                  >my_list = ["Winter", "is", "coming"]<br />print("
+                  "<mark>.join</mark>(my_list)) #Winter is coming</code
+                >
+              </li>
+              <li>
+                cf. <code>print("?".join(my_list)) #Winter?is?coming</code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Stripping characters
+            <ul>
+              <li>
+                Strips characters: .strip()
+                <ul>
+                  <li>
+                    <code
+                      >my_string = " &nbsp;&nbsp;Winter is coming\n\n"<br />print(my_string<mark>.strip()</mark>)
+                      #Winter is coming<br />my_string2="$Winter is coming$"<br />print(my_string2<mark
+                        >.strip('$')</mark
+                      >
+                      #Winter is coming</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Strip characters from the right end: rstrip() #왼쪽은 strip 안함
+                <ul>
+                  <li>
+                    <code
+                      >print(my_string<b>.rstrip()</b>) # &nbsp;&nbsp;Winter is
+                      coming</code
+                    >
+                  </li>
+                  <li>
+                    <code
+                      >my_string2='the film is good&lt;\i&gt;'<br />print(my_string2<b
+                        >.rstrip('&lt;\i&gt;')</b
+                      >
+                      #the film is good</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Strip characters from the left end: rstrip() #오른쪽은 strip
+                안함
+                <ul>
+                  <li>
+                    <code
+                      >print(my_string<b>.lstrip()</b>) #Winter is coming\n\n
+                    </code>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Normalizing strings
+            <ul>
+              <li>converting all the words to lowercase</li>
+              <li>removing special characters</li>
+              <li>
+                extracting the root of a word so you count variants as one
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course0-2" class="idv_class">
+        <h3>0-2. Finding and replacing</h3>
+        <ul>
+          <li>
+            Finding substrings
+            <ul>
+              <li>Search target string for a specified substring</li>
+              <li>
+                <code
+                  >my_string = "Where's Waldo?"<br />my_string<mark>.find</mark>("Waldo")
+                  #8, returns the lowest index<br />my_string.find("Wenda") #-1,
+                  not found</code
+                >
+              </li>
+              <li>
+                <code
+                  >my_string.find("Waldo", <b>0, 6</b>) #-1, see if Waldo is
+                  between characters number zero and five</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Index function
+            <ul>
+              <li>
+                <code>
+                  my_string="Where's Waldo?"<br />my_string<mark>.index</mark>("Waldo")
+                  #8<br />my_string.index("Wenda") #ValueError!</code
+                >
+              </li>
+              <li>
+                <code>
+                  try:
+                  <ul>
+                    my_string.index("Wenda")
+                  </ul>
+                  except ValueError:
+                  <ul>
+                    print("Not found")
+                  </ul>
+                </code>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Counting occurrences
+            <ul>
+              <li>Return number of occurrences for a specified substring</li>
+              <li>
+                <code
+                  >my_string="How many fruits do you have in your fruit
+                  basket?"<br />my_string<mark>.count</mark>("fruit") #2<br />my_string.count("fruit",
+                  0, 16) #1, between character zero and fifteen of the
+                  string</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Replacing substrings
+            <ul>
+              <li>Replace occurrences of substring with new substring</li>
+              <li>
+                <code
+                  >my_string = "The red house is between the blue house and the
+                  old house"<br />print(my_string<mark>.replace</mark>("house",
+                  "car")) #The red car is between ...<br />print(my_string.replace("house",
+                  "car", 1)) #The red car is between the blue house and the old
+                  house</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="course1">
+      <h2>1. Formatting Strings</h2>
+      <div id="course1-1" class="idv_class">
+        <h3>1-1. Positional formatting</h3>
+        <ul>
+          <li>
+            What is string formatting?
+            <ul>
+              <li>String interpolation</li>
+              <li>Insert a custom string or variable in predefined text:</li>
+              <li>
+                <code
+                  >custom_string="String formatting"<br />print(f"{custom_string}
+                  is a powerful technique")</code
+                >
+              </li>
+              <li>
+                Usage:
+                <ul>
+                  <li>Title in a graph</li>
+                  <li>Show message or error</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Methods for formatting
+            <ul>
+              <li>Positional formatting</li>
+              <li>Formatted string literals</li>
+              <li>Template method</li>
+            </ul>
+          </li>
+          <li>
+            Positional formatting
+            <ul>
+              <li>Placeholder replace by value</li>
+              <li>
+                str.format()
+                <ul>
+                  <li>
+                    <code
+                      >print("Machine learning provides {} the ability to
+                      {}".format("systems", "automatically"))</code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Reordering values
+            <ul>
+              <li>
+                Include an index number into the placeholders to reorder values
+                <ul>
+                  <li>
+                    <code
+                      >print("{} {} {}".format("Robb", "Sansa", "Arya")) #Robb
+                      Sansa Arya<br />print("{2} {0} {1}".format("Robb",
+                      "Sansa", "Arya")) #Arya Robb Sansa</code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Named placeholders
+            <ul>
+              <li>
+                Specify a name for the placeholders
+                <ul>
+                  <li>
+                    <code
+                      >tool="Unsupervised algorithms"<br />goal="patterns"<br />print("{title}
+                      try to find {aim} in the dataset".format(title=tool,
+                      aim=goal))</code
+                    >
+                  </li>
+                  <li>
+                    <code
+                      >my_methods={"tool":"Unsupervised algorithms",
+                      "goal":"patterns"}<br />print("{data[tool]} try to find
+                      {data[goal]} in the dataset".format(data=my_methods)) #no
+                      quotes for index</code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Format specifier
+            <ul>
+              <li>Specify data type to be used: {index:specifier}</li>
+              <li>
+                <code
+                  >print("Only <mark>{0:.2f}</mark>% of the {1} produced
+                  worldwide is {2}!".format(0.5155675, "data", "analyzed"))
+                  #Only 0.52% of the data produced worldwide is analyzed!</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Formatting datetime
+            <ul>
+              <li>
+                <code
+                  >from datetime import datetime<br />print(datetime.now())
+                  #2022-05-30 15:57:31.122494<br />print("today is
+                  <mark>{:%Y-%m-%d %H:%M}</mark>".format(datetime.now())) #today
+                  is 2022-05-30 15:57</code
+                >
+              </li>
+              <li>
+                <code
+                  >print("Today is
+                  <mark>{:%B %d, %Y}</mark>".format(datetime.now()) #Today is
+                  May 30, 2022</code
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>1-2. Formatted string literal</h3>
+        <ul>
+          <li>
+            f-strings
+            <ul>
+              <li>Minimal syntax</li>
+              <li>Add prefix f to string</li>
+              <li>
+                <code
+                  >a = "Hello"<br />b = "World"<br />print(f"{a} {b}!") #Hello
+                  World!</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Type conversion
+            <ul>
+              <li>
+                Allowed conversions:
+                <ul>
+                  <li>!s (string version)</li>
+                  <li>
+                    !r (string containing a printable representation, i.e. with
+                    quotes)
+                  </li>
+                  <li>!a (same as !r but escape the non-ASCII characters)</li>
+                </ul>
+              </li>
+              <li>
+                ex.
+                <code
+                  >name="Python"<br />print(f"Python is called
+                  {name<mark>!r</mark>} due to a comedy series") #Python is
+                  called <mark>'</mark>Python<mark>'</mark> due to a comedy
+                  series</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Format specifiers
+            <ul>
+              <li>
+                Standard format specifier:
+                <ul>
+                  <li>e (scientific notation, e.g. 5 10^3)</li>
+                  <li>d (digit, e.g. 4)</li>
+                  <li>f (float, e.g. 3.141592)</li>
+                </ul>
+              </li>
+              <li>
+                ex.
+                <code
+                  >number = 90.41890417471841<br />print(f"In the last 2 years,
+                  <b>{number:.2f}</b>% of the data was produced worldwide!") #In
+                  the last.., 90.41% of ...</code
+                >
+              </li>
+              <li>
+                ex.
+                <code
+                  >from datetime import datetime<br />my_today =
+                  datetime.now()<br />print(f"Today's date is
+                  <b>{my_today:.%B %d, %Y}</b>") #Today's date is May 30,
+                  2022</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Index lookups
+            <ul>
+              <li>
+                <code
+                  >stark = ["father":"Eddard", "mother":"Catelyn"}<br />print(f"Is
+                  your father <mark>{stark['father']}</mark>?") #Is your father
+                  Eddard?</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Escape sequences: backlashes \
+            <ul>
+              <li>
+                <code
+                  >my_string = "My dad is called \"Eddard\"" #My dad is called
+                  "Eddard"</code
+                >
+              </li>
+              <li>
+                cf.
+                <code
+                  >print(f"{family[\"father\"]}") #SyntaxError! (f-string
+                  expression part cannont include a backslash)</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Inline operations
+            <ul>
+              <li>
+                Advantages: evaluate expressions and call functions inline
+              </li>
+              <li>
+                <code
+                  >number=4<br />multiplier=7<br />print(f"{number} multiplied
+                  by {multiplier} is {number*multiplier}") #4 multiplied by 7 is
+                  28</code
+                >
+              </li>
+              <li>
+                <code
+                  >def my_function(a,b):
+                  <ul>
+                    return a+b
+                  </ul>
+                  print(f"result: {my_function(10,20)}") #result: 30</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course1-3" class="idv_class">
+        <h3>1-3. Template method</h3>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>2. Regular Expressions for Pattern Matching</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>2-0. Introduction to regular expressions</h3>
+      </div>
+      <div id="course2-1" class="idv_class">
+        <h3>2-1. Repetitions</h3>
+      </div>
+      <div id="course2-2" class="idv_class">
+        <h3>2-2. Regex matacharacters</h3>
+      </div>
+      <div id="course2-3" class="idv_class">
+        <h3>2-3. Greedy vs. non-greedy matching</h3>
+      </div>
+    </div>
+    <div id="course3">
+      <h2>3. Advanced Regular Expression Concepts</h2>
+      <div id="course3-0" class="idv_class">
+        <h3>3-0. Capturing groups</h3>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>3-1. Alternation and non-capturing groups</h3>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>3-2. Backreferences</h3>
+      </div>
+      <div id="course3-3" class="idv_class">
+        <h3>3-3. Lookaround</h3>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../nomad_coders/general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intermediate Importing Data in Python</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+    <h1>Intermediate Importing Data in Python</h1>
+    <div id="course0">
+      <h2>0. Importing data from the Internet</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>0-0. Importing flat files from the web</h3>
+        <ul>
+          <li>
+            Can you import web data?
+            <ul>
+              <li>You can: go to URL and click to download files</li>
+              <li>BUT: not reproducible, not scalable</li>
+            </ul>
+          </li>
+          <li>
+            You'll learn how to...
+            <ul>
+              <li>Import and locally save datasets from the web</li>
+              <li>Load datasets into pandas DataFrame</li>
+              <li>Make HTTP requests(GET requests)</li>
+              <li>Scrape web data such as HTML</li>
+              <li>Parse HTML into useful data (BeautifulSoup)</li>
+              <li>Use the urllib and requests packages</li>
+            </ul>
+          </li>
+          <li>
+            The urllib package
+            <ul>
+              <li>Provides interface for fetching data across the web</li>
+              <li>urlopen() - accepts URLs instead of file names</li>
+            </ul>
+          </li>
+          <li>
+            How to automate file download in Python
+            <ul>
+              <li>
+                <code
+                  >form urllib.request import urlretrieve<br />url =
+                  'http://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv'<br />urlretrieve(url,
+                  'winequality-white.csv')</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <code>pd.read_excel()</code>: output is a Python dictionary with
+            sheet names as keys and corresponding DataFrames as corresponding
+            values
+          </li>
+        </ul>
+      </div>
+      <div id="course0-1" class="idv_class">
+        <h3>0-1. HTTP requests to import files from the web</h3>
+        <ul>
+          <li>
+            URL
+            <ul>
+              <li>Uniform/Universal Resource Locator</li>
+              <li>References to web resources</li>
+              <li>Focus: web addresses</li>
+              <li>
+                Ingredients:
+                <ul>
+                  <li>Protocol identifier - http:, https:</li>
+                  <li>Resource name - datacamp.com</li>
+                </ul>
+              </li>
+              <li>These specify web addresses uniquely</li>
+            </ul>
+          </li>
+          <li>
+            HTTP
+            <ul>
+              <li>HyperText Transfer Protocol</li>
+              <li>Foundation of data communication for the web</li>
+              <li>HTTPS - more secure form of HTTP</li>
+              <li>
+                Going to a website = sending HTTP request
+                <ul>
+                  <li>GET request</li>
+                </ul>
+              </li>
+              <li><code>urlretrieve()</code> performs a GET request</li>
+              <li>HTML - HyperText Markup Language</li>
+            </ul>
+          </li>
+          <li>
+            GET request <b>using urllib</b>
+            <ul>
+              <li>
+                <code
+                  >from urllib.request import urlopen, Request<br />url =
+                  "https://www.wikipedia.org/"<br />request = Request(url)<br />respone
+                  = urlopen(request) #returns an HTTPResponse object<br />html =
+                  response.read()<br />response.close()</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            GET requests <b>using requests</b>(package)
+            <ul>
+              <li>provides wonderful API for making requests</li>
+              <li>One of the most downloaded Python packages</li>
+              <li>
+                <code
+                  >import requests<br />url = "https://www.wikipedia.org/"<br />r
+                  = requests.get(url)<br />text = r.text</code
+                >
+              </li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course0-2" class="idv_class">
+        <h3>0-2. Scraping the web in Python</h3>
+      </div>
+    </div>
+    <div id="course1">
+      <h2>1. Interacting with APIs to import data from the web</h2>
+      <div id="course1-0" class="idv_class">
+        <h3>1-0. Introduction to APIs and JSONs</h3>
+      </div>
+      <div id="course1-1" class="idv_class">
+        <h3>1-1. APIs and interacting with the world wide web</h3>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>2. Diving deep into the Twitter API</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>2-0. The Twitter API and Authentication</h3>
+      </div>
+    </div>
+  </body>
+</html>
