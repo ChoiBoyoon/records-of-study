@@ -576,11 +576,137 @@
               </li>
             </ul>
           </li>
-          <li></li>
         </ul>
       </div>
       <div id="course1-3" class="idv_class">
         <h3>1-3. Template method</h3>
+        <ul>
+          <li>
+            Template strings
+            <ul>
+              <li>Simpler syntax</li>
+              <li>Slower than f-strings</li>
+              <li>Limited: don't allow format specifiers</li>
+              <li>
+                Good when working with externally formatted strings (that you
+                don't have control over)
+              </li>
+            </ul>
+          </li>
+          <li>
+            Basic syntax
+            <ul>
+              <li>
+                <code
+                  ><mark>from string import Template</mark><br />my_string =
+                  <mark>Template</mark>('Data science has been called
+                  <mark>$identifier</mark
+                  >')<br />my_string<mark>.substitute</mark>(<mark>identifier</mark>="sexiest
+                  job of the 21st century")</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Substitution
+            <ul>
+              <li>use many $identifier</li>
+              <li>
+                Use variables
+                <ul>
+                  <li>
+                    <code
+                      >from string import Template<br />job="Data science"<br />name="sexiest
+                      job of the 21st century"<br />my_string = Template('$title
+                      has been called $description')<br />my_string.substitute(title=job,
+                      description=name)</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Use ${identifier} when valid characters follow identifier
+                <ul>
+                  <li>
+                    <code
+                      >my_string = Template('I find Python very ${noun}ing but
+                      my brother has lost $noun')<br />my_string.substitute(noun="interest")</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Use $$ to escape the dollar sign
+                <ul>
+                  <li>
+                    <code
+                      >my_string = Template('I paid for the Python course only
+                      $$ $price, amazing!') #cf. $$$price->$12.50<br />my_string.substitute(price="12.50")</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Raise error when placeholder is missing
+                <ul>
+                  <li>
+                    <code
+                      >favorite = dict(flavor="chocolate")<br />my_string =
+                      Template('I love $flavor $cake very much')<br />my_string.substitute(favorite)
+                      #KeyError: 'cake'</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Safe substitution
+                <ul>
+                  <li>Always tries to return a usable string</li>
+                  <li>Missing placeholder will appear in resulting string</li>
+                  <li>
+                    <code
+                      >favorite = dict(flavor="chocolate")<br />my_string =
+                      Template('I love $flavor $cake very much')<br />my_string<mark>.safe_substitute</mark>(favorite)
+                      #'I love chocoalte $cake very much"</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li></li>
+            </ul>
+          </li>
+          <li>
+            Which should I use?
+            <ul>
+              <ul>
+                <li>
+                  str.format():
+                  <ul>
+                    <li>Good to start with. Concepts apply to f-strings</li>
+                    <li>Compatible with all versions of Python</li>
+                  </ul>
+                </li>
+                <li>
+                  f-strings:
+                  <ul>
+                    <li>Always advisable above all methods</li>
+                    <li>
+                      Only suitable when working with modern versions of
+                      Python(3.6+)
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  Template strings:
+                  <ul>
+                    <li>When working with external or user-provided strings</li>
+                  </ul>
+                </li>
+              </ul>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
       </div>
     </div>
     <div id="course2">
