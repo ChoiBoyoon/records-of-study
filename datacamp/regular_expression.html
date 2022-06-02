@@ -672,7 +672,6 @@
                   </li>
                 </ul>
               </li>
-              <li></li>
             </ul>
           </li>
           <li>
@@ -705,7 +704,6 @@
               </ul>
             </ul>
           </li>
-          <li></li>
         </ul>
       </div>
     </div>
@@ -713,6 +711,177 @@
       <h2>2. Regular Expressions for Pattern Matching</h2>
       <div id="course2-0" class="idv_class">
         <h3>2-0. Introduction to regular expressions</h3>
+        <ul>
+          <li>
+            What is a regular expression?
+            <ul>
+              <li>REGular Expression or regex:</li>
+              <li>
+                String containing a combination of normal characters and special
+                metacharacters that <b>describes patterns</b> to find text or
+                positions within a text
+              </li>
+              <li>
+                ex. <code>r'st\d\s\w{3,10}'</code>
+                <ul>
+                  <li>r: raw string. always advisable to use it</li>
+                  <li>Normal characters match themselves(st)</li>
+                  <li>
+                    Metacharacters represent types of characters (\d, \s, \w) or
+                    ideas({3, 10}, location or quantity)
+                  </li>
+                  <li>\d: digits</li>
+                  <li>\s: whitespace</li>
+                  <li>\w: a word character</li>
+                  <li>
+                    {3, 10}: indicates that the character immediately to the
+                    left(\w), should appear between 3 and 10 times
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Pattern: a sequence of characters that maps to words or
+                punctuation
+              </li>
+              <li>
+                Pattern matching usage"
+                <ul>
+                  <li>Find and replace text</li>
+                  <li>Validate strings</li>
+                </ul>
+              </li>
+              <li>Very powerful and fast</li>
+            </ul>
+          </li>
+          <li>
+            The re module
+            <ul>
+              <li><code>import re</code></li>
+              <li>
+                Find all matches of a pattern:
+                <ul>
+                  <li>
+                    <code>re.<mark>findall</mark>(r"regex", string)</code>
+                  </li>
+                  <li>
+                    ex.
+                    <code
+                      >re.<mark>findall</mark>(r"#movies", "Love #movies! I had
+                      fun yesterday going to the #movies") #['#movies',
+                      '#movies']</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Splig string at each match:
+                <ul>
+                  <li><code>re.<mark>split</mark>(r"regex", string)</code></li>
+                  <li>
+                    ex.
+                    <code
+                      >re.<mark>split</mark>(r"!", "Nice Place to eat! I'll come
+                      back! Excellent meat!") #['Nice Place to eat', 'I'll come
+                      back', 'Excellent meat!', '']</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Replace one or many matches with a string:
+                <ul>
+                  <li>
+                    <code>re.<mark>sub</mark>(r"regex", new, string)</code>
+                  </li>
+                  <li>
+                    <code
+                      >re.<mark>sub</mark>(r"yellow", "nice", "I have a yellow
+                      car and a yellow house in a yellow neighborhood")</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li></li>
+            </ul>
+          </li>
+          <li>
+            Supported metacharacters
+            <ul>
+              <li>
+                <b>\d: digit</b>
+                <ul>
+                  <li>
+                    <code
+                      >re.findall(r"Uder<mark>\d</mark>", "The winners are:
+                      User9, UserN, User8") #['User<mark>9</mark>',
+                      'User<mark>8</mark>']</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                \D: non-digit
+                <ul>
+                  <li>
+                    <code
+                      >re.findall(r"User<mark>\D</mark>", "The winners are:
+                      User9, UserN, User8") #['User<mark>N</mark>']</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                \w: word
+                <ul>
+                  <li>
+                    <code
+                      >re.findall(r"User<mark>\w</mark>", "The winners are:
+                      User9, UserN, User8") #['User<mark>9</mark>',
+                      'User<mark>N</mark>', 'User<mark>8</mark>']</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                \W: Non-word
+                <ul>
+                  <li>
+                    <code
+                      >re.findall(r"<mark>\W</mark>\d", "This skirt is on sale,
+                      only $5 today!") #['<mark>$</mark>5']</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                \s: whitespace
+                <ul>
+                  <li>
+                    <code
+                      >re.findall(r"Data<mark>\s</mark>Science", "I enjoy
+                      learning Data Science") #['Data<mark
+                      > </mark>Science']</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                \S: Non-Whitespace
+                <ul>
+                  <li>
+                    <code
+                      >re.sub(r"ice<mark>\S</mark>cream", "ice cream", "I really
+                      like ice<mark>-</mark>crean") #'I really like
+                      ice<mark>&nbsp;</mark>cream'</code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course2-1" class="idv_class">
         <h3>2-1. Repetitions</h3>
