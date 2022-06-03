@@ -731,7 +731,7 @@
                     ideas({3, 10}, location or quantity)
                   </li>
                   <li>\d: digits</li>
-                  <li>\s: whitespace</li>
+                  <li>\s: whitespace (tabs, space, new line, ..)</li>
                   <li>\w: a word character</li>
                   <li>
                     {3, 10}: indicates that the character immediately to the
@@ -820,7 +820,7 @@
                 </ul>
               </li>
               <li>
-                \D: non-digit
+                <b>\D: non-digit</b>
                 <ul>
                   <li>
                     <code
@@ -831,7 +831,7 @@
                 </ul>
               </li>
               <li>
-                \w: word
+                <b>\w: word</b>
                 <ul>
                   <li>
                     <code
@@ -843,7 +843,7 @@
                 </ul>
               </li>
               <li>
-                \W: Non-word
+                <b>\W: Non-word</b>
                 <ul>
                   <li>
                     <code
@@ -854,7 +854,7 @@
                 </ul>
               </li>
               <li>
-                \s: whitespace
+                <b>\s: whitespace</b>
                 <ul>
                   <li>
                     <code
@@ -866,7 +866,7 @@
                 </ul>
               </li>
               <li>
-                \S: Non-Whitespace
+                <b>\S: Non-Whitespace</b>
                 <ul>
                   <li>
                     <code
@@ -879,15 +879,183 @@
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
         </ul>
       </div>
       <div id="course2-1" class="idv_class">
         <h3>2-1. Repetitions</h3>
+        <ul>
+          <li>
+            Reteated characters
+            <ul>
+              <li>
+                Validate the following string: password1234 (8 chars, 4 ints)
+              </li>
+              <li>
+                <code>re.search(r"\w\w\w\w\w\w\w\w\d\d\d\d", password)</code>
+              </li>
+
+              <li></li>
+            </ul>
+          </li>
+          <li>
+            <b>Quantifiers</b>: a metacharacter that tells the regex engine how
+            many times to match a character immediately to its left.
+            <ul>
+              <li>
+                <code
+                  >re.search(r"\w\w\w\w\w\w\w\w\d\d\d\d", password)
+                  <ul>
+                    -> re.search(r"<b><mark>\w{8}\d{4}</mark></b
+                    >")
+                  </ul></code
+                >
+              </li>
+              <li>
+                One or more: +
+                <ul>
+                  <li>
+                    <code
+                      >text = "date1: 4-3, date2: 10-04"<br />re.findall(r"<mark
+                        ><b>\d+</b></mark
+                      >-<mark><b>\d+</b></mark
+                      >", text)</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Zero times or more: *
+                <ul>
+                  <li>
+                    <code
+                      >my_string = "The concert was amazing! @ameli!a @joh&&n
+                      @mary90"<br />re.findall(r"@\w+<mark><b>\W*</b></mark
+                      >\w+", my_string) #['@ameli!a', '@joh&&n',
+                      '@mary90']중간에 non-word가 들어갈수도 있고 안들어갈수도
+                      있고.. 숫자도 word인가봄</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Zero times or once: ?
+                <ul>
+                  <li>
+                    <code
+                      >text = "The color of this image is amazing. However, the
+                      colour blue could be brighter."<br />re.findall(r"colo<mark
+                        ><b>u?</b></mark
+                      >r", text) #['color', 'colour']</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                n times at least, m times at most: {n, m}
+                <ul>
+                  <li>
+                    <code
+                      >phone_number = "John: 1-966-847-3131 Michelle:
+                      54-908-42-42424"<br />re.findall(r"<mark
+                        ><b>\d{1,2}</b></mark
+                      >-\d{3}-<mark><b>\d{2,3}</b></mark
+                      >-\d{4,}", phone_number)</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Immediately to the left
+                <ul>
+                  <li>
+                    <code>r"apple+</code>": + applies to e and not to apple
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Tokenization</b>: the process of breaking a string into lexical
+            units or, in simpler temrs, words.
+          </li>
+        </ul>
       </div>
       <div id="course2-2" class="idv_class">
         <h3>2-2. Regex matacharacters</h3>
+        <ul>
+          <li>
+            Looking for patterns
+            <ul>
+              <li>
+                Two different operations to find a match:
+                <mark><b>re.search()</b></mark
+                >, <mark><b>re.match()</b></mark>
+              </li>
+              <li>re.match() is anchored at the beginning of the string</li>
+              <li>
+                ex.
+                <code
+                  >string1="4506 people"<br />string2="yesterday, I saw 3
+                  shows"<br /><br />re.search(r"\d{4}", string1)
+                  #match='4506'<br />re.match(r"\d{4}", string1)
+                  #match='4506'<br /><br />re.search(r"\d+", string2)
+                  #match='4506'<br />re.match(r"\d+", string2) #None</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Special characters
+            <ul>
+              <li>
+                Match any character(except newline): <mark><b>.</b></mark>
+                <ul>
+                  <li>
+                    <code
+                      >my_links = "check out www.amazingme.com"<br />re.findall(r"www<mark
+                        ><b>.+</b></mark
+                      >com", my_links)</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Start of the string: <mark><b>^</b></mark>
+                <ul>
+                  <li>
+                    <code
+                      >my_string = "the 80s music was better than the 90s
+                      music"<br />re.findall(r"the\s\d+\s", my_string) #['the
+                      80s', 'the 90s']<br />re.findall(r"<mark><b>^</b></mark
+                      >the\s\d+\s", my_string) #['the 80s'], the one that
+                      appears at the beginning of the string</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                End of the string: <mark><b>$</b></mark>
+                <ul>
+                  <li>
+                    <code
+                      >re.findall(r"the\s\d+\s$", my_string) #['the 90s']</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Escape special characters: <mark><b>\</b></mark>
+                <ul>
+                  <li><code></code></li>
+                </ul>
+              </li>
+              <li></li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course2-3" class="idv_class">
         <h3>2-3. Greedy vs. non-greedy matching</h3>
