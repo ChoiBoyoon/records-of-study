@@ -1046,10 +1046,68 @@
               <li>
                 Escape special characters: <mark><b>\</b></mark>
                 <ul>
-                  <li><code></code></li>
+                  <li>
+                    <code
+                      >my_string = "the music of Mr.Go. However, the sound"<br />print(re.split(r".\s",
+                      my_string)) #['','th','musi','o','Mr.Go',
+                      'However','th','soun']<br />print(re.split(r"<mark
+                        ><b>\.</b></mark
+                      >\s", my_string)) #['the music of Mr.Go','However, the
+                      sound']</code
+                    >
+                  </li>
                 </ul>
               </li>
-              <li></li>
+              <li>
+                OR operator
+                <ul>
+                  <li>
+                    Character: <mark><b>|</b></mark>
+                    <ul>
+                      <li>
+                        <code
+                          >my_string = "Elephant and elephant"<br />re.findall(r"Elephant<mark
+                            ><b>|</b></mark
+                          >elephant", my_string) #['Elephant', 'elephant']</code
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    Set of characters: <mark><b>[]</b></mark>
+                    <ul>
+                      <li>
+                        <code
+                          >my_string = "my friends: MaryJohn2 Clary3"<br />re.findall(r"<mark
+                            ><b>[a-zA-Z]</b></mark
+                          >+\d", my_string) #['MaryJohn2', 'Clary3']</code
+                        >
+                      </li>
+                      <li>
+                        <code
+                          >my_string = "My&Name&is#Boyoon CHOI"<br />re.sub(r"<mark
+                            ><b>[#$%&]</b></mark
+                          >", " ", my_string)</code
+                        >
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <mark><b>^</b></mark> transforms the expression to negative
+                    <ul>
+                      <li>
+                        ex. we want the link that do not contain any number<br /><code
+                          >my_links = "website1: www.99.com. website2:
+                          www.hola.com"<br />re.findall(r"www<mark
+                            ><b>[^0-9]+</b></mark
+                          >com", my_links)</code
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
             </ul>
           </li>
           <li></li>
