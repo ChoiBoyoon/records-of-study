@@ -1076,6 +1076,7 @@
                   <li>
                     Set of characters: <mark><b>[]</b></mark>
                     <ul>
+                      <li>very useful for optional characters</li>
                       <li>
                         <code
                           >my_string = "my friends: MaryJohn2 Clary3"<br />re.findall(r"<mark
@@ -1090,19 +1091,20 @@
                           >", " ", my_string)</code
                         >
                       </li>
-                    </ul>
-                  </li>
-
-                  <li>
-                    <mark><b>^</b></mark> transforms the expression to negative
-                    <ul>
                       <li>
-                        ex. we want the link that do not contain any number<br /><code
-                          >my_links = "website1: www.99.com. website2:
-                          www.hola.com"<br />re.findall(r"www<mark
-                            ><b>[^0-9]+</b></mark
-                          >com", my_links)</code
-                        >
+                        <mark><b>^</b></mark> transforms the expression to
+                        negative
+                        <ul>
+                          <li>
+                            ex. we want the link that do not contain any
+                            number<br /><code
+                              >my_links = "website1: www.99.com. website2:
+                              www.hola.com"<br />re.findall(r"www<mark
+                                ><b>[^0-9]+</b></mark
+                              >com", my_links)</code
+                            >
+                          </li>
+                        </ul>
                       </li>
                     </ul>
                   </li>
@@ -1110,13 +1112,41 @@
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
-          <li></li>
         </ul>
       </div>
       <div id="course2-3" class="idv_class">
         <h3>2-3. Greedy vs. non-greedy matching</h3>
+        <ul>
+          <li>
+            Two types of matching methods:
+            <ul>
+              <li>Greedy</li>
+              <li>Non-greedy or lazy</li>
+              <li>
+                Standard quantifiers are greedy by defaut: *, +, ?, {num, num}
+              </li>
+            </ul>
+          </li>
+          <li>
+            Greedy matching
+            <ul>
+              <li>
+                Greedy: match as many characters as possible (keep going to find
+                'more' digits)
+              </li>
+              <li>Return the logest match</li>
+              <li>
+                <code
+                  >import re<br />re.match(r"\d+", "12345bcada")
+                  #match='12345'</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
     </div>
     <div id="course3">
