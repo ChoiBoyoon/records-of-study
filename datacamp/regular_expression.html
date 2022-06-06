@@ -1133,6 +1133,11 @@
               <li>
                 Greedy: match as many characters as possible (keep going to find
                 'more' digits)
+                <ul>
+                  <li>
+                    ex. re.findall(r"a.+e", "I like apple pie") #apple pie
+                  </li>
+                </ul>
               </li>
               <li>Return the logest match</li>
               <li>
@@ -1141,11 +1146,44 @@
                   #match='12345'</code
                 >
               </li>
+              <li>Backtracks when too many characters matched</li>
+              <li>Gives up characters one at a time</li>
+              <li>
+                <code
+                  >import re<br />re.match(r".*hello", "xhelloxxxxxx")
+                  #match='xhello'</code
+                >
+              </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>
+            Non-greedy matching
+            <ul>
+              <li>
+                Lazy: match as few characters as needed
+                <ul>
+                  <li>ex. in "April 24th", returns 2 and 4</li>
+                  <li>ex. re.findall(r"a.+e", "I like apple pie") #apple</li>
+                </ul>
+              </li>
+              <li>Returns the shortest match</li>
+              <li>Append ? to greedy quantifiers</li>
+              <li>
+                <code
+                  >import re<br />re.match(r"\d+<mark><b>?</b></mark
+                  >", "12345bcada") #match='1'</code
+                >
+              </li>
+              <li>Backtracks when too few characters matched</li>
+              <li>Expands characters one at a time</li>
+              <li>
+                <code
+                  >import re<br />re.match(r"<mark><b>.*?</b></mark
+                  >hello", "xhelloxxxxxx") #match='xhello'</code
+                >
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
@@ -1153,6 +1191,77 @@
       <h2>3. Advanced Regular Expression Concepts</h2>
       <div id="course3-0" class="idv_class">
         <h3>3-0. Capturing groups</h3>
+        <ul>
+          <li>
+            Group characters
+            <ul>
+              <li>
+                ex.
+                <code
+                  >text = "Clary has 2 friends who she spends a lot of time
+                  with. Susan has 3 brothers while John has 4 sisters."</code
+                >
+              </li>
+              <li>
+                Use parenthesis to group and capture characters together
+                <ul>
+                  <li>
+                    <code
+                      >re.findall(r'<mark><b>([A-Za-z]+)</b></mark
+                      >\s\w+\s<mark><b>(\d+)</b></mark
+                      >\s\<mark><b>(w+)</b></mark
+                      >', text) #[('Clary', '2', 'friends'), ('Susan', '3',
+                      'brothers'), ('John', '4', 'sisters')]</code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Capturing groups
+            <ul>
+              <li>Match a specific subpattern in a pattern</li>
+              <li>Use it for further processing</li>
+              <li>Organize the data</li>
+              <li>
+                Immediately to the left
+                <ul>
+                  <li>r"apple+": + applies to e and not to apple</li>
+                </ul>
+              </li>
+              <li>
+                Apply a quantifier to the entire group
+                <ul>
+                  <li>
+                    <code
+                      >re.search(r"\d(A-Za-z])+", "My user name is 3e4r5fg")
+                      #match='3e4r5fg'</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Capture a repeated group (\d+) vs. repeat a capturing group
+                (\d)+
+                <ul>
+                  <li>
+                    <code
+                      >my_string = "My lucky number is 8755 and 33"<br />re.findall(r"(\d)+",
+                      my_string) #['5','3']<br />re.findall(r"(\d+)", my_string)
+                      #['8755', '33']</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course3-1" class="idv_class">
         <h3>3-1. Alternation and non-capturing groups</h3>
