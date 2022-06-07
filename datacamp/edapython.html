@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../nomad_coders/general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exploratory Data Analysis in Python</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+    <h1>Exploratory Data Analysis in Python</h1>
+    <div id="course0">
+      <h2>0. Read, clean, and validate</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>0-0. DataFrames and Series</h3>
+        <ul>
+          <li>
+            Using data to answer questions
+            <ul>
+              <li>
+                What is the average birth weight of babies in the United States?
+              </li>
+              <li>Find appropriate data, or collect it</li>
+              <li>Read data in your development environment</li>
+              <li>Clean and validate</li>
+            </ul>
+          </li>
+          <li>
+            Reading data
+            <ul>
+              <li>
+                <code
+                  >import pandas as pd<br />nsfg = pd.read_hdf('nsfg.hdf5',
+                  'nsfg')<br />type(nsfg) #pandas.core.frame.DataFrame</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Columns and rows
+            <ul>
+              <li>
+                <code
+                  >nsfg.shape #(9358, 10)<br />nsfg.columns #check all the
+                  columns</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Each columns is a Series
+            <ul>
+              <li>
+                <code
+                  >pounds = nsfg['birthwgt_lb1']<br />type(pounds)
+                  #pandas.core.series.Series</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            NaN : Not a number. a special value that can indicate invalid or
+            missing data
+          </li>
+        </ul>
+      </div>
+      <div id="course0-1" class="idv_class">
+        <h3>0-1. Clean and validate</h3>
+        <ul>
+          <li>
+            Selecting columns
+            <ul>
+              <li>
+                <code
+                  >pounds = nsfg['girthwgt_lb1']<br />ounces =
+                  nsfg['birthwgt_oz1']<br />pounds.<mark
+                    ><b>value_counts().sort_index()</b></mark
+                  ></code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <b>Describe()</b>: computes summary statistics (mean, standard
+            deviation, min, max, ..)
+            <ul>
+              <li><code>pounds.describe()</code></li>
+            </ul>
+          </li>
+          <li>
+            Replace
+            <ul>
+              <li>
+                <code
+                  >pounds = pounds.replace([98,99], np.nan) #98 and 99 indicate
+                  missing data<br />pounds.mean() #8.05 -> 6.70</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Arithmetic with Series
+            <ul>
+              <li>
+                <code
+                  >birth_weight = pounds + ounces/16.0<br />birth_weight.describe()</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>recode: a variable that's computed from other variables</li>
+        </ul>
+      </div>
+      <div id="course0-2" class="idv_class">
+        <h3>0-2. Filter and visualize</h3>
+        <ul>
+          <li>
+            Histogram
+            <ul>
+              <li>
+                <code
+                  >import matplotlib.pyplot as plt<br /><mark
+                    ><b>plt.hist</b></mark
+                  >(birth_weight.dropna(), bins=30)<br />plt.xlabel('Birth
+                  weight (lb)')<br />plt.ylabel('Number of births')<br />plt.show()</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Boolean Series
+            <ul>
+              <li>
+                <code
+                  >preterm = nsfg['prglngth'] < 37<br />preterm.sum() #number of
+                  Trues<br />preterm.mean() #0.399, 40% of the births are
+                  preterm</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            Filtering
+            <ul>
+              <li>
+                <code
+                  >preterm_weight = birth_weight[preterm]<br />preterm_weight.mean()
+                  #5.57<br />full_term_weight = birth_weight[~preterm]<br />full_term_weight.mean()
+                  #7.37</code
+                >
+              </li>
+              <li>
+                Other logical operators:
+                <ul>
+                  <li>& for AND (both must be true)</li>
+                  <li>| or OR (either or both can be true)</li>
+                  <li>
+                    <code
+                      >birth_weight[A&B] #both true<br />birth_weight[A|B]
+                      #either or both true</code
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            Resampling
+            <ul>
+              <li>NSFG is not representative</li>
+              <li>Some groups are "oversampled"</li>
+              <li>
+                We can correct using <code>resample_rows_weighted()</code>
+              </li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
+      </div>
+    </div>
+    <div id="course1">
+      <h2>1. Distributions</h2>
+      <div id="course1-0" class="idv_class">
+        <h3>1-0. Probability mass functions</h3>
+      </div>
+      <div id="course1-1" class="idv_class">
+        <h3>1-1. Cumulative distribution functions</h3>
+      </div>
+      <div id="course1-2" class="idv_class">
+        <h3>1-2. Comparing distributions</h3>
+      </div>
+      <div id="course1-3" class="idv_class">
+        <h3>1-3. Modeling distributions</h3>
+      </div>
+    </div>
+    <div id="course2">
+      <h2>2. Relationships</h2>
+      <div id="course2-0" class="idv_class">
+        <h3>2-0. Exploring relationships</h3>
+      </div>
+      <div id="course2-1" class="idv_class">
+        <h3>2-1.Visualizing relationships</h3>
+      </div>
+      <div id="course2-2" class="idv_class">
+        <h3>2-2. Correlation</h3>
+      </div>
+      <div id="course2-3" class="idv_class">
+        <h3>2-3. Simple regression</h3>
+      </div>
+    </div>
+    <div id="course3">
+      <h2>3. Multivariate Thinking</h2>
+      <div id="course3-0" class="idv_class">
+        <h3>3-0. Limits of simple regression</h3>
+      </div>
+      <div id="course3-1" class="idv_class">
+        <h3>3-1. Multiple regression</h3>
+      </div>
+      <div id="course3-2" class="idv_class">
+        <h3>3-2. Visualizing regression results</h3>
+      </div>
+      <div id="course3-3" class="idv_class">
+        <h3>3-3. Logistic regression</h3>
+      </div>
+    </div>
+  </body>
+</html>
