@@ -177,7 +177,6 @@
               </li>
             </ul>
           </li>
-          <li></li>
         </ul>
       </div>
     </div>
@@ -185,6 +184,65 @@
       <h2>1. Distributions</h2>
       <div id="course1-0" class="idv_class">
         <h3>1-0. Probability mass functions</h3>
+        <ul>
+          <li>
+            GSS
+            <ul>
+              <li>Annual sample of U.S. population</li>
+              <li>Asks about demographics, social and political beliefs</li>
+              <li>Widely used by policy makers and researchers</li>
+            </ul>
+          </li>
+          <li>
+            Read the data
+            <ul>
+              <li>
+                <code
+                  >gss = pd.read_hdf('gss.hdf5', 'gss')<br />educ = gss['educ']
+                  #the number of years of education<br />plt.hist(educ.dropna(),
+                  label='educ')<br />plt.show()</code
+                ><br />
+                <img src="edf0.png" height="200px" />
+              </li>
+            </ul>
+          </li>
+          <li>
+            PMF
+            <ul>
+              <li>
+                Probability Mass Function: contains the unique values in the
+                dataset and how often each one appears
+              </li>
+              <li>
+                <code
+                  >pmf_educ = Pmf(educ, normalize=False)<br />print(pmf_educ.head())
+                  #ex. 0.0 566, 1.0 118, ...<br />print(pmf_educ[12]) #47689
+                </code>
+              </li>
+              <li>
+                <code
+                  >pmf_educ = Pmf(educ, normalize=True)<br />pmf_educ.head()
+                  #0.0 0.003663, 0.1 0.000764, ...<br />pmf_educ[12] #0.3086...,
+                  31% people have 12 years of education</code
+                >
+              </li>
+              <li>
+                <code
+                  >pmf_educ.bar(label='educ')<br />plt.xlabel('Years of
+                  education')<br />plt.ylabel('PMF')<br />plt.show()</code
+                ><br /><img src="edf1.png" height="200px" />
+              </li>
+              <li>
+                The PMF shows all unique values, so we can see exactly where the
+                peaks are. (the histogram puts values into bins, it obscures
+                some details. We can't see peaks at 14 and 16 years(master's and
+                doctorate degrees))
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course1-1" class="idv_class">
         <h3>1-1. Cumulative distribution functions</h3>
