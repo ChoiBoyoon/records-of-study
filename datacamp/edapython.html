@@ -221,9 +221,9 @@
               </li>
               <li>
                 <code
-                  >pmf_educ = Pmf(educ, normalize=True)<br />pmf_educ.head()
-                  #0.0 0.003663, 0.1 0.000764, ...<br />pmf_educ[12] #0.3086...,
-                  31% people have 12 years of education</code
+                  >pmf_educ = <mark>Pmf(educ, normalize=True)</mark
+                  ><br />pmf_educ.head() #0.0 0.003663, 0.1 0.000764, ...<br />pmf_educ[12]
+                  #0.3086..., 31% people have 12 years of education</code
                 >
               </li>
               <li>
@@ -240,18 +240,161 @@
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
         </ul>
       </div>
       <div id="course1-1" class="idv_class">
         <h3>1-1. Cumulative distribution functions</h3>
+        <ul>
+          <li>CDF: cumulative distribution functions</li>
+          <li>
+            From PMF to CDF
+            <ul>
+              <li>
+                If you draw a random element from a distribution:
+                <ul>
+                  <li>
+                    PMF(Probability Mass Function) is the probability that you
+                    get exactly x
+                  </li>
+                  <li>
+                    CDF(Cumulative Distribution Function) is the probability
+                    that you get a value <= x
+                  </li>
+                </ul>
+                for a given value of x
+              </li>
+              <li>
+                ex.
+                <code
+                  >cdf = <mark>Cdf(gss['age'])</mark
+                  ><br />cdf.plot()<br />plt.xlabel('Age')<br />plt.ylabel('CDF')<br />plt.show()</code
+                >
+              </li>
+              <img src="edf2.png" height="200px" />
+              <li>
+                Evaluating the CDF
+                <ul>
+                  <li>
+                    <code
+                      >q = 51<br />p = <mark>cdf(q)</mark><br />print(p) #0.66
+                      -> 66% of the respondents are 51 years old or
+                      younger</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                The CDF is an invertible function
+                <ul>
+                  <li>
+                    <code
+                      >p = 0.75<br />q = cdf.inverse(p) #57 -> 75% of the
+                      respondents are age 57 or less (age 57 is the 75th
+                      percentile of this distribution)</code
+                    >
+                  </li>
+                  <li>
+                    <code
+                      >p = 0.25<br />q = cdf.inverse(p)<br />print(q) #30 -> age
+                      30 is the 25th percentile of this distribution</code
+                    >
+                  </li>
+                  <li>
+                    <b>IQR</b>: interqurtile range.
+                    <ul>
+                      <li>the distance from the 25th to the 75th percentile</li>
+                      <li>
+                        measures the spread of the distribution, similar to
+                        standard deviation or variance.
+                      </li>
+                      <li>
+                        "robust" than variance (it works well even if there are
+                        erros in the data or extreme values)
+                      </li>
+                      <li>
+                        -> a measure of variability that is robust in the
+                        presence of errors or extreme values
+                      </li>
+                    </ul>
+                  </li>
+                  <img src="edf3.png" height="170px" />
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
       <div id="course1-2" class="idv_class">
         <h3>1-2. Comparing distributions</h3>
+        <ul>
+          <li>
+            Multiple PMFs
+            <ul>
+              <li>
+                <code
+                  >female = gss['sex']==1<br />age = gss['age']<br />female_age
+                  = age[female]<br />male_age = age[~female]<br />Pmf(female_age).plot(label='Female')<br />Pmf(male_age).plot(label='Male')<br />plx.xlabel('Age
+                  (years)')<br />plt.ylabel('Count')<br />plt.show()</code
+                >
+              </li>
+              <img src="edf4.png" height="200px" />
+            </ul>
+          </li>
+          <li>
+            Multiple CDFs
+            <ul>
+              <li>
+                <code
+                  >Cdf(female_age).plot(label='Female')<br />Cdf(male_age).plot(label='Male')<br />plt.show()</code
+                >
+              </li>
+              <img src="edf5.png" height="200px" />
+              <li>
+                In general, CDFs are smmother than PMFs (they smoothe out
+                randomness)
+              </li>
+              <li>in this case, the distributions are nearly identical.</li>
+              <li>
+                the blue line is left of the orange line -> men are younger at
+                every percentile
+              </li>
+            </ul>
+          </li>
+          <li>
+            Income distribution
+            <ul>
+              <li>
+                <code
+                  >income = gss['realinc']<br />pre95 = gss['year'] < 1995
+                  <br />Pmf(income[pre95].plot(label='Before 1995')<br />Pmf(income[~pre95].plot(label='After
+                  1995')<br />plt.xlabel('Income (1986 USD)')<br />plt.ylabel('PMF')<br />plt.show()</code
+                >
+              </li>
+              <img src="edf6.png" height="200px" />
+            </ul>
+          </li>
+          <li>
+            Income CDFs
+            <ul>
+              <li>
+                <code
+                  >Cdf(income[pre95]).plot(label='Before 1995')<br />Cdf(income[~pre95].plot(label='After
+                  1995')</code
+                >
+              </li>
+              <img src="edf7.png" height="200px" />
+              <li>
+                the orange distribution is shifted to the right -> the fraction
+                of people with high incomes is about the same, but the income of
+                high earners has increased.
+              </li>
+              <li>
+                In general, CDFs are recommended for exploratory analysis.
+              </li>
+            </ul>
+          </li>
+          <li></li>
+        </ul>
       </div>
       <div id="course1-3" class="idv_class">
         <h3>1-3. Modeling distributions</h3>
