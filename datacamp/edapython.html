@@ -393,11 +393,36 @@
               </li>
             </ul>
           </li>
-          <li></li>
         </ul>
       </div>
       <div id="course1-3" class="idv_class">
         <h3>1-3. Modeling distributions</h3>
+        <ul>
+          <li>
+            The normal distribution
+            <ul>
+              <li>
+                <code
+                  >sample = np.random.normal(siez=1000)<br />Cdf(sample).plot()</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            The normal CDF
+            <ul>
+              <li>
+                <code
+                  >from scipy.stats import norm<br />xs = np.linspace(-3, 3)<br />ys
+                  = norm(0,1).cdf(xs)<br />plt.plot(xs, ys, color='gray')<br />Cdf(sample).plot()</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
     </div>
     <div id="course2">
