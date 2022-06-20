@@ -438,8 +438,45 @@
               </li>
             </ul>
           </li>
-          <li></li>
-          <li></li>
+          <li>
+            KDE and PDF
+            <ul>
+              <li>
+                <code
+                  >xs = np.linspace(-3, 3)<br />ys = norm.pdf(xs)<br />plt.plot(xs,
+                  ys, color='gray')<br />sns.kdeplot(sample)</code
+                >
+              </li>
+              <li>
+                The KDE plot matches the normal PDF pretty well, although the
+                differences look bigger when we compare PDFs than they did with
+                the CDFs. -> the PDF is a more sensitive way to look for
+                differences, but often it is too sensitive. It's hard to tell
+                whether apparent differences mean anythin, or if they are just
+                random(as in this case)
+              </li>
+            </ul>
+          </li>
+          <li>
+            PMF, CDF, KDE
+            <ul>
+              <li>
+                Use CDFs for exploration.
+                <ul>
+                  <li>
+                    they give the best view of what's going on without getting
+                    distracted by noise.
+                  </li>
+                  <li>
+                    the biggest drawback of CDFs is that they are less well
+                    known.
+                  </li>
+                </ul>
+              </li>
+              <li>Use PMFs if there are a small number of unique values.</li>
+              <li>Use KDE if there are a lot of values.</li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
