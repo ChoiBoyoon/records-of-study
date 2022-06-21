@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../nomad_coders/general_style.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manipulating Time Series Data in Python</title>
+  </head>
+  <body>
+    <header>
+      <a href="course_list.html">뒤로 가기</a>
+    </header>
+    <h1>Manipulating Time Series Data in Python</h1>
+    <div id="course0">
+      <h2>0. Working with Time Series in Python</h2>
+      <div id="course0-0" class="idv_class">
+        <h3>0-0. How to use dates & times with pandas</h3>
+        <ul>
+          <li>
+            Date & time series functionality
+            <ul>
+              <li>
+                At the root: data types for date & time information
+                <ul>
+                  <li>Objects for points in time and periods</li>
+                  <li>Attributes & methods reflect time-related details</li>
+                </ul>
+              </li>
+              <li>
+                Sequences of dates & periods:
+                <ul>
+                  <li>Series or DataFrame columns</li>
+                  <li>Index: convert object into Time Series</li>
+                </ul>
+              </li>
+              <li>
+                Many Series/DataFrame methods rely on time information in the
+                index to provide time-series functionality
+              </li>
+            </ul>
+          </li>
+          <li>
+            Basic building block: pd.Timestamp
+            <ul>
+              <li>
+                <code
+                  >import pandas as pd<br />from datetime import datetime<br />time_stamp
+                  = pd.Timestamp(datetime(2017,1,1))<br />pd.Timestamp('2017-01-01')
+                  == time_stamp #True, understands dates as strings<br />print(type(time_stamp))
+                  #type: pandas.tslib.Timestamp</code
+                >
+              </li>
+              <li>
+                Timestamp object has many attributes to store time-specific
+                information<br /><code
+                  >ex. time_stamp.year #2017<br />time_stamp.day_name()
+                  #'Sunday'</code
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            More building blocks: pd.Period & freq
+            <ul>
+              <li>
+                Period object has freq attribute to store frequency info
+                <ul>
+                  <li>
+                    <code
+                      >period = pd.Period('2017-01')<br />period #default:
+                      month-end, Period('2017-01', 'M')<br />period.asfreq('D')
+                      #convert to daily. Period('2017-01-31', 'D')</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Convert pd.Period() to pd.Timestamp() and back
+                <ul>
+                  <li>
+                    <code
+                      >period.to_timestamp().to_period('M') #Period('2017-01',
+                      'M')</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Frequency info enables basic date arithmetic
+                <ul>
+                  <li><code>period + 2 #Period('2017-03', 'M')</code></li>
+                  <li>
+                    <code
+                      >pd.Timestamp('2017-01-31', 'M')+1 #Timestamp('2017-02-28
+                      00:00:00', freq='M')</code
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                Sequence of dates & times
+                <ul>
+                  <li>
+                    pd.date_range: start, end, periods, freq
+                    <ul>
+                      <li>
+                        <code
+                          >index = pd.date_range(start='2017-1-1', periods=12,
+                          freq='M')</code
+                        >
+                      </li>
+                    </ul>
+                  </li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </li>
+              <li></li>
+            </ul>
+          </li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div id="course0-1" class="idv_class">
+        <h3>0-1. Indexing and resampling time series</h3>
+      </div>
+      <div id="course0-2" class="idv_class">
+        <h3>0-2. Lags, changes, and returns for stock price series</h3>
+      </div>
+    </div>
+  </body>
+</html>
