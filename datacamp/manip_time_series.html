@@ -41,7 +41,7 @@
             </ul>
           </li>
           <li>
-            Basic building block: pd.Timestamp
+            Basic building block: <b>pd.Timestamp</b>
             <ul>
               <li>
                 <code
@@ -61,7 +61,7 @@
             </ul>
           </li>
           <li>
-            More building blocks: pd.Period & freq
+            More building blocks: <b>pd.Period & freq</b>
             <ul>
               <li>
                 Period object has freq attribute to store frequency info
@@ -102,17 +102,33 @@
                 Sequence of dates & times
                 <ul>
                   <li>
-                    pd.date_range: start, end, periods, freq
+                    <b>pd.date_range</b>: start, end, periods, freq
                     <ul>
                       <li>
                         <code
-                          >index = pd.date_range(start='2017-1-1', periods=12,
-                          freq='M')</code
+                          >index = <mark><b>pd.date_range</b></mark
+                          >(start='2017-1-1', periods=12, freq='M')<br />index
+                          #DatetimeIndex(['2017-01-31', '2017-02-28',
+                          '2017-03-31', ..., '2017-12-31'],
+                          dtype='datetime64[ns]', freq='M')</code
                         >
                       </li>
                     </ul>
                   </li>
-                  <li></li>
+                  <li>
+                    <b>pd.DateTimeIndex</b>: sequence of Timestamp objects with
+                    frequency info
+                    <ul>
+                      <li>
+                        <code
+                          >index[0] #Timestamp('2017-01-31 00:00:00',
+                          freq='M')<br />index.to_period()
+                          #PeriodIndex(['2017-01', '2017-02', ..., '2017-12'],
+                          dtype='period[M]', freq='M')</code
+                        >
+                      </li>
+                    </ul>
+                  </li>
                   <li></li>
                 </ul>
               </li>
@@ -125,6 +141,11 @@
       </div>
       <div id="course0-1" class="idv_class">
         <h3>0-1. Indexing and resampling time series</h3>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </div>
       <div id="course0-2" class="idv_class">
         <h3>0-2. Lags, changes, and returns for stock price series</h3>
